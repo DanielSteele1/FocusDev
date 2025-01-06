@@ -1,38 +1,128 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+body {
+  background-color: #0f1011;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  
 }
 
-.App-link {
-  color: #61dafb;
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Navigation {
+  display: flex;
+  flex-direction: row;
+  border-bottom: #1DB954 1px solid;
+  width: 100%;
+  height: 75px;
+  color: #1DB954;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+.Nav-Menu {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.Navigation-Item {
+
+  padding: 10px;
+  width: fit-content;
+  margin: 10px;
+  color: #1DB954;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.Navigation-Logo {
+  padding: 10px;
+  margin: 10px;
+  background-color: #1DB954;
+  color: white;
+  width: fit-content;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Dashboard-container {
+  width: 100%;
+  padding: 10px;
+  height: 100vh; 
+  align-items: center;
+  justify-content: space-between; 
+  display:flex;
+
+}
+
+.Dashboard {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  color: #1DB954;
+}
+
+.Dashboard-Item {
+  display: flex;
+  width: 400px;
+  height: 230px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px;
+  font-size: 20px;
+  padding: 10px;
+  border: #1DB954 1px solid;
+  color: #1DB954;
+}
+
+
+#Notes {
+  display: flex;
+  width: 500px;
+  height: 600px;
+  color: #1DB954;
+}
+
+.Dashboard-Top, .Dashboard-Mid, .Dashboard-Bottom {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+  height: fit-content;
+  width: 100%;
+}
+
+#Useful-Links, #Weather, #Upcoming-Events, #Pinboard {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 160px;
+  color: #1DB954;
+}
+
+.Footer {
+  display: flex;
+  flex-direction: row;
+  background-color: #0f1011;
+  color: #1DB954;
+  margin-top: 300px;
+  height: fit-content;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
 }
