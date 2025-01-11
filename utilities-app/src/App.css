@@ -4,24 +4,50 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
-  
+  margin: 0;
 }
 
-html, body {
+html,
+body {
   max-width: 100%;
   overflow-x: hidden;
+
+}
+
+
+#emoji {
+  font-size: 40px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.time, .darkMode, .MuiSvgIcon-root {
+  margin-right: 10px; 
+}
+
+.time, .darkMode {
+
+  display: flex;
+  padding: 10px;
+  align-items: center;
+
 }
 
 .Navigation {
   display: flex;
   flex-direction: row;
-  border-bottom: #1DB954 1px solid;
+  border-bottom: #3a3b3b 1px solid;
+
   width: 100%;
   height: 75px;
   color: #1DB954;
   justify-content: flex-start;
   align-items: center;
-
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .Nav-Menu {
@@ -43,31 +69,41 @@ html, body {
 }
 
 .Navigation-Logo {
-  padding: 10px;
   margin: 10px;
-  background-color: #1DB954;
-  color: white;
+  padding: 10px;
+  color: #1DB954;
   width: fit-content;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+
+.Navigation-Name {
+  padding: 10px;
+  font-size: 25px;
+  font-family: 'Lexicand-Deca', sans-serif;
+  font-weight: 700;
+  color: #1DB954;
+  width: 250px;
+  justify-content: center;
   align-items: center;
 }
 
 .Dashboard-container {
   width: 100%;
-  padding: 10px;
-  height: 100vh; 
+  height: fit-content;
   align-items: center;
-  justify-content: space-between; 
-  display:flex;
+  justify-content: space-between;
+  display: flex;
+  background-color: #0f1011;
 
 }
 
 .Dashboard {
   margin: 0 auto;
   display: flex;
+  width: 80%;
   flex-direction: column;
-  width: 100%;
-  height: 100vh;
+  height: fit-content;
   align-items: center;
   justify-content: space-between;
   color: #1DB954;
@@ -78,38 +114,132 @@ html, body {
   width: 400px;
   height: 230px;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
   margin: 10px;
-  font-size: 20px;
+  font-size: 18px;
+  font-family: 'Lexicand-Deca', sans-serif;
+  font-weight: 400;
   padding: 10px;
-  border: #1DB954 1px solid;
-  color: #1DB954;
+  background-color: transparent;
+  border: #3a3b3b 1px solid;
 }
 
 
-#Notes {
+#Notes,
+#ToDo {
+  align-items: flex-start;
   display: flex;
-  width: 500px;
-  height: 600px;
+  width: 400px;
+  height: fit-content;
   color: #1DB954;
 }
 
-.Dashboard-Top, .Dashboard-Mid, .Dashboard-Bottom {
+.Notes-Controls {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  color: #1DB954;
+
+}
+
+.Welcome {
+
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #1DB954;
+  font-size: 30px;
+  padding: 10px;
+  margin: 2%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+
+}
+
+#Notes-Buttons {
+
+  flex: 1;
+  display: flex;
+}
+
+#NotesInput {
+
+  flex: 1;
+  background-color: transparent;
+  border: #1DB954 0px solid;
+  color: #1DB954;
+  margin: 10px;
+  padding: 5px;
+  height: 40px;
+
+}
+
+
+.Notes-Content {
+
+  display: flex;
+  align-items: flex-start;
+
+}
+
+.Note {
+
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: fit-content;
+  color: #1DB954;
+  padding: 10px;
+  margin: 10px;
+  font-size: 15px;
+  font-family: 'Lexicand-Deca', sans-serif;
+  border: 1px solid #3a3b3b;
+
+}
+
+#Calender {
+
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  color: #1DB954;
+}
+
+#Github-Commit-Graph {
+  display: flex;
+  width: 800px;
+  height: 230px;
+  color: #1DB954;
+}
+
+.Dashboard-Top,
+.Dashboard-Mid,
+.Dashboard-Bottom {
   display: flex;
   margin-top: 10px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   flex-direction: row;
   height: fit-content;
   width: 100%;
 }
 
-#Useful-Links, #Weather, #Upcoming-Events, #Pinboard {
+#Useful-Links,
+#Weather,
+#Upcoming-Events,
+#Pinboard {
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 160px;
+  height: 200px;
   color: #1DB954;
 }
 
@@ -118,7 +248,6 @@ html, body {
   flex-direction: row;
   background-color: #0f1011;
   color: #1DB954;
-  margin-top: 300px;
   height: fit-content;
   width: 100%;
   flex-direction: column;
