@@ -1,6 +1,9 @@
 
 import './App.css';
 
+import React, { useEffect } from "react";
+import { useState } from "react";
+
 import NotesIcon from '@mui/icons-material/Notes';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
@@ -22,10 +25,31 @@ import { MantineProvider, Button, Text } from '@mantine/core';
 import { Calendar } from '@mantine/dates';
 
 import EmojiPicker from 'emoji-picker-react';
-
 import { TextField } from '@mui/material';
 
 function Navigation() {
+
+  const [timeText, setTimeText] = useState("");
+
+  useEffect(() => {
+
+    function getTime() {
+
+      const currentTime = new Date();
+
+      const formattedTime = currentTime.toLocaleTimeString();
+      const formattedDate = currentTime.toLocaleDateString();
+
+      setTimeText(`${formattedDate} ${formattedTime}`);
+
+    }
+
+    getTime();
+    const interval = setInterval(getTime, 1000);
+
+    return () => clearInterval(interval);
+
+  }, []);
 
   return (
     <div className="Navigation">
@@ -39,7 +63,7 @@ function Navigation() {
         <div className="Navigation-Item" id="time">
           <span className="time">
             <AccessTimeIcon sx={{ justifyContent: 'center', alignItems: 'center', margin: '10px' }} />
-            Time , GMT
+            <span className="timetext">{timeText}</span>
           </span>
         </div>
       </div>
@@ -49,12 +73,39 @@ function Navigation() {
 
 function Dashboard() {
 
+  const [QOTDData, setQOTDData] = useState(null);
+
+  useEffect(() => {
+    const fetchQOTD = async () => {
+      const api_url = 'https://zenquotes.io/api/quotes/';
+
+      try {
+        const response = await fetch(api_url);
+        const data = await response.json();
+        console.log(data);
+
+        if (data && data.length > 0) {
+          setQOTDData(data[0].q);
+        }
+      } catch (error) {
+        console.error('Error fetching QOTD:', error);
+      }
+    };
+
+    fetchQOTD();
+  }, []);
+
+
   return (
     <div className="Dashboard-container">
 
       <div className="Dashboard">
-
-        <div className="Welcome"> <span> <span id="emoji">👋</span>  Welcome back, Daniel </span> </div>
+        <div className="Welcome"> <span> <span id="emoji">👋</span>  Welcome back, Daniel </span>
+          <div className="QOTD">
+            <div id="QOTD"> Quote of the Day ~ </div>
+            <span>  {QOTDData ? { QOTDData } : 'Loading . . .'} </span>
+          </div>
+        </div>
 
         <div className="Dashboard-Top">
 
@@ -109,11 +160,9 @@ function Dashboard() {
       </div>
     </div>
   );
-
 }
 
 function Footer() {
-
 
   return (
     <div className="Footer">

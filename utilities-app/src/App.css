@@ -23,11 +23,14 @@ body {
   margin: 10px;
 }
 
-.time, .darkMode, .MuiSvgIcon-root {
-  margin-right: 10px; 
+.time,
+.darkMode,
+.MuiSvgIcon-root {
+  margin-right: 10px;
 }
 
-.time, .darkMode {
+.time,
+.darkMode {
 
   display: flex;
   padding: 10px;
@@ -147,19 +150,44 @@ body {
 .Welcome {
 
   display: flex;
-  height: fit-content;
+  height: 450px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #3a3b3b;
+  color: #1DB954;
+  border: 1px solid #0f1011;
+  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+
+}
+
+
+.QOTD {
+  display: flex;
   width: fit-content;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #1DB954;
-  font-size: 30px;
   padding: 10px;
-  margin: 2%;
+  margin: 10px;
+  font-size: 23px;
   font-family: 'Poppins', sans-serif;
-  font-weight: 400;
+  font-weight: 300;
+  font-style: italic;
 
 }
+
+#QOTD {
+
+  font-style: italic;
+  font-size: 18px;
+  padding: 5px;
+}
+
 
 #Notes-Buttons {
 
