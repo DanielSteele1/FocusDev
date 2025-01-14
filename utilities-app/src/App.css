@@ -155,15 +155,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #3a3b3b;
   color: #1DB954;
-  border: 1px solid #0f1011;
   font-size: 30px;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
 
 }
-
 
 .QOTD {
   display: flex;

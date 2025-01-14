@@ -95,7 +95,6 @@ function Dashboard() {
     fetchQOTD();
   }, []);
 
-
   return (
     <div className="Dashboard-container">
 
