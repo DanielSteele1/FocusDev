@@ -11,6 +11,11 @@
 # production
 /build
 
+/api
+/WeatherAPI.js
+/QuotesAPI.js
+/server
+
 # misc
 .DS_Store
 .env.local

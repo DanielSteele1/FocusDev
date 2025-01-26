@@ -101,6 +101,31 @@ body {
 
 }
 
+
+.LocationInput {
+
+  display:flex;
+  background-color: #0f1011;
+  border: none;
+  color:#09f55b;
+  padding: 10px;
+  margin: 10px;
+
+}
+
+.LocationSearch {
+
+  display:flex;
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  background-color: #0f1011;
+  color:#09f55b;
+  align-items: center;
+  padding-right: 10px;
+
+}
+
 .Dashboard {
   margin: 0 auto;
   display: flex;
@@ -136,21 +161,37 @@ body {
   color: #1DB954;
 }
 
-.Notes-Controls {
+
+
+
+.Controls {
 
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  color: #1DB954;
+
+}
+
+#Notes-Buttons, #UsefulLinks-Buttons, #Pinboard-Buttons {
+
+  display: flex;
+  width: fit-content;
+  margin-top: 10px;
+  margin-left: 70px;
+  background-color: #1DB954;
+  border-radius: 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 
 }
 
 .Welcome {
 
   display: flex;
-  height: 450px;
+  height: 360px;
   width: 100%;
   flex-direction: column;
   align-items: center;
@@ -185,25 +226,18 @@ body {
   padding: 5px;
 }
 
-
-#Notes-Buttons {
-
-  flex: 1;
-  display: flex;
-}
-
-#NotesInput {
+#Input {
 
   flex: 1;
-  background-color: transparent;
-  border: #1DB954 0px solid;
+  background-color: #1a1d1d;
+  border: 0px solid;
   color: #1DB954;
   margin: 10px;
-  padding: 5px;
-  height: 40px;
+  padding: 10px;
+  height: 43px;
+  border-radius: 10px;
 
 }
-
 
 .Notes-Content {
 
@@ -238,11 +272,20 @@ body {
   color: #1DB954;
 }
 
+.github-title {
+
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 20px;
+}
+
 #Github-Commit-Graph {
-  display: flex;
-  width: 800px;
-  height: 230px;
+  width: fit-content;
+  height: fit-content;
+  margin-bottom: 50px;
   color: #1DB954;
+  overflow-x: none;
 }
 
 .Dashboard-Top,
@@ -264,7 +307,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 200px;
+  height: fit-content;
   color: #1DB954;
 }
 

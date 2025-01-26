@@ -10,4 +10,3 @@ Features include:
 - Local Weather forecast
 - Notes and ToDo functionality
 - Personal Github commit graph widget
-
