@@ -107,66 +107,70 @@ function Dashboard() {
 
       var data = [
         
-          { "date": "2025-01-01", "value": 1 },
+          { "date": "2025-01-01", "value": 30 },
           { "date": "2025-01-02", "value": 2 },
-          { "date": "2025-01-03", "value": 3 },
-          { "date": "2025-01-04", "value": 4 },
-          { "date": "2025-01-05", "value": 5 },
-          { "date": "2025-01-06", "value": 6 },
+          { "date": "2025-01-03", "value": 10 },
+          { "date": "2025-01-04", "value": 10 },
+          { "date": "2025-01-05", "value": 1 },
+          { "date": "2025-01-06", "value": 10},
           { "date": "2025-01-07", "value": 7 },
-          { "date": "2025-01-08", "value": 8 },
-          { "date": "2025-01-09", "value": 9 },
-          { "date": "2025-01-10", "value": 10 },
-          { "date": "2025-01-11", "value": 11 },
-          { "date": "2025-01-12", "value": 12 },
-          { "date": "2025-01-13", "value": 13 },
-          { "date": "2025-01-14", "value": 14 },
-          { "date": "2025-01-15", "value": 15 },
+          { "date": "2025-01-08", "value": 25 },
+          { "date": "2025-01-09", "value": 4 },
+          { "date": "2025-01-10", "value": 11 },
+          { "date": "2025-01-11", "value": 0 },
+          { "date": "2025-01-12", "value": 5 },
+          { "date": "2025-01-13", "value": 5 },
+          { "date": "2025-01-14", "value": 0 },
+          { "date": "2025-01-15", "value": 30 },
           { "date": "2025-01-16", "value": 16 },
-          { "date": "2025-01-17", "value": 17 },
-          { "date": "2025-01-18", "value": 18 },
-          { "date": "2025-01-19", "value": 19 },
-          { "date": "2025-01-20", "value": 20 },
-          { "date": "2025-01-21", "value": 21 },
-          { "date": "2025-01-22", "value": 22 },
-          { "date": "2025-01-23", "value": 23 },
-          { "date": "2025-01-24", "value": 24 },
-          { "date": "2025-01-25", "value": 25 },
+          { "date": "2025-01-17", "value": 10 },
+          { "date": "2025-01-18", "value": 0 },
+          { "date": "2025-01-19", "value": 12 },
+          { "date": "2025-01-20", "value": 1 },
+          { "date": "2025-01-21", "value": 15 },
+          { "date": "2025-01-22", "value": 14 },
+          { "date": "2025-01-23", "value": 11 },
+          { "date": "2025-01-24", "value": 12 },
+          { "date": "2025-01-25", "value": 0 },
           { "date": "2025-01-26", "value": 26 },
 
+          { "date": "2025-01-27", "value": 26 },
+          { "date": "2025-01-28", "value": 26 },
 
       ];
 
-      const currentYear = new Date().getFullYear();
-      const startDate = new Date(currentYear, 0, 1);
       const endDate = new Date();
+      const startDate = new Date();
 
+      startDate.setFullYear(endDate.getFullYear() - 1);
+      startDate.setDate(startDate.getDate() + 1);
 
       cal.paint({
         itemSelector: "#cal-heatmap",
         domain: {
-          type: 'year',
-          range: 1,
-          padding: [10, 5, 10, 0],
+          type: 'month',
+          range: 12,
+          padding: [10, 10, 10, 10],
           gutter: 2,
           label: {
             position: 'top',
           },
         },
 
-        range: 1,
-
         date: {
           start: startDate,
           min: startDate,
           max: endDate,
-          highlight: [],
-          locale: 'default',
+          highlight: [
+            
+            new Date(), // Highlight today
+          ],
           timezone: 'GMT'
         },
 
         subDomain: {
           type: 'day',
+          label: 'DD',
           width: 20,
           height: 20,
           padding: [0, 0, 0, 0],
@@ -175,11 +179,13 @@ function Dashboard() {
         },
 
         scale: {
-          color: {
+          opacity: {
+            backgroundColor: '#111111',
+            border: '2px',
+            baseColor: '#71b747',
             type: 'linear',
-            range: ['#e0f7e9', '#1DB954'],
-            domain: [0, 100],
-            noData: '#000000',
+            domain: [0, 30],
+
           },
         },
 
@@ -189,9 +195,6 @@ function Dashboard() {
           x: 'date',
           y: 'value'
         },
-
-        date: { start: new Date('2025-01-01'), timezone: 'GMT' },
-        legend: [10, 20, 30, 40, 60, 80, 100],
       });
       calRef.current = cal;
       console.log("Sample Data:", data);
