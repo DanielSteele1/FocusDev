@@ -33,6 +33,8 @@ import 'cal-heatmap/cal-heatmap.css';
 
 import SampleData from './api/sampleData.json';
 
+import Legend from 'cal-heatmap/plugins/Legend';
+
 function Navigation() {
 
   const [timeText, setTimeText] = useState("");
@@ -42,12 +44,10 @@ function Navigation() {
     function getTime() {
 
       const currentTime = new Date();
-
       const formattedTime = currentTime.toLocaleTimeString();
       const formattedDate = currentTime.toLocaleDateString();
 
       setTimeText(`${formattedDate} ${formattedTime}`);
-
     }
 
     getTime();
@@ -65,22 +65,27 @@ function Navigation() {
           sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '40px' }}>
         </TrendingUpIcon> </div>
       <div className="Navigation-Name"> <span> FocusDev </span> </div>
-
       <div className="Navigation-Item">
         <input className="LocationInput" type="text" placeholder="Enter your location" />
       </div>
 
       <div className="Navigation-Item">
-        <Button className="LocationSearch"> <LocationOnIcon> </LocationOnIcon> </Button>
+        <button className="LocationSearch">
+          <LocationOnIcon
+            sx={{ justifyContent: 'center', alignItems: 'center', margin: '10px' }}>
+          </LocationOnIcon> </button>
       </div>
 
       <div className="Nav-Menu">
 
-        <div className="Navigation-Item"> <span className="darkMode">
-          <NightsStayIcon
-            sx={{ justifyContent: 'center', alignItems: 'center', margintop: '10px' }}>
-          </NightsStayIcon>
-        </span>
+        <div className="Navigation-Item">
+          <div className="darkMode">
+            <button className="themeButton">
+              <NightsStayIcon
+                sx={{ justifyContent: 'center', alignItems: 'center', margin: '10px' }}>
+              </NightsStayIcon>
+            </button>
+          </div>
         </div>
 
         <div className="Navigation-Item" id="time">
@@ -90,14 +95,12 @@ function Navigation() {
             <span className="timetext">{timeText} </span>
           </span>
         </div>
-
       </div>
     </div>
   );
 }
 
 function Dashboard() {
-
 
   const calRef = useRef(null);
   useEffect(() => {
@@ -106,85 +109,88 @@ function Dashboard() {
       const cal = new CalHeatmap();
 
       var data = [
-        
-          { "date": "2025-01-01", "value": 30 },
-          { "date": "2025-01-02", "value": 2 },
-          { "date": "2025-01-03", "value": 10 },
-          { "date": "2025-01-04", "value": 10 },
-          { "date": "2025-01-05", "value": 1 },
-          { "date": "2025-01-06", "value": 10},
-          { "date": "2025-01-07", "value": 7 },
-          { "date": "2025-01-08", "value": 25 },
-          { "date": "2025-01-09", "value": 4 },
-          { "date": "2025-01-10", "value": 11 },
-          { "date": "2025-01-11", "value": 0 },
-          { "date": "2025-01-12", "value": 5 },
-          { "date": "2025-01-13", "value": 5 },
-          { "date": "2025-01-14", "value": 0 },
-          { "date": "2025-01-15", "value": 30 },
-          { "date": "2025-01-16", "value": 16 },
-          { "date": "2025-01-17", "value": 10 },
-          { "date": "2025-01-18", "value": 0 },
-          { "date": "2025-01-19", "value": 12 },
-          { "date": "2025-01-20", "value": 1 },
-          { "date": "2025-01-21", "value": 15 },
-          { "date": "2025-01-22", "value": 14 },
-          { "date": "2025-01-23", "value": 11 },
-          { "date": "2025-01-24", "value": 12 },
-          { "date": "2025-01-25", "value": 0 },
-          { "date": "2025-01-26", "value": 26 },
 
-          { "date": "2025-01-27", "value": 26 },
-          { "date": "2025-01-28", "value": 26 },
+        { "date": "2025-01-01", "value": 30 },
+        { "date": "2025-01-02", "value": 2 },
+        { "date": "2025-01-03", "value": 10 },
+        { "date": "2025-01-04", "value": 10 },
+        { "date": "2025-01-05", "value": 1 },
+        { "date": "2025-01-06", "value": 10 },
+        { "date": "2025-01-07", "value": 7 },
+        { "date": "2025-01-08", "value": 25 },
+        { "date": "2025-01-09", "value": 4 },
+        { "date": "2025-01-10", "value": 11 },
+        { "date": "2025-01-11", "value": 1 },
+        { "date": "2025-01-12", "value": 5 },
+        { "date": "2025-01-13", "value": 5 },
+        { "date": "2025-01-14", "value": 1 },
+        { "date": "2025-01-15", "value": 30 },
+        { "date": "2025-01-16", "value": 16 },
+        { "date": "2025-01-17", "value": 10 },
+        { "date": "2025-01-18", "value": 1 },
+        { "date": "2025-01-19", "value": 12 },
+        { "date": "2025-01-20", "value": 1 },
+        { "date": "2025-01-21", "value": 15 },
+        { "date": "2025-01-22", "value": 14 },
+        { "date": "2025-01-23", "value": 11 },
+        { "date": "2025-01-24", "value": 12 },
+        { "date": "2025-01-25", "value": 1 },
+        { "date": "2025-01-26", "value": 30 },
+
+        { "date": "2025-01-27", "value": 26 },
+        { "date": "2025-01-28", "value": 26 },
 
       ];
 
-      const endDate = new Date();
-      const startDate = new Date();
+      // graph updates
 
-      startDate.setFullYear(endDate.getFullYear() - 1);
-      startDate.setDate(startDate.getDate() + 1);
+      const endDate = new Date();
+      const startDate = new Date(endDate.getFullYear(), 0, 1);
+
+      startDate.setFullYear(endDate.getFullYear());
+      startDate.setDate(startDate.getDate());
+
+      console.log(startDate);
 
       cal.paint({
         itemSelector: "#cal-heatmap",
         domain: {
           type: 'month',
-          range: 12,
-          padding: [10, 10, 10, 10],
+          padding: [0, 0, 0, 0],
           gutter: 2,
           label: {
             position: 'top',
           },
         },
+        range: 12,
 
         date: {
           start: startDate,
           min: startDate,
           max: endDate,
-          highlight: [
-            
-            new Date(), // Highlight today
-          ],
+          //  start: startYear,
+          //  min: startYear,
+          //  max: endYear,
+
           timezone: 'GMT'
         },
 
         subDomain: {
           type: 'day',
-          label: 'DD',
-          width: 20,
-          height: 20,
+          width: 18,
+          height: 18,
           padding: [0, 0, 0, 0],
-          margin: [0, 0, 0, 0],
-          gutter: 2
+          margin: [5, 5, 5, 5],
+          gutter: 3,
+          radius: 3.5,
+
         },
 
         scale: {
-          opacity: {
-            backgroundColor: '#111111',
-            border: '2px',
-            baseColor: '#71b747',
+          color: {
+            range: ['#302f2f', '#0BDA51'],
             type: 'linear',
-            domain: [0, 30],
+            domain: [0, 5, 10, 20, 30],
 
           },
         },
@@ -195,10 +201,23 @@ function Dashboard() {
           x: 'date',
           y: 'value'
         },
+
       });
+
       calRef.current = cal;
       console.log("Sample Data:", data);
 
+      cal.paint({}, [[
+
+        Legend,
+        {
+          label: 'Commit Frequency: 0 - 30+, grey squares indicate 0 commits, white squares indicate ',
+          width: '600',
+          height: '60',
+
+        },
+
+      ]]);
     }
 
   }, []);
@@ -225,6 +244,60 @@ function Dashboard() {
     fetchQOTD();
   }, []);
 
+  const [notes, setNotes] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+
+  //update inputValue whenever input field changes
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+
+  };
+
+  // if input field isnt empty, add the note
+  const handleAddNote = () => {
+
+    if (inputValue !== '') {
+
+      setNotes([...notes, inputValue]);
+      setInputValue('');
+    }
+  };
+
+  // handle note deletion
+
+  const handleNoteDelete = (index) => {
+
+    const newNotes = notes.filter((_, i) => i !== index);
+    setNotes(newNotes);
+
+  };
+
+  const [links, setLinks] = useState([]);
+  const [linkInputValue, setLinkInputValue] = useState('');
+
+  const handleLinkInputChange = (event) => {
+ 
+    setLinkInputValue(event.target.value);
+  };
+
+  const handleAddLink = () => {  
+
+    if (linkInputValue !== '') {
+
+      setLinks([...links, linkInputValue]);
+      setLinkInputValue('');
+    }
+
+  };
+
+  const handleLinksDelete = (index) => {
+
+    const newLinks = links.filter((_, i) => i !== index);
+    setLinks(newLinks);
+
+   };
+
   return (
     <div className="Dashboard-container">
 
@@ -240,12 +313,12 @@ function Dashboard() {
         <div className="Dashboard-Item" id="Github-Commit-Graph">
 
           <span className="github-title">
-              <GithubIcon
-                sx={{ justifyContent: 'center', alignItems: 'center',  marginRight: '10px' }}>
-              </GithubIcon>
-              <br></br>
-              <span>Github Commit Graph </span>
-            </span>
+            <GithubIcon
+              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '10px' }}>
+            </GithubIcon>
+            <br></br>
+            <span>Github Commit Graph </span>
+          </span>
 
           <div id="cal-heatmap"> </div>
         </div>
@@ -258,24 +331,34 @@ function Dashboard() {
 
             <div className="Controls">
               <div className="Notes-input">
-                <input id="Input" type="text" placeholder="Add a website url">
+                <input
+                  id="Input"
+                  type="text"
+                  placeholder="Add a website url"
+                  onChange={handleLinkInputChange}
+                  value={linkInputValue}>
 
                 </input>
               </div>
 
               <div id="Notes-Buttons">
-                <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
+                <IconButton onClick={handleAddLink} > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
               </div>
 
             </div>
 
-            <Text className="Note"> This is a note This is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a note</Text>
-            <Text className="Note"> This is a note </Text>
+            {/* Links container */}
 
-            <Text className="Note"> This is a note </Text>
-            <Text className="Note"> This is a note </Text>
-            <Text className="Note"> This is a note </Text>
-
+            <div className="Notes-Container">
+              {links.map((link, index) => (
+                <div key={index} className="Notes-Content">
+                  <div className="Note">{link}</div>
+                  <IconButton onClick={() => handleLinksDelete(index)}>
+                    <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }} />
+                  </IconButton>
+                </div>
+              ))}
+            </div>
 
           </div>
 
@@ -283,16 +366,29 @@ function Dashboard() {
             <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
             </PushPinIcon> Pinboard </span>
 
+            <Text className="Note"> This is a note This is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a note</Text>
+            <Text className="Note"> This is a note </Text>
+
           </div>
 
           <div className="Dashboard-Item" id="Upcoming-Events"> <span>
             <CalendarMonthIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
-            </CalendarMonthIcon>Upcoming Events </span> </div>
+            </CalendarMonthIcon>Upcoming Events </span>
+
+            <Text className="Note"> Placeholder Text</Text>
+            <Text className="Note"> Placeholder Text </Text>
+            <Text className="Note"> Placeholder Text </Text>
+            <Text className="Note"> Placeholder Text </Text>
+          </div>
 
           <div className="Dashboard-Item" id="Weather"> <span>
             <CloudQueueIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
-            </CloudQueueIcon> Weather </span> </div>
+            </CloudQueueIcon> Weather </span>
 
+            <Text className="Note"> Placeholder Text </Text>
+
+
+          </div>
         </div>
 
         <div className="Dashboard-Mid">
@@ -303,26 +399,37 @@ function Dashboard() {
             </span>
             <div className="Controls">
               <div className="Notes-input">
-                <input id="Input" type="text" placeholder="Add a note">
+                <input id="Input"
+                  type="text"
+                  placeholder="Add a note"
+                  onChange={handleInputChange}
+                  value={inputValue}>
 
                 </input>
               </div>
 
               <div id="Notes-Buttons">
-                <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
+                <IconButton onClick={handleAddNote}> <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
               </div>
+            </div>
 
+
+            {/* Notes container */}
+
+            <div className="Notes-Container">
+              {notes.map((note, index) => (
+                <div key={index} className="Notes-Content">
+                  <div className="Note">{note}</div>
+                  <IconButton onClick={() => handleNoteDelete(index)}>
+                    <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }} />
+                  </IconButton>
+                </div>
+              ))}
             </div>
 
             <div className="Notes-Content">
 
             </div>
-            <Text className="Note"> This is a note This is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a note</Text>
-            <Text className="Note"> This is a note </Text>
-
-            <Text className="Note"> This is a note </Text>
-            <Text className="Note"> This is a note </Text>
-            <Text className="Note"> This is a note </Text>
           </div>
 
           <div className="Dashboard-Item" id="ToDo"> <span>

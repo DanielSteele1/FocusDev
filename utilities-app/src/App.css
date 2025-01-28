@@ -7,13 +7,44 @@ body {
   margin: 0;
 }
 
+.theme-light{
+  background-color: #f0f2f5;
+  color: black;
+}
+
+
+.theme-dark {
+  background-color: #0f1011;
+  color: white;
+}
+
+
+.themeButton {
+  display: flex;
+  height: 45px;
+  width: 45px;
+
+  justify-content: center;
+  align-items: center;
+  color: #1DB954;
+  background-color: #0f1011;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.themeButton:hover {
+  background-color: #1DB954;
+  color: #0f1011;
+}
+
+
 html,
 body {
   max-width: 100%;
   overflow-x: hidden;
 
 }
-
 
 #emoji {
   font-size: 40px;
@@ -108,28 +139,37 @@ body {
   background-color: #0f1011;
   border: none;
   color:#09f55b;
+  border-radius: 10px;
+  height: 45px;
+  width: fit-content;
   padding: 10px;
   margin: 10px;
 
 }
 
 .LocationSearch {
+  display: flex;
+  height: 45px;
+  width: 45px;
 
-  display:flex;
-  height: 40px;
-  width: 40px;
   justify-content: center;
-  background-color: #0f1011;
-  color:#09f55b;
   align-items: center;
-  padding-right: 10px;
+  color: #1DB954;
+  background-color: #0f1011;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
+.LocationSearch:hover {
+  background-color: #1DB954;
+  color: #0f1011;
 }
 
 .Dashboard {
   margin: 0 auto;
   display: flex;
-  width: 80%;
+  width: 90%;
   flex-direction: column;
   height: fit-content;
   align-items: center;
@@ -148,9 +188,9 @@ body {
   font-weight: 400;
   padding: 10px;
   background-color: transparent;
-  border: #3a3b3b 1px solid;
+  border: 2px solid #3a3b3b;
+  border-radius: 10px;
 }
-
 
 #Notes,
 #ToDo {
@@ -185,6 +225,20 @@ body {
   align-items: center;
 
 }
+
+
+#Delete-links-button {
+
+  display: flex;
+  width: fit-content;
+  background-color: #bd1717;
+  border-radius: 10px;
+  margin: 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+
 
 .Welcome {
 
@@ -240,14 +294,16 @@ body {
 .Notes-Content {
 
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: flex-start;
 
 }
 
 .Note {
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   height: fit-content;
   width: fit-content;
   color: #1DB954;
@@ -255,7 +311,8 @@ body {
   margin: 10px;
   font-size: 15px;
   font-family: 'Lexicand-Deca', sans-serif;
-  border: 1px solid #3a3b3b;
+  border: 2px solid #3a3b3b;
+  border-radius: 10px;
 
 }
 
@@ -267,8 +324,8 @@ body {
   padding: 10px;
   justify-content: center;
   align-items: center;
-  color: #1DB954;
 }
+
 
 .github-title {
 
@@ -282,8 +339,17 @@ font-size: 20px;
   width: fit-content;
   height: fit-content;
   margin-bottom: 50px;
+  padding: 10px;
   color: #1DB954;
-  overflow-x: none;
+  border: 2px solid #3a3b3b;
+  border-radius: 10px;
+
+}
+
+#Github-Commit-Graph:hover {
+  border: 2px solid #1DB954;
+  transition: 0.6s ease;
+
 }
 
 .Dashboard-Top,
