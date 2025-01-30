@@ -201,7 +201,6 @@ body {
   color: #1DB954;
 }
 
-
 .Controls {
 
   display: flex;
@@ -225,7 +224,6 @@ body {
   align-items: center;
 
 }
-
 
 #Delete-links-button {
 
@@ -257,26 +255,28 @@ body {
 
 .QOTD {
   display: flex;
-  width: fit-content;
+  max-width:900px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #1DB954;
   padding: 10px;
   margin: 10px;
-  font-size: 23px;
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   font-style: italic;
+  border: 2px solid #3a3b3b;
+  border-radius: 10px;
+
+  font-size: 25px;
 
 }
 
 #QOTD {
 
   font-style: italic;
-  font-size: 18px;
-  padding: 5px;
-}
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;}
 
 #Input {
 

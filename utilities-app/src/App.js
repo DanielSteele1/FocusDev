@@ -19,12 +19,16 @@ import CloseIcon from '@mui/icons-material/Close';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
+
 import NightsStayIcon from '@mui/icons-material/NightsStay';
 import LightModeIcon from '@mui/icons-material/LightMode';
 
 import { MantineProvider, Button, Text } from '@mantine/core';
 import { Calendar } from '@mantine/dates';
 
+import { Progress } from '@mantine/core';
+import { Box } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress';
 import EmojiPicker from 'emoji-picker-react';
 import { TextField } from '@mui/material';
 
@@ -32,8 +36,8 @@ import CalHeatmap from 'cal-heatmap';
 import 'cal-heatmap/cal-heatmap.css';
 
 import SampleData from './api/sampleData.json';
-
 import Legend from 'cal-heatmap/plugins/Legend';
+
 
 function Navigation() {
 
@@ -222,19 +226,21 @@ function Dashboard() {
 
   }, []);
 
+  // fetch QOTD data from the server, set it as QOTDData and display data
+
   const [QOTDData, setQOTDData] = useState(null);
 
   useEffect(() => {
     const fetchQOTD = async () => {
-      const api_url = 'https://zenquotes.io/api/quotes/';
+      const api_url = '/api/qotd';
 
       try {
         const response = await fetch(api_url);
         const data = await response.json();
         console.log(data);
 
-        if (data && data.length > 0) {
-          setQOTDData(data[0].q);
+        if (data && data.quote && data.quote.body && data.quote.author) {
+          setQOTDData( {quote: data.quote.body, author: data.quote.author});
         }
       } catch (error) {
         console.error('Error fetching QOTD:', error);
@@ -243,6 +249,27 @@ function Dashboard() {
 
     fetchQOTD();
   }, []);
+
+  // Weather API Frontend
+
+//   const fetchLocalWeather = async () => {
+//     //const api_url = '/api/';
+
+//     try {
+//       const response = await fetch(api_url);
+//       const data = await response.json();
+//       console.log(data);
+
+//       if (data) {
+//         setWeatherData(data);
+//       }
+//     } catch (error) {
+//       console.error('Error fetching WeatherAPI:', error);
+//     }
+//   };
+
+//   fetchLocalWeather();
+// }, []);
 
   const [notes, setNotes] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -277,18 +304,17 @@ function Dashboard() {
   const [linkInputValue, setLinkInputValue] = useState('');
 
   const handleLinkInputChange = (event) => {
- 
+
     setLinkInputValue(event.target.value);
   };
 
-  const handleAddLink = () => {  
+  const handleAddLink = () => {
 
     if (linkInputValue !== '') {
 
       setLinks([...links, linkInputValue]);
       setLinkInputValue('');
     }
-
   };
 
   const handleLinksDelete = (index) => {
@@ -296,7 +322,7 @@ function Dashboard() {
     const newLinks = links.filter((_, i) => i !== index);
     setLinks(newLinks);
 
-   };
+  };
 
   return (
     <div className="Dashboard-container">
@@ -305,10 +331,9 @@ function Dashboard() {
         <div className="Welcome"> <span> <span id="emoji">👋</span>  Welcome back, Daniel </span>
           <div className="QOTD">
             <div id="QOTD"> Quote of the Day ~ </div>
-            <span>  {QOTDData ? { QOTDData } : 'Loading . . .'} </span>
+            <span>  {QOTDData ? `"${QOTDData.quote}" - ${QOTDData.author}`: <Box sx={{display:'flex', padding: '10px'}}> <CircularProgress color="inherit" /> </Box> } </span>
           </div>
         </div>
-
 
         <div className="Dashboard-Item" id="Github-Commit-Graph">
 
@@ -437,7 +462,8 @@ function Dashboard() {
               sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
             </CalendarMonthIcon> To Do </span>
 
-
+            <Progress color="green" size="lg" value={100} />
+            
             <div className="Controls">
               <div className="Notes-input">
                 <input id="Input" type="text" placeholder="Add a goal to track">
@@ -484,7 +510,6 @@ function Footer() {
   return (
     <div className="Footer">
       < h1> Footer </h1>
-
     </div>
   );
 
