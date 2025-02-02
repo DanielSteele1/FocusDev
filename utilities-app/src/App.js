@@ -1,7 +1,7 @@
 
 import './App.css';
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, createContext } from "react";
 import { useState } from "react";
 
 import NotesIcon from '@mui/icons-material/Notes';
@@ -31,6 +31,7 @@ import { Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import EmojiPicker from 'emoji-picker-react';
 import { TextField } from '@mui/material';
+import PersonIcon from '@mui/icons-material/Person';
 
 import CalHeatmap from 'cal-heatmap';
 import 'cal-heatmap/cal-heatmap.css';
@@ -38,10 +39,13 @@ import 'cal-heatmap/cal-heatmap.css';
 import SampleData from './api/sampleData.json';
 import Legend from 'cal-heatmap/plugins/Legend';
 
+export const ThemeContext = createContext(null);
 
-function Navigation() {
+
+function Navigation({toggleTheme, theme}) {
 
   const [timeText, setTimeText] = useState("");
+  
 
   useEffect(() => {
 
@@ -83,10 +87,20 @@ function Navigation() {
       <div className="Nav-Menu">
 
         <div className="Navigation-Item">
+          <div className="Accounts">
+            <button className="AccountsButton">
+              <PersonIcon
+                sx={{ justifyContent: 'center', alignItems: 'center', margin: '5px' }}>
+              </PersonIcon>
+            </button>
+          </div>
+        </div>
+
+        <div className="Navigation-Item">
           <div className="darkMode">
-            <button className="themeButton">
+            <button className="themeButton" onClick={toggleTheme} checked={theme === "dark"}>
               <NightsStayIcon
-                sx={{ justifyContent: 'center', alignItems: 'center', margin: '10px' }}>
+                sx={{ justifyContent: 'center', alignItems: 'center', margin: '5px' }}>
               </NightsStayIcon>
             </button>
           </div>
@@ -240,7 +254,7 @@ function Dashboard() {
         console.log(data);
 
         if (data && data.quote && data.quote.body && data.quote.author) {
-          setQOTDData( {quote: data.quote.body, author: data.quote.author});
+          setQOTDData({ quote: data.quote.body, author: data.quote.author });
         }
       } catch (error) {
         console.error('Error fetching QOTD:', error);
@@ -252,24 +266,24 @@ function Dashboard() {
 
   // Weather API Frontend
 
-//   const fetchLocalWeather = async () => {
-//     //const api_url = '/api/';
+  //   const fetchLocalWeather = async () => {
+  //     //const api_url = '/api/';
 
-//     try {
-//       const response = await fetch(api_url);
-//       const data = await response.json();
-//       console.log(data);
+  //     try {
+  //       const response = await fetch(api_url);
+  //       const data = await response.json();
+  //       console.log(data);
 
-//       if (data) {
-//         setWeatherData(data);
-//       }
-//     } catch (error) {
-//       console.error('Error fetching WeatherAPI:', error);
-//     }
-//   };
+  //       if (data) {
+  //         setWeatherData(data);
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching WeatherAPI:', error);
+  //     }
+  //   };
 
-//   fetchLocalWeather();
-// }, []);
+  //   fetchLocalWeather();
+  // }, []);
 
   const [notes, setNotes] = useState([]);
   const [inputValue, setInputValue] = useState('');
@@ -328,13 +342,16 @@ function Dashboard() {
     <div className="Dashboard-container">
 
       <div className="Dashboard">
-        <div className="Welcome"> <span> <span id="emoji">👋</span>  Welcome back, Daniel </span>
+
+        <div className="Welcome">
+
+          <span> <span id="emoji">👋</span>  Welcome back, Daniel </span>
+
           <div className="QOTD">
             <div id="QOTD"> Quote of the Day ~ </div>
-            <span>  {QOTDData ? `"${QOTDData.quote}" - ${QOTDData.author}`: <Box sx={{display:'flex', padding: '10px'}}> <CircularProgress color="inherit" /> </Box> } </span>
+            <span>  {QOTDData ? `"${QOTDData.quote}" - ${QOTDData.author}` : <Box sx={{ display: 'flex', padding: '10px' }}> <CircularProgress color="inherit" /> </Box>} </span>
           </div>
         </div>
-
         <div className="Dashboard-Item" id="Github-Commit-Graph">
 
           <span className="github-title">
@@ -463,7 +480,7 @@ function Dashboard() {
             </CalendarMonthIcon> To Do </span>
 
             <Progress color="green" size="lg" value={100} />
-            
+
             <div className="Controls">
               <div className="Notes-input">
                 <input id="Input" type="text" placeholder="Add a goal to track">
@@ -516,14 +533,26 @@ function Footer() {
 }
 
 function App() {
+
+  const [theme, setTheme] = useState("dark");
+
+  const toggleTheme = () => {
+
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+    console.log("Theme:", theme);
+
+  };
+
   return (
-    <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: 'dark' }}>
-      <div className="App">
-        <Navigation />
-        <Dashboard />
-        <Footer />
-      </div>
-    </MantineProvider>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: theme }}>
+        <div className={`App ${theme}`}>
+          <Navigation theme={theme} toggleTheme={toggleTheme} />
+          <Dashboard />
+          <Footer />
+        </div>
+      </MantineProvider>
+    </ThemeContext.Provider>
   );
 }
 
