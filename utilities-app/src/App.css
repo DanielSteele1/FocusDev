@@ -35,7 +35,8 @@ body {
 .App.light .Navigation-Name, 
 .App.light .Navigation-Item,
 .App.light .QOTD,
-.App.light .Welcome {
+.App.light .Welcome
+{
 
   color: #0f1011;
 
@@ -43,10 +44,12 @@ body {
 
 .App.light .Dashboard-Item {
   background-color: #4c744a;
-  color: #0f1011;
+  color: #1DB954;
 }
 
-.App.dark #Input {
+.App.dark #Input,
+.App.dark #Events-Input
+{
 
   background-color: #292e2e;
   color: #1DB954;
@@ -54,13 +57,16 @@ body {
 
 .App.light .Note {
   background-color: #77d474;
+  color: black;
+  font-weight: 400;
 }
 
 .App.dark .AccountsButton,
 .App.dark .LocationSearch,
 .App.dark .LocationInput,
 .App.dark .themeButton,
-.App.dark .GithubCommitGraph {
+.App.dark .GithubCommitGraph
+{
 
   background-color: #0f1011;
   color:#09f55b;
@@ -71,8 +77,10 @@ body {
   color: #1DB954;
 }
 
-
-
+.App.dark .Note {
+  background-color: #77d474;
+  font-weight: 400;
+}
 
 .themeButton {
   display: flex;
@@ -231,6 +239,36 @@ body {
   color: #0f1011;
 }
 
+.calenderButton {
+
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-color: #1DB954;
+  font-weight: 400;
+  gap: 5px;
+
+  transition: transform 0.3s ease, background-color 0.3s ease;
+
+}
+
+.calenderButton:hover {
+  transform: translateY(-3px);
+  background-color: #17a34a;
+
+}
+.calenderButton:active {
+  transform: scale(0.95);
+  background-color: #148c3a; 
+}
+
 
 .Dashboard {
   margin: 0 auto;
@@ -260,9 +298,20 @@ body {
 #ToDo {
   align-items: flex-start;
   display: flex;
-  width: 400px;
+  width: 650px;
   height: fit-content;
   color: #1DB954;
+}
+
+.ringProgress {
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
+  size: 70px;
+
 }
 
 .Controls {
@@ -275,9 +324,11 @@ body {
 
 }
 
+
 #Notes-Buttons,
 #UsefulLinks-Buttons,
-#Pinboard-Buttons {
+#Pinboard-Buttons,
+#todo-Button {
 
   display: flex;
   width: fit-content;
@@ -288,8 +339,28 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 
 }
+
+#todo-Button {
+
+  align-items: flex-end;
+}
+
+
+#Notes-Buttons:hover{ 
+
+  transform: translateY(-3px);
+  background-color: #17a34a;
+}
+
+.Notes-Buttons:active {
+  transform: scale(0.95);
+  background-color: #148c3a; 
+}
+
+
 
 #Delete-links-button {
 
@@ -351,8 +422,22 @@ body {
   padding: 10px;
   height: 43px;
   border-radius: 10px;
+  font-size: 15px;
 
 }
+
+#Events-Input {
+  flex: 1;
+  border: 0px solid;
+  padding: 10px;
+  height: 43px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-start;
+  font-size: 15px;
+
+}
+
 
 .Notes-Content {
 
@@ -369,12 +454,11 @@ body {
   justify-content: flex-start;
   height: fit-content;
   width: fit-content;
-  color: white;
   padding: 10px;
   margin: 10px;
-  font-size: 18px;
+  font-size: 15px;
+  color: black;
   font-family: 'Lexicand-Deca', sans-serif;
-
   border-radius: 10px;
 
 }
@@ -385,16 +469,15 @@ body {
   width: fit-content;
   height: fit-content;
   padding: 10px;
-  background-color: #191b1b;
+  justify-content: flex-start;
+  align-items: flex-start;
 
-  justify-content: center;
-  align-items: center;
 }
-
 
 .github-title {
 
   display: flex;
+
   justify-content: center;
   align-items: center;
   font-size: 20px;

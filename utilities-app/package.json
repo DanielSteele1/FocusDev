@@ -6,7 +6,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mantine/core": "^4.0.0",
-    "@mantine/dates": "^4.0.0",
+    "@mantine/dates": "^4.2.12",
     "@mantine/hooks": "^4.0.0",
     "@mui/icons-material": "^6.3.1",
     "@mui/material": "^6.3.1",
@@ -26,9 +26,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-
   "proxy": "http://localhost:5000",
-  
   "eslintConfig": {
     "extends": [
       "react-app",

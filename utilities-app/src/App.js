@@ -18,17 +18,21 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-
+import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 
 import NightsStayIcon from '@mui/icons-material/NightsStay';
 import LightModeIcon from '@mui/icons-material/LightMode';
 
 import { MantineProvider, Button, Text } from '@mantine/core';
 import { Calendar } from '@mantine/dates';
+import { DatePicker } from '@mantine/dates';
+import { TimeInput } from '@mantine/dates';
+//import { DatesProvider } from '@mantine/dates';
 
-import { Progress } from '@mantine/core';
 import { Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
+import { RingProgress } from '@mantine/core';
+
 import EmojiPicker from 'emoji-picker-react';
 import { TextField } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
@@ -38,14 +42,15 @@ import 'cal-heatmap/cal-heatmap.css';
 
 import SampleData from './api/sampleData.json';
 import Legend from 'cal-heatmap/plugins/Legend';
+import { Notes } from '@mui/icons-material';
 
 export const ThemeContext = createContext(null);
 
 
-function Navigation({toggleTheme, theme}) {
+function Navigation({ toggleTheme, theme }) {
 
   const [timeText, setTimeText] = useState("");
-  
+
 
   useEffect(() => {
 
@@ -338,11 +343,11 @@ function Dashboard() {
 
   };
 
+  const [value, setValue] = useState(80);
+
   return (
     <div className="Dashboard-container">
-
       <div className="Dashboard">
-
         <div className="Welcome">
 
           <span> <span id="emoji">👋</span>  Welcome back, Daniel </span>
@@ -408,8 +413,6 @@ function Dashboard() {
             <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
             </PushPinIcon> Pinboard </span>
 
-            <Text className="Note"> This is a note This is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a noteThis is a note</Text>
-            <Text className="Note"> This is a note </Text>
 
           </div>
 
@@ -475,11 +478,29 @@ function Dashboard() {
           </div>
 
           <div className="Dashboard-Item" id="ToDo"> <span>
-            <CalendarMonthIcon
+            <NotesIcon
               sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
-            </CalendarMonthIcon> To Do </span>
+            </NotesIcon> Goal Tracker </span>
+            <span> Enter below a goal to track. The global progress bar will fill up when you tick off goals. </span>
 
-            <Progress color="green" size="lg" value={100} />
+            <div className="ringProgress">
+              <RingProgress
+                size='250'
+                thickness='15'
+                sections={[{ value, color: '#1DB954' }]}
+                transitionDuration={250}
+                label={<Text ta="center"
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100%',
+                    fontSize: '30px',
+                  }}>
+                  {value}%</Text>}
+
+              />
+            </div>
 
             <div className="Controls">
               <div className="Notes-input">
@@ -491,16 +512,39 @@ function Dashboard() {
               <div id="Notes-Buttons">
                 <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
               </div>
-
             </div>
-
           </div>
 
           <div className="Dashboard-Item" id="Calender"> <span>
             <CalendarMonthIcon
               sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
-            </CalendarMonthIcon> Calendar <Calendar /> </span>
+            </CalendarMonthIcon> Calendar <Calendar
+              styles={{
+                calendarBase: {
+                  width: '100%',
+                  maxWidth: '600px',
+                  margin: '0 auto',
+                  padding: '10px'
+                },
+                day: {
+                  borderRadius: '50%', // Make the days circular
+                  width: '40px', // Set the width of the days
+                  height: '40px', // Set the height of the days
+                },
+              }} />
 
+            <div className="Controls">
+              <input id="Events-Input" type="text" placeholder="Add a note to event" /> <br></br>
+            </div>
+
+            <span> Pick a Date </span>
+            <DatePicker />
+            <span> Choose a Time </span> </span>
+            <TimeInput styles={{
+              maxWidth: '500px'
+            }} />
+            <button className="calenderButton" type='button'> Add Event To Calender <ArrowRightAltRoundedIcon sx={{display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle'}}/> </button>
+  
           </div>
         </div>
 
