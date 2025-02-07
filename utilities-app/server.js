@@ -1,5 +1,8 @@
 const express = require('express');
 const cors = require('cors');
+const { MongoClient } = require('mongodb');
+const { ObjectId } = require('mongodb');
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,6 +19,14 @@ app.get('/api/qotd', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch quote' });
   }
 });
+
+async function connectToMongoDB() {
+
+
+  app.listen()
+
+
+}
  
 
 app.listen(PORT, () => {

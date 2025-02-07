@@ -20,7 +20,6 @@ a {
   text-decoration: none;
   transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 
-
 }
 
 a:hover {
@@ -390,10 +389,10 @@ body {
 #Delete-links-button {
 
   display: flex;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   background-color: #b91d1d;
-  border-radius: 10px;
+  border-radius: 50px;
   justify-content: center;
   align-items: center;
   transition: transform 0.3s ease, background-color 0.3s ease;
@@ -459,6 +458,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   border-radius: 10px;
+  padding-left: 10px;
 
 }
 
@@ -539,7 +539,6 @@ body {
   height: fit-content;
   color: #1DB954;
 }
-
 
 
 .Footer {

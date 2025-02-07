@@ -1,8 +1,11 @@
 
 import './App.css';
-
 import React, { useEffect, useRef, createContext } from "react";
 import { useState } from "react";
+
+//import WeatherWidget from './Weather';
+import Accounts from './accounts';
+
 
 import NotesIcon from '@mui/icons-material/Notes';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
@@ -387,7 +390,7 @@ function Dashboard() {
         <div className="Dashboard-Top">
 
           <div className="Dashboard-Item" id="Useful-Links"> <span>
-            <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
+            <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
             </PushPinIcon>Useful Links</span>
 
             <div className="Controls">
@@ -399,7 +402,6 @@ function Dashboard() {
                   placeholder="Enter the site's name:"
                   onChange={handleLinkNameChange}
                   value={linkNameValue}>
-
                 </input>
 
                 <div className="LinksInput">
@@ -411,14 +413,12 @@ function Dashboard() {
                     placeholder="Add a website url"
                     onChange={handleLinkInputChange}
                     value={linkInputValue}>
-
                   </input>
                 </div>
-
               </div>
 
               <div id="Notes-Buttons">
-                <IconButton onClick={handleAddLink} > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
+                <IconButton onClick={handleAddLink} > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
               </div>
 
             </div>
@@ -426,41 +426,41 @@ function Dashboard() {
             {/* Links container */}
 
             <div className="Notes-Container">
-              <Tooltip title="Click here to go to this website!" placement="bottom" >
-                {links.map((link, index) => (
-                  <div key={index} className="Notes-Content">
+              {links.map((link, index) => (
+                <div key={index} className="Notes-Content">
+                  <Tooltip title="Click here to go to this website!" placement="bottom" >
                     <a href={link.url} target="_blank" rel="noopener noreferrer" className="Note">{link.name}</a>
-                    <IconButton onClick={() => handleLinksDelete(index)}>
-                      <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }} />
-                    </IconButton>
-                  </div>
-                ))}
-              </Tooltip>
+                  </Tooltip>
+                  <IconButton onClick={() => handleLinksDelete(index)}>
+                    <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }} />
+                  </IconButton>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="Dashboard-Item" id="Pinboard"> <span>
-            <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
-            </PushPinIcon> Pinboard </span>
-
+          <div className="Dashboard-Item" id="Pinboard">
+            <span>
+              <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+              </PushPinIcon> Pinboard </span>
             <Text className="Note"> Placeholder Text</Text>
-
 
           </div>
 
-          <div className="Dashboard-Item" id="Upcoming-Events"> <span>
-            <CalendarMonthIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
-            </CalendarMonthIcon>Upcoming Events </span>
+          <div className="Dashboard-Item" id="Upcoming-Events">
+            <span>
+              <CalendarMonthIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+              </CalendarMonthIcon>Upcoming Events </span>
 
             <Text className="Note"> Placeholder Text</Text>
           </div>
 
-          <div className="Dashboard-Item" id="Weather"> <span>
-            <CloudQueueIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
-            </CloudQueueIcon> Weather </span>
+          <div className="Dashboard-Item" id="Weather">
+            <span>
+              <CloudQueueIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+              </CloudQueueIcon> Weather </span>
 
-            <Text className="Note"> Placeholder Text </Text>
-
+            {/* <WeatherWidget /> */}
 
           </div>
         </div>
@@ -468,7 +468,7 @@ function Dashboard() {
         <div className="Dashboard-Mid">
           <div className="Dashboard-Item" id="Notes">
             <span>
-              <NotesIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}> </NotesIcon>
+              <NotesIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}> </NotesIcon>
               Notes
             </span>
             <span> Add a note (Max 50 characters) </span> <br></br>
@@ -497,7 +497,7 @@ function Dashboard() {
                 <div className="Note">{note}</div>
 
                 <IconButton onClick={() => handleNoteDelete(index)} sx={{ fontSize: '14px' }}>
-                  <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', fontSize: '14px' }}>
+                  <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', fontSize: '14px', verticalAlign: 'middle' }}>
                   </CloseIcon>
                 </IconButton>
               </div>
@@ -507,7 +507,7 @@ function Dashboard() {
 
           <div className="Dashboard-Item" id="ToDo"> <span>
             <NotesIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
+              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
             </NotesIcon> Goal Tracker </span>
             <span> Enter below a goal to track. The global progress bar will fill up when you tick off goals. </span>
 
@@ -538,14 +538,14 @@ function Dashboard() {
               </div>
 
               <div id="Notes-Buttons">
-                <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
+                <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
               </div>
             </div>
           </div>
 
           <div className="Dashboard-Item" id="Calender"> <span>
             <CalendarMonthIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
+              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
             </CalendarMonthIcon> Calendar <Calendar
               styles={{
                 calendarBase: {
@@ -579,12 +579,12 @@ function Dashboard() {
         <div className="Dashboard-Bottom">
           <div className="Dashboard-Item" id="Habit-Tracker"> <span>
             <CalendarMonthIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
+              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
             </CalendarMonthIcon> Habit Tracker </span> </div>
 
           <div className="Dashboard-Item" id="Calorie-Tracker"> <span>
             <CalendarMonthIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
+              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
             </CalendarMonthIcon> Calorie Tracker </span> </div>
 
         </div>
@@ -619,6 +619,7 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: theme }}>
         <div className={`App ${theme}`}>
+        <Accounts/>
           <Navigation theme={theme} toggleTheme={toggleTheme} />
           <Dashboard />
           <Footer />

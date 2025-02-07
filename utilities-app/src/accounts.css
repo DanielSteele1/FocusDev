@@ -1,0 +1,49 @@
+
+
+.AccountsContainer {
+
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    transform: translate (-50%, -50%);
+    z-index: 1000;
+    padding: 20px;
+    background-color: rgba(17, 16, 16, 0.8);
+
+}
+
+.AccountsPortal {
+
+    display: flex;
+    position: fixed;
+    flex-direction:column;
+    height: 500px;
+    width: 50%;
+    top: 20%;
+    left: 500px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    color: #1DB954;
+    background-color: rgba(17, 16, 16);
+    border: #1DB954 2px solid;
+
+}
+
+.Sign-up, .Log-in {
+
+    display: flex;
+    height: 400px;
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: center;
+    font-size: 40px;
+    font-family: "Chakra Petch", serif;
+
+
+}
