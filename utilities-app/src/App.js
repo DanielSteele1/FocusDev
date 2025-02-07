@@ -44,6 +44,8 @@ import SampleData from './api/sampleData.json';
 import Legend from 'cal-heatmap/plugins/Legend';
 import { Notes } from '@mui/icons-material';
 
+import Tooltip from '@mui/material/Tooltip';
+
 export const ThemeContext = createContext(null);
 
 
@@ -91,14 +93,12 @@ function Navigation({ toggleTheme, theme }) {
 
       <div className="Nav-Menu">
 
-        <div className="Navigation-Item">
-          <div className="Accounts">
-            <button className="AccountsButton">
-              <PersonIcon
-                sx={{ justifyContent: 'center', alignItems: 'center', margin: '5px' }}>
-              </PersonIcon>
-            </button>
-          </div>
+        <div className="Navigation-Item" id="time">
+          <span className="time">
+            <AccessTimeIcon
+              sx={{ justifyContent: 'center', alignItems: 'center', margin: '10px' }} />
+            <span className="timetext">{timeText} </span>
+          </span>
         </div>
 
         <div className="Navigation-Item">
@@ -111,13 +111,16 @@ function Navigation({ toggleTheme, theme }) {
           </div>
         </div>
 
-        <div className="Navigation-Item" id="time">
-          <span className="time">
-            <AccessTimeIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', margin: '10px' }} />
-            <span className="timetext">{timeText} </span>
-          </span>
+        <div className="Navigation-Item">
+          <div className="Accounts">
+            <button className="AccountsButton">
+              <PersonIcon
+                sx={{ justifyContent: 'center', alignItems: 'center', margin: '5px' }}>
+              </PersonIcon>
+            </button>
+          </div>
         </div>
+
       </div>
     </div>
   );
@@ -319,20 +322,31 @@ function Dashboard() {
 
   };
 
+
+
+
   const [links, setLinks] = useState([]);
   const [linkInputValue, setLinkInputValue] = useState('');
+  const [linkNameValue, setLinkNameValue] = useState('');
+
 
   const handleLinkInputChange = (event) => {
 
     setLinkInputValue(event.target.value);
   };
 
+  const handleLinkNameChange = (event) => {
+
+    setLinkNameValue(event.target.value);
+  };
+
   const handleAddLink = () => {
 
-    if (linkInputValue !== '') {
+    if (linkInputValue !== '' && linkNameValue !== '') {
 
-      setLinks([...links, linkInputValue]);
+      setLinks([...links, { name: linkNameValue, url: linkInputValue }]);
       setLinkInputValue('');
+      setLinkNameValue('');
     }
   };
 
@@ -374,18 +388,33 @@ function Dashboard() {
 
           <div className="Dashboard-Item" id="Useful-Links"> <span>
             <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
-            </PushPinIcon>Useful Links </span>
+            </PushPinIcon>Useful Links</span>
 
             <div className="Controls">
-              <div className="Notes-input">
+              <div className="LinksName">
                 <input
+                  maxlength="30"
                   id="Input"
                   type="text"
-                  placeholder="Add a website url"
-                  onChange={handleLinkInputChange}
-                  value={linkInputValue}>
+                  placeholder="Enter the site's name:"
+                  onChange={handleLinkNameChange}
+                  value={linkNameValue}>
 
                 </input>
+
+                <div className="LinksInput">
+                  <input
+                    maxlength="2000"
+                    minlength="5"
+                    id="URLInput"
+                    type="text"
+                    placeholder="Add a website url"
+                    onChange={handleLinkInputChange}
+                    value={linkInputValue}>
+
+                  </input>
+                </div>
+
               </div>
 
               <div id="Notes-Buttons">
@@ -397,21 +426,24 @@ function Dashboard() {
             {/* Links container */}
 
             <div className="Notes-Container">
-              {links.map((link, index) => (
-                <div key={index} className="Notes-Content">
-                  <div className="Note">{link}</div>
-                  <IconButton onClick={() => handleLinksDelete(index)}>
-                    <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }} />
-                  </IconButton>
-                </div>
-              ))}
+              <Tooltip title="Click here to go to this website!" placement="bottom" >
+                {links.map((link, index) => (
+                  <div key={index} className="Notes-Content">
+                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="Note">{link.name}</a>
+                    <IconButton onClick={() => handleLinksDelete(index)}>
+                      <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }} />
+                    </IconButton>
+                  </div>
+                ))}
+              </Tooltip>
             </div>
-
           </div>
 
           <div className="Dashboard-Item" id="Pinboard"> <span>
             <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}>
             </PushPinIcon> Pinboard </span>
+
+            <Text className="Note"> Placeholder Text</Text>
 
 
           </div>
@@ -421,9 +453,6 @@ function Dashboard() {
             </CalendarMonthIcon>Upcoming Events </span>
 
             <Text className="Note"> Placeholder Text</Text>
-            <Text className="Note"> Placeholder Text </Text>
-            <Text className="Note"> Placeholder Text </Text>
-            <Text className="Note"> Placeholder Text </Text>
           </div>
 
           <div className="Dashboard-Item" id="Weather"> <span>
@@ -442,9 +471,11 @@ function Dashboard() {
               <NotesIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px' }}> </NotesIcon>
               Notes
             </span>
+            <span> Add a note (Max 50 characters) </span> <br></br>
             <div className="Controls">
               <div className="Notes-input">
                 <input id="Input"
+                  maxlength="50"
                   type="text"
                   placeholder="Add a note"
                   onChange={handleInputChange}
@@ -461,20 +492,17 @@ function Dashboard() {
 
             {/* Notes container */}
 
-            <div className="Notes-Container">
-              {notes.map((note, index) => (
-                <div key={index} className="Notes-Content">
-                  <div className="Note">{note}</div>
-                  <IconButton onClick={() => handleNoteDelete(index)}>
-                    <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }} />
-                  </IconButton>
-                </div>
-              ))}
-            </div>
+            {notes.map((note, index) => (
+              <div key={index} className="Notes-Content">
+                <div className="Note">{note}</div>
 
-            <div className="Notes-Content">
+                <IconButton onClick={() => handleNoteDelete(index)} sx={{ fontSize: '14px' }}>
+                  <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', fontSize: '14px' }}>
+                  </CloseIcon>
+                </IconButton>
+              </div>
+            ))}
 
-            </div>
           </div>
 
           <div className="Dashboard-Item" id="ToDo"> <span>
@@ -527,9 +555,9 @@ function Dashboard() {
                   padding: '10px'
                 },
                 day: {
-                  borderRadius: '50%', // Make the days circular
-                  width: '40px', // Set the width of the days
-                  height: '40px', // Set the height of the days
+                  borderRadius: '50%',
+                  width: '40px',
+                  height: '40px',
                 },
               }} />
 
@@ -543,8 +571,8 @@ function Dashboard() {
             <TimeInput styles={{
               maxWidth: '500px'
             }} />
-            <button className="calenderButton" type='button'> Add Event To Calender <ArrowRightAltRoundedIcon sx={{display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle'}}/> </button>
-  
+            <button className="calenderButton" type='button'> Add Event To Calender <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle' }} /> </button>
+
           </div>
         </div>
 

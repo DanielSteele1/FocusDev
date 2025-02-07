@@ -15,6 +15,23 @@ body {
   color: white;
 }
 
+a {
+
+  text-decoration: none;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+
+
+}
+
+a:hover {
+  
+  transform: translateY(-3px);
+  background-color: #17a34a;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+
 .App.light .AccountsButton,
 .App.light .LocationSearch,
 .App.light .LocationInput,
@@ -48,7 +65,8 @@ body {
 }
 
 .App.dark #Input,
-.App.dark #Events-Input
+.App.dark #Events-Input,
+.App.dark #URLInput
 {
 
   background-color: #292e2e;
@@ -269,7 +287,6 @@ body {
   background-color: #148c3a; 
 }
 
-
 .Dashboard {
   margin: 0 auto;
   display: flex;
@@ -283,8 +300,8 @@ body {
 
 .Dashboard-Item {
   display: flex;
-  width: 400px;
-  height: 230px;
+  width: fit-content;
+  height: 100%;
   flex-direction: column;
   margin: 10px;
   font-size: 18px;
@@ -296,11 +313,20 @@ body {
 
 #Notes,
 #ToDo {
+  display: flex;
+  justify-content: flex-start;
   align-items: flex-start;
   display: flex;
-  width: 650px;
+  width: fit-content;
+  max-width: 100%;
   height: fit-content;
+  overflow: hidden;
+  flex-direction: column;
   color: #1DB954;
+  overflow: hidden;
+  white-space: wrap;
+  word-wrap: break-word;
+
 }
 
 .ringProgress {
@@ -320,7 +346,8 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 100%;
+  width: fit-content;
+  margin: 10px;
 
 }
 
@@ -333,7 +360,6 @@ body {
   display: flex;
   width: fit-content;
   margin-top: 10px;
-  margin-left: 70px;
   background-color: #1DB954;
   border-radius: 10px;
   flex-direction: row;
@@ -361,19 +387,19 @@ body {
 }
 
 
-
 #Delete-links-button {
 
   display: flex;
-  width: fit-content;
-  background-color: #bd1717;
+  height: 40px;
+  width: 40px;
+  background-color: #b91d1d;
   border-radius: 10px;
-  margin: 10px;
-  flex-direction: row;
   justify-content: center;
-  align-items: flex-end;
-}
+  align-items: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  font-size: 15px;
 
+}
 
 .Welcome {
 
@@ -414,53 +440,45 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-#Input {
+#Input, #URLInput, #EventsInput, #LocationInput, #GoalInput, #Events-Input, #DateInput, #TimeInput {
 
   flex: 1;
   border: 0px solid;
   margin: 10px;
   padding: 10px;
-  height: 43px;
+  height: 40px;
+  width: fit-content;
   border-radius: 10px;
   font-size: 15px;
 
 }
-
-#Events-Input {
-  flex: 1;
-  border: 0px solid;
-  padding: 10px;
-  height: 43px;
-  border-radius: 10px;
-  display: flex;
-  align-items: flex-start;
-  font-size: 15px;
-
-}
-
 
 .Notes-Content {
 
   display: flex;
-  align-items: center;
   justify-content: flex-start;
+  align-items: center;
+  border-radius: 10px;
 
 }
 
 .Note {
 
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
-  height: fit-content;
+  height: 100%;
   width: fit-content;
+  max-width: fit-content;
   padding: 10px;
   margin: 10px;
   font-size: 15px;
   color: black;
   font-family: 'Lexicand-Deca', sans-serif;
   border-radius: 10px;
-
+  overflow-wrap: break-word;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 #Calender {
@@ -469,7 +487,7 @@ body {
   width: fit-content;
   height: fit-content;
   padding: 10px;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
 
 }
@@ -517,10 +535,12 @@ body {
 #Pinboard {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: fit-content;
   height: fit-content;
   color: #1DB954;
 }
+
+
 
 .Footer {
   display: flex;
