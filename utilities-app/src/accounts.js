@@ -5,60 +5,76 @@ import 'reactjs-popup/dist/index.css';
 
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
+
+ function Accounts() {
+
+//     <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+//     const SignupForm = document.getElementById('signup');
+//     const LoginForm = document.getElementById('login');
+
+//     const SignUpEmail = document.getElementById('SignupEmail');
+//     const SignUpPassword = document.getElementById('signupPassword');
+
+//     const LoginEmail = document.getElementById('LoginEmail');
+//     const LoginPassword = document.getElementById('LoginPassword');
+//     const LoginInSubmit = document.getElementById('SignInSubmit');
+//     const LogInSubmit = document.getElementById('LogInSubmit');
 
 
-function Accounts() {
+//     useEffect(() => {
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+//         event.preventDefault();
 
 
-    return (
+// }, []);
 
-        <div className="AccountsContainer">
-            <div>
-                <div className="AccountsPortal">
 
+
+return (
+
+    <div className="AccountsContainer">
+        <div>
+            <div className="AccountsPortal">
+
+                <span> Sign Up</span>
+                <form method="post" action="/Signup" id="signup">
                     <div className="Sign-up">
-                        <span> Sign Up</span>
-                        <Box>
-                            <TextField label="standard" varient="standard" color="primary" />
-                        </Box>
 
-                        <Box>
-                            <TextField label="" varient="standard" color="primary" />
-                        </Box>
+                        <span> Email </span>
+                        <input type="text" id="SignUpEmail" />
 
+                        <span> Password </span>
+                        <input type="text" id="SignUpPassword" />
+
+                        <button className="SignInSubmit"  > Sign up
+                            <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'flex-end', alignItem: 'flex-end', verticalAlign: 'middle' }} />
+                        </button>
                     </div>
+                </form>
 
-                    <div className="SignInSubmit">
-                        <button>hi </button>
-                    </div>
+                <span>Log In</span>
 
+                <form method="post" action="/login" id="login">
                     <div className="Log-in">
-                        <span> Log In</span>
-                        <br></br>
+                        <span> Email </span>
+                        <input type="text" id="LogInEmail" />
 
-                        <Box>
-                            <TextField label="" varient="standard" color="primary" />
-                        </Box>
+                        <span> Password </span>
+                        <input type="text" id="LogInPassword" />
 
-                        <Box>
-                            <TextField label="" varient="standard" color="primary" />
-                        </Box>
+                        <button className="LogInSubmit"  > Login
+                            <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'flex-end', alignItem: 'flex-end', verticalAlign: 'middle' }} />
+                        </button>
                     </div>
-
-                    <div className="LogInSubmit">
-                        <button> hu</button>
-
-                    </div>
-                </div>
-
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                </form>
 
             </div>
         </div>
+    </div>
 
-    );
+);
 }
 
 export default Accounts;

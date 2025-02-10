@@ -14,7 +14,7 @@
 /api
 /WeatherAPI.js
 /QuotesAPI.js
-/server
+/server.js
 
 # misc
 .DS_Store
