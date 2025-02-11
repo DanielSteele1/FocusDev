@@ -1,18 +1,19 @@
 const express = require('express');
+require('dotenv').config();
 const cors = require('cors');
 const { MongoClient } = require('mongodb');
 const { ObjectId } = require('mongodb');
-
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 
-
 // connect to MongoDB
 
-uri ='mongodb+srv://dsteele1906:oUgzWxyF5IJsOmj3@cluster0.mdyby.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+// get URI from the env file.
+const uri = process.env.uri;
+
 const client = new MongoClient(uri);
 
 async function run() {
@@ -43,7 +44,6 @@ async function run() {
     }
   });
 
-
   // signup
   app.get('/signup', async (req, res) => {
     try {
@@ -60,7 +60,7 @@ async function run() {
   app.get('/login', async (req, res) => {
     try {
 
-      
+
     } catch (error) {
       res.status(500).json({ error: 'Failed to login' });
     }

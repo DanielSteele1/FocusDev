@@ -16,7 +16,7 @@
 /QuotesAPI.js
 /server.js
 utilities-app/server.js
-
+.env
 
 # misc
 .DS_Store
