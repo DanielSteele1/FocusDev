@@ -7,30 +7,46 @@ import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 
- function Accounts() {
+function Accounts() {
 
-//     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    const [signUpEmail, setSignUpEmail] = useState('');
+    const [signUpPassword, setSignUpPassword] = useState('');
+    const [logInEmail, setLogInEmail] = useState('');
+    const [logInPassword, setLogInPassword] = useState('');
 
-//     const SignupForm = document.getElementById('signup');
-//     const LoginForm = document.getElementById('login');
+    const handleSignUp = async (e) => {
 
-//     const SignUpEmail = document.getElementById('SignupEmail');
-//     const SignUpPassword = document.getElementById('signupPassword');
+        e.preventDefault();
 
-//     const LoginEmail = document.getElementById('LoginEmail');
-//     const LoginPassword = document.getElementById('LoginPassword');
-//     const LoginInSubmit = document.getElementById('SignInSubmit');
-//     const LogInSubmit = document.getElementById('LogInSubmit');
+        const response = await fetch('/signup', {
 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: signUpEmail, password: signUpPassword }),
+        });
 
-//     useEffect(() => {
+        const data = await response.json();
+        console.log(data);
+    };
 
-//         event.preventDefault();
+    const handleLogIn = async (e) => {
 
+        e.preventDefault();
 
-// }, []);
+        const response = await fetch('/login', {
 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: logInEmail, password: logInPassword }),
+        });
 
+        const data = await response.json();
+        console.log(data);
+    };
 
 return (
 
@@ -39,14 +55,22 @@ return (
             <div className="AccountsPortal">
 
                 <span> Sign Up</span>
-                <form method="post" action="/Signup" id="signup">
+                <form id="signup" onSubmit={handleSignUp}>
                     <div className="Sign-up">
 
                         <span> Email </span>
-                        <input type="text" id="SignUpEmail" />
+                        <input type="email" 
+                        id="SignUpEmail" 
+                        required 
+                        value={signUpEmail}
+                        onChange={(e) => setSignUpEmail(e.target.value)}/>
 
                         <span> Password </span>
-                        <input type="text" id="SignUpPassword" />
+                        <input type="password" 
+                        id="SignUpPassword" 
+                        required 
+                        value={signUpPassword}
+                        onChange={(e) => setSignUpPassword(e.target.value)}/>
 
                         <button className="SignInSubmit"  > Sign up
                             <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'flex-end', alignItem: 'flex-end', verticalAlign: 'middle' }} />
@@ -56,13 +80,24 @@ return (
 
                 <span>Log In</span>
 
-                <form method="post" action="/login" id="login">
+                <form id="login" onSubmit={handleLogIn}>
                     <div className="Log-in">
                         <span> Email </span>
-                        <input type="text" id="LogInEmail" />
+                        <input type="email" id="LogInEmail"
+                        required
+                        value={logInEmail}
+                        onChange={(e) => setLogInEmail(e.target.value)}                        
+                        
+                        />
 
                         <span> Password </span>
-                        <input type="text" id="LogInPassword" />
+                        <input type="password" id="LogInPassword" 
+                        required
+                        value={logInPassword}
+                        onChange={(e) => setLogInPassword(e.target.value)}
+
+                        
+                        />
 
                         <button className="LogInSubmit"  > Login
                             <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'flex-end', alignItem: 'flex-end', verticalAlign: 'middle' }} />
