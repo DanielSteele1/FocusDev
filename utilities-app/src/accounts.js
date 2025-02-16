@@ -13,6 +13,7 @@ function Accounts() {
     const [signUpPassword, setSignUpPassword] = useState('');
     const [logInEmail, setLogInEmail] = useState('');
     const [logInPassword, setLogInPassword] = useState('');
+    const [loggedIn, setLoggedIn] = useState(false);
 
     const handleSignUp = async (e) => {
 
@@ -45,71 +46,111 @@ function Accounts() {
         });
 
         const data = await response.json();
-        console.log(data);
+
+        if (data.message === "Login successful!") {
+            setLoggedIn(true);
+        }
     };
 
-return (
+    async function checkLoginStatus() {
 
-    <div className="AccountsContainer">
-        <div>
-            <div className="AccountsPortal">
+        const response = await fetch('auth/status', { credentials: 'include' });
+        const data = await response.json();
 
-                <span> Sign Up</span>
-                <form id="signup" onSubmit={handleSignUp}>
-                    <div className="Sign-up">
+        try {
+            if (data.loggedIn) {
+                setLoggedIn(true);
 
-                        <span> Email </span>
-                        <input type="email" 
-                        id="SignUpEmail" 
-                        required 
-                        value={signUpEmail}
-                        onChange={(e) => setSignUpEmail(e.target.value)}/>
+            } else {
 
-                        <span> Password </span>
-                        <input type="password" 
-                        id="SignUpPassword" 
-                        required 
-                        value={signUpPassword}
-                        onChange={(e) => setSignUpPassword(e.target.value)}/>
+                setLoggedIn(false);
+                console.log("User is not logged in");
+            }
+        } catch (error) {
+            console.error("Error checking login Status", error);
+        }
 
-                        <button className="SignInSubmit"  > Sign up
-                            <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'flex-end', alignItem: 'flex-end', verticalAlign: 'middle' }} />
-                        </button>
-                    </div>
-                </form>
+    }
 
-                <span>Log In</span>
+    useEffect(() => {
+        // Run checkLoginStatus on component mount to check the initial login status
+        checkLoginStatus();
+    }, []);
 
-                <form id="login" onSubmit={handleLogIn}>
-                    <div className="Log-in">
-                        <span> Email </span>
-                        <input type="email" id="LogInEmail"
-                        required
-                        value={logInEmail}
-                        onChange={(e) => setLogInEmail(e.target.value)}                        
-                        
-                        />
+    return (
+        !loggedIn && (
+        <div className="AccountsContainer">
+            {/* Only show the forms if the user is not logged in */}
+                <div className="AccountsPortal">
+                    <span>Sign Up</span>
+                    <form id="signup" onSubmit={handleSignUp}>
+                        <div className="Sign-up">
+                            <span>Email</span>
+                            <input
+                                type="email"
+                                id="SignUpEmail"
+                                required
+                                value={signUpEmail}
+                                onChange={(e) => setSignUpEmail(e.target.value)}
+                            />
+                            <span>Password</span>
+                            <input
+                                type="password"
+                                id="SignUpPassword"
+                                required
+                                value={signUpPassword}
+                                onChange={(e) => setSignUpPassword(e.target.value)}
+                            />
+                            <button className="SignInSubmit">
+                                Sign up
+                                <ArrowRightAltRoundedIcon
+                                    sx={{
+                                        display: 'flex',
+                                        justifyContent: 'flex-end',
+                                        alignItem: 'flex-end',
+                                        verticalAlign: 'middle',
+                                    }}
+                                />
+                            </button>
+                        </div>
+                    </form>
 
-                        <span> Password </span>
-                        <input type="password" id="LogInPassword" 
-                        required
-                        value={logInPassword}
-                        onChange={(e) => setLogInPassword(e.target.value)}
-
-                        
-                        />
-
-                        <button className="LogInSubmit"  > Login
-                            <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'flex-end', alignItem: 'flex-end', verticalAlign: 'middle' }} />
-                        </button>
-                    </div>
-                </form>
-
-            </div>
+                    <span>Log In</span>
+                    <form id="login" onSubmit={handleLogIn}>
+                        <div className="Log-in">
+                            <span>Email</span>
+                            <input
+                                type="email"
+                                id="LogInEmail"
+                                required
+                                value={logInEmail}
+                                onChange={(e) => setLogInEmail(e.target.value)}
+                            />
+                            <span>Password</span>
+                            <input
+                                type="password"
+                                id="LogInPassword"
+                                required
+                                value={logInPassword}
+                                onChange={(e) => setLogInPassword(e.target.value)}
+                            />
+                            <button className="LogInSubmit">
+                                Login
+                                <ArrowRightAltRoundedIcon
+                                    sx={{
+                                        display: 'flex',
+                                        justifyContent: 'flex-end',
+                                        alignItem: 'flex-end',
+                                        verticalAlign: 'middle',
+                                    }}
+                                />
+                            </button>
+                        </div>
+                    </form>
+                </div>
         </div>
-    </div>
-
-);
+        )
+    );
 }
 
 export default Accounts;
