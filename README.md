@@ -9,6 +9,7 @@ Features include:
 - Calander (with upcoming events widget to accompany it)
 - Local Weather forecast
 - Notes and ToDo functionality
+- Reusable code snippet saver tool - so you can just copy and paste reusable code into your work 
 - Personal Github commit graph widget
 
 - More ideas to come
