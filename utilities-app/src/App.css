@@ -23,7 +23,7 @@ a {
 }
 
 a:hover {
-  
+
   transform: translateY(-3px);
   background-color: #17a34a;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -34,28 +34,27 @@ a:hover {
 .App.light .AccountsButton,
 .App.light .LocationSearch,
 .App.light .LocationInput,
-.App.light .themeButton, 
-.App.light .GithubCommitGraph
-{
-  
+.App.light .themeButton {
   background-color: #1DB954;
-  color:#0f1011;
+  color: #0f1011;
 }
+
+.App.light .GithubCommitGraph {
+  color: #0f1011;
+}
+
 
 .App.light .Navigation {
   background-color: #77d474;
   color: #0f1011;
 }
 
-.App.light .Navigation-Logo, 
-.App.light .Navigation-Name, 
+.App.light .Navigation-Logo,
+.App.light .Navigation-Name,
 .App.light .Navigation-Item,
 .App.light .QOTD,
-.App.light .Welcome
-{
-
-  color: #0f1011;
-
+.App.light .Welcome {
+  color: #000000;
 }
 
 .App.light .Dashboard-Item {
@@ -63,10 +62,20 @@ a:hover {
   color: #1DB954;
 }
 
+.App.light #stat,
+.App.light #statTitle {
+
+  color: #ffffff;
+}
+
+.App.light #statNumber {
+
+  color: #1DB954;
+}
+
 .App.dark #Input,
 .App.dark #Events-Input,
-.App.dark #URLInput
-{
+.App.dark #URLInput {
 
   background-color: #292e2e;
   color: #1DB954;
@@ -82,11 +91,10 @@ a:hover {
 .App.dark .LocationSearch,
 .App.dark .LocationInput,
 .App.dark .themeButton,
-.App.dark .GithubCommitGraph
-{
+.App-dark #stat {
 
   background-color: #0f1011;
-  color:#09f55b;
+  color: #09f55b;
 }
 
 .App.dark .Dashboard-Item {
@@ -149,7 +157,7 @@ body {
 .Navigation {
   display: flex;
   flex-direction: row;
-  border-bottom: #1DB954 2px solid; 
+  border-bottom: #1DB954 2px solid;
   width: 100%;
   height: 75px;
   color: #1DB954;
@@ -242,13 +250,18 @@ body {
 .AccountsButton {
   display: flex;
   height: 45px;
-  width: 45px;
+  width: fit-content;
   justify-content: center;
   align-items: center;
   color: #1DB954;
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  font-size: 15px;
+  padding: 10px;
+  font-family: 'Lexicand-Deca', sans-serif;
+  font-weight: 300;
+
 }
 
 .AccountsButton:hover {
@@ -281,9 +294,10 @@ body {
   background-color: #17a34a;
 
 }
+
 .calenderButton:active {
   transform: scale(0.95);
-  background-color: #148c3a; 
+  background-color: #148c3a;
 }
 
 .Dashboard {
@@ -330,7 +344,7 @@ body {
 
 .ringProgress {
 
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
@@ -374,7 +388,7 @@ body {
 }
 
 
-#Notes-Buttons:hover{ 
+#Notes-Buttons:hover {
 
   transform: translateY(-3px);
   background-color: #17a34a;
@@ -382,7 +396,7 @@ body {
 
 .Notes-Buttons:active {
   transform: scale(0.95);
-  background-color: #148c3a; 
+  background-color: #148c3a;
 }
 
 
@@ -417,13 +431,13 @@ body {
 
 .QOTD {
   display: flex;
-  max-width: 900px;
+  max-width: fit-content;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #1DB954;
-  padding: 15px;
-  margin: 15px;
+  padding: 10px;
+  margin: 10px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-style: italic;
@@ -439,7 +453,14 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-#Input, #URLInput, #EventsInput, #LocationInput, #GoalInput, #Events-Input, #DateInput, #TimeInput {
+#Input,
+#URLInput,
+#EventsInput,
+#LocationInput,
+#GoalInput,
+#Events-Input,
+#DateInput,
+#TimeInput {
 
   flex: 1;
   border: 0px solid;
@@ -449,6 +470,20 @@ body {
   width: fit-content;
   border-radius: 10px;
   font-size: 15px;
+
+}
+
+.GoalText {
+
+  display:flex;
+  width: 600px;
+  height: fit-content;
+  margin: 10px;
+  margin-bottom: 25px;
+  padding: 10px;
+  font-size: 18px;
+  font-family: 'Lexicand-Deca', sans-serif;
+  font-weight: 400;
 
 }
 
@@ -495,7 +530,6 @@ body {
 .github-title {
 
   display: flex;
-
   justify-content: center;
   align-items: center;
   font-size: 20px;
@@ -504,16 +538,55 @@ body {
 #Github-Commit-Graph {
   width: fit-content;
   height: fit-content;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   padding: 10px;
-  color: #1DB954;
   border: 2px transparent solid;
   border-radius: 10px;
 }
 
-#Github-Commit-Graph:hover {
-  border: 2px solid #1DB954;
-  transition: 0.6s ease;
+.github-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+}
+
+#stat {
+
+  display: flex;
+  width: fit-content;
+  height: 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #1DB954;
+  font-weight: 400;
+}
+
+#statTitle {
+
+  display: flex;
+  margin: 10px;
+  margin-top: 10px;
+  font-size: 17px;
+  font-family: 'Space Mono', monospace;
+
+  font-weight: 400;
+}
+
+#statNumber {
+  display: flex;
+  margin: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 30px;
+  font-family: 'Space Mono', monospace;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #1DB954;
 
 }
 
@@ -525,6 +598,7 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: row;
+  border: 1px #09f55b;
   height: fit-content;
   width: 100%;
 }

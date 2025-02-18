@@ -67,7 +67,6 @@ app.get('/api/qotd', async (req, res) => {
   }
 });
 
-
 // get status of the user. are they logged in or not?
 // this can then be sent to the frontend, enabling me to effect elements there.
 app.get('/auth/status', async (req, res) => {
@@ -85,7 +84,6 @@ app.post('/signup', async (req, res) => {
 
     const { email, password } = req.body;
     const usersCollection = db.collection('users');
-
 
     const existingUser = await usersCollection.findOne({ email });
 
@@ -142,7 +140,7 @@ app.post('/login', async (req, res) => {
     if (isValid) {
       // If password is valid, log the user in and store the user in the session
       req.session.user = user;
-      console.log("User is logged in!");
+      console.log(email, "is logged in!");
       return res.status(200).json({ message: "Login successful!" });
     } else {
       // If password is invalid, return an error
@@ -155,7 +153,6 @@ app.post('/login', async (req, res) => {
     return res.status(500).json({ error: 'Failed to login' });
   }
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

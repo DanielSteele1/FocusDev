@@ -17,6 +17,10 @@ import GithubIcon from '@mui/icons-material/GitHub';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
+import CallSplitIcon from '@mui/icons-material/CallSplit';
+import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
+import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
+
 
 import CloseIcon from '@mui/icons-material/Close';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -117,9 +121,12 @@ function Navigation({ toggleTheme, theme }) {
         <div className="Navigation-Item">
           <div className="Accounts">
             <button className="AccountsButton">
+
               <PersonIcon
                 sx={{ justifyContent: 'center', alignItems: 'center', margin: '5px' }}>
               </PersonIcon>
+              <span> Log out </span>
+
             </button>
           </div>
         </div>
@@ -184,14 +191,14 @@ function Dashboard() {
       cal.paint({
         itemSelector: "#cal-heatmap",
         domain: {
-          type: 'month',
+          type: 'year',
           padding: [0, 0, 0, 0],
-          gutter: 2,
+          gutter: 0,
           label: {
             position: 'top',
           },
         },
-        range: 12,
+        range: 1,
 
         date: {
           start: startDate,
@@ -206,8 +213,8 @@ function Dashboard() {
 
         subDomain: {
           type: 'day',
-          width: 18,
-          height: 18,
+          width: 15,
+          height: 15,
           padding: [0, 0, 0, 0],
           margin: [5, 5, 5, 5],
           gutter: 3,
@@ -372,6 +379,40 @@ function Dashboard() {
             <span>  {QOTDData ? `"${QOTDData.quote}" - ${QOTDData.author}` : <Box sx={{ display: 'flex', padding: '10px' }}> <CircularProgress color="inherit" /> </Box>} </span>
           </div>
         </div>
+
+
+        <div className="Dashboard-Item">
+          <div className="github-stats">
+            <div id="stat">
+              <div id="commitNumber">
+
+                <span id="statTitle"> <TimelineOutlinedIcon /> Contributions in the last Year </span>
+                <span id="statNumber"> 497 Commits </span>
+
+              </div>
+            </div>
+
+            <div id="stat">
+              <div id="fork">
+
+                <span id="statTitle"> <CallSplitIcon /> Total Forks </span>
+                <span id="statNumber"> 200 Forks</span>
+
+              </div>
+            </div>
+
+            <div id="stat">
+              <div id="LastEditedProject">
+
+                <span id="statTitle"> <EqualizerOutlinedIcon /> Latest edited project </span>
+                <span id="statNumber"> HelloWorld </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <div className="Dashboard-Item" id="Github-Commit-Graph">
 
           <span className="github-title">
@@ -383,7 +424,9 @@ function Dashboard() {
           </span>
 
           <div id="cal-heatmap"> </div>
+
         </div>
+
 
         <div className="Dashboard-Top">
 
@@ -507,7 +550,10 @@ function Dashboard() {
             <NotesIcon
               sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
             </NotesIcon> Goal Tracker </span>
-            <span> Enter below a goal to track. The global progress bar will fill up when you tick off goals. </span>
+            <span className="GoalText"> 
+              Enter below a goal to track. 
+              The global progress bar will fill up when you tick off items in the list. 
+              When you get to 100%, you've accomplished all your goals! </span>
 
             <div className="ringProgress">
               <RingProgress
@@ -588,7 +634,7 @@ function Dashboard() {
         </div>
 
       </div>
-    </div>
+    </div >
   );
 }
 
@@ -617,7 +663,7 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: theme }}>
         <div className={`App ${theme}`}>
-        <Accounts/>
+          <Accounts />
           <Navigation theme={theme} toggleTheme={toggleTheme} />
           <Dashboard />
           <Footer />
