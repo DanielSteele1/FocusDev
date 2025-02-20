@@ -8,8 +8,9 @@
     transform: translate (-50%, -50%);
     z-index: 1000;
     padding: 20px;
-    background-color: rgba(17, 16, 16, 0.8);
-}
+    background: linear-gradient(135deg, rgba(25,26,27,0.95) 0%, rgba(25,26,27,0.85) 100%);
+    backdrop-filter: blur(8px);
+  }
 
 .AccountsPortal {
 
@@ -21,14 +22,11 @@
     top: 15%;
     left: 700px;
     margin: 0 auto;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px;
     color: #1DB954;
     background-color: rgba(17, 16, 16);
-    border: #1DB954 2px solid;
-    font-family: "Chakra Petch", serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 30px;
+    font-weight: 500;
     padding: 10px;
 
 }
@@ -46,15 +44,57 @@
     align-items: flex-start;
     text-align: center;
     font-size: 23px;
-    font-family: "Chakra Petch", serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
 
+#accountsTitle{
+
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 10px;
+    margin-bottom: 0px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  
+}
+
+#accountsSubTitle{
+    
+    display:flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+#accountsheading{
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  
+}
+
+#inputHeading {
+    font-size: 18px;
 }
 
 .Sign-up input, .Log-in input {
 
     height: 40px;
     width: 400px;
-    border-radius: 8px;
     font-size: 17px;
     padding: 10px;
     border: 0px;
@@ -65,23 +105,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: fit-content;
+    text-align: center;
     height: fit-content;
-    width: 120px;
+    width: 100%;
     margin-top: 20px;
     padding: 10px;
-    font-size: 18px;
+    font-size: 15px;
     border: 2px #1DB954 solid;
-    background-color: transparent;
-    color:#1DB954;
-    border-radius: 12px;
-    transition: transform 0.2s, box-shadow 0.2s, background-color 0.5s, color 0.2s;
+    background-color:#1DB954;
+    font-family: 'Poppins', sans-serif;
+    color: black;
 
 }
 
 .SignInSubmit:hover, .LogInSubmit:hover {
 
-    box-shadow: 0px 0px 10px 5px rgba(29, 185, 84, 0.8);
+    background-color:  #1AA64C;
     cursor:pointer;
 
 }

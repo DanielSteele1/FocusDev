@@ -6,6 +6,8 @@ import 'reactjs-popup/dist/index.css';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+
 
 function Accounts() {
 
@@ -82,43 +84,12 @@ function Accounts() {
         <div className="AccountsContainer">
             {/* Only show the forms if the user is not logged in */}
                 <div className="AccountsPortal">
-                    <span>Sign Up</span>
-                    <form id="signup" onSubmit={handleSignUp}>
-                        <div className="Sign-up">
-                            <span>Email</span>
-                            <input
-                                type="email"
-                                id="SignUpEmail"
-                                required
-                                value={signUpEmail}
-                                onChange={(e) => setSignUpEmail(e.target.value)}
-                            />
-                            <span>Password</span>
-                            <input
-                                type="password"
-                                id="SignUpPassword"
-                                required
-                                value={signUpPassword}
-                                onChange={(e) => setSignUpPassword(e.target.value)}
-                            />
-                            <button className="SignInSubmit">
-                                Sign up
-                                <ArrowRightAltRoundedIcon
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'flex-end',
-                                        alignItem: 'flex-end',
-                                        verticalAlign: 'middle',
-                                    }}
-                                />
-                            </button>
-                        </div>
-                    </form>
-
-                    <span>Log In</span>
+                    <span id="accountsTitle"> <TrendingUpIcon sx={{fontSize: '30px'}}/> Welcome Back  </span>
+                    <span id="accountsSubTitle"> Please enter your details </span>
+                    <span id="accountsheading">Log In</span>
                     <form id="login" onSubmit={handleLogIn}>
                         <div className="Log-in">
-                            <span>Email</span>
+                            <span id="inputHeading">Email</span>
                             <input
                                 type="email"
                                 id="LogInEmail"
@@ -126,7 +97,7 @@ function Accounts() {
                                 value={logInEmail}
                                 onChange={(e) => setLogInEmail(e.target.value)}
                             />
-                            <span>Password</span>
+                            <span id="inputHeading">Password</span>
                             <input
                                 type="password"
                                 id="LogInPassword"
@@ -136,14 +107,31 @@ function Accounts() {
                             />
                             <button className="LogInSubmit">
                                 Login
-                                <ArrowRightAltRoundedIcon
-                                    sx={{
-                                        display: 'flex',
-                                        justifyContent: 'flex-end',
-                                        alignItem: 'flex-end',
-                                        verticalAlign: 'middle',
-                                    }}
-                                />
+                            </button>
+                        </div>
+                    </form>
+
+                    <span id="accountsheading"> Sign Up </span>
+                    <form id="signup" onSubmit={handleSignUp}>
+                        <div className="Sign-up">
+                            <span id="inputHeading">Email</span>
+                            <input
+                                type="email"
+                                id="SignUpEmail"
+                                required
+                                value={signUpEmail}
+                                onChange={(e) => setSignUpEmail(e.target.value)}
+                            />
+                            <span id="inputHeading">Password</span>
+                            <input
+                                type="password"
+                                id="SignUpPassword"
+                                required
+                                value={signUpPassword}
+                                onChange={(e) => setSignUpPassword(e.target.value)}
+                            />
+                            <button className="SignInSubmit">
+                                Sign up
                             </button>
                         </div>
                     </form>

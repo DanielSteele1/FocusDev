@@ -29,7 +29,6 @@ app.use(session({
   cookie: { secure: true }
 }));
 
-
 // get URI from the env file.
 const uri = process.env.uri;
 const saltrounds = 10;

@@ -6,9 +6,9 @@ import { useState } from "react";
 //import WeatherWidget from './Weather';
 import Accounts from './accounts';
 
-
 import NotesIcon from '@mui/icons-material/Notes';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import LogoutIcon from '@mui/icons-material/Logout';
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import PushPinIcon from '@mui/icons-material/PushPin';
 import AddLinkIcon from '@mui/icons-material/AddLink';
@@ -20,7 +20,6 @@ import IconButton from '@mui/material/IconButton';
 import CallSplitIcon from '@mui/icons-material/CallSplit';
 import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
-
 
 import CloseIcon from '@mui/icons-material/Close';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -54,7 +53,6 @@ import { Notes } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
 
 export const ThemeContext = createContext(null);
-
 
 function Navigation({ toggleTheme, theme }) {
 
@@ -122,9 +120,9 @@ function Navigation({ toggleTheme, theme }) {
           <div className="Accounts">
             <button className="AccountsButton">
 
-              <PersonIcon
+              <LogoutIcon
                 sx={{ justifyContent: 'center', alignItems: 'center', margin: '5px' }}>
-              </PersonIcon>
+              </LogoutIcon>
               <span> Log out </span>
 
             </button>
@@ -382,12 +380,21 @@ function Dashboard() {
 
 
         <div className="Dashboard-Item">
+
+          <div className="Github-Stats-Input">
+            <form>
+              <span> Please enter your github account name in order to track these stats. </span>
+              <input type="text" placeholder="Enter your account name" required />
+              <button className="SubmitGithubName"> Connect to Github </button>
+            </form>
+          </div>
+
           <div className="github-stats">
             <div id="stat">
               <div id="commitNumber">
 
                 <span id="statTitle"> <TimelineOutlinedIcon /> Contributions in the last Year </span>
-                <span id="statNumber"> 497 Commits </span>
+                <span id="statNumber"> 000 Commits </span>
 
               </div>
             </div>
@@ -396,7 +403,7 @@ function Dashboard() {
               <div id="fork">
 
                 <span id="statTitle"> <CallSplitIcon /> Total Forks </span>
-                <span id="statNumber"> 200 Forks</span>
+                <span id="statNumber"> 000 Forks</span>
 
               </div>
             </div>
@@ -405,7 +412,7 @@ function Dashboard() {
               <div id="LastEditedProject">
 
                 <span id="statTitle"> <EqualizerOutlinedIcon /> Latest edited project </span>
-                <span id="statNumber"> HelloWorld </span>
+                <span id="statNumber"> - </span>
 
               </div>
             </div>
@@ -512,11 +519,11 @@ function Dashboard() {
               <NotesIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}> </NotesIcon>
               Notes
             </span>
-            <span> Add a note (Max 50 characters) </span> <br></br>
+            <span> Add a note (Max 150 characters) </span> <br></br>
             <div className="Controls">
               <div className="Notes-input">
                 <input id="Input"
-                  maxlength="50"
+                  maxlength="150"
                   type="text"
                   placeholder="Add a note"
                   onChange={handleInputChange}
@@ -550,9 +557,9 @@ function Dashboard() {
             <NotesIcon
               sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
             </NotesIcon> Goal Tracker </span>
-            <span className="GoalText"> 
-              Enter below a goal to track. 
-              The global progress bar will fill up when you tick off items in the list. 
+            <span className="GoalText">
+              Enter below a goal to track.
+              The global progress bar will fill up when you tick off items in the list.
               When you get to 100%, you've accomplished all your goals! </span>
 
             <div className="ringProgress">
@@ -583,6 +590,7 @@ function Dashboard() {
 
               <div id="Notes-Buttons">
                 <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
+
               </div>
             </div>
           </div>
