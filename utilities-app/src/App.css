@@ -42,7 +42,6 @@ a:hover {
 
 .App.light .AccountsButton,
 .App.light .LocationSearch,
-.App.light .LocationInput,
 .App.light .themeButton {
   background-color: #1DB954;
   color: #0f1011;
@@ -85,7 +84,8 @@ a:hover {
 .App.dark #Input,
 .App.dark #Events-Input,
 .App.dark #URLInput,
-.App.dark .Github-Stats-Input input
+.App.dark .Github-Stats-Input input,
+.App.dark .LocationInput
 {
 
   background-color: #292e2e;
@@ -99,7 +99,6 @@ a:hover {
 
 .App.dark .AccountsButton,
 .App.dark .LocationSearch,
-.App.dark .LocationInput,
 .App.dark .themeButton {
 
   color: #000000;
@@ -238,6 +237,7 @@ body {
   border: none;
   color: #09f55b;
   border-radius: 10px;
+  border: 2px solid #1DB954;
   height: 45px;
   width: fit-content;
   padding: 10px;
@@ -345,7 +345,8 @@ body {
   align-items: flex-start;
   display: flex;
   width: fit-content;
-  max-width: 100%;
+  min-width: 40%;
+  max-width: 80%;
   height: fit-content;
   overflow: hidden;
   flex-direction: column;
@@ -353,7 +354,6 @@ body {
   overflow: hidden;
   white-space: wrap;
   word-wrap: break-word;
-
   font-size: 15px;
   font-family: 'Lexicand-Deca', sans-serif;
   font-weight: 400;
@@ -376,9 +376,6 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  width: fit-content;
-  margin: 10px;
-
 }
 
 #Notes-Buttons,
@@ -483,6 +480,11 @@ body {
   border-radius: 10px;
   font-size: 15px;
 
+}
+
+#Input {
+
+  min-width: 400px;
 }
 
 .GoalText {
@@ -608,14 +610,11 @@ body {
   color:#000000;
 }
 
-
 .SubmitGithubName:hover {
 
   background-color: #17a34a;
   cursor: pointer;
 }
-
-
 
 #stat {
 

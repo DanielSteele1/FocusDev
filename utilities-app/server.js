@@ -26,7 +26,7 @@ app.use(session({
   secret: process.env.secretsession,
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: true }
+  cookie: { secure: false }
 }));
 
 // get URI from the env file.
@@ -63,6 +63,41 @@ app.get('/api/qotd', async (req, res) => {
     res.json(data);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch quote' });
+  }
+});
+
+
+app.post('/api/githubUsername', async (req, res) => {
+  try {
+    const { username } = req.body;
+    if(!username) {
+      return res.status(400).json({ error: 'Username is required' });
+    }
+
+    req.session.githubUsername = username;
+
+    console.log(`Username set to ${username}`);
+    res.status(200).json({ message: 'Username retrieved successfully' });
+    console.log("Username retrieved successfully");
+
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to retrieve username' });
+  }
+});
+
+// get user data from the github API
+// this will be used to display user data on the frontend
+app.get('/api/githubApiConn', async (req, res) => {
+  try {
+    const username = req.session.githubUsername || 'defaultUsername';
+    console.log("Fetching repos for username:", username);
+
+    const response = await fetch(`https://api.github.com/users/${username}/repos`);
+    console.log("Connected to the Github API!");
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to get user data from Github API' });
   }
 });
 

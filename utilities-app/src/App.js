@@ -1,6 +1,6 @@
 
 import './App.css';
-import React, { useEffect, useRef, createContext } from "react";
+import React, { useEffect, useRef, createContext, OnSubmit } from "react";
 import { useState } from "react";
 
 //import WeatherWidget from './Weather';
@@ -280,6 +280,62 @@ function Dashboard() {
     fetchQOTD();
   }, []);
 
+  const [githubData, setGithubData] = useState(null);
+
+  //github API Frontend
+
+  const fetchGithub = async () => {
+    const api_url = '/api/githubApiConn';
+
+    try {
+      const response = await fetch(api_url);
+      const repos = await response.json();
+      console.log(repos);
+
+      // works out total forks by iterating over each repo, and adding up the forks_count field to a total sum. 
+      const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
+      // sorts data array in descending order based on pushed_at field.
+      const latestProject = repos.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))[0];
+
+      setGithubData({
+        repos,
+        totalForks,
+        latestProject,
+      });
+
+    } catch (error) {
+      console.error('Error fetching Github Data:', error);
+    }
+  };
+
+  const handleGithubSubmit = async (e) => {
+    e.preventDefault();
+    await fetchUsername();
+    await fetchGithub();
+  }
+
+  const handleUsername = async (e) => {
+    await setUsernameInput(e.target.value);
+  }
+
+  const[usernameInput, setUsernameInput] = useState('');
+
+  const fetchUsername = async () => {
+
+    try {
+      const response = await fetch('/api/githubUsername',{
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify({ username: usernameInput }),
+      });
+    const result = await response.json();
+    console.log(result);
+  }
+  catch (error) {
+      console.error('Error fetching Github Data:', error);
+    }
+  };
+
   // Weather API Frontend
 
   //   const fetchLocalWeather = async () => {
@@ -378,14 +434,21 @@ function Dashboard() {
           </div>
         </div>
 
-
         <div className="Dashboard-Item">
 
           <div className="Github-Stats-Input">
-            <form>
+            <form onSubmit={handleGithubSubmit}>
               <span> Please enter your github account name in order to track these stats. </span>
-              <input type="text" placeholder="Enter your account name" required />
-              <button className="SubmitGithubName"> Connect to Github </button>
+
+              <input type="text"
+                placeholder="Enter your account name"
+                value={usernameInput}
+                onChange={handleUsername}
+                required
+              />
+
+              <button className="SubmitGithubName">  Connect to Github </button>
+
             </form>
           </div>
 
@@ -394,7 +457,7 @@ function Dashboard() {
               <div id="commitNumber">
 
                 <span id="statTitle"> <TimelineOutlinedIcon /> Contributions in the last Year </span>
-                <span id="statNumber"> 000 Commits </span>
+                {/* <span id="statNumber"> {githubData ? JSON.stringify(githubDa) : "000"} Commits </span> */}
 
               </div>
             </div>
@@ -403,7 +466,7 @@ function Dashboard() {
               <div id="fork">
 
                 <span id="statTitle"> <CallSplitIcon /> Total Forks </span>
-                <span id="statNumber"> 000 Forks</span>
+                <span id="statNumber"> {githubData ? JSON.stringify(githubData.totalForks) : "000"} Forks</span>
 
               </div>
             </div>
@@ -412,7 +475,7 @@ function Dashboard() {
               <div id="LastEditedProject">
 
                 <span id="statTitle"> <EqualizerOutlinedIcon /> Latest edited project </span>
-                <span id="statNumber"> - </span>
+                <span id="statNumber">{githubData?.latestProject?.name || "Loading..."} </span>
 
               </div>
             </div>
@@ -444,7 +507,7 @@ function Dashboard() {
             <div className="Controls">
               <div className="LinksName">
                 <input
-                  maxlength="30"
+                  maxLength="30"
                   id="Input"
                   type="text"
                   placeholder="Enter the site's name:"
@@ -454,8 +517,8 @@ function Dashboard() {
 
                 <div className="LinksInput">
                   <input
-                    maxlength="2000"
-                    minlength="5"
+                    maxLength="2000"
+                    minLength="5"
                     id="URLInput"
                     type="text"
                     placeholder="Add a website url"
@@ -523,7 +586,7 @@ function Dashboard() {
             <div className="Controls">
               <div className="Notes-input">
                 <input id="Input"
-                  maxlength="150"
+                  maxLength="500"
                   type="text"
                   placeholder="Add a note"
                   onChange={handleInputChange}
@@ -537,17 +600,22 @@ function Dashboard() {
               </div>
             </div>
 
-
             {/* Notes container */}
 
             {notes.map((note, index) => (
               <div key={index} className="Notes-Content">
                 <div className="Note">{note}</div>
 
-                <IconButton onClick={() => handleNoteDelete(index)} sx={{ fontSize: '14px' }}>
+                <IconButton>
+                  <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle', color: '#1DB954', 'rotate(0deg)': 'rotate(90deg)' }}>
+                  </PushPinIcon>
+                </IconButton>
+
+                <IconButton onClick={() => handleNoteDelete(index)} sx={{ Size: '14px' }}>
                   <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', fontSize: '14px', verticalAlign: 'middle' }}>
                   </CloseIcon>
                 </IconButton>
+
               </div>
             ))}
 
