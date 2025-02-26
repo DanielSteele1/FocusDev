@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use(cors({
   origin: 'http://localhost:3000', // Allow requests from React frontend
-  credentials: true 
+  credentials: true
 }));
 
 app.use(session({
@@ -58,19 +58,19 @@ run().catch(console.dir);
 // get QOTD
 app.get('/api/qotd', async (req, res) => {
   try {
-    const response = await fetch('https://favqs.com/api/qotd');
+    const response = await fetch('https://zenquotes.io/api/today');
     const data = await response.json();
     res.json(data);
+    console.log(data);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch quote' });
   }
 });
 
-
 app.post('/api/githubUsername', async (req, res) => {
   try {
     const { username } = req.body;
-    if(!username) {
+    if (!username) {
       return res.status(400).json({ error: 'Username is required' });
     }
 
@@ -104,9 +104,9 @@ app.get('/api/githubApiConn', async (req, res) => {
 // get status of the user. are they logged in or not?
 // this can then be sent to the frontend, enabling me to effect elements there.
 app.get('/auth/status', async (req, res) => {
-  if(req.session.user) {
+  if (req.session.user) {
     console.log("Session:", req.session);  // Debugging session
-    res.json({ loggedIn: true, user: req.session.user});
+    res.json({ loggedIn: true, user: req.session.user });
   } else {
     res.json({ loggedIn: false });
   }
@@ -122,10 +122,10 @@ app.post('/signup', async (req, res) => {
     const existingUser = await usersCollection.findOne({ email });
 
     // checks for existing users - returns an error
-    if(existingUser) {
+    if (existingUser) {
 
       console.log("Email is already in use, please user an alternitive email address.");
-      return res.status(400).json({ message: 'Email is already in use, please use an alternitive email address.'});
+      return res.status(400).json({ message: 'Email is already in use, please use an alternitive email address.' });
 
     }
 
@@ -157,7 +157,7 @@ app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const usersCollection = db.collection('users');
     // make the email field a unique input - important
-    await usersCollection.createIndex({ email: 1}, {unique:true});
+    await usersCollection.createIndex({ email: 1 }, { unique: true });
 
     // Check if a user exists with the provided email
     const user = await usersCollection.findOne({ email: email });
@@ -186,6 +186,27 @@ app.post('/login', async (req, res) => {
     console.error("Error in login route", error);
     return res.status(500).json({ error: 'Failed to login' });
   }
+});
+
+// logout route
+app.post('/logout', async (req, res) => {
+
+  req.session.destroy((err) => {
+
+    if(err) {
+
+      console.log("Error logging out user", err);
+      res.status(500).json({ message: "Error logging out user" });
+
+    }
+    else {
+
+      console.log("User logged out");
+      res.status(200).json({ message: "User logged out" });
+    }
+
+  });
+
 });
 
 app.listen(PORT, () => {

@@ -11,8 +11,34 @@ body {
 }
 
 .App.dark {
-  background-color: #191a1b;
+  background-color: #000000;
   color: white;
+}
+
+
+#emoji {
+  unicode-bidi: isolate;
+  display: inline-block;
+  height: fit-content;
+  width: fit-content;
+  font-size: 40px;
+  animation: emojifloat 2s ease-in-out infinite;
+  padding: 5px;
+
+}
+
+@keyframes emojifloat {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 form {
@@ -22,8 +48,6 @@ form {
   align-items:center;
   justify-content:center;
 }
-
-
 
 a {
 
@@ -50,7 +74,6 @@ a:hover {
 .App.light .GithubCommitGraph {
   color: #0f1011;
 }
-
 
 .App.light .Navigation {
   background-color: #77d474;
@@ -119,7 +142,7 @@ a:hover {
 
 .App.dark .Navigation {
 
-  background-color: #262A2B;
+  background-color: #141414;
   color: #1DB954;
 
 }
@@ -428,7 +451,6 @@ body {
 
   display: flex;
   height: 360px;
-  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -440,7 +462,7 @@ body {
 
 .QOTD {
   display: flex;
-  max-width: fit-content;
+  max-width: 50%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -451,8 +473,7 @@ body {
   font-weight: 500;
   font-style: italic;
   border-radius: 10px;
-  font-size: 20px;
-
+  font-size: 18px;
 }
 
 #QOTD {

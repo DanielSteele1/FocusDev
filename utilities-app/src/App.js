@@ -77,6 +77,31 @@ function Navigation({ toggleTheme, theme }) {
 
   }, []);
 
+
+  const [logoutButton, setLogoutButton] = useState();
+
+  const fetchLogoutStatus = async () => {
+
+    try {
+      const response = await fetch('/logout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ logout: logoutButton }),
+      });
+      const result = await response.json();
+    }
+    catch (error) {
+      console.error('Error fetching Github Data:', error);
+    }
+  };
+
+  const handleLogoutClick= async (e) => {
+
+    e.preventDefault();
+    await fetchLogoutStatus();
+
+  }
+
   return (
     <div className="Navigation">
 
@@ -118,7 +143,9 @@ function Navigation({ toggleTheme, theme }) {
 
         <div className="Navigation-Item">
           <div className="Accounts">
-            <button className="AccountsButton">
+            <button className="AccountsButton"
+              value={logoutButton}
+              onClick={handleLogoutClick}>
 
               <LogoutIcon
                 sx={{ justifyContent: 'center', alignItems: 'center', margin: '5px' }}>
@@ -269,8 +296,8 @@ function Dashboard() {
         const data = await response.json();
         console.log(data);
 
-        if (data && data.quote && data.quote.body && data.quote.author) {
-          setQOTDData({ quote: data.quote.body, author: data.quote.author });
+        if (data && data[0] && data[0].q  && data[0].a) {
+          setQOTDData({ q: data[0].q, a: data[0].a });
         }
       } catch (error) {
         console.error('Error fetching QOTD:', error);
@@ -318,20 +345,20 @@ function Dashboard() {
     await setUsernameInput(e.target.value);
   }
 
-  const[usernameInput, setUsernameInput] = useState('');
+  const [usernameInput, setUsernameInput] = useState('');
 
   const fetchUsername = async () => {
 
     try {
-      const response = await fetch('/api/githubUsername',{
+      const response = await fetch('/api/githubUsername', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: usernameInput }),
       });
-    const result = await response.json();
-    console.log(result);
-  }
-  catch (error) {
+      const result = await response.json();
+      console.log(result);
+    }
+    catch (error) {
       console.error('Error fetching Github Data:', error);
     }
   };
@@ -426,11 +453,12 @@ function Dashboard() {
       <div className="Dashboard">
         <div className="Welcome">
 
-          <span> <span id="emoji">👋</span>  Welcome back, Daniel </span>
+          <span> <span id="emoji">👋</span>  Welcome back! </span>
+
+          <div id="QOTD"> ~ Quote of the Day ~ </div>
 
           <div className="QOTD">
-            <div id="QOTD"> Quote of the Day ~ </div>
-            <span>  {QOTDData ? `"${QOTDData.quote}" - ${QOTDData.author}` : <Box sx={{ display: 'flex', padding: '10px' }}> <CircularProgress color="inherit" /> </Box>} </span>
+            <span>  {QOTDData ? `"${QOTDData.q}" - ${QOTDData.a}` : <Box sx={{ display: 'flex', padding: '10px' }}> <CircularProgress color="inherit" /> </Box>} </span>
           </div>
         </div>
 
@@ -481,7 +509,6 @@ function Dashboard() {
             </div>
           </div>
         </div>
-
 
         <div className="Dashboard-Item" id="Github-Commit-Graph">
 
@@ -718,7 +745,12 @@ function Footer() {
 
   return (
     <div className="Footer">
-      < h1> Footer </h1>
+      <span> Created by Daniel Steele </span>
+      <span> Check out my other work </span>
+
+      <span> Buy me a coffee </span>
+
+
     </div>
   );
 
