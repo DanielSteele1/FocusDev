@@ -54,10 +54,9 @@ import Tooltip from '@mui/material/Tooltip';
 
 export const ThemeContext = createContext(null);
 
-function Navigation({ toggleTheme, theme }) {
+function Navigation({ toggleTheme, theme, setLoggedIn }) {
 
   const [timeText, setTimeText] = useState("");
-
 
   useEffect(() => {
 
@@ -77,10 +76,11 @@ function Navigation({ toggleTheme, theme }) {
 
   }, []);
 
-
   const [logoutButton, setLogoutButton] = useState();
 
-  const fetchLogoutStatus = async () => {
+  const handleLogoutClick = async (e) => {
+
+    e.preventDefault();
 
     try {
       const response = await fetch('/logout', {
@@ -89,18 +89,14 @@ function Navigation({ toggleTheme, theme }) {
         body: JSON.stringify({ logout: logoutButton }),
       });
       const result = await response.json();
+      setLoggedIn(false);
+
+    } catch (error) {
+      console.error('Error Logging user out:', error);
+
     }
-    catch (error) {
-      console.error('Error fetching Github Data:', error);
-    }
+
   };
-
-  const handleLogoutClick= async (e) => {
-
-    e.preventDefault();
-    await fetchLogoutStatus();
-
-  }
 
   return (
     <div className="Navigation">
@@ -296,7 +292,7 @@ function Dashboard() {
         const data = await response.json();
         console.log(data);
 
-        if (data && data[0] && data[0].q  && data[0].a) {
+        if (data && data[0] && data[0].q && data[0].a) {
           setQOTDData({ q: data[0].q, a: data[0].a });
         }
       } catch (error) {
@@ -759,6 +755,8 @@ function Footer() {
 function App() {
 
   const [theme, setTheme] = useState("dark");
+  const [loggedIn, setLoggedIn] = useState(false);
+
 
   const toggleTheme = () => {
 
@@ -771,10 +769,18 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: theme }}>
         <div className={`App ${theme}`}>
-          <Accounts />
-          <Navigation theme={theme} toggleTheme={toggleTheme} />
-          <Dashboard />
-          <Footer />
+          {loggedIn ? (
+
+            <>
+              <Navigation theme={theme} toggleTheme={toggleTheme} setLoggedIn={setLoggedIn} />
+              <Dashboard setLoggedIn={setLoggedIn} />
+              <Footer />
+
+            </>
+
+          ) : (
+            <Accounts setLoggedIn={setLoggedIn} />
+          )}
         </div>
       </MantineProvider>
     </ThemeContext.Provider>

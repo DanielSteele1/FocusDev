@@ -9,13 +9,12 @@ import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
 
-function Accounts() {
+function Accounts({setLoggedIn}) {
 
     const [signUpEmail, setSignUpEmail] = useState('');
     const [signUpPassword, setSignUpPassword] = useState('');
     const [logInEmail, setLogInEmail] = useState('');
     const [logInPassword, setLogInPassword] = useState('');
-    const [loggedIn, setLoggedIn] = useState(false);
 
     const handleSignUp = async (e) => {
 
@@ -80,7 +79,7 @@ function Accounts() {
     }, []);
 
     return (
-        !loggedIn && (
+       
         <div className="AccountsContainer">
             {/* Only show the forms if the user is not logged in */}
                 <div className="AccountsPortal">
@@ -138,7 +137,6 @@ function Accounts() {
                 </div>
         </div>
         )
-    );
 }
 
 export default Accounts;
