@@ -61,7 +61,6 @@ app.get('/api/qotd', async (req, res) => {
     const response = await fetch('https://zenquotes.io/api/today');
     const data = await response.json();
     res.json(data);
-    console.log(data);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch quote' });
   }

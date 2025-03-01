@@ -75,7 +75,8 @@ a:hover {
   color: #0f1011;
 }
 
-.App.light .Navigation {
+.App.light .Navigation,
+.App.light .Sidebar{
   background-color: #77d474;
   color: #0f1011;
 }
@@ -103,6 +104,8 @@ a:hover {
 
   color: #1DB954;
 }
+
+
 
 .App.dark #Input,
 .App.dark #Events-Input,
@@ -145,6 +148,14 @@ a:hover {
   background-color: #141414;
   color: #1DB954;
 
+}
+
+.MainWrapper {
+
+  display: flex;
+  min-height: calc(100vh);
+  position: relative;
+  width: 100%;
 }
 
 .themeButton {
@@ -205,6 +216,8 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 1px solid #3d423d;
+
 }
 
 .Nav-Menu {
@@ -245,14 +258,110 @@ body {
   align-items: center;
 }
 
-.Dashboard-container {
-  width: 100%;
-  height: fit-content;
+.sidebar {
+
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: center;
+  width: fit-content;
+  min-height: calc(100vh - 75px);
+  background-color: #141414;
+  position: sticky;
+  border-right: 1px solid #3d423d;
+  color: #1DB954;
+
+}
+
+.sidebar-item {
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 10px;
+  padding: 10px;
+}
+
+#SidebarDeveloper, #SidebarProfile, #SidebarNote, #SidebarProductivity, #SidebarHide {
+
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 15px 10px 5px 10px;
+  text-align: center;
+
+}
+
+#SidebarDeveloper {
+
+  color:#f50950;
+}
+
+#SidebarProfile{
+  color: #60A5FA;
+}
+
+#SidebarNote{
+  color: #ffb923;
+}
+
+#SidebarProductivity {
+  color: #A855F7;
+}
+
+#SidebarHome {
+  color: #09f55b;
+}
+
+#SidebarDeveloper:hover,
+#SidebarProfile:hover,
+#SidebarNote:hover,
+#SidebarProductivity:hover {
+  filter: brightness(1.0);
+  transition: filter 0.3s ease;
+}
+
+.MainContent {
+
+  display: flex;
+  width: calc(100% - 200px);
+  justify-content: center;
+  align-items: center;
+
+}
+
+.Dashboard-container {
+
+  flex:1;
+  flex-direction: column;
+  padding: 20px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
   display: flex;
 
 }
+.Productivity-container {
+
+  flex:1;
+  flex-direction: column;
+  padding: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  display: flex;
+}
+
+
+
+
+
+
+
 
 .LocationInput {
 
@@ -260,7 +369,7 @@ body {
   border: none;
   color: #09f55b;
   border-radius: 10px;
-  border: 2px solid #1DB954;
+  border: 2px solid #3d423d;
   height: 45px;
   width: fit-content;
   padding: 10px;
@@ -340,7 +449,7 @@ body {
 }
 
 .Dashboard {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -627,10 +736,11 @@ body {
   background-color: #1DB954;
   border: none;
   padding: 10px;
+  margin: 15px;
   border-radius: 10px;
   font-family: 'Lexicand-Deca', sans-serif;
-  font-weight: 400;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: 18px;
   color:#000000;
 }
 
@@ -662,7 +772,6 @@ body {
   margin-top: 10px;
   font-size: 17px;
   font-family: 'Space Mono', monospace;
-
   font-weight: 400;
 }
 
@@ -671,7 +780,7 @@ body {
   margin: 10px;
   justify-content: flex-start;
   align-items: center;
-  font-size: 30px;
+  font-size: 25px;
   font-family: 'Space Mono', monospace;
   font-weight: 600;
   letter-spacing: 2px;
@@ -703,11 +812,11 @@ body {
   color: #1DB954;
 }
 
-
 .Footer {
   display: flex;
   flex-direction: row;
-  background-color: #0f1011;
+  background-color: #141414;
+  border-top:#3d423d 1px solid;
   color: #1DB954;
   height: fit-content;
   width: 100%;

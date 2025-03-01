@@ -20,6 +20,11 @@ import IconButton from '@mui/material/IconButton';
 import CallSplitIcon from '@mui/icons-material/CallSplit';
 import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+
+import CodeIcon from '@mui/icons-material/Code';
+import DescriptionIcon from '@mui/icons-material/Description';
+import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
 import CloseIcon from '@mui/icons-material/Close';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -49,10 +54,35 @@ import 'cal-heatmap/cal-heatmap.css';
 import SampleData from './api/sampleData.json';
 import Legend from 'cal-heatmap/plugins/Legend';
 import { Notes } from '@mui/icons-material';
-
 import Tooltip from '@mui/material/Tooltip';
 
+import Productivity from './productivity';
+import Developer from './developer';
+import NoteTaking from './noteTaking';
+import Profile from './profile';
+
 export const ThemeContext = createContext(null);
+
+function MainWrapper({ children }) {
+  const [activeTab, setActiveTab] = useState('dashboard');
+
+  return (
+
+    <div className="MainWrapper">
+      {children}
+      <Sidebar onTabChange={setActiveTab} />
+      <div className="MainContent">
+        {activeTab === 'dashboard' && <Dashboard />}
+        {activeTab === 'productivity' && <Productivity />}
+        {activeTab === 'developer' && <Developer />}
+        {activeTab === 'noteTaking' && <NoteTaking />}
+        {activeTab === 'profile' && <Profile />}
+
+      </div>
+    </div>
+
+  );
+}
 
 function Navigation({ toggleTheme, theme, setLoggedIn }) {
 
@@ -93,7 +123,6 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
 
     } catch (error) {
       console.error('Error Logging user out:', error);
-
     }
 
   };
@@ -157,127 +186,47 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
   );
 }
 
+function Sidebar({ onTabChange }) {
+
+  return (
+    <div className="sidebar">
+
+      <div className="sidebar-item" id="SidebarHide">
+        <ArrowBackIosRoundedIcon />
+        <span> Hide Sidebar </span>
+      </div>
+
+      <div className="sidebar-item" id="SidebarHome" onClick={() => onTabChange("dashboard")}>
+        <HomeRoundedIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
+        <span>Home</span>
+      </div>
+
+      <div className="sidebar-item" id="SidebarProfile" onClick={() => onTabChange("profile")}>
+        <PersonIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
+        <span>Profile</span>
+      </div>
+
+      <div className="sidebar-item" id="SidebarProductivity" onClick={() => onTabChange("productivity")}>
+        <EqualizerOutlinedIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
+        <span>Productivity</span>
+      </div>
+
+      <div className="sidebar-item" id="SidebarDeveloper" onClick={() => onTabChange("developer")}>
+        <CodeIcon sx={{ display: 'flex', fontSize: '30px', alignItems: 'center' }} />
+        <span>Developer</span>
+      </div>
+
+      <div className="sidebar-item" id="SidebarNote" onClick={() => onTabChange("noteTaking")}>
+        <DescriptionIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
+        <span>Note taking</span>
+      </div>
+
+    </div>
+  );
+
+}
+
 function Dashboard() {
-
-  const calRef = useRef(null);
-  useEffect(() => {
-
-    if (!calRef.current) {
-      const cal = new CalHeatmap();
-
-      var data = [
-
-        { "date": "2025-01-01", "value": 30 },
-        { "date": "2025-01-02", "value": 2 },
-        { "date": "2025-01-03", "value": 10 },
-        { "date": "2025-01-04", "value": 10 },
-        { "date": "2025-01-05", "value": 1 },
-        { "date": "2025-01-06", "value": 10 },
-        { "date": "2025-01-07", "value": 7 },
-        { "date": "2025-01-08", "value": 25 },
-        { "date": "2025-01-09", "value": 4 },
-        { "date": "2025-01-10", "value": 11 },
-        { "date": "2025-01-11", "value": 1 },
-        { "date": "2025-01-12", "value": 5 },
-        { "date": "2025-01-13", "value": 5 },
-        { "date": "2025-01-14", "value": 1 },
-        { "date": "2025-01-15", "value": 30 },
-        { "date": "2025-01-16", "value": 16 },
-        { "date": "2025-01-17", "value": 10 },
-        { "date": "2025-01-18", "value": 1 },
-        { "date": "2025-01-19", "value": 12 },
-        { "date": "2025-01-20", "value": 1 },
-        { "date": "2025-01-21", "value": 15 },
-        { "date": "2025-01-22", "value": 14 },
-        { "date": "2025-01-23", "value": 11 },
-        { "date": "2025-01-24", "value": 12 },
-        { "date": "2025-01-25", "value": 1 },
-        { "date": "2025-01-26", "value": 30 },
-
-        { "date": "2025-01-27", "value": 26 },
-        { "date": "2025-01-28", "value": 26 },
-
-      ];
-
-      // graph updates
-
-      const endDate = new Date();
-      const startDate = new Date(endDate.getFullYear(), 0, 1);
-
-      startDate.setFullYear(endDate.getFullYear());
-      startDate.setDate(startDate.getDate());
-
-      console.log(startDate);
-
-      cal.paint({
-        itemSelector: "#cal-heatmap",
-        domain: {
-          type: 'year',
-          padding: [0, 0, 0, 0],
-          gutter: 0,
-          label: {
-            position: 'top',
-          },
-        },
-        range: 1,
-
-        date: {
-          start: startDate,
-          min: startDate,
-          max: endDate,
-          //  start: startYear,
-          //  min: startYear,
-          //  max: endYear,
-
-          timezone: 'GMT'
-        },
-
-        subDomain: {
-          type: 'day',
-          width: 15,
-          height: 15,
-          padding: [0, 0, 0, 0],
-          margin: [5, 5, 5, 5],
-          gutter: 3,
-          radius: 3.5,
-
-        },
-
-        scale: {
-          color: {
-            range: ['#302f2f', '#0BDA51'],
-            type: 'linear',
-            domain: [0, 5, 10, 20, 30],
-
-          },
-        },
-
-        data: {
-          source: data,
-          type: 'json',
-          x: 'date',
-          y: 'value'
-        },
-
-      });
-
-      calRef.current = cal;
-      console.log("Sample Data:", data);
-
-      cal.paint({}, [[
-
-        Legend,
-        {
-          label: 'Commit Frequency: 0 - 30+, grey squares indicate 0 commits, white squares indicate ',
-          width: '600',
-          height: '60',
-
-        },
-
-      ]]);
-    }
-
-  }, []);
 
   // fetch QOTD data from the server, set it as QOTDData and display data
 
@@ -303,61 +252,6 @@ function Dashboard() {
     fetchQOTD();
   }, []);
 
-  const [githubData, setGithubData] = useState(null);
-
-  //github API Frontend
-
-  const fetchGithub = async () => {
-    const api_url = '/api/githubApiConn';
-
-    try {
-      const response = await fetch(api_url);
-      const repos = await response.json();
-      console.log(repos);
-
-      // works out total forks by iterating over each repo, and adding up the forks_count field to a total sum. 
-      const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
-      // sorts data array in descending order based on pushed_at field.
-      const latestProject = repos.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))[0];
-
-      setGithubData({
-        repos,
-        totalForks,
-        latestProject,
-      });
-
-    } catch (error) {
-      console.error('Error fetching Github Data:', error);
-    }
-  };
-
-  const handleGithubSubmit = async (e) => {
-    e.preventDefault();
-    await fetchUsername();
-    await fetchGithub();
-  }
-
-  const handleUsername = async (e) => {
-    await setUsernameInput(e.target.value);
-  }
-
-  const [usernameInput, setUsernameInput] = useState('');
-
-  const fetchUsername = async () => {
-
-    try {
-      const response = await fetch('/api/githubUsername', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: usernameInput }),
-      });
-      const result = await response.json();
-      console.log(result);
-    }
-    catch (error) {
-      console.error('Error fetching Github Data:', error);
-    }
-  };
 
   // Weather API Frontend
 
@@ -380,69 +274,6 @@ function Dashboard() {
   //   fetchLocalWeather();
   // }, []);
 
-  const [notes, setNotes] = useState([]);
-  const [inputValue, setInputValue] = useState('');
-
-  //update inputValue whenever input field changes
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-
-  };
-
-  // if input field isnt empty, add the note
-  const handleAddNote = () => {
-
-    if (inputValue !== '') {
-
-      setNotes([...notes, inputValue]);
-      setInputValue('');
-    }
-  };
-
-  // handle note deletion
-
-  const handleNoteDelete = (index) => {
-
-    const newNotes = notes.filter((_, i) => i !== index);
-    setNotes(newNotes);
-
-  };
-
-
-  const [links, setLinks] = useState([]);
-  const [linkInputValue, setLinkInputValue] = useState('');
-  const [linkNameValue, setLinkNameValue] = useState('');
-
-
-  const handleLinkInputChange = (event) => {
-
-    setLinkInputValue(event.target.value);
-  };
-
-  const handleLinkNameChange = (event) => {
-
-    setLinkNameValue(event.target.value);
-  };
-
-  const handleAddLink = () => {
-
-    if (linkInputValue !== '' && linkNameValue !== '') {
-
-      setLinks([...links, { name: linkNameValue, url: linkInputValue }]);
-      setLinkInputValue('');
-      setLinkNameValue('');
-    }
-  };
-
-  const handleLinksDelete = (index) => {
-
-    const newLinks = links.filter((_, i) => i !== index);
-    setLinks(newLinks);
-
-  };
-
-  const [value, setValue] = useState(80);
 
   return (
     <div className="Dashboard-container">
@@ -458,284 +289,50 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="Dashboard-Item">
-
-          <div className="Github-Stats-Input">
-            <form onSubmit={handleGithubSubmit}>
-              <span> Please enter your github account name in order to track these stats. </span>
-
-              <input type="text"
-                placeholder="Enter your account name"
-                value={usernameInput}
-                onChange={handleUsername}
-                required
-              />
-
-              <button className="SubmitGithubName">  Connect to Github </button>
-
-            </form>
-          </div>
-
-          <div className="github-stats">
-            <div id="stat">
-              <div id="commitNumber">
-
-                <span id="statTitle"> <TimelineOutlinedIcon /> Contributions in the last Year </span>
-                {/* <span id="statNumber"> {githubData ? JSON.stringify(githubDa) : "000"} Commits </span> */}
-
-              </div>
-            </div>
-
-            <div id="stat">
-              <div id="fork">
-
-                <span id="statTitle"> <CallSplitIcon /> Total Forks </span>
-                <span id="statNumber"> {githubData ? JSON.stringify(githubData.totalForks) : "000"} Forks</span>
-
-              </div>
-            </div>
-
-            <div id="stat">
-              <div id="LastEditedProject">
-
-                <span id="statTitle"> <EqualizerOutlinedIcon /> Latest edited project </span>
-                <span id="statNumber">{githubData?.latestProject?.name || "Loading..."} </span>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="Dashboard-Item" id="Github-Commit-Graph">
-
-          <span className="github-title">
-            <GithubIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '10px' }}>
-            </GithubIcon>
-            <br></br>
-            <span>Github Commit Graph </span>
-          </span>
-
-          <div id="cal-heatmap"> </div>
-
-        </div>
-
-
-        <div className="Dashboard-Top">
-
-          <div className="Dashboard-Item" id="Useful-Links"> <span>
+        <div className="Dashboard-Item" id="Pinboard">
+          <span>
             <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-            </PushPinIcon>Useful Links</span>
-
-            <div className="Controls">
-              <div className="LinksName">
-                <input
-                  maxLength="30"
-                  id="Input"
-                  type="text"
-                  placeholder="Enter the site's name:"
-                  onChange={handleLinkNameChange}
-                  value={linkNameValue}>
-                </input>
-
-                <div className="LinksInput">
-                  <input
-                    maxLength="2000"
-                    minLength="5"
-                    id="URLInput"
-                    type="text"
-                    placeholder="Add a website url"
-                    onChange={handleLinkInputChange}
-                    value={linkInputValue}>
-                  </input>
-                </div>
-              </div>
-
-              <div id="Notes-Buttons">
-                <IconButton onClick={handleAddLink} > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
-              </div>
-
-            </div>
-
-            {/* Links container */}
-
-            <div className="Notes-Container">
-              {links.map((link, index) => (
-                <div key={index} className="Notes-Content">
-                  <Tooltip title="Click here to go to this website!" placement="bottom" >
-                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="Note">{link.name}</a>
-                  </Tooltip>
-                  <IconButton onClick={() => handleLinksDelete(index)}>
-                    <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }} />
-                  </IconButton>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="Dashboard-Item" id="Pinboard">
-            <span>
-              <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-              </PushPinIcon> Pinboard </span>
-            <Text className="Note"> Placeholder Text</Text>
-
-          </div>
-
-          <div className="Dashboard-Item" id="Upcoming-Events">
-            <span>
-              <CalendarMonthIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-              </CalendarMonthIcon>Upcoming Events </span>
-
-            <Text className="Note"> Placeholder Text</Text>
-          </div>
-
-          <div className="Dashboard-Item" id="Weather">
-            <span>
-              <CloudQueueIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-              </CloudQueueIcon> Weather </span>
-
-            {/* <WeatherWidget /> */}
-
-          </div>
-        </div>
-
-        <div className="Dashboard-Mid">
-          <div className="Dashboard-Item" id="Notes">
-            <span>
-              <NotesIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}> </NotesIcon>
-              Notes
-            </span>
-            <span> Add a note (Max 150 characters) </span> <br></br>
-            <div className="Controls">
-              <div className="Notes-input">
-                <input id="Input"
-                  maxLength="500"
-                  type="text"
-                  placeholder="Add a note"
-                  onChange={handleInputChange}
-                  value={inputValue}>
-
-                </input>
-              </div>
-
-              <div id="Notes-Buttons">
-                <IconButton onClick={handleAddNote}> <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
-              </div>
-            </div>
-
-            {/* Notes container */}
-
-            {notes.map((note, index) => (
-              <div key={index} className="Notes-Content">
-                <div className="Note">{note}</div>
-
-                <IconButton>
-                  <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle', color: '#1DB954', 'rotate(0deg)': 'rotate(90deg)' }}>
-                  </PushPinIcon>
-                </IconButton>
-
-                <IconButton onClick={() => handleNoteDelete(index)} sx={{ Size: '14px' }}>
-                  <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', fontSize: '14px', verticalAlign: 'middle' }}>
-                  </CloseIcon>
-                </IconButton>
-
-              </div>
-            ))}
-
-          </div>
-
-          <div className="Dashboard-Item" id="ToDo"> <span>
-            <NotesIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-            </NotesIcon> Goal Tracker </span>
-            <span className="GoalText">
-              Enter below a goal to track.
-              The global progress bar will fill up when you tick off items in the list.
-              When you get to 100%, you've accomplished all your goals! </span>
-
-            <div className="ringProgress">
-              <RingProgress
-                size='250'
-                thickness='15'
-                sections={[{ value, color: '#1DB954' }]}
-                transitionDuration={250}
-                label={<Text ta="center"
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100%',
-                    fontSize: '30px',
-                  }}>
-                  {value}%</Text>}
-
-              />
-            </div>
-
-            <div className="Controls">
-              <div className="Notes-input">
-                <input id="Input" type="text" placeholder="Add a goal to track">
-
-                </input>
-              </div>
-
-              <div id="Notes-Buttons">
-                <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
-
-              </div>
-            </div>
-          </div>
-
-          <div className="Dashboard-Item" id="Calender"> <span>
-            <CalendarMonthIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-            </CalendarMonthIcon> Calendar <Calendar
-              styles={{
-                calendarBase: {
-                  width: '100%',
-                  maxWidth: '600px',
-                  margin: '0 auto',
-                  padding: '10px'
-                },
-                day: {
-                  borderRadius: '50%',
-                  width: '40px',
-                  height: '40px',
-                },
-              }} />
-
-            <div className="Controls">
-              <input id="Events-Input" type="text" placeholder="Add a note to event" /> <br></br>
-            </div>
-
-            <span> Pick a Date </span>
-            <DatePicker />
-            <span> Choose a Time </span> </span>
-            <TimeInput styles={{
-              maxWidth: '500px'
-            }} />
-            <button className="calenderButton" type='button'> Add Event To Calender <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle' }} /> </button>
-
-          </div>
-        </div>
-
-        <div className="Dashboard-Bottom">
-          <div className="Dashboard-Item" id="Habit-Tracker"> <span>
-            <CalendarMonthIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-            </CalendarMonthIcon> Habit Tracker </span> </div>
-
-          <div className="Dashboard-Item" id="Calorie-Tracker"> <span>
-            <CalendarMonthIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-            </CalendarMonthIcon> Calorie Tracker </span> </div>
+            </PushPinIcon> Pinboard </span>
+          <Text className="Note"> Placeholder Text</Text>
 
         </div>
+
+        <div className="Dashboard-Item" id="Upcoming-Events">
+          <span>
+            <CalendarMonthIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+            </CalendarMonthIcon>Upcoming Events </span>
+
+          <Text className="Note"> Placeholder Text</Text>
+        </div>
+
+        <div className="Dashboard-Item" id="Weather">
+          <span>
+            <CloudQueueIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+            </CloudQueueIcon> Weather </span>
+
+          {/* <WeatherWidget /> */}
+
+        </div>
+      </div>
+
+
+      <div className="Dashboard-Bottom">
+        <div className="Dashboard-Item" id="Habit-Tracker"> <span>
+          <CalendarMonthIcon
+            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+          </CalendarMonthIcon> Habit Tracker </span> </div>
+
+        <div className="Dashboard-Item" id="Calorie-Tracker"> <span>
+          <CalendarMonthIcon
+            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+          </CalendarMonthIcon> Calorie Tracker </span> </div>
 
       </div>
-    </div >
+
+    </div>
   );
 }
+
 
 function Footer() {
 
@@ -772,8 +369,11 @@ function App() {
           {loggedIn ? (
 
             <>
+
               <Navigation theme={theme} toggleTheme={toggleTheme} setLoggedIn={setLoggedIn} />
-              <Dashboard setLoggedIn={setLoggedIn} />
+              <MainWrapper>
+
+              </MainWrapper>
               <Footer />
 
             </>
