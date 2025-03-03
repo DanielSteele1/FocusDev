@@ -57,11 +57,46 @@ import Tooltip from '@mui/material/Tooltip';
 
 function Profile() {
 
-    return (
-      <div className="Profile">
-        <span> Profile </span>
+  return (
+    <div className="Dashboard-container">
+
+      <div className="Profile-Item">
+        <div className="Profile">
+          <div className="Profile-header">
+
+            <div className="header-left">
+              <div className="Profile-title">
+                <PersonIcon sx={{ fontSize: '40px', display: 'flex', margin: '5px' }} />
+                <span>Your Profile  </span>
+              </div>
+              <div className="Profile-desc">
+                <span> This is your profile. Here you can add a photo,
+                  log out, change your password or delete your account. </span>
+              </div>
+            </div>
+
+            <div className="header-right">
+              <div className="Profile-img">
+                <img src="/cool_ass_brook.png"
+                  alt="profile avatar" />
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
-    );
-  }
-  
-  export default Profile;
+
+      <div className="Profile-Item">
+        <div className="Profile-operations">
+          <button className="delete-account"> 
+            <span> Delete Account </span>
+          </button>
+        </div>
+
+      </div>
+
+    </div >
+  );
+}
+
+export default Profile;

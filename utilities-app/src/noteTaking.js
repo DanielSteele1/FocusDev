@@ -3,7 +3,6 @@ import React, { useEffect, useRef, createContext, OnSubmit } from "react";
 import { useState } from "react";
 
 //import WeatherWidget from './Weather';
-import Accounts from './accounts';
 
 import NotesIcon from '@mui/icons-material/Notes';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
@@ -55,7 +54,7 @@ import { Notes } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
 
 function NoteTaking() {
-    
+
     const [notes, setNotes] = useState([]);
     const [inputValue, setInputValue] = useState('');
 
@@ -86,49 +85,51 @@ function NoteTaking() {
     };
 
     return (
-        <div className="NoteTaking">
-            <div className="Dashboard-Item" id="Notes">
-                <span>
-                    <NotesIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}> </NotesIcon>
-                    Notes
-                </span>
-                <span> Add a note (Max 150 characters) </span> <br></br>
-                <div className="Controls">
-                    <div className="Notes-input">
-                        <input id="Input"
-                            maxLength="500"
-                            type="text"
-                            placeholder="Add a note"
-                            onChange={handleInputChange}
-                            value={inputValue}>
+        <div className="NoteTaking-container">
+            <div className="NoteTaking">
+                <div className="Dashboard-Item" id="Notes">
+                    <span>
+                        <NotesIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}> </NotesIcon>
+                        Notes
+                    </span>
+                    <span> Add a note (Max 150 characters) </span> <br></br>
+                    <div className="Controls">
+                        <div className="Notes-input">
+                            <textarea id="Input"
+                                contenteditable="true"
+                                maxLength="500"
+                                type="text"
+                                placeholder="Add a note"
+                                onChange={handleInputChange}
+                                value={inputValue}>
+                            </textarea>
+                        </div>
 
-                        </input>
+                        <div id="Notes-Buttons">
+                            <IconButton onClick={handleAddNote}> <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
+                        </div>
                     </div>
 
-                    <div id="Notes-Buttons">
-                        <IconButton onClick={handleAddNote}> <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
-                    </div>
+                    {/* Notes container */}
+
+                    {notes.map((note, index) => (
+                        <div key={index} className="Notes-Content">
+                            <div className="Note">{note}</div>
+
+                            <IconButton>
+                                <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle', color: '#1DB954', 'rotate(0deg)': 'rotate(90deg)' }}>
+                                </PushPinIcon>
+                            </IconButton>
+
+                            <IconButton onClick={() => handleNoteDelete(index)} sx={{ Size: '14px' }}>
+                                <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', fontSize: '14px', verticalAlign: 'middle' }}>
+                                </CloseIcon>
+                            </IconButton>
+
+                        </div>
+                    ))}
+
                 </div>
-
-                {/* Notes container */}
-
-                {notes.map((note, index) => (
-                    <div key={index} className="Notes-Content">
-                        <div className="Note">{note}</div>
-
-                        <IconButton>
-                            <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle', color: '#1DB954', 'rotate(0deg)': 'rotate(90deg)' }}>
-                            </PushPinIcon>
-                        </IconButton>
-
-                        <IconButton onClick={() => handleNoteDelete(index)} sx={{ Size: '14px' }}>
-                            <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', fontSize: '14px', verticalAlign: 'middle' }}>
-                            </CloseIcon>
-                        </IconButton>
-
-                    </div>
-                ))}
-
             </div>
         </div>
     );

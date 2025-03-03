@@ -6,7 +6,7 @@ body {
 }
 
 .App.light {
-  background-color: #a3daa1;
+  background-color: #f0f9f0;
   color: black;
 }
 
@@ -14,7 +14,6 @@ body {
   background-color: #000000;
   color: white;
 }
-
 
 #emoji {
   unicode-bidi: isolate;
@@ -43,10 +42,10 @@ body {
 
 form {
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 a {
@@ -76,8 +75,10 @@ a:hover {
 }
 
 .App.light .Navigation,
-.App.light .Sidebar{
-  background-color: #77d474;
+.App.light .sidebar,
+.App.light .sidebar-item,
+.App.light .Footer {
+  background-color: #e8f5e8;
   color: #0f1011;
 }
 
@@ -90,8 +91,9 @@ a:hover {
 }
 
 .App.light .Dashboard-Item {
-  background-color: #4c744a;
+  background-color: #c6cec6;
   color: #1DB954;
+  border: 1px solid #1DB954;
 }
 
 .App.light #stat,
@@ -105,14 +107,11 @@ a:hover {
   color: #1DB954;
 }
 
-
-
 .App.dark #Input,
 .App.dark #Events-Input,
 .App.dark #URLInput,
 .App.dark .Github-Stats-Input input,
-.App.dark .LocationInput
-{
+.App.dark .LocationInput {
 
   background-color: #292e2e;
   color: #1DB954;
@@ -140,10 +139,11 @@ a:hover {
 
 .App.dark .Note {
   background-color: #121212;
-  color: #1DB954;
+  color: #858d85;
 }
 
-.App.dark .Navigation {
+.App.dark .Navigation,
+.App.dark .Footer {
 
   background-color: #141414;
   color: #1DB954;
@@ -160,8 +160,8 @@ a:hover {
 
 .themeButton {
   display: flex;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   justify-content: center;
   align-items: center;
   color: #1DB954;
@@ -209,7 +209,7 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 75px;
+  height: 60px;
   color: #1DB954;
   justify-content: flex-start;
   align-items: center;
@@ -249,18 +249,89 @@ body {
 
 .Navigation-Name {
   padding: 10px;
-  font-size: 25px;
+  font-size: 20px;
   font-family: 'Lexicand-Deca', sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   color: #1DB954;
   width: 250px;
   justify-content: center;
   align-items: center;
 }
 
+.Profile {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Profile-Item {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  margin: 10px;
+  height: fit-content;
+  border-radius: 10px;
+  background-color: #121212;
+
+}
+
+.Profile-header {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  margin: 10px;
+  height: 12rem;
+
+}
+
+.Profile-title {
+
+  font-size: 30px;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #1DB954;
+  font-family: 'Lexicand-Deca', sans-serif;
+}
+
+.Profile-desc {
+
+  font-size: 17px;
+  padding: 10px;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #858d85;
+  font-family: 'Lexicand-Deca', sans-serif;
+  font-weight: 400;
+}
+
+.Profile-img img{
+
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  color: #000000;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-left:10rem;
+  border: 5px solid #1DB954;;
+}
+
 .sidebar {
 
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: center;
@@ -269,7 +340,6 @@ body {
   background-color: #141414;
   position: sticky;
   border-right: 1px solid #3d423d;
-  color: #1DB954;
 
 }
 
@@ -277,13 +347,23 @@ body {
 
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
+  width: 160px;
   margin: 10px;
-  padding: 10px;
+  padding: 5px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 500;
+  color: #858d85;
+  transition: all 0.1s ease;
+
 }
 
-#SidebarDeveloper, #SidebarProfile, #SidebarNote, #SidebarProductivity, #SidebarHide {
+#SidebarDeveloper,
+#SidebarProfile,
+#SidebarNote,
+#SidebarProductivity,
+#SidebarHide {
 
   display: flex;
   flex-direction: row;
@@ -297,71 +377,48 @@ body {
 
 }
 
-#SidebarDeveloper {
-
-  color:#f50950;
-}
-
-#SidebarProfile{
-  color: #60A5FA;
-}
-
-#SidebarNote{
-  color: #ffb923;
-}
-
-#SidebarProductivity {
-  color: #A855F7;
-}
-
-#SidebarHome {
-  color: #09f55b;
+#Sidebar-item span:hover {
+  border: 1px solid #17a34a;
 }
 
 #SidebarDeveloper:hover,
 #SidebarProfile:hover,
 #SidebarNote:hover,
-#SidebarProductivity:hover {
-  filter: brightness(1.0);
-  transition: filter 0.3s ease;
+#SidebarProductivity:hover,
+#SidebarHome:hover {
+  color: #1DB954;
+  background-color: rgba(29, 185, 84, 0.1);
+  border-left: 3px solid #1DB954;
 }
+
+.sidebar-item.active {
+
+  color: #1DB954;
+  border-left: 3px solid #1DB954;
+  background-color: rgba(29, 185, 84, 0.1);
+}
+
 
 .MainContent {
 
   display: flex;
   width: calc(100% - 200px);
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
 
 }
 
 .Dashboard-container {
 
-  flex:1;
+  flex: 1;
   flex-direction: column;
-  padding: 20px;
   margin: 0 auto;
   align-items: center;
   justify-content: center;
   display: flex;
 
 }
-.Productivity-container {
-
-  flex:1;
-  flex-direction: column;
-  padding: 20px;
-  align-items: flex-start;
-  justify-content: center;
-  display: flex;
-}
-
-
-
-
-
-
-
 
 .LocationInput {
 
@@ -370,17 +427,17 @@ body {
   color: #09f55b;
   border-radius: 10px;
   border: 2px solid #3d423d;
-  height: 45px;
+  height: 40px;
   width: fit-content;
   padding: 10px;
-  margin: 10px;
-
+  font-size: 15px;
+  max-width: 300px;
 }
 
 .LocationSearch {
   display: flex;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   justify-content: center;
   align-items: center;
   color: #1DB954;
@@ -396,7 +453,7 @@ body {
 
 .AccountsButton {
   display: flex;
-  height: 45px;
+  height: 40px;
   width: fit-content;
   justify-content: center;
   align-items: center;
@@ -404,7 +461,7 @@ body {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
   padding: 10px;
   font-family: 'Lexicand-Deca', sans-serif;
   font-weight: 400;
@@ -450,15 +507,18 @@ body {
 
 .Dashboard {
   width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 3fr));
+  gap: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+
 }
 
 .Dashboard-Item {
   display: flex;
-  width: fit-content;
+  width: 100%;
   height: 100%;
   flex-direction: column;
   margin: 10px;
@@ -473,19 +533,13 @@ body {
 #Notes,
 #ToDo {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  display: flex;
   width: fit-content;
-  min-width: 40%;
-  max-width: 80%;
-  height: fit-content;
   overflow: hidden;
   flex-direction: column;
-  color: #1DB954;
   overflow: hidden;
   white-space: wrap;
   word-wrap: break-word;
+  color: #858d85;
   font-size: 15px;
   font-family: 'Lexicand-Deca', sans-serif;
   font-weight: 400;
@@ -516,7 +570,6 @@ body {
 #todo-Button {
 
   display: flex;
-  width: fit-content;
   margin-top: 10px;
   background-color: #1DB954;
   border-radius: 10px;
@@ -559,11 +612,10 @@ body {
 .Welcome {
 
   display: flex;
-  height: 350px;
+  height: fit-content;
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  margin-top:50px;
   justify-content: center;
   color: #1DB954;
   font-size: 30px;
@@ -578,7 +630,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #1DB954;
+  color: #858d85;
   padding: 10px;
   margin: 10px;
   font-family: 'Poppins', sans-serif;
@@ -597,6 +649,7 @@ body {
 
 #Input,
 #URLInput,
+#LinkNameInput,
 #EventsInput,
 #LocationInput,
 #GoalInput,
@@ -617,12 +670,18 @@ body {
 
 #Input {
 
-  min-width: 400px;
+  width: 800px;
+  max-width: 800px;
+  min-height: 50px;
+  max-height: 200px;
+  display: flex;
+  align-items: center;
+
 }
 
 .GoalText {
 
-  display:flex;
+  display: flex;
   width: 600px;
   height: fit-content;
   margin: 10px;
@@ -632,6 +691,22 @@ body {
   font-family: 'Lexicand-Deca', sans-serif;
   font-weight: 400;
 
+}
+
+
+.NoteTaking {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+.NoteTaking-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .Notes-Content {
@@ -648,20 +723,15 @@ body {
 .Note {
 
   display: flex;
-  justify-content: flex-start;
-  height: 100%;
-  width: fit-content;
-  max-width: fit-content;
   padding: 10px;
   margin: 10px;
   font-size: 15px;
-  color: black;
   font-family: 'Lexicand-Deca', sans-serif;
   overflow-wrap: break-word;
   white-space: normal;
   word-wrap: break-word;
   word-break: break-all;
-  border-left:#09f55b 1px solid;
+  border-left: #09f55b 1px solid;
 
 }
 
@@ -706,16 +776,13 @@ body {
   justify-content: center;
   align-items: center;
   margin: 10px;
-  padding: 10px;
   border-radius: 10px;
-  color: #1DB954;
+  color: #858d85;
   font-weight: 400;
   font-size: large;
-
-
 }
 
-.Github-Stats-Input input{
+.Github-Stats-Input input {
 
   display: flex;
   border: 0px solid;
@@ -728,9 +795,9 @@ body {
   font-weight: 400;
 }
 
-.SubmitGithubName{
+.SubmitGithubName {
 
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   background-color: #1DB954;
@@ -741,7 +808,7 @@ body {
   font-family: 'Lexicand-Deca', sans-serif;
   font-weight: 500;
   font-size: 18px;
-  color:#000000;
+  color: #000000;
 }
 
 .SubmitGithubName:hover {
@@ -788,35 +855,21 @@ body {
 
 }
 
-.Dashboard-Top,
-.Dashboard-Mid,
-.Dashboard-Bottom {
-  display: flex;
-  margin-top: 10px;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: row;
-  border: 1px #09f55b;
-  height: fit-content;
-  width: 100%;
-}
-
 #Useful-Links,
 #Weather,
 #Upcoming-Events,
 #Pinboard {
   display: flex;
   flex-direction: column;
-  width: fit-content;
-  height: fit-content;
+  padding: 10px;
+  margin: 10px;
   color: #1DB954;
 }
 
 .Footer {
   display: flex;
   flex-direction: row;
-  background-color: #141414;
-  border-top:#3d423d 1px solid;
+  border-top: #3d423d 1px solid;
   color: #1DB954;
   height: fit-content;
   width: 100%;

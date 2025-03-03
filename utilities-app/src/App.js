@@ -1,7 +1,6 @@
 
 import './App.css';
-import React, { useEffect, useRef, createContext, OnSubmit } from "react";
-import { useState } from "react";
+import React, { useEffect, useState, useRef, createContext, OnSubmit } from "react";
 
 //import WeatherWidget from './Weather';
 import Accounts from './accounts';
@@ -136,7 +135,7 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
         </TrendingUpIcon> </div>
       <div className="Navigation-Name"> <span> FocusDev </span> </div>
       <div className="Navigation-Item">
-        <input className="LocationInput" type="text" placeholder="Enter your location" />
+        <input className="LocationInput" contenteditable="true" type="text" placeholder="Enter your location" />
       </div>
 
       <div className="Navigation-Item">
@@ -188,35 +187,44 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
 
 function Sidebar({ onTabChange }) {
 
+  const [activeItem, setActiveItem] = useState('dashboard');
+
+  const handleClick = (tabName) => {
+
+    setActiveItem(tabName);
+    onTabChange(tabName);
+
+  }
+
   return (
     <div className="sidebar">
 
       <div className="sidebar-item" id="SidebarHide">
         <ArrowBackIosRoundedIcon />
-        <span> Hide Sidebar </span>
+        <span> Hide </span>
       </div>
 
-      <div className="sidebar-item" id="SidebarHome" onClick={() => onTabChange("dashboard")}>
+      <div className={`sidebar-item ${activeItem === 'dashboard' ? 'active' : ''}`} id="SidebarHome" onClick={() => handleClick("dashboard")}>
         <HomeRoundedIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
         <span>Home</span>
       </div>
 
-      <div className="sidebar-item" id="SidebarProfile" onClick={() => onTabChange("profile")}>
+      <div className={`sidebar-item ${activeItem === 'profile' ? 'active' : ''}`} id="SidebarProfile" onClick={() => handleClick("profile")}>
         <PersonIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
         <span>Profile</span>
       </div>
 
-      <div className="sidebar-item" id="SidebarProductivity" onClick={() => onTabChange("productivity")}>
+      <div className={`sidebar-item ${activeItem === 'productivity' ? 'active' : ''}`} id="SidebarProductivity" onClick={() => handleClick("productivity")}>
         <EqualizerOutlinedIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
         <span>Productivity</span>
       </div>
 
-      <div className="sidebar-item" id="SidebarDeveloper" onClick={() => onTabChange("developer")}>
+      <div className={`sidebar-item ${activeItem === 'developer' ? 'active' : ''}`} id="SidebarDeveloper" onClick={() => handleClick("developer")}>
         <CodeIcon sx={{ display: 'flex', fontSize: '30px', alignItems: 'center' }} />
         <span>Developer</span>
       </div>
 
-      <div className="sidebar-item" id="SidebarNote" onClick={() => onTabChange("noteTaking")}>
+      <div className={`sidebar-item ${activeItem === 'noteTaking' ? 'active' : ''}`} id="SidebarNote" onClick={() => handleClick("noteTaking")}>
         <DescriptionIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
         <span>Note taking</span>
       </div>
@@ -277,17 +285,18 @@ function Dashboard() {
 
   return (
     <div className="Dashboard-container">
-      <div className="Dashboard">
-        <div className="Welcome">
+      <div className="Welcome">
 
-          <span> <span id="emoji">👋</span>  Welcome back! </span>
+        <span> <span id="emoji">👋</span>  Welcome back! </span>
 
-          <div id="QOTD"> ~ Quote of the Day ~ </div>
+        <div id="QOTD"> ~ Quote of the Day ~ </div>
 
-          <div className="QOTD">
-            <span>  {QOTDData ? `"${QOTDData.q}" - ${QOTDData.a}` : <Box sx={{ display: 'flex', padding: '10px' }}> <CircularProgress color="inherit" /> </Box>} </span>
-          </div>
+        <div className="QOTD">
+          <span>  {QOTDData ? `"${QOTDData.q}" - ${QOTDData.a}` : <Box sx={{ display: 'flex', padding: '10px' }}> <CircularProgress color="inherit" /> </Box>} </span>
         </div>
+      </div>
+      <div className="Dashboard">
+
 
         <div className="Dashboard-Item" id="Pinboard">
           <span>

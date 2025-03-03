@@ -48,250 +48,251 @@ function Developer() {
 
     const calRef = useRef(null);
     useEffect(() => {
-  
-      if (!calRef.current) {
-        const cal = new CalHeatmap();
-  
-        var data = [
-  
-          { "date": "2025-01-01", "value": 30 },
-          { "date": "2025-01-02", "value": 2 },
-          { "date": "2025-01-03", "value": 10 },
-          { "date": "2025-01-04", "value": 10 },
-          { "date": "2025-01-05", "value": 1 },
-          { "date": "2025-01-06", "value": 10 },
-          { "date": "2025-01-07", "value": 7 },
-          { "date": "2025-01-08", "value": 25 },
-          { "date": "2025-01-09", "value": 4 },
-          { "date": "2025-01-10", "value": 11 },
-          { "date": "2025-01-11", "value": 1 },
-          { "date": "2025-01-12", "value": 5 },
-          { "date": "2025-01-13", "value": 5 },
-          { "date": "2025-01-14", "value": 1 },
-          { "date": "2025-01-15", "value": 30 },
-          { "date": "2025-01-16", "value": 16 },
-          { "date": "2025-01-17", "value": 10 },
-          { "date": "2025-01-18", "value": 1 },
-          { "date": "2025-01-19", "value": 12 },
-          { "date": "2025-01-20", "value": 1 },
-          { "date": "2025-01-21", "value": 15 },
-          { "date": "2025-01-22", "value": 14 },
-          { "date": "2025-01-23", "value": 11 },
-          { "date": "2025-01-24", "value": 12 },
-          { "date": "2025-01-25", "value": 1 },
-          { "date": "2025-01-26", "value": 30 },
-  
-          { "date": "2025-01-27", "value": 26 },
-          { "date": "2025-01-28", "value": 26 },
-  
-        ];
-  
-        // graph updates
-  
-        const endDate = new Date();
-        const startDate = new Date(endDate.getFullYear(), 0, 1);
-  
-        startDate.setFullYear(endDate.getFullYear());
-        startDate.setDate(startDate.getDate());
-  
-        console.log(startDate);
-  
-        cal.paint({
-          itemSelector: "#cal-heatmap",
-          domain: {
-            type: 'year',
-            padding: [0, 0, 0, 0],
-            gutter: 0,
-            label: {
-              position: 'top',
-            },
-          },
-          range: 1,
-  
-          date: {
-            start: startDate,
-            min: startDate,
-            max: endDate,
-            //  start: startYear,
-            //  min: startYear,
-            //  max: endYear,
-  
-            timezone: 'GMT'
-          },
-  
-          subDomain: {
-            type: 'day',
-            width: 15,
-            height: 15,
-            padding: [0, 0, 0, 0],
-            margin: [5, 5, 5, 5],
-            gutter: 3,
-            radius: 3.5,
-  
-          },
-  
-          scale: {
-            color: {
-              range: ['#302f2f', '#0BDA51'],
-              type: 'linear',
-              domain: [0, 5, 10, 20, 30],
-  
-            },
-          },
-  
-          data: {
-            source: data,
-            type: 'json',
-            x: 'date',
-            y: 'value'
-          },
-  
-        });
-  
-        calRef.current = cal;
-        console.log("Sample Data:", data);
-  
-        cal.paint({}, [[
-  
-          Legend,
-          {
-            label: 'Commit Frequency: 0 - 30+, grey squares indicate 0 commits, white squares indicate ',
-            width: '600',
-            height: '60',
-  
-          },
-  
-        ]]);
-      }
-  
+
+        if (!calRef.current) {
+            const cal = new CalHeatmap();
+
+            var data = [
+
+                { "date": "2025-01-01", "value": 30 },
+                { "date": "2025-01-02", "value": 2 },
+                { "date": "2025-01-03", "value": 10 },
+                { "date": "2025-01-04", "value": 10 },
+                { "date": "2025-01-05", "value": 1 },
+                { "date": "2025-01-06", "value": 10 },
+                { "date": "2025-01-07", "value": 7 },
+                { "date": "2025-01-08", "value": 25 },
+                { "date": "2025-01-09", "value": 4 },
+                { "date": "2025-01-10", "value": 11 },
+                { "date": "2025-01-11", "value": 1 },
+                { "date": "2025-01-12", "value": 5 },
+                { "date": "2025-01-13", "value": 5 },
+                { "date": "2025-01-14", "value": 1 },
+                { "date": "2025-01-15", "value": 30 },
+                { "date": "2025-01-16", "value": 16 },
+                { "date": "2025-01-17", "value": 10 },
+                { "date": "2025-01-18", "value": 1 },
+                { "date": "2025-01-19", "value": 12 },
+                { "date": "2025-01-20", "value": 1 },
+                { "date": "2025-01-21", "value": 15 },
+                { "date": "2025-01-22", "value": 14 },
+                { "date": "2025-01-23", "value": 11 },
+                { "date": "2025-01-24", "value": 12 },
+                { "date": "2025-01-25", "value": 1 },
+                { "date": "2025-01-26", "value": 30 },
+
+                { "date": "2025-01-27", "value": 26 },
+                { "date": "2025-01-28", "value": 26 },
+
+            ];
+
+            // graph updates
+
+            const endDate = new Date();
+            const startDate = new Date(endDate.getFullYear(), 0, 1);
+
+            startDate.setFullYear(endDate.getFullYear());
+            startDate.setDate(startDate.getDate());
+
+            console.log(startDate);
+
+            cal.paint({
+                itemSelector: "#cal-heatmap",
+                domain: {
+                    type: 'year',
+                    padding: [0, 0, 0, 0],
+                    gutter: 0,
+                    label: {
+                        position: 'top',
+                    },
+                },
+                range: 1,
+
+                date: {
+                    start: startDate,
+                    min: startDate,
+                    max: endDate,
+                    //  start: startYear,
+                    //  min: startYear,
+                    //  max: endYear,
+
+                    timezone: 'GMT'
+                },
+
+                subDomain: {
+                    type: 'day',
+                    width: 15,
+                    height: 15,
+                    padding: [0, 0, 0, 0],
+                    margin: [5, 5, 5, 5],
+                    gutter: 3,
+                    radius: 3.5,
+
+                },
+
+                scale: {
+                    color: {
+                        range: ['#302f2f', '#0BDA51'],
+                        type: 'linear',
+                        domain: [0, 5, 10, 20, 30],
+
+                    },
+                },
+
+                data: {
+                    source: data,
+                    type: 'json',
+                    x: 'date',
+                    y: 'value'
+                },
+
+            });
+
+            calRef.current = cal;
+            console.log("Sample Data:", data);
+
+            cal.paint({}, [[
+
+                Legend,
+                {
+                    label: 'Commit Frequency: 0 - 30+, grey squares indicate 0 commits, white squares indicate ',
+                    width: '600',
+                    height: '60',
+
+                },
+
+            ]]);
+        }
+
     }, []);
- 
+
     const [githubData, setGithubData] = useState(null);
-  
+
     //github API Frontend
-  
+
     const fetchGithub = async () => {
-      const api_url = '/api/githubApiConn';
-  
-      try {
-        const response = await fetch(api_url);
-        const repos = await response.json();
-        console.log(repos);
-  
-        // works out total forks by iterating over each repo, and adding up the forks_count field to a total sum. 
-        const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
-        // sorts data array in descending order based on pushed_at field.
-        const latestProject = repos.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))[0];
-  
-        setGithubData({
-          repos,
-          totalForks,
-          latestProject,
-        });
-  
-      } catch (error) {
-        console.error('Error fetching Github Data:', error);
-      }
+        const api_url = '/api/githubApiConn';
+
+        try {
+            const response = await fetch(api_url);
+            const repos = await response.json();
+            console.log(repos);
+
+            // works out total forks by iterating over each repo, and adding up the forks_count field to a total sum. 
+            const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
+            // sorts data array in descending order based on pushed_at field.
+            const latestProject = repos.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))[0];
+
+            setGithubData({
+                repos,
+                totalForks,
+                latestProject,
+            });
+
+        } catch (error) {
+            console.error('Error fetching Github Data:', error);
+        }
     };
-  
+
     const handleGithubSubmit = async (e) => {
-      e.preventDefault();
-      await fetchUsername();
-      await fetchGithub();
+        e.preventDefault();
+        await fetchUsername();
+        await fetchGithub();
     }
-  
+
     const handleUsername = async (e) => {
-      await setUsernameInput(e.target.value);
+        await setUsernameInput(e.target.value);
     }
-  
+
     const [usernameInput, setUsernameInput] = useState('');
-  
+
     const fetchUsername = async () => {
-  
-      try {
-        const response = await fetch('/api/githubUsername', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username: usernameInput }),
-        });
-        const result = await response.json();
-        console.log(result);
-      }
-      catch (error) {
-        console.error('Error fetching Github Data:', error);
-      }
+
+        try {
+            const response = await fetch('/api/githubUsername', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: usernameInput }),
+            });
+            const result = await response.json();
+            console.log(result);
+        }
+        catch (error) {
+            console.error('Error fetching Github Data:', error);
+        }
     };
-  
+
     return (
-      <div className="Developer">
-        <div className="Dashboard-Item">
-  
-          <span className="github-title">
-            <GithubIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '10px' }}>
-            </GithubIcon>
-            <br></br>
-            <span>Github Commit Graph </span>
-          </span>
-  
-          <div className="Github-Stats-Input">
-            <form onSubmit={handleGithubSubmit}>
-              <span> Please enter your github account name in order to track these stats. </span>
-  
-              <input type="text"
-                placeholder="Enter your account name"
-                value={usernameInput}
-                onChange={handleUsername}
-                required
-              />
-  
-              <button className="SubmitGithubName"> <GithubIcon> </GithubIcon> Login with Github  </button>
-            </form>
-          </div>
-  
-          <div className="github-stats">
-            <div id="stat">
-              <div id="commitNumber">
-  
-                <span id="statTitle"> <TimelineOutlinedIcon /> Contributions in the last Year </span>
-                {/* <span id="statNumber"> {githubData ? JSON.stringify(githubDa) : "000"} Commits </span> */}
-  
-              </div>
+        <div className="Developer-container">
+            <div className="Developer">
+                <div className="Dashboard-Item">
+
+                    <span className="github-title">
+                        <GithubIcon
+                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '10px' }}>
+                        </GithubIcon>
+                        <br></br>
+                        <span>Github Commit Graph </span>
+                    </span>
+
+                    <div className="Github-Stats-Input">
+                        <form onSubmit={handleGithubSubmit}>
+                            <span> Please enter your github account name in order to track these stats. </span>
+
+                            <input type="text"
+                                placeholder="Enter your account name"
+                                value={usernameInput}
+                                onChange={handleUsername}
+                                required
+                            />
+
+                            <button className="SubmitGithubName"> <GithubIcon> </GithubIcon> Login with Github  </button>
+                        </form>
+                    </div>
+
+                    <div className="github-stats">
+                        <div id="stat">
+                            <div id="commitNumber">
+
+                                <span id="statTitle"> <TimelineOutlinedIcon /> Contributions in the last Year </span>
+                                {/* <span id="statNumber"> {githubData ? JSON.stringify(githubDa) : "000"} Commits </span> */}
+
+                            </div>
+                        </div>
+
+                        <div id="stat">
+                            <div id="fork">
+
+                                <span id="statTitle"> <CallSplitIcon /> Total Forks </span>
+                                <span id="statNumber"> {githubData ? JSON.stringify(githubData.totalForks) : "000"} Forks</span>
+
+                            </div>
+                        </div>
+
+                        <div id="stat">
+                            <div id="LastEditedProject">
+
+                                <span id="statTitle"> <EqualizerOutlinedIcon /> Latest edited project </span>
+                                <span id="statNumber">{githubData?.latestProject?.name || "Loading..."} </span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <span className="github-title">
+                        <GithubIcon
+                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '10px' }}>
+                        </GithubIcon>
+                        <br></br>
+                        <span>Github Commit Graph </span>
+                    </span>
+
+                    <div id="cal-heatmap"> </div>
+
+                </div>
             </div>
-  
-            <div id="stat">
-              <div id="fork">
-  
-                <span id="statTitle"> <CallSplitIcon /> Total Forks </span>
-                <span id="statNumber"> {githubData ? JSON.stringify(githubData.totalForks) : "000"} Forks</span>
-  
-              </div>
-            </div>
-  
-            <div id="stat">
-              <div id="LastEditedProject">
-  
-                <span id="statTitle"> <EqualizerOutlinedIcon /> Latest edited project </span>
-                <span id="statNumber">{githubData?.latestProject?.name || "Loading..."} </span>
-  
-              </div>
-            </div>
-          </div>
-  
-          <span className="github-title">
-            <GithubIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '10px' }}>
-            </GithubIcon>
-            <br></br>
-            <span>Github Commit Graph </span>
-          </span>
-  
-          <div id="cal-heatmap"> </div>
-  
         </div>
-      </div>
     );
-  
-  }
+}
 
 export default Developer;
