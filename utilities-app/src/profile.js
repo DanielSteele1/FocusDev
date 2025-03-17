@@ -1,4 +1,5 @@
 import './App.css';
+import './accounts.css';
 import React, { useEffect, useRef, createContext, OnSubmit } from "react";
 import { useState } from "react";
 
@@ -9,7 +10,7 @@ import NotesIcon from '@mui/icons-material/Notes';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import LogoutIcon from '@mui/icons-material/Logout';
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
-import PushPinIcon from '@mui/icons-material/PushPin';
+import PushPinOutlineIcon from '@mui/icons-material/PushPinOutlined';
 import AddLinkIcon from '@mui/icons-material/AddLink';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import GithubIcon from '@mui/icons-material/GitHub';
@@ -88,8 +89,17 @@ function Profile() {
 
       <div className="Profile-Item">
         <div className="Profile-operations">
-          <button className="delete-account"> 
-            <span> Delete Account </span>
+
+        <span> Log out of your account. </span>
+
+          <button className="AccountsButton">
+            <p1> Log out </p1>
+          </button>
+
+          <span> Are you sure you want to delete your account? this action cannot be undone. </span>
+
+          <button className="delete-account">
+            <p1> Delete Account </p1>
           </button>
         </div>
 

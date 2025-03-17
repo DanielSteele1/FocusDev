@@ -8,7 +8,6 @@ import Box from '@mui/material/Box';
 import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
-
 function Accounts({setLoggedIn}) {
 
     const [signUpEmail, setSignUpEmail] = useState('');

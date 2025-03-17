@@ -121,10 +121,10 @@ function Developer() {
 
                 subDomain: {
                     type: 'day',
-                    width: 15,
-                    height: 15,
+                    width: 13,
+                    height: 13,
                     padding: [0, 0, 0, 0],
-                    margin: [5, 5, 5, 5],
+                    margin: [3, 3, 3, 3],
                     gutter: 3,
                     radius: 3.5,
 
@@ -155,7 +155,7 @@ function Developer() {
 
                 Legend,
                 {
-                    label: 'Commit Frequency: 0 - 30+, grey squares indicate 0 commits, white squares indicate ',
+                    label: 'Commit Frequency: 0 - 30+, grey squares indicate 0 commits, white squares indicate 0 commits or data thats yet to be recorded.',
                     width: '600',
                     height: '60',
 
@@ -225,15 +225,8 @@ function Developer() {
     return (
         <div className="Developer-container">
             <div className="Developer">
-                <div className="Dashboard-Item">
 
-                    <span className="github-title">
-                        <GithubIcon
-                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '10px' }}>
-                        </GithubIcon>
-                        <br></br>
-                        <span>Github Commit Graph </span>
-                    </span>
+                <div className="Developer-Item" id="github-login">
 
                     <div className="Github-Stats-Input">
                         <form onSubmit={handleGithubSubmit}>
@@ -246,16 +239,27 @@ function Developer() {
                                 required
                             />
 
-                            <button className="SubmitGithubName"> <GithubIcon> </GithubIcon> Login with Github  </button>
+                            <button className="SubmitGithubName"> <GithubIcon sx={{ display: 'flex', marginRight: '5px' }}> </GithubIcon> Connect with Github  </button>
                         </form>
                     </div>
+                </div>
+
+                <div className="Developer-Item">
+
+                    <span className="github-title">
+                        <GithubIcon
+                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '10px' }}>
+                        </GithubIcon>
+                        <br></br>
+                        <span> Your Github Stats </span>
+                    </span>
 
                     <div className="github-stats">
                         <div id="stat">
                             <div id="commitNumber">
 
-                                <span id="statTitle"> <TimelineOutlinedIcon /> Contributions in the last Year </span>
-                                {/* <span id="statNumber"> {githubData ? JSON.stringify(githubDa) : "000"} Commits </span> */}
+                                <span id="statTitle"> <TimelineOutlinedIcon sx={{ display: 'flex', marginRight: '5px' }} /> Contributions in the last Year </span>
+                                {<span id="statNumber"> {githubData ? JSON.stringify(githubData.contributions) : "000"} Commits </span>}
 
                             </div>
                         </div>
@@ -263,7 +267,7 @@ function Developer() {
                         <div id="stat">
                             <div id="fork">
 
-                                <span id="statTitle"> <CallSplitIcon /> Total Forks </span>
+                                <span id="statTitle"> <CallSplitIcon sx={{ display: 'flex', marginRight: '5px' }} /> Total Forks </span>
                                 <span id="statNumber"> {githubData ? JSON.stringify(githubData.totalForks) : "000"} Forks</span>
 
                             </div>
@@ -272,24 +276,27 @@ function Developer() {
                         <div id="stat">
                             <div id="LastEditedProject">
 
-                                <span id="statTitle"> <EqualizerOutlinedIcon /> Latest edited project </span>
-                                <span id="statNumber">{githubData?.latestProject?.name || "Loading..."} </span>
+                                <span id="statTitle"> <EqualizerOutlinedIcon sx={{ display: 'flex', marginRight: '5px' }} /> Latest edited project </span>
+                                <span id="statNumber">{githubData?.latestProject?.name || "Log in to see Data"} </span>
 
                             </div>
                         </div>
                     </div>
 
-                    <span className="github-title">
-                        <GithubIcon
-                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '10px' }}>
-                        </GithubIcon>
-                        <br></br>
-                        <span>Github Commit Graph </span>
-                    </span>
-
                     <div id="cal-heatmap"> </div>
 
                 </div>
+
+                <div className="Developer-Item" id="developer-notepad">
+                    <div className="notepad-controls"> 
+                        <span> HELLO WOLRD </span>
+
+
+                    </div>
+
+
+                </div>
+
             </div>
         </div>
     );

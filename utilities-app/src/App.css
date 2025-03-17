@@ -11,7 +11,7 @@ body {
 }
 
 .App.dark {
-  background-color: #000000;
+  background-color: #111111;
   color: white;
 }
 
@@ -56,23 +56,22 @@ a {
 }
 
 a:hover {
-
   transform: translateY(-3px);
   background-color: #17a34a;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
-.App.light .AccountsButton,
-.App.light .LocationSearch,
-.App.light .themeButton {
+.App.light .LocationSearch {
   background-color: #1DB954;
   color: #0f1011;
 }
 
-.App.light .GithubCommitGraph {
-  color: #0f1011;
+.App.dark .LocationSearch {
+  color: #1DB954;
+  background-color: #292e2e;
 }
+
 
 .App.light .Navigation,
 .App.light .sidebar,
@@ -109,6 +108,7 @@ a:hover {
 
 .App.dark #Input,
 .App.dark #Events-Input,
+.App.dark #LinkNameInput,
 .App.dark #URLInput,
 .App.dark .Github-Stats-Input input,
 .App.dark .LocationInput {
@@ -122,30 +122,28 @@ a:hover {
   font-weight: 400;
 }
 
-.App.dark .AccountsButton,
-.App.dark .LocationSearch,
-.App.dark .themeButton {
-
-  color: #000000;
-  background-color: #1DB954;
-  font-weight: 400;
-
+.App.dark .Dashboard-Item,
+.App.dark .NoteTaking-Item,
+.App.dark .Productivity-Item,
+.App.dark .Profile-Item,
+.App.dark #github-login {
+  background-color: #1e1e20;
+  border: 1px solid #2d2d2d;
+  color: #1DB954;
 }
 
-.App.dark .Dashboard-Item {
-  background-color: #121212;
+.App.dark .Developer-Item {
   color: #1DB954;
 }
 
 .App.dark .Note {
-  background-color: #121212;
   color: #858d85;
 }
 
 .App.dark .Navigation,
 .App.dark .Footer {
 
-  background-color: #141414;
+  background-color: #18181b;
   color: #1DB954;
 
 }
@@ -166,7 +164,7 @@ a:hover {
   align-items: center;
   color: #1DB954;
   border: none;
-  border-radius: 10px;
+  background-color: transparent;
   cursor: pointer;
 }
 
@@ -190,18 +188,16 @@ body {
   margin: 10px;
 }
 
-.time,
-.darkMode,
-.MuiSvgIcon-root {
-  margin-right: 10px;
-}
 
-.time,
-.darkMode {
+.time {
 
   display: flex;
-  padding: 10px;
   align-items: center;
+  border-right: 2px solid #1DB954;
+  padding-right: 20px;
+  display: flex;
+  height: fit-content;
+  width: fit-content;
 
 }
 
@@ -216,7 +212,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid #3d423d;
+  border-bottom: 1px solid #2d2d2d;
 
 }
 
@@ -250,7 +246,7 @@ body {
 .Navigation-Name {
   padding: 10px;
   font-size: 20px;
-  font-family: 'Lexicand-Deca', sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 500;
   color: #1DB954;
   width: 250px;
@@ -266,18 +262,6 @@ body {
   align-items: center;
 }
 
-.Profile-Item {
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
-  margin: 10px;
-  height: fit-content;
-  border-radius: 10px;
-  background-color: #121212;
-
-}
 
 .Profile-header {
 
@@ -299,7 +283,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   color: #1DB954;
-  font-family: 'Lexicand-Deca', sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
 }
 
 .Profile-desc {
@@ -310,7 +294,7 @@ body {
   justify-content: flex-start;
   align-items: center;
   color: #858d85;
-  font-family: 'Lexicand-Deca', sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
 }
 
@@ -329,6 +313,50 @@ body {
   border: 5px solid #1DB954;;
 }
 
+.Profile-operations {
+  display:flex;
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: flex-start;
+}
+
+.Profile-operations span {
+  margin: 10px;
+  color: #858d85;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+.delete-account {
+  display:flex;
+  width: fit-content;
+  margin: 10px;
+  padding: 10px;
+  background-color: transparent;
+  color: #c20404;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid  #c20404;
+}
+
+.Profile-operations button:hover {
+  background-color: #c20404;
+  color:#000000;
+}
+
+.Profile-operations .AccountsButton{
+  margin: 10px;
+}
+
 .sidebar {
 
   display: flex;
@@ -337,9 +365,9 @@ body {
   text-align: center;
   width: fit-content;
   min-height: calc(100vh - 75px);
-  background-color: #141414;
+  background-color: #18181b;
   position: sticky;
-  border-right: 1px solid #3d423d;
+  border-right: 1px solid #2d2d2d;
 
 }
 
@@ -349,35 +377,25 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: 160px;
-  margin: 10px;
-  padding: 5px;
+  width: 98%;
+  padding: 10px 16px;
+  margin: 10px 10px 5px 0px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 500;
-  color: #858d85;
-  transition: all 0.1s ease;
+  font-size: 14px;
+  color: #8c918c;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border-left: 1px solid transparent;
 
 }
 
-#SidebarDeveloper,
-#SidebarProfile,
-#SidebarNote,
-#SidebarProductivity,
-#SidebarHide {
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  font-family: 'Lexend Deca', sans-serif;
-  font-weight: 500;
-  font-size: 15px;
-  margin: 15px 10px 5px 10px;
-  text-align: center;
-
+.sidebarText {
+  margin-left: 10px;
 }
 
-#Sidebar-item span:hover {
+
+#sidebar-item span:hover {
   border: 1px solid #17a34a;
 }
 
@@ -398,7 +416,6 @@ body {
   background-color: rgba(29, 185, 84, 0.1);
 }
 
-
 .MainContent {
 
   display: flex;
@@ -406,12 +423,14 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   padding: 20px;
+  box-sizing: border-box;
 
 }
 
 .Dashboard-container {
 
   flex: 1;
+  width: 100%;
   flex-direction: column;
   margin: 0 auto;
   align-items: center;
@@ -422,33 +441,54 @@ body {
 
 .LocationInput {
 
-  display: flex;
   border: none;
-  color: #09f55b;
-  border-radius: 10px;
-  border: 2px solid #3d423d;
-  height: 40px;
-  width: fit-content;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 100%;
+  max-width: 100%;
   padding: 10px;
-  font-size: 15px;
-  max-width: 300px;
+  border-bottom: 2px solid #3d423d;
+  border-top: 2px solid #3d423d;
+  border-left: 2px solid #3d423d;
+
+}
+
+.LocationInput:focus {
+  outline: none;
+  background-color: transparent;
 }
 
 .LocationSearch {
   display: flex;
-  height: 40px;
-  width: 40px;
   justify-content: center;
   align-items: center;
-  color: #1DB954;
+  color:#09f55b;
+  height: 100%;
+  width: 50px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   border: none;
-  border-radius: 10px;
   cursor: pointer;
+  border-bottom: 2px solid #3d423d;
+  border-top: 2px solid #3d423d;
+  border-right: 2px solid #3d423d;
+
 }
 
 .LocationSearch:hover {
   background-color: #1DB954;
   color: #0f1011;
+}
+
+.location {
+  display:flex;
+  flex-direction:row;
+  border: none;
+  color: #09f55b;
+  border-radius: 10px;
+  height: 40px;
+  font-size: 15px;
+  width: 100%;
 }
 
 .AccountsButton {
@@ -458,14 +498,11 @@ body {
   justify-content: center;
   align-items: center;
   color: #1DB954;
+  background-color: transparent;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-size: 15px;
   padding: 10px;
-  font-family: 'Lexicand-Deca', sans-serif;
-  font-weight: 400;
-  font-style: bold;
 
 }
 
@@ -489,7 +526,6 @@ body {
   background-color: #1DB954;
   font-weight: 400;
   gap: 5px;
-
   transition: transform 0.3s ease, background-color 0.3s ease;
 
 }
@@ -505,14 +541,63 @@ body {
   background-color: #148c3a;
 }
 
-.Dashboard {
+#NoteInput span {
+  margin: 10px;
+}
+
+.Productivity {
+  
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 3fr));
   gap: 20px;
   box-sizing: border-box;
   padding: 20px;
-  text-align: center;
+
+}
+
+.Productivity .Dashboard-Item, .Developer-Item, .Profile-Item {
+  margin: 0;
+  height: fit-content;
+  width:fit-content;
+  padding: 10px;
+  font-family: 'Lexend Deca', sans-serif;
+
+}
+
+.Developer-Item {
+  display:flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+#developer-notepad {
+
+  display: flex;
+  height: 80%;
+  width: 100%;
+  background-color: #1e1e20;
+  border: 1px solid #2d2d2d;
+}
+
+
+.Profile-Item {
+  width: 70%;
+  margin: 10px;
+}
+
+.Productivity #Calender {
+  min-width: 400px;
+  grid-column: span 2;
+}
+
+
+.Dashboard {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  box-sizing: border-box;
+  padding: 20px;
 
 }
 
@@ -521,13 +606,47 @@ body {
   width: 100%;
   height: 100%;
   flex-direction: column;
-  margin: 10px;
+  margin: 0px;
   font-size: 18px;
-  font-family: 'Lexicand-Deca', sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
   padding: 10px;
   border-radius: 10px;
+  border: 1px solid #2d2d2d;
 
+}
+
+.NoteTaking-Item {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  min-height: 100px;
+  height: auto;
+  flex-direction: column;
+  margin: 20px auto;
+  font-size: 16px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #2d2d2d;
+  
+}
+
+#NoteContainer {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  min-height: 200px;
+  height: auto;
+  flex-direction: column;
+  margin: 20px auto;
+  font-size: 16px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #2d2d2d;
 }
 
 #Notes,
@@ -536,12 +655,10 @@ body {
   width: fit-content;
   overflow: hidden;
   flex-direction: column;
-  overflow: hidden;
   white-space: wrap;
   word-wrap: break-word;
-  color: #858d85;
   font-size: 15px;
-  font-family: 'Lexicand-Deca', sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
 
 }
@@ -562,7 +679,44 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+  width: 100%;
+
 }
+
+.LinksName {
+  width: 100%;
+}
+
+.Item-Icon {
+  display: flex;
+  width: fit-content;
+  padding: 10px;
+  border: 2px solid #1DB954;
+  background-color:#212520;
+  border-radius: 20px;
+}
+
+.Item-title {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 10px;
+  height: fit-content;
+}
+
+.Item-title span{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 10px;
+  font-size: 18px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  align-items: center;
+}
+
 
 #Notes-Buttons,
 #UsefulLinks-Buttons,
@@ -579,6 +733,7 @@ body {
   transition: transform 0.3s ease, background-color 0.3s ease;
 
 }
+
 
 #todo-Button {
 
@@ -655,51 +810,51 @@ body {
 #GoalInput,
 #Events-Input,
 #DateInput,
-#TimeInput {
+#TimeInput,
+.Github-Stats-Input input {
 
   flex: 1;
   border: 0px solid;
   margin: 10px;
   padding: 10px;
   height: 40px;
-  width: fit-content;
+  width: 80%;
   border-radius: 10px;
   font-size: 15px;
+  border: 2px solid #3d423d;
 
+}
+
+.Github-Stats-Input input {
+margin: 10px;
 }
 
 #Input {
 
-  width: 800px;
-  max-width: 800px;
-  min-height: 50px;
-  max-height: 200px;
+  width: 700px;
+  margin: 10px;
+  max-height: fit-content;
   display: flex;
   align-items: center;
 
 }
 
 .GoalText {
-
   display: flex;
-  width: 600px;
-  height: fit-content;
-  margin: 10px;
+  width: 100%;
   margin-bottom: 25px;
-  padding: 10px;
   font-size: 15px;
-  font-family: 'Lexicand-Deca', sans-serif;
+  margin-top: 10px;
+  font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
-
+  justify-content: flex-start;
+  align-items: flex-start;
 }
-
 
 .NoteTaking {
   display: flex;
   width: 100%;
-  align-items: center;
-  justify-content: center;
-
+  flex-direction:column;
 
 }
 
@@ -707,6 +862,9 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+
 }
 
 .Notes-Content {
@@ -717,16 +875,23 @@ body {
   border-radius: 10px;
   padding-left: 10px;
   font-size: 15px;
-  font-family: 'Lexicand-Deca', sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+.Notes-input {
+
+  display:flex;
+  width:fit-content;
 }
 
 .Note {
 
   display: flex;
+  width: 100%;
   padding: 10px;
   margin: 10px;
   font-size: 15px;
-  font-family: 'Lexicand-Deca', sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
   overflow-wrap: break-word;
   white-space: normal;
   word-wrap: break-word;
@@ -735,12 +900,41 @@ body {
 
 }
 
+.Developer-container{
+
+  display:flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.Developer {
+
+  display:flex;
+  flex-direction:column;
+  width: fit-content;
+
+}
+
+#github-login{
+
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height: 20%;
+  border-radius: 15px;
+  
+}
+
+
 #Calender {
 
   display: flex;
   width: fit-content;
   height: fit-content;
-  padding: 10px;
   justify-content: center;
   align-items: flex-start;
 
@@ -757,42 +951,12 @@ body {
 #Github-Commit-Graph {
   width: fit-content;
   height: fit-content;
-  margin-bottom: 30px;
-  padding: 10px;
-  border: 2px transparent solid;
-  border-radius: 10px;
 }
 
 .github-stats {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-
-}
-
-.Github-Stats-Input {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  border-radius: 10px;
-  color: #858d85;
-  font-weight: 400;
-  font-size: large;
-}
-
-.Github-Stats-Input input {
-
-  display: flex;
-  border: 0px solid;
-  padding: 10px;
-  margin: 10px;
-  width: fit-content;
-  border-radius: 10px;
-  font-size: 15px;
-  font-family: 'Lexicand-Deca', sans-serif;
-  font-weight: 400;
 }
 
 .SubmitGithubName {
@@ -802,12 +966,11 @@ body {
   justify-content: center;
   background-color: #1DB954;
   border: none;
-  padding: 10px;
-  margin: 15px;
+  padding: 5px;
   border-radius: 10px;
-  font-family: 'Lexicand-Deca', sans-serif;
-  font-weight: 500;
-  font-size: 18px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
   color: #000000;
 }
 
@@ -825,7 +988,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10px;
+  margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
   color: #1DB954;
@@ -837,7 +1000,7 @@ body {
   display: flex;
   margin: 10px;
   margin-top: 10px;
-  font-size: 17px;
+  font-size: 15px;
   font-family: 'Space Mono', monospace;
   font-weight: 400;
 }
@@ -847,7 +1010,7 @@ body {
   margin: 10px;
   justify-content: flex-start;
   align-items: center;
-  font-size: 25px;
+  font-size: 23px;
   font-family: 'Space Mono', monospace;
   font-weight: 600;
   letter-spacing: 2px;
@@ -861,9 +1024,6 @@ body {
 #Pinboard {
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  margin: 10px;
-  color: #1DB954;
 }
 
 .Footer {

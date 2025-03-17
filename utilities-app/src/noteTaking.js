@@ -18,9 +18,9 @@ import IconButton from '@mui/material/IconButton';
 import CallSplitIcon from '@mui/icons-material/CallSplit';
 import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
+import DescriptionIcon from '@mui/icons-material/ArticleOutlined';
 
 import CodeIcon from '@mui/icons-material/Code';
-import DescriptionIcon from '@mui/icons-material/Description';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
 import CloseIcon from '@mui/icons-material/Close';
@@ -87,12 +87,14 @@ function NoteTaking() {
     return (
         <div className="NoteTaking-container">
             <div className="NoteTaking">
-                <div className="Dashboard-Item" id="Notes">
-                    <span>
-                        <NotesIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}> </NotesIcon>
-                        Notes
-                    </span>
-                    <span> Add a note (Max 150 characters) </span> <br></br>
+                <div className="NoteTaking-Item" id="NoteInput">
+
+                    <div className="Item-title">
+                        <div className="Item-Icon">
+                            <DescriptionIcon sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', verticalAlign: 'middle' }} /> </div> <span> Note Taking </span>
+                    </div>
+
+                    <span> Enter in text below in order to add a note.  (Max 150 characters). </span>
                     <div className="Controls">
                         <div className="Notes-input">
                             <textarea id="Input"
@@ -109,6 +111,10 @@ function NoteTaking() {
                             <IconButton onClick={handleAddNote}> <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
                         </div>
                     </div>
+
+                </div>
+
+                <div className="NoteTaking-Item" id="NoteContainer">
 
                     {/* Notes container */}
 

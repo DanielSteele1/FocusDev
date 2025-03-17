@@ -84,9 +84,18 @@ app.post('/api/githubUsername', async (req, res) => {
   }
 });
 
+
+
+
+
+
+
+
+
 // get user data from the github API
 // this will be used to display user data on the frontend
 app.get('/api/githubApiConn', async (req, res) => {
+  
   try {
     const username = req.session.githubUsername || 'defaultUsername';
     console.log("Fetching repos for username:", username);
@@ -94,7 +103,9 @@ app.get('/api/githubApiConn', async (req, res) => {
     const response = await fetch(`https://api.github.com/users/${username}/repos`);
     console.log("Connected to the Github API!");
     const data = await response.json();
+
     res.json(data);
+
   } catch (error) {
     res.status(500).json({ error: 'Failed to get user data from Github API' });
   }

@@ -7,11 +7,14 @@ import Accounts from './accounts';
 
 import NotesIcon from '@mui/icons-material/Notes';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import LogoutIcon from '@mui/icons-material/Logout';
+
+import LogoutIcon from '@mui/icons-material/ExitToAppOutlined';
+
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
-import PushPinIcon from '@mui/icons-material/PushPin';
+import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import AddLinkIcon from '@mui/icons-material/AddLink';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import FilterDramaOutlinedIcon from '@mui/icons-material/FilterDramaOutlined';
 import GithubIcon from '@mui/icons-material/GitHub';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddIcon from '@mui/icons-material/Add';
@@ -19,10 +22,9 @@ import IconButton from '@mui/material/IconButton';
 import CallSplitIcon from '@mui/icons-material/CallSplit';
 import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-
+import HomeRoundedIcon from '@mui/icons-material/HomeOutlined';
 import CodeIcon from '@mui/icons-material/Code';
-import DescriptionIcon from '@mui/icons-material/Description';
+import DescriptionIcon from '@mui/icons-material/ArticleOutlined';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
 import CloseIcon from '@mui/icons-material/Close';
@@ -134,16 +136,21 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
           sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '40px' }}>
         </TrendingUpIcon> </div>
       <div className="Navigation-Name"> <span> FocusDev </span> </div>
-      <div className="Navigation-Item">
-        <input className="LocationInput" contenteditable="true" type="text" placeholder="Enter your location" />
+
+      <div className="Navigation-Item" id="location">
+        <div className="location">
+
+          <input className="LocationInput" contenteditable="true" type="text" placeholder="Enter your location" />
+
+          <button className="LocationSearch">
+            <LocationOnIcon
+              sx={{ justifyContent: 'center', alignItems: 'center' }}>
+            </LocationOnIcon>
+          </button>
+        </div>
+
       </div>
 
-      <div className="Navigation-Item">
-        <button className="LocationSearch">
-          <LocationOnIcon
-            sx={{ justifyContent: 'center', alignItems: 'center', margin: '10px' }}>
-          </LocationOnIcon> </button>
-      </div>
 
       <div className="Nav-Menu">
 
@@ -159,7 +166,7 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
           <div className="darkMode">
             <button className="themeButton" onClick={toggleTheme} checked={theme === "dark"}>
               <NightsStayIcon
-                sx={{ justifyContent: 'center', alignItems: 'center', margin: '5px' }}>
+                sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', fontSize: '25px' }}>
               </NightsStayIcon>
             </button>
           </div>
@@ -172,9 +179,8 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
               onClick={handleLogoutClick}>
 
               <LogoutIcon
-                sx={{ justifyContent: 'center', alignItems: 'center', margin: '5px' }}>
+                sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', fontSize: '28px' }}>
               </LogoutIcon>
-              <span> Log out </span>
 
             </button>
           </div>
@@ -205,28 +211,28 @@ function Sidebar({ onTabChange }) {
       </div>
 
       <div className={`sidebar-item ${activeItem === 'dashboard' ? 'active' : ''}`} id="SidebarHome" onClick={() => handleClick("dashboard")}>
-        <HomeRoundedIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
-        <span>Home</span>
+        <HomeRoundedIcon sx={{ fontSize: '30px', marginright: '50px', alignItems: 'center' }} />
+        <span className="sidebarText">Home</span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'profile' ? 'active' : ''}`} id="SidebarProfile" onClick={() => handleClick("profile")}>
         <PersonIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
-        <span>Profile</span>
+        <span className="sidebarText">Profile</span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'productivity' ? 'active' : ''}`} id="SidebarProductivity" onClick={() => handleClick("productivity")}>
         <EqualizerOutlinedIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
-        <span>Productivity</span>
+        <span className="sidebarText">Productivity</span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'developer' ? 'active' : ''}`} id="SidebarDeveloper" onClick={() => handleClick("developer")}>
         <CodeIcon sx={{ display: 'flex', fontSize: '30px', alignItems: 'center' }} />
-        <span>Developer</span>
+        <span className="sidebarText">Developer</span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'noteTaking' ? 'active' : ''}`} id="SidebarNote" onClick={() => handleClick("noteTaking")}>
         <DescriptionIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
-        <span>Note taking</span>
+        <span className="sidebarText">Note taking</span>
       </div>
 
     </div>
@@ -236,7 +242,7 @@ function Sidebar({ onTabChange }) {
 
 function Dashboard() {
 
-  // fetch QOTD data from the server, set it as QOTDData and display data
+  // fetch QOTD data from the server, sort data, set it as QOTDData and display data
 
   const [QOTDData, setQOTDData] = useState(null);
 
@@ -297,44 +303,58 @@ function Dashboard() {
       </div>
       <div className="Dashboard">
 
-
         <div className="Dashboard-Item" id="Pinboard">
-          <span>
-            <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-            </PushPinIcon> Pinboard </span>
+
+          <div className="Item-title">
+            <div className="Item-Icon">
+
+              <PushPinOutlinedIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>
+              </PushPinOutlinedIcon> </div> <span> Pinboard </span>
+
+          </div>
+
           <Text className="Note"> Placeholder Text</Text>
 
         </div>
 
         <div className="Dashboard-Item" id="Upcoming-Events">
-          <span>
-            <CalendarMonthIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-            </CalendarMonthIcon>Upcoming Events </span>
+
+          <div className="Item-title">
+            <div className="Item-Icon">
+
+
+              <CalendarMonthOutlinedIcon sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', verticalAlign: 'middle' }}>
+              </CalendarMonthOutlinedIcon> </div> <span> Upcoming Events </span>
+          </div>
 
           <Text className="Note"> Placeholder Text</Text>
         </div>
 
         <div className="Dashboard-Item" id="Weather">
-          <span>
-            <CloudQueueIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-            </CloudQueueIcon> Weather </span>
+
+          <div className="Item-title">
+            <div className="Item-Icon">
+
+              <FilterDramaOutlinedIcon sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', verticalAlign: 'middle' }}>
+              </FilterDramaOutlinedIcon> </div> <span> Weather </span>
+
+          </div>
 
           {/* <WeatherWidget /> */}
 
         </div>
       </div>
 
-
       <div className="Dashboard-Bottom">
         <div className="Dashboard-Item" id="Habit-Tracker"> <span>
-          <CalendarMonthIcon
+          <CalendarMonthOutlinedIcon
             sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-          </CalendarMonthIcon> Habit Tracker </span> </div>
+          </CalendarMonthOutlinedIcon> Habit Tracker </span> </div>
 
         <div className="Dashboard-Item" id="Calorie-Tracker"> <span>
-          <CalendarMonthIcon
+          <CalendarMonthOutlinedIcon
             sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-          </CalendarMonthIcon> Calorie Tracker </span> </div>
+          </CalendarMonthOutlinedIcon> Calorie Tracker </span> </div>
 
       </div>
 

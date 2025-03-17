@@ -84,7 +84,7 @@ function Productivity() {
     return (
 
             <div className="Productivity">
-                <div className="Dashboard">
+                
 
                     <div className="Dashboard-Item" id="Useful-Links"> <span>
                         <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
@@ -135,48 +135,6 @@ function Productivity() {
                         </div>
                     </div>
 
-                    <div className="Dashboard-Item" id="ToDo"> <span>
-                        <NotesIcon
-                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                        </NotesIcon> Goal Tracker </span>
-                        <span className="GoalText">
-                            Enter below a goal to track.
-                            The global progress bar will fill up when you tick off items in the list.
-                            When you get to 100%, you've accomplished all your goals! </span>
-
-                        <div className="ringProgress">
-                            <RingProgress
-                                size='250'
-                                thickness='15'
-                                sections={[{ value, color: '#1DB954' }]}
-                                transitionDuration={250}
-                                label={<Text ta="center"
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        height: '100%',
-                                        fontSize: '30px',
-                                    }}>
-                                    {value}%</Text>}
-
-                            />
-                        </div>
-
-                        <div className="Controls">
-                            <div className="Notes-input">
-                                <input id="Input" type="text" placeholder="Add a goal to track">
-
-                                </input>
-                            </div>
-
-                            <div id="Notes-Buttons">
-                                <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
-
-                            </div>
-                        </div>
-                    </div>
-
                     <div className="Dashboard-Item" id="Calender"> <span>
                         <CalendarMonthIcon
                             sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
@@ -207,8 +165,48 @@ function Productivity() {
                         }} />
                         <button className="calenderButton" type='button'> Add Event To Calender <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle' }} /> </button>
                     </div>
+
+                    <div className="Dashboard-Item" id="ToDo"> <span>
+                        <NotesIcon
+                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+                        </NotesIcon> Goal Tracker </span>
+                        <span className="GoalText">
+                            Enter below a goal to track.
+                            The global progress bar will fill up when you tick off items in the list.
+                            When you get to 100%, you've accomplished all your goals! </span>
+
+                        <div className="ringProgress">
+                            <RingProgress
+                                size='250'
+                                thickness='15'
+                                sections={[{ value, color: '#1DB954' }]}
+                                transitionDuration={250}
+                                label={<Text ta="center"
+                                    style={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        height: '100%',
+                                        fontSize: '30px',
+                                    }}>
+                                    {value}%</Text>}
+                            />
+                        </div>
+
+                        <div className="Controls">
+                            <div className="Notes-input">
+                                <input id="Input" type="text" placeholder="Add a goal to track">
+                                </input>
+                            </div>
+
+                            <div id="Notes-Buttons">
+                                <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            
     );
 }
 
