@@ -82,8 +82,8 @@ function Accounts({setLoggedIn}) {
         <div className="AccountsContainer">
             {/* Only show the forms if the user is not logged in */}
                 <div className="AccountsPortal">
-                    <span id="accountsTitle"> <TrendingUpIcon sx={{fontSize: '30px'}}/> Welcome Back  </span>
-                    <span id="accountsSubTitle"> Please enter your details </span>
+                    <span id="accountsTitle"> <TrendingUpIcon sx={{fontSize: '35px', marginRight: "10px"}}/> Welcome Back  </span>
+                    <span id="accountsSubTitle"> Please enter your details to continue. </span>
                     <span id="accountsheading">Log In</span>
                     <form id="login" onSubmit={handleLogIn}>
                         <div className="Log-in">

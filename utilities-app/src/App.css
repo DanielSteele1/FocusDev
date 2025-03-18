@@ -136,9 +136,6 @@ a:hover {
   color: #1DB954;
 }
 
-.App.dark .Note {
-  color: #858d85;
-}
 
 .App.dark .Navigation,
 .App.dark .Footer {
@@ -547,22 +544,46 @@ body {
 
 .Productivity {
   
-  width: 100%;
-  display: grid;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
   gap: 20px;
   box-sizing: border-box;
-  padding: 20px;
 
 }
 
-.Productivity .Dashboard-Item, .Developer-Item, .Profile-Item {
-  margin: 0;
-  height: fit-content;
-  width:fit-content;
-  padding: 10px;
+.Productivity-Item {
+  display: flex;
   font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  padding: 10px;
+  border-radius: 10px;
 
 }
+
+.Links-Controls{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+.LinksInput,
+.LinksName {
+  display:flex;
+  flex: 1;
+
+}
+
+.Dashboard-Main {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+  gap: 20px;
+}
+
 
 .Developer-Item {
   display:flex;
@@ -586,10 +607,12 @@ body {
 }
 
 .Productivity #Calender {
-  min-width: 400px;
-  grid-column: span 2;
-}
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  border-radius: 10px;
 
+}
 
 .Dashboard {
   width: 100%;
@@ -603,8 +626,8 @@ body {
 
 .Dashboard-Item {
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: fit-content;
+  height: fit-content;
   flex-direction: column;
   margin: 0px;
   font-size: 18px;
@@ -649,15 +672,12 @@ body {
   border: 1px solid #2d2d2d;
 }
 
-#Notes,
-#ToDo {
+#Notes {
   display: flex;
-  width: fit-content;
   overflow: hidden;
   flex-direction: column;
   white-space: wrap;
   word-wrap: break-word;
-  font-size: 15px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
 
@@ -669,17 +689,14 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  text-align: center;
-
 }
 
 .Controls {
 
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
+  align-items: center;
+  gap: 10px;
 
 }
 
@@ -703,6 +720,7 @@ body {
   justify-content: flex-start;
   margin: 10px;
   height: fit-content;
+
 }
 
 .Item-title span{
@@ -711,20 +729,24 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   margin-left: 10px;
-  font-size: 18px;
+  font-size: 16px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
   align-items: center;
 }
 
+#ToDo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  border-radius: 10px;
+}
 
-#Notes-Buttons,
-#UsefulLinks-Buttons,
-#Pinboard-Buttons,
-#todo-Button {
+#Notes-Buttons {
 
   display: flex;
-  margin-top: 10px;
+  margin: 10px;
   background-color: #1DB954;
   border-radius: 10px;
   flex-direction: row;
@@ -733,7 +755,6 @@ body {
   transition: transform 0.3s ease, background-color 0.3s ease;
 
 }
-
 
 #todo-Button {
 
@@ -831,7 +852,7 @@ margin: 10px;
 
 #Input {
 
-  width: 700px;
+  width: 100%;
   margin: 10px;
   max-height: fit-content;
   display: flex;
@@ -841,14 +862,12 @@ margin: 10px;
 
 .GoalText {
   display: flex;
-  width: 100%;
-  margin-bottom: 25px;
+  width: fit-content;
   font-size: 15px;
-  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
-  justify-content: flex-start;
-  align-items: flex-start;
 }
 
 .NoteTaking {
@@ -881,7 +900,7 @@ margin: 10px;
 .Notes-input {
 
   display:flex;
-  width:fit-content;
+  width:100%;
 }
 
 .Note {
@@ -924,21 +943,12 @@ margin: 10px;
   align-items:center;
   justify-content:center;
   width:100%;
-  height: 20%;
+  height: fit-content;
+  padding: 10px;
   border-radius: 15px;
   
 }
 
-
-#Calender {
-
-  display: flex;
-  width: fit-content;
-  height: fit-content;
-  justify-content: center;
-  align-items: flex-start;
-
-}
 
 .github-title {
 
@@ -966,7 +976,11 @@ margin: 10px;
   justify-content: center;
   background-color: #1DB954;
   border: none;
-  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
   border-radius: 10px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
@@ -1018,12 +1032,24 @@ margin: 10px;
 
 }
 
-#Useful-Links,
+
 #Weather,
 #Upcoming-Events,
 #Pinboard {
   display: flex;
   flex-direction: column;
+  height: fit-content;
+}
+
+#Useful-Links{
+
+  display:flex;
+  width: 80%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  margin: 0 auto;
+
 }
 
 .Footer {

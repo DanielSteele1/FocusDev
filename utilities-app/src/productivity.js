@@ -83,130 +83,135 @@ function Productivity() {
 
     return (
 
-            <div className="Productivity">
-                
+        <div className="Productivity">
 
-                    <div className="Dashboard-Item" id="Useful-Links"> <span>
-                        <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                        </PushPinIcon>Useful Links</span>
 
-                        <div className="Controls">
-                            <div className="LinksName">
-                                <input
-                                    maxLength="30"
-                                    id="LinkNameInput"
-                                    type="text"
-                                    placeholder="Enter the site's name:"
-                                    onChange={handleLinkNameChange}
-                                    value={linkNameValue}>
-                                </input>
+            <div className="Productivity-Item" id="Useful-Links"> <span>
+                <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+                </PushPinIcon>Useful Links</span>
 
-                                <div className="LinksInput">
-                                    <input
-                                        maxLength="2000"
-                                        minLength="5"
-                                        id="URLInput"
-                                        type="text"
-                                        placeholder="Add a website url"
-                                        onChange={handleLinkInputChange}
-                                        value={linkInputValue}>
-                                    </input>
-                                </div>
-                            </div>
+                <div className="Links-Controls">
+                    <div className="LinksName">
+                        <input
+                            maxLength="30"
+                            id="LinkNameInput"
+                            type="text"
+                            placeholder="Enter the site's name:"
+                            onChange={handleLinkNameChange}
+                            value={linkNameValue}>
+                        </input>
 
-                            <div id="Notes-Buttons">
-                                <IconButton onClick={handleAddLink} > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
-                            </div>
-                        </div>
-
-                        {/* Links container */}
-
-                        <div className="Notes-Container">
-                            {links.map((link, index) => (
-                                <div key={index} className="Notes-Content">
-                                    <Tooltip title="Click here to go to this website!" placement="bottom" >
-                                        <a href={link.url} target="_blank" rel="noopener noreferrer" className="Note">{link.name}</a>
-                                    </Tooltip>
-                                    <IconButton onClick={() => handleLinksDelete(index)}>
-                                        <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }} />
-                                    </IconButton>
-                                </div>
-                            ))}
+                        <div className="LinksInput">
+                            <input
+                                maxLength="2000"
+                                minLength="5"
+                                id="URLInput"
+                                type="text"
+                                placeholder="Add a website url"
+                                onChange={handleLinkInputChange}
+                                value={linkInputValue}>
+                            </input>
                         </div>
                     </div>
 
-                    <div className="Dashboard-Item" id="Calender"> <span>
-                        <CalendarMonthIcon
-                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                        </CalendarMonthIcon> Calendar <Calendar
-                            styles={{
-                                calendarBase: {
-                                    width: '100%',
-                                    maxWidth: '600px',
-                                    margin: '0 auto',
-                                    padding: '10px'
-                                },
-                                day: {
-                                    borderRadius: '50%',
-                                    width: '40px',
-                                    height: '40px',
-                                },
-                            }} />
+                    <div id="Notes-Buttons">
+                        <IconButton onClick={handleAddLink} > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
+                    </div>
+                </div>
 
-                        <div className="Controls">
-                            <input id="Events-Input" type="text" placeholder="Add a note to event" /> <br></br>
+                {/* Links container */}
+
+                <div className="Notes-Container">
+                    {links.map((link, index) => (
+                        <div key={index} className="Notes-Content">
+                            <Tooltip title="Click here to go to this website!" placement="bottom" >
+                                <a href={link.url} target="_blank" rel="noopener noreferrer" className="Note">{link.name}</a>
+                            </Tooltip>
+                            <IconButton onClick={() => handleLinksDelete(index)}>
+                                <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }} />
+                            </IconButton>
                         </div>
+                    ))}
+                </div>
+            </div>
 
-                        <span> Pick a Date </span>
-                        <DatePicker />
-                        <span> Choose a Time </span> </span>
-                        <TimeInput styles={{
-                            maxWidth: '500px'
+            <div className="Dashboard-Main">
+
+                <div className="Productivity-Item" id="Calender"> <span>
+                    <CalendarMonthIcon
+                        sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+                    </CalendarMonthIcon> Calendar <Calendar
+                        styles={{
+                            calendarBase: {
+                                width: '100%',
+                                maxWidth: '600px',
+                                margin: '0 auto',
+                                padding: '10px'
+                            },
+                            day: {
+                                borderRadius: '50%',
+                                width: '40px',
+                                height: '40px',
+                            },
                         }} />
-                        <button className="calenderButton" type='button'> Add Event To Calender <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle' }} /> </button>
+
+                    <div className="Controls">
+                        <input id="Events-Input" type="text" placeholder="Add a note to event" /> <br></br>
                     </div>
 
-                    <div className="Dashboard-Item" id="ToDo"> <span>
-                        <NotesIcon
-                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                        </NotesIcon> Goal Tracker </span>
-                        <span className="GoalText">
-                            Enter below a goal to track.
-                            The global progress bar will fill up when you tick off items in the list.
-                            When you get to 100%, you've accomplished all your goals! </span>
+                    <span> Pick a Date </span>
+                    <DatePicker />
+                    <span> Choose a Time </span> </span>
+                    <TimeInput styles={{
+                        maxWidth: '500px'
+                    }} />
+                    <button className="calenderButton" type='button'> Add Event To Calender <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle' }} /> </button>
+                </div>
 
-                        <div className="ringProgress">
-                            <RingProgress
-                                size='250'
-                                thickness='15'
-                                sections={[{ value, color: '#1DB954' }]}
-                                transitionDuration={250}
-                                label={<Text ta="center"
-                                    style={{
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        height: '100%',
-                                        fontSize: '30px',
-                                    }}>
-                                    {value}%</Text>}
-                            />
+                <div className="Productivity-Item" id="ToDo"> <span>
+                    <NotesIcon
+                        sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+                    </NotesIcon> Goal Tracker </span>
+                    <span className="GoalText">
+                        Enter below a goal to track.
+                        The global progress bar will fill up when you tick off items in the list.
+                        When you get to 100%, you've accomplished all your goals! </span>
+
+                    <div className="ringProgress">
+                        <RingProgress
+                            size='250'
+                            thickness='15'
+                            sections={[{ value, color: '#1DB954' }]}
+                            transitionDuration={250}
+                            label={<Text ta="center"
+                                style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    height: '100%',
+                                    fontSize: '30px',
+                                }}>
+                                {value}%</Text>}
+                        />
+                    </div>
+
+                    <div className="Controls">
+                        <div className="Notes-input">
+                            <input id="Input" type="text" placeholder="Add a goal to track">
+                            </input>
                         </div>
 
-                        <div className="Controls">
-                            <div className="Notes-input">
-                                <input id="Input" type="text" placeholder="Add a goal to track">
-                                </input>
-                            </div>
+                        <div id="Notes-Buttons">
+                            <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
 
-                            <div id="Notes-Buttons">
-                                <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
-
-                            </div>
                         </div>
                     </div>
                 </div>
-            
+            </div>
+
+
+        </div>
+
     );
 }
 

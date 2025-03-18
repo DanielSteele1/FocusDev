@@ -308,7 +308,7 @@ function Dashboard() {
           <div className="Item-title">
             <div className="Item-Icon">
 
-              <PushPinOutlinedIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>
+              <PushPinOutlinedIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle', fontSize: '20px' }}>
               </PushPinOutlinedIcon> </div> <span> Pinboard </span>
 
           </div>
