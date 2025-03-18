@@ -5,14 +5,12 @@ body {
   margin: 0;
 }
 
-a {
-
-  color:#148c3a;
-}
-
 a:hover {
   color:#17a34a;
-  text-decoration: underline;
+}
+
+a{
+  color: #1DB954;
 }
 
 .App.light {
@@ -580,30 +578,55 @@ body {
 
 }
 
+#youtube .Link,
+#youtube svg{
+
+  color:#df2e2e;
+}
+
+#gmail .Link,
+#gmail svg{
+
+  color:#EA4335;
+}
+
+#figma .Link,
+#figma svg{
+
+  color:#118ee2;
+}
+
+#leetcode .Link,
+#leetcode svg{
+
+  color:#FFA116;
+}
+
+#github .Link,
+#github svg{
+
+  color:#ffffff;
+}
+
+.Links-Content:hover .Link,
+.Links-Content:hover svg {
+    color: #1DB954 !important;  /* Override with Spotify green on hover */
+}
 table {
   
-  width: 35%;
+  width: fit-content;
   table-layout: fixed;
 
 }
-
 
 .dynamic-links {
   width: 100%;
 }
 
-
 .dynamic-links tr {
   display: grid;
   grid-template-columns: repeat(5, 1fr);  /* Creates 3 equal columns */
 }
-
-
-td {
-  width: 80%;
-  font-family: 'Lexend Deca', sans-serif;
-}
-
 
 .Dashboard-Main {
   display: flex;

@@ -17,7 +17,12 @@ import AddLinkIcon from '@mui/icons-material/AddLink';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import GithubIcon from '@mui/icons-material/GitHub';
 import YoutubeIcon from '@mui/icons-material/YouTube';
-import GmailIcon from '@mui/icons-material/Email';
+
+import FigmaIcon from '@mui/icons-material/DesignServices';
+
+import { SiLeetcode } from "react-icons/si";
+import { IoLogoFigma } from "react-icons/io5";
+import { BiLogoGmail } from "react-icons/bi";
 
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddIcon from '@mui/icons-material/Add';
@@ -128,7 +133,7 @@ function Productivity() {
                 <table className="hardcoded-links">
                     <tr>
                         <td>
-                            <div className="Links-Content">
+                            <div className="Links-Content" id="youtube">
                                 <YoutubeIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
                                 <Tooltip title="Click here to go to this website!" placement="bottom" >
                                     <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="Link"> Youtube </a>
@@ -137,7 +142,7 @@ function Productivity() {
                         </td>
 
                         <td>
-                            <div className="Links-Content">
+                            <div className="Links-Content" id="github">
                                 <GithubIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
                                 <Tooltip title="Click here to go to this website!" placement="bottom" >
                                     <a href="https://Github.com" target="_blank" rel="noopener noreferrer" className="Link"> Github </a>
@@ -146,10 +151,28 @@ function Productivity() {
                         </td>
 
                         <td>
-                            <div className="Links-Content">
-                                <GmailIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
+                            <div className="Links-Content" id="gmail">
+                                <BiLogoGmail style={{ justifyContent: 'center', fontSize: '25px', alignItems: 'center', verticalAlign: 'middle' }} />
                                 <Tooltip title="Click here to go to this website!" placement="bottom" >
                                     <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="Link"> Gmail </a>
+                                </Tooltip>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div className="Links-Content" id="figma">
+                                <IoLogoFigma style={{ justifyContent: 'center', fontSize: '20px', alignItems: 'center', verticalAlign: 'middle' }} />
+                                <Tooltip title="Click here to go to this website!" placement="bottom" >
+                                    <a href="https://figma.com" target="_blank" rel="noopener noreferrer" className="Link"> Figma </a>
+                                </Tooltip>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div className="Links-Content" id="leetcode">
+                                <SiLeetcode style={{ justifyContent: 'center', fontSize: '20px', alignItems: 'center', verticalAlign: 'middle' }} />
+                                <Tooltip title="Click here to go to this website!" placement="bottom" >
+                                    <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" className="Link"> Leetcode </a>
                                 </Tooltip>
                             </div>
                         </td>
@@ -163,7 +186,7 @@ function Productivity() {
                         {links.map((link, index) => (
                             <td key={index} className="Links-Content">
                                 <InsertLinkRoundedIcon />
-                                
+
                                 <Tooltip title="Click here to go to this website!" placement="bottom">
                                     <a href={link.url} target="_blank" rel="noopener noreferrer" className="Link">{link.name}</a>
                                 </Tooltip>
