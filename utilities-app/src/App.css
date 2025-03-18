@@ -5,6 +5,16 @@ body {
   margin: 0;
 }
 
+a {
+
+  color:#148c3a;
+}
+
+a:hover {
+  color:#17a34a;
+  text-decoration: underline;
+}
+
 .App.light {
   background-color: #f0f9f0;
   color: black;
@@ -55,12 +65,6 @@ a {
 
 }
 
-a:hover {
-  transform: translateY(-3px);
-  background-color: #17a34a;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-}
 
 .App.light .LocationSearch {
   background-color: #1DB954;
@@ -576,6 +580,31 @@ body {
 
 }
 
+table {
+  
+  width: 35%;
+  table-layout: fixed;
+
+}
+
+
+.dynamic-links {
+  width: 100%;
+}
+
+
+.dynamic-links tr {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);  /* Creates 3 equal columns */
+}
+
+
+td {
+  width: 80%;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+
 .Dashboard-Main {
   display: flex;
   flex-direction: row;
@@ -763,7 +792,6 @@ body {
 
 #Notes-Buttons:hover {
 
-  transform: translateY(-3px);
   background-color: #17a34a;
 }
 
@@ -892,10 +920,31 @@ margin: 10px;
   justify-content: flex-start;
   align-items: center;
   border-radius: 10px;
-  padding-left: 10px;
+  padding: 5px;
   font-size: 15px;
+  font-style: bold;
   font-family: 'Lexend Deca', sans-serif;
 }
+
+.Links-Content:hover {
+  cursor: pointer;
+  background-color: #292e2e;
+}
+
+.Links-Content {
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10px;
+  height: 40px;
+  width: fit-content;
+  padding: 10px;
+  font-size: 15px;
+  font-style: bold;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
 
 .Notes-input {
 
@@ -903,10 +952,9 @@ margin: 10px;
   width:100%;
 }
 
-.Note {
+.Note, .Link {
 
   display: flex;
-  width: 100%;
   padding: 10px;
   margin: 10px;
   font-size: 15px;
@@ -915,8 +963,15 @@ margin: 10px;
   white-space: normal;
   word-wrap: break-word;
   word-break: break-all;
-  border-left: #09f55b 1px solid;
+}
 
+.Link { 
+
+  width: fit-content;
+}
+
+.Note {
+  width: 100%;
 }
 
 .Developer-container{

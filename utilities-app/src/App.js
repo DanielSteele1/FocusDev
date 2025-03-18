@@ -370,8 +370,7 @@ function Footer() {
       <span> Created by Daniel Steele </span>
       <span> Check out my other work </span>
 
-      <span> Buy me a coffee </span>
-
+      <span> Buy me a coffee badge </span>
 
     </div>
   );

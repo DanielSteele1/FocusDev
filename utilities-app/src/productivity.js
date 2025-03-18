@@ -16,12 +16,17 @@ import PushPinIcon from '@mui/icons-material/PushPin';
 import AddLinkIcon from '@mui/icons-material/AddLink';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import GithubIcon from '@mui/icons-material/GitHub';
+import YoutubeIcon from '@mui/icons-material/YouTube';
+import GmailIcon from '@mui/icons-material/Email';
+
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
 import CallSplitIcon from '@mui/icons-material/CallSplit';
 import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
+
+import InsertLinkRoundedIcon from '@mui/icons-material/InsertLinkRounded';
 
 import CodeIcon from '@mui/icons-material/Code';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -85,7 +90,6 @@ function Productivity() {
 
         <div className="Productivity">
 
-
             <div className="Productivity-Item" id="Useful-Links"> <span>
                 <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
                 </PushPinIcon>Useful Links</span>
@@ -119,20 +123,57 @@ function Productivity() {
                     </div>
                 </div>
 
-                {/* Links container */}
+                {/* Hardcoded links - Will always remain for the users convienence */}
 
-                <div className="Notes-Container">
-                    {links.map((link, index) => (
-                        <div key={index} className="Notes-Content">
-                            <Tooltip title="Click here to go to this website!" placement="bottom" >
-                                <a href={link.url} target="_blank" rel="noopener noreferrer" className="Note">{link.name}</a>
-                            </Tooltip>
-                            <IconButton onClick={() => handleLinksDelete(index)}>
-                                <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }} />
-                            </IconButton>
-                        </div>
-                    ))}
-                </div>
+                <table className="hardcoded-links">
+                    <tr>
+                        <td>
+                            <div className="Links-Content">
+                                <YoutubeIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
+                                <Tooltip title="Click here to go to this website!" placement="bottom" >
+                                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="Link"> Youtube </a>
+                                </Tooltip>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div className="Links-Content">
+                                <GithubIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
+                                <Tooltip title="Click here to go to this website!" placement="bottom" >
+                                    <a href="https://Github.com" target="_blank" rel="noopener noreferrer" className="Link"> Github </a>
+                                </Tooltip>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div className="Links-Content">
+                                <GmailIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
+                                <Tooltip title="Click here to go to this website!" placement="bottom" >
+                                    <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="Link"> Gmail </a>
+                                </Tooltip>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <table className="dynamic-links">
+                    <tr>
+                        {/* Links container */}
+
+                        {links.map((link, index) => (
+                            <td key={index} className="Links-Content">
+                                <InsertLinkRoundedIcon />
+                                
+                                <Tooltip title="Click here to go to this website!" placement="bottom">
+                                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="Link">{link.name}</a>
+                                </Tooltip>
+                                <IconButton onClick={() => handleLinksDelete(index)}>
+                                    <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }} />
+                                </IconButton>
+                            </td>
+                        ))}
+                    </tr>
+                </table>
             </div>
 
             <div className="Dashboard-Main">
