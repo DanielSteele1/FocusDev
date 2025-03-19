@@ -63,6 +63,19 @@ a {
 
 }
 
+.description {
+
+ color:#858d85;
+ padding: 5px;
+ display: flex;
+ width: fit-content;
+ font-size: 15px;
+ align-items: center;
+ justify-content: center;
+ font-family: 'Lexend Deca', sans-serif;
+ font-weight: 400;
+
+}
 
 .App.light .LocationSearch {
   background-color: #1DB954;
@@ -616,7 +629,7 @@ body {
 
 table {
 
-  width: fit-content;
+  width: 100%;
   table-layout: fixed;
   padding-left: 10px;
 
@@ -628,6 +641,13 @@ table {
 
 }
 
+.hardcoded-links tr{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
+  gap: 10px;
+
+}
+
 
 .dynamic-links {
   width: 100%;
@@ -635,7 +655,9 @@ table {
 
 .dynamic-links tr {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));
+  gap: 10px;
+
 }
 
 .Dashboard-Main {
@@ -671,7 +693,7 @@ table {
 .Productivity #Calender {
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 100%;
   border-radius: 10px;
 
 }
@@ -921,15 +943,6 @@ table {
 
 }
 
-.GoalText {
-  display: flex;
-  width: fit-content;
-  font-size: 15px;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Lexend Deca', sans-serif;
-  font-weight: 400;
-}
 
 .NoteTaking {
   display: flex;
@@ -972,9 +985,10 @@ table {
   border-radius: 10px;
   height: 40px;
   width: fit-content;
-  padding: 10px;
   font-size: 15px;
   font-style: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: 'Lexend Deca', sans-serif;
 }
 
@@ -985,8 +999,7 @@ table {
   width: 100%;
 }
 
-.Note,
-.Link {
+.Note{
 
   display: flex;
   padding: 10px;
@@ -999,9 +1012,19 @@ table {
   word-break: break-all;
 }
 
+
 .Link {
 
-  width: fit-content;
+  max-width:150px;
+  display: inline-block;
+  margin: 10px;
+  font-size: 15px;
+  font-family: 'Lexend Deca', sans-serif;
+  overflow-wrap: break-word;
+  white-space: nowrap;
+  word-wrap: break-word;
+  word-break: break-all;
+
 }
 
 .Note {
@@ -1134,6 +1157,7 @@ table {
 
   display: flex;
   width: 80%;
+  max-width: 1200px;
   flex-direction: column;
   justify-content: center;
   padding: 10px;

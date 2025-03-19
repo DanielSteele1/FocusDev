@@ -136,6 +136,8 @@ function Productivity() {
             <div className="Productivity-Item" id="Useful-Links"> <span>
                 <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
                 </PushPinIcon>Useful Links</span>
+                <span className="description"> For your convenience, here are some handy links. You can also create your own links if you wish,
+                    and you can pin them to the pinned tab in the homepage. </span>
 
                 <div className="Links-Controls">
                     <div className="LinksName">
@@ -247,7 +249,7 @@ function Productivity() {
 
 
                                     <IconButton onClick={() => handleLinksDelete(index)}>
-                                        <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }} />
+                                        <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
                                     </IconButton>
                                 </td>
                             ))}
@@ -260,13 +262,17 @@ function Productivity() {
                 <div className="Productivity-Item" id="Calender"> <span>
                     <CalendarMonthIcon
                         sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                    </CalendarMonthIcon> Calendar <Calendar
+                    </CalendarMonthIcon> Calendar 
+                    
+                    <span className="description"> This calendar allows you to schedule certain tasks. 
+                        You can select a date, time & add a note to each event. 
+                        These will then be displayed on the homepage. </span>
+
+                    <Calendar
                         styles={{
                             calendarBase: {
                                 width: '100%',
-                                maxWidth: '600px',
                                 margin: '0 auto',
-                                padding: '10px'
                             },
                             day: {
                                 borderRadius: '50%',
@@ -274,6 +280,7 @@ function Productivity() {
                                 height: '40px',
                             },
                         }} />
+
 
                     <div className="Controls">
                         <input id="Events-Input" type="text" placeholder="Add a note to event" /> <br></br>
@@ -292,7 +299,7 @@ function Productivity() {
                     <NotesIcon
                         sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
                     </NotesIcon> Goal Tracker </span>
-                    <span className="GoalText">
+                    <span className="description">
                         Enter below a goal to track.
                         The global progress bar will fill up when you tick off items in the list.
                         When you get to 100%, you've accomplished all your goals! </span>
