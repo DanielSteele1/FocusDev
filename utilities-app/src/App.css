@@ -6,10 +6,10 @@ body {
 }
 
 a:hover {
-  color:#17a34a;
+  color: #17a34a;
 }
 
-a{
+a {
   color: #1DB954;
 }
 
@@ -278,7 +278,7 @@ body {
 .Profile-title {
 
   font-size: 30px;
-  display:flex;
+  display: flex;
   justify-content: flex-start;
   align-items: center;
   color: #1DB954;
@@ -289,7 +289,7 @@ body {
 
   font-size: 17px;
   padding: 10px;
-  display:flex;
+  display: flex;
   justify-content: flex-start;
   align-items: center;
   color: #858d85;
@@ -297,7 +297,7 @@ body {
   font-weight: 400;
 }
 
-.Profile-img img{
+.Profile-img img {
 
   flex: 1;
   justify-content: center;
@@ -308,12 +308,13 @@ body {
   color: #000000;
   align-items: flex-end;
   justify-content: flex-end;
-  margin-left:10rem;
-  border: 5px solid #1DB954;;
+  margin-left: 10rem;
+  border: 5px solid #1DB954;
+  ;
 }
 
 .Profile-operations {
-  display:flex;
+  display: flex;
   width: 100%;
   margin: 10px;
   padding: 10px;
@@ -330,7 +331,7 @@ body {
 }
 
 .delete-account {
-  display:flex;
+  display: flex;
   width: fit-content;
   margin: 10px;
   padding: 10px;
@@ -344,15 +345,15 @@ body {
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  border: 2px solid  #c20404;
+  border: 2px solid #c20404;
 }
 
 .Profile-operations button:hover {
   background-color: #c20404;
-  color:#000000;
+  color: #000000;
 }
 
-.Profile-operations .AccountsButton{
+.Profile-operations .AccountsButton {
   margin: 10px;
 }
 
@@ -461,7 +462,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color:#09f55b;
+  color: #09f55b;
   height: 100%;
   width: 50px;
   border-top-right-radius: 10px;
@@ -480,8 +481,8 @@ body {
 }
 
 .location {
-  display:flex;
-  flex-direction:row;
+  display: flex;
+  flex-direction: row;
   border: none;
   color: #09f55b;
   border-radius: 10px;
@@ -545,7 +546,7 @@ body {
 }
 
 .Productivity {
-  
+
   display: flex;
   margin: 0 auto;
   flex-direction: column;
@@ -563,7 +564,7 @@ body {
 
 }
 
-.Links-Controls{
+.Links-Controls {
 
   display: flex;
   flex-direction: row;
@@ -573,48 +574,48 @@ body {
 
 .LinksInput,
 .LinksName {
-  display:flex;
+  display: flex;
   flex: 1;
 
 }
 
 #youtube .Link,
-#youtube svg{
+#youtube svg {
 
-  color:#df2e2e;
+  color: #df2e2e;
 }
 
 #gmail .Link,
-#gmail svg{
+#gmail svg {
 
-  color:#EA4335;
+  color: #EA4335;
 }
 
 #figma .Link,
-#figma svg{
+#figma svg {
 
-  color:#118ee2;
+  color: #118ee2;
 }
 
 #leetcode .Link,
-#leetcode svg{
+#leetcode svg {
 
-  color:#FFA116;
+  color: #FFA116;
 }
 
 #github .Link,
-#github svg{
+#github svg {
 
-  color:#ffffff;
+  color: #ffffff;
 }
 
 .Links-Content:hover .Link,
 .Links-Content:hover svg {
-    color: #1DB954 !important; 
+  color: #1DB954 !important;
 }
 
 table {
-  
+
   width: fit-content;
   table-layout: fixed;
   padding-left: 10px;
@@ -647,7 +648,7 @@ table {
 
 
 .Developer-Item {
-  display:flex;
+  display: flex;
   flex-direction: column;
   margin: 10px;
 }
@@ -714,7 +715,7 @@ table {
   padding: 20px;
   border-radius: 10px;
   border: 1px solid #2d2d2d;
-  
+
 }
 
 #NoteContainer {
@@ -770,7 +771,7 @@ table {
   width: fit-content;
   padding: 10px;
   border: 2px solid #1DB954;
-  background-color:#212520;
+  background-color: #212520;
   border-radius: 20px;
 }
 
@@ -784,7 +785,7 @@ table {
 
 }
 
-.Item-title span{
+.Item-title span {
 
   display: flex;
   flex-direction: row;
@@ -907,7 +908,7 @@ table {
 }
 
 .Github-Stats-Input input {
-margin: 10px;
+  margin: 10px;
 }
 
 #Input {
@@ -933,7 +934,7 @@ margin: 10px;
 .NoteTaking {
   display: flex;
   width: 100%;
-  flex-direction:column;
+  flex-direction: column;
 
 }
 
@@ -980,11 +981,12 @@ margin: 10px;
 
 .Notes-input {
 
-  display:flex;
-  width:100%;
+  display: flex;
+  width: 100%;
 }
 
-.Note, .Link {
+.Note,
+.Link {
 
   display: flex;
   padding: 10px;
@@ -997,7 +999,7 @@ margin: 10px;
   word-break: break-all;
 }
 
-.Link { 
+.Link {
 
   width: fit-content;
 }
@@ -1006,9 +1008,9 @@ margin: 10px;
   width: 100%;
 }
 
-.Developer-container{
+.Developer-container {
 
-  display:flex;
+  display: flex;
   width: 100%;
   height: 100%;
   justify-content: center;
@@ -1017,23 +1019,23 @@ margin: 10px;
 
 .Developer {
 
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   width: fit-content;
 
 }
 
-#github-login{
+#github-login {
 
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content:center;
-  width:100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: fit-content;
   padding: 10px;
   border-radius: 15px;
-  
+
 }
 
 
@@ -1128,9 +1130,9 @@ margin: 10px;
   height: fit-content;
 }
 
-#Useful-Links{
+#Useful-Links {
 
-  display:flex;
+  display: flex;
   width: 80%;
   flex-direction: column;
   justify-content: center;

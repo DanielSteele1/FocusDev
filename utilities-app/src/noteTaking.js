@@ -154,7 +154,7 @@ function NoteTaking() {
                 <div className="NoteTaking-Item" id="NoteContainer">
 
                     {/* Notes container */}
-                    
+
                     {notes
                         .map((note, index) => (
                             <div key={index} className="Notes-Content">
@@ -162,9 +162,9 @@ function NoteTaking() {
 
                                 <IconButton onClick={() => handlePinnedNote(index)}>
                                     <PushPinIcon sx={{
-                                        justifyContent: 'center', 
+                                        justifyContent: 'center',
                                         alignItems: 'center',
-                                        marginRight: '0px', 
+                                        marginRight: '0px',
                                         verticalAlign: 'middle',
                                         transform: note.isPinned ? 'rotate(45deg)' : 'rotate(0deg)',
                                         color: note.isPinned ? '#1DB954' : ' #858d85'

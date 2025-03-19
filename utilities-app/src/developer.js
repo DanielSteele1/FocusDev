@@ -288,7 +288,7 @@ function Developer() {
                 </div>
 
                 <div className="Developer-Item" id="developer-notepad">
-                    <div className="notepad-controls"> 
+                    <div className="notepad-controls">
                         <span> HELLO WOLRD </span>
 
 

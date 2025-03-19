@@ -90,7 +90,7 @@ function Profile() {
       <div className="Profile-Item">
         <div className="Profile-operations">
 
-        <span> Log out of your account. </span>
+          <span> Log out of your account. </span>
 
           <button className="AccountsButton">
             <p1> Log out </p1>

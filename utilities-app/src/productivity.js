@@ -109,9 +109,10 @@ function Productivity() {
         const updatedLinks = links.map((link, i) => {
 
             if (i === index) {
-                return { 
-                    ...link, 
-                    isPinned: !link.isPinned };
+                return {
+                    ...link,
+                    isPinned: !link.isPinned
+                };
             }
             return link;
 
