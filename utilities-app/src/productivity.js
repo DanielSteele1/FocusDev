@@ -58,9 +58,21 @@ import EmojiPicker from 'emoji-picker-react';
 import PersonIcon from '@mui/icons-material/Person';
 
 function Productivity() {
-    const [links, setLinks] = useState([]);
+
+    const [links, setLinks] = useState(() => {
+
+        // save links into users localstorage 
+        const savedLinks = localStorage.getItem('links');
+        return savedLinks ? JSON.parse(savedLinks) : [];
+
+    });
+
     const [linkInputValue, setLinkInputValue] = useState('');
     const [linkNameValue, setLinkNameValue] = useState('');
+
+    useEffect(() => {
+        localStorage.setItem('links', JSON.stringify(links));
+    }, [links]);
 
     const handleLinkInputChange = (event) => {
 
@@ -72,15 +84,40 @@ function Productivity() {
         setLinkNameValue(event.target.value);
     };
 
+
     const handleAddLink = () => {
 
         if (linkInputValue !== '' && linkNameValue !== '') {
 
-            setLinks([...links, { name: linkNameValue, url: linkInputValue }]);
+            const newLink = {
+
+                id: Date.now(),
+                name: linkNameValue,
+                url: linkInputValue,
+                isPinned: false
+
+            };
+
+            setLinks([...links, newLink]);
             setLinkInputValue('');
             setLinkNameValue('');
         }
     };
+
+    const handlePinnedLink = (index) => {
+
+        const updatedLinks = links.map((link, i) => {
+
+            if (i === index) {
+                return { 
+                    ...link, 
+                    isPinned: !link.isPinned };
+            }
+            return link;
+
+        });
+        setLinks(updatedLinks);
+    }
 
     const handleLinksDelete = (index) => {
 
@@ -183,18 +220,36 @@ function Productivity() {
                     <tr>
                         {/* Links container */}
 
-                        {links.map((link, index) => (
-                            <td key={index} className="Links-Content">
-                                <InsertLinkRoundedIcon />
+                        {links
+                            .map((link, index) => (
+                                <td key={index} className="Links-Content">
+                                    <InsertLinkRoundedIcon />
 
-                                <Tooltip title="Click here to go to this website!" placement="bottom">
-                                    <a href={link.url} target="_blank" rel="noopener noreferrer" className="Link">{link.name}</a>
-                                </Tooltip>
-                                <IconButton onClick={() => handleLinksDelete(index)}>
-                                    <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }} />
-                                </IconButton>
-                            </td>
-                        ))}
+                                    <Tooltip title="Click here to go to this website!" placement="bottom">
+                                        <a href={link.url} target="_blank" rel="noopener noreferrer" className="Link">{link.name}</a>
+                                    </Tooltip>
+
+                                    <IconButton onClick={() => handlePinnedLink(index)}>
+
+                                        <PushPinIcon sx={{
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            marginRight: '0px',
+                                            verticalAlign: 'middle',
+                                            transform: link.isPinned ? 'rotate(45deg)' : 'rotate(0deg)',
+                                            color: link.isPinned ? '#1DB954' : ' #858d85'
+
+                                        }}>
+                                        </PushPinIcon>
+                                    </IconButton>
+
+
+
+                                    <IconButton onClick={() => handleLinksDelete(index)}>
+                                        <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }} />
+                                    </IconButton>
+                                </td>
+                            ))}
                     </tr>
                 </table>
             </div>
@@ -277,6 +332,7 @@ function Productivity() {
         </div>
 
     );
+
 }
 
 export default Productivity;

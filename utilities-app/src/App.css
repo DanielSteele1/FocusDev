@@ -610,14 +610,23 @@ body {
 
 .Links-Content:hover .Link,
 .Links-Content:hover svg {
-    color: #1DB954 !important;  /* Override with Spotify green on hover */
+    color: #1DB954 !important; 
 }
+
 table {
   
   width: fit-content;
   table-layout: fixed;
+  padding-left: 10px;
 
 }
+
+.hardcoded-links {
+  border-bottom: 2px solid #2d2d2d;
+  margin-bottom: 5px;
+
+}
+
 
 .dynamic-links {
   width: 100%;
@@ -625,7 +634,7 @@ table {
 
 .dynamic-links tr {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);  /* Creates 3 equal columns */
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .Dashboard-Main {
