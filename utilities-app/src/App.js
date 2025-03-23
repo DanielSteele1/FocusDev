@@ -151,7 +151,6 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
 
       </div>
 
-
       <div className="Nav-Menu">
 
         <div className="Navigation-Item" id="time">
@@ -178,10 +177,7 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
               value={logoutButton}
               onClick={handleLogoutClick}>
 
-              <LogoutIcon
-                sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', fontSize: '28px' }}>
-              </LogoutIcon>
-
+                <span> Log out </span>
             </button>
           </div>
         </div>

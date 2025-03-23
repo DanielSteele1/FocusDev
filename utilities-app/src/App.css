@@ -510,13 +510,15 @@ body {
   width: fit-content;
   justify-content: center;
   align-items: center;
-  color: #1DB954;
+  border-color: #1DB954;
+  color:#1DB954;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 500;
   background-color: transparent;
-  border: none;
+  border: 2px solid;
   border-radius: 10px;
   cursor: pointer;
   padding: 10px;
-
 }
 
 .AccountsButton:hover {
@@ -524,27 +526,49 @@ body {
   color: #0f1011;
 }
 
+.EventDateTime {
+
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 5px;
+  align-items: center;
+  border-radius: 10px;
+
+
+}
+
+.section-title {
+  font-size: 16px;
+  margin: 5px;
+  margin-left: 5px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 500;
+  color: #1DB954;
+}
+
+
 .calenderButton {
 
   border: none;
   border-radius: 10px;
+  width: fit-content;
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 10px;
+  font-style: 'Lexend Deca', sans-serif;
   font-size: 15px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  font-weight: 500;
+  margin: 10px;
   background-color: #1DB954;
-  font-weight: 400;
-  gap: 5px;
   transition: transform 0.3s ease, background-color 0.3s ease;
+  
 
 }
 
 .calenderButton:hover {
-  transform: translateY(-3px);
   background-color: #17a34a;
 
 }
@@ -635,6 +659,59 @@ table {
 
 }
 
+.Goals tr {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.Goal-Content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 5px;
+  padding-left: 10px;
+  font-size: 15px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  border-radius: 10px;
+  border: 1px solid #2d2d2d;
+}
+
+.Goal-Text {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+
+}
+
+.goalControls {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.Goal-Check {
+
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.delete-goal {
+
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+
+}
+
+
 .hardcoded-links {
   border-bottom: 2px solid #2d2d2d;
   margin-bottom: 5px;
@@ -664,10 +741,10 @@ table {
   display: flex;
   flex-direction: row;
   width: 80%;
+  max-width: 1300px;
   margin: 0 auto;
   gap: 20px;
 }
-
 
 .Developer-Item {
   display: flex;
@@ -693,9 +770,17 @@ table {
 .Productivity #Calender {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 40%;
   border-radius: 10px;
+}
 
+#Calender span {
+
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
 }
 
 .Dashboard {
@@ -822,7 +907,7 @@ table {
 #ToDo {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 60%;
   height: fit-content;
   border-radius: 10px;
 }
@@ -943,7 +1028,6 @@ table {
 
 }
 
-
 .NoteTaking {
   display: flex;
   width: 100%;
@@ -985,13 +1069,14 @@ table {
   border-radius: 10px;
   height: 40px;
   width: fit-content;
+  padding-left: 5px;
+  padding-right: 5px;
   font-size: 15px;
   font-style: bold;
   overflow: hidden;
   text-overflow: ellipsis;
   font-family: 'Lexend Deca', sans-serif;
 }
-
 
 .Notes-input {
 

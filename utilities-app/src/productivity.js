@@ -48,6 +48,7 @@ import { Calendar } from '@mantine/dates';
 import { DatePicker } from '@mantine/dates';
 import { TimeInput } from '@mantine/dates';
 //import { DatesProvider } from '@mantine/dates';
+import { Checkbox } from '@mantine/core';
 
 import CircularProgress from '@mui/material/CircularProgress';
 import { RingProgress } from '@mantine/core';
@@ -127,7 +128,39 @@ function Productivity() {
 
     };
 
-    const [value, setValue] = useState(80);
+    // default value of the progress bar
+    const [value, setValue] = useState(0);
+
+    const [goals, setGoals] = useState(() => {
+
+        // save links into users localstorage 
+        const savedGoals = localStorage.getItem('goals');
+        return savedGoals ? JSON.parse(savedGoals) : [];
+
+    });
+
+    const [goalValue, setGoalValue] = useState('');
+
+    const handleGoalChange = (event) => {
+        setGoalValue(event.target.value);
+    }
+
+    const handleAddGoals = () => {
+
+        if (goalValue !== '') {
+
+            const newGoal = {
+
+                id: Date.now(),
+                text: goalValue,
+                isCompleted: false
+            };
+
+            setGoals([...goals, newGoal]);
+            setGoalValue('');
+
+        }
+    };
 
     return (
 
@@ -246,8 +279,6 @@ function Productivity() {
                                         </PushPinIcon>
                                     </IconButton>
 
-
-
                                     <IconButton onClick={() => handleLinksDelete(index)}>
                                         <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
                                     </IconButton>
@@ -259,13 +290,15 @@ function Productivity() {
 
             <div className="Dashboard-Main">
 
-                <div className="Productivity-Item" id="Calender"> <span>
-                    <CalendarMonthIcon
-                        sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                    </CalendarMonthIcon> Calendar 
-                    
-                    <span className="description"> This calendar allows you to schedule certain tasks. 
-                        You can select a date, time & add a note to each event. 
+                <div className="Productivity-Item" id="Calender">
+                    <span>
+                        <CalendarMonthIcon
+                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+                        </CalendarMonthIcon>  Calendar
+                    </span>
+
+                    <span className="description"> This calendar allows you to schedule certain tasks.
+                        You can select a date, time & add a note to each event.
                         These will then be displayed on the homepage. </span>
 
                     <Calendar
@@ -281,18 +314,24 @@ function Productivity() {
                             },
                         }} />
 
+                    <span className="section-title">Pick a date, time and note for your event: </span>
 
                     <div className="Controls">
                         <input id="Events-Input" type="text" placeholder="Add a note to event" /> <br></br>
                     </div>
 
-                    <span> Pick a Date </span>
-                    <DatePicker />
-                    <span> Choose a Time </span> </span>
-                    <TimeInput styles={{
-                        maxWidth: '500px'
-                    }} />
-                    <button className="calenderButton" type='button'> Add Event To Calender <ArrowRightAltRoundedIcon sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle' }} /> </button>
+                    <div className="EventDateTime">
+
+                        <DatePicker sx={{
+                            display: 'flex', justifyContent: 'flex-start', alignItem: 'center', verticalAlign: 'middle', margin: '5px'
+                        }} />
+
+                        <TimeInput sx={{
+                            display: 'flex', justifyContent: 'flex-start', alignItem: 'center', verticalAlign: 'middle', margin: '5px'
+                        }} />
+
+                    </div>
+                    <button className="calenderButton" type='button'> Add Event <AddIcon sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle', marginLeft: '5px' }} /> </button>
                 </div>
 
                 <div className="Productivity-Item" id="ToDo"> <span>
@@ -306,33 +345,90 @@ function Productivity() {
 
                     <div className="ringProgress">
                         <RingProgress
-                            size='250'
+                            size='200'
                             thickness='15'
                             sections={[{ value, color: '#1DB954' }]}
-                            transitionDuration={250}
+                            roundCaps
+                            animated={true}
+                            transitionDuration={200}
                             label={<Text ta="center"
                                 style={{
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     height: '100%',
-                                    fontSize: '30px',
+                                    fontSize: '25px',
+
                                 }}>
                                 {value}%</Text>}
                         />
                     </div>
 
+                    <Button onClick={() => setValue(Math.round(Math.random() * 100))} mt="md">
+                        Set a random value to test
+                    </Button>
+
                     <div className="Controls">
                         <div className="Notes-input">
-                            <input id="Input" type="text" placeholder="Add a goal to track">
+                            <input id="Input" type="text" placeholder="Add a goal to track"
+                                onChange={handleGoalChange}
+                                value={goalValue}
+                            >
                             </input>
                         </div>
 
                         <div id="Notes-Buttons">
-                            <IconButton > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
+                            <IconButton onClick={() => handleAddGoals(goals)}>
+                                <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>
+                                </AddIcon>
+                            </IconButton>
 
                         </div>
                     </div>
+
+                    <div className="Goal-Container">
+                        <table className="Goals">
+                            <tr>
+                                {goals
+                                    .map((goal, index) => (
+
+                                        <td key={index} className="Goal-Content">
+
+                                            <div className="goalText">
+                                                <span>{goal.text}</span>
+                                            </div>
+
+                                            <div className="goalControls">
+
+                                                <div className="goalCheck">
+                                                    <IconButton>
+                                                        <Checkbox
+                                                            sx={{
+                                                                size: 'medium',
+                                                                justifyContent: 'center',
+                                                                color: '#1DB954',
+                                                                align: 'center',
+                                                                cursor: 'pointer',
+                                                                margin: '10'
+
+                                                            }}
+                                                        />
+                                                    </IconButton>
+                                                </div>
+
+                                                <div className="delete-goal">
+                                                    <IconButton onClick={() => handleLinksDelete(index)}>
+                                                        <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
+                                                    </IconButton>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    ))}
+                            </tr>
+                        </table>
+                    </div>
+
                 </div>
             </div>
 

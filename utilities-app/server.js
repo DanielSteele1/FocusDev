@@ -11,7 +11,6 @@ const { ObjectId } = require('mongodb');
 const app = express();
 const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
-const { LocalConvenienceStoreOutlined } = require('@mui/icons-material');
 
 app.use(cors());
 app.use(express.json());
@@ -83,14 +82,6 @@ app.post('/api/githubUsername', async (req, res) => {
     res.status(500).json({ error: 'Failed to retrieve username' });
   }
 });
-
-
-
-
-
-
-
-
 
 // get user data from the github API
 // this will be used to display user data on the frontend
