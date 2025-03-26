@@ -65,7 +65,7 @@ a {
 
 .description {
 
- color:#858d85;
+ color: #c4cad3;
  padding: 5px;
  display: flex;
  width: fit-content;
@@ -290,7 +290,7 @@ body {
 
 .Profile-title {
 
-  font-size: 30px;
+  font-size: 25px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -300,12 +300,12 @@ body {
 
 .Profile-desc {
 
-  font-size: 17px;
+  font-size: 15px;
   padding: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: #858d85;
+  color: #c4cad3;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
 }
@@ -335,11 +335,13 @@ body {
   align-items: flex-start;
   justify-content: center;
   text-align: flex-start;
+  
 }
 
 .Profile-operations span {
   margin: 10px;
-  color: #858d85;
+  font-size: 15px;
+  color: #c4cad3;
   font-family: 'Lexend Deca', sans-serif;
 }
 
@@ -376,12 +378,26 @@ body {
   flex-direction: column;
   align-items: flex-start;
   text-align: center;
-  width: fit-content;
-  min-height: calc(100vh - 75px);
+  width: 180px;
+  min-height: calc(100vh);
   background-color: #18181b;
   position: sticky;
   border-right: 1px solid #2d2d2d;
+  transition: width 0.3s ease-in-out;
 
+}
+
+.sidebar.collapsed {
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.sidebar.collapsed .sidebarText {
+
+  opacity: 0;
+  display: none;
 }
 
 .sidebar-item {
@@ -390,54 +406,52 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: 98%;
-  padding: 10px 16px;
-  margin: 10px 10px 5px 0px;
+  width: fit-content;
+  padding: 10px 10px;
+  margin: 10px 10px 10px 10px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 500;
-  font-size: 14px;
-  color: #8c918c;
-  transition: all 0.2s ease;
+  font-style: bold;
+  font-size: 15px;
+  color: #c4cad3;
+  transition: all 0.5s ease;
   cursor: pointer;
-  border-left: 1px solid transparent;
-
+  
 }
 
 .sidebarText {
-  margin-left: 10px;
+  margin-left: 15px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  white-space: nowrap;
 }
 
-
-#sidebar-item span:hover {
-  border: 1px solid #17a34a;
-}
-
-#SidebarDeveloper:hover,
-#SidebarProfile:hover,
-#SidebarNote:hover,
-#SidebarProductivity:hover,
-#SidebarHome:hover {
+.sidebar-item:hover {
   color: #1DB954;
-  background-color: rgba(29, 185, 84, 0.1);
-  border-left: 3px solid #1DB954;
 }
 
 .sidebar-item.active {
 
-  color: #1DB954;
-  border-left: 3px solid #1DB954;
-  background-color: rgba(29, 185, 84, 0.1);
+  color: #18181b;
+  background-color: #1DB954;
+  border-radius: 14px;
+
 }
 
 .MainContent {
 
   display: flex;
-  width: calc(100% - 200px);
+  width: calc(100% - 180px);
   justify-content: flex-start;
   align-items: flex-start;
   padding: 20px;
+  transition: width 0.3s ease;
   box-sizing: border-box;
 
+}
+
+.sidebar.collapsed + .MainContent {
+  width: calc(100% - 80px);
 }
 
 .Dashboard-container {
@@ -519,6 +533,8 @@ body {
   border-radius: 10px;
   cursor: pointer;
   padding: 10px;
+
+  transition:  all 0.5s ease-in-out;
 }
 
 .AccountsButton:hover {
@@ -599,6 +615,20 @@ body {
   padding: 10px;
   border-radius: 10px;
 
+}
+
+.section-heading {
+
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.section-title {
+  font-size: 18px;
 }
 
 .Links-Controls {
@@ -740,7 +770,7 @@ table {
 .Dashboard-Main {
   display: flex;
   flex-direction: row;
-  width: 80%;
+  width: 90%;
   max-width: 1300px;
   margin: 0 auto;
   gap: 20px;
@@ -765,6 +795,9 @@ table {
 .Profile-Item {
   width: 70%;
   margin: 10px;
+  border-radius: 15px;
+
+
 }
 
 .Productivity #Calender {
@@ -795,10 +828,9 @@ table {
 
 .Dashboard-Item {
   display: flex;
-  width: fit-content;
-  height: fit-content;
   flex-direction: column;
   margin: 0px;
+  height: 100%;
   font-size: 18px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
@@ -970,18 +1002,18 @@ table {
 
 .QOTD {
   display: flex;
-  max-width: 50%;
+  max-width: fit-content;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #858d85;
+  color: #c4cad3;
   padding: 10px;
   margin: 10px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-style: italic;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #QOTD {
@@ -1241,7 +1273,7 @@ table {
 #Useful-Links {
 
   display: flex;
-  width: 80%;
+  width: 90%;
   max-width: 1200px;
   flex-direction: column;
   justify-content: center;

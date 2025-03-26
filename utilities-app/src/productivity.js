@@ -24,6 +24,10 @@ import { SiLeetcode } from "react-icons/si";
 import { IoLogoFigma } from "react-icons/io5";
 import { BiLogoGmail } from "react-icons/bi";
 
+import { GoGoal } from "react-icons/go";
+import { LuNotebook } from "react-icons/lu";
+import { SlCalender } from "react-icons/sl";
+
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
@@ -85,7 +89,6 @@ function Productivity() {
         setLinkNameValue(event.target.value);
     };
 
-
     const handleAddLink = () => {
 
         if (linkInputValue !== '' && linkNameValue !== '') {
@@ -139,6 +142,10 @@ function Productivity() {
 
     });
 
+    useEffect(() => {
+        localStorage.setItem('goals', JSON.stringify(goals));
+    }, [goals]);
+
     const [goalValue, setGoalValue] = useState('');
 
     const handleGoalChange = (event) => {
@@ -162,13 +169,40 @@ function Productivity() {
         }
     };
 
+    // each goal will have a weight attributed to it, 
+    // calculated based on the total number of goals. 
+    // for example if there are 2 goals, each one should wheigh 50%. 
+    // When the user tick a goal off, This will then be added to a global counter, and displayed to the UI.
+
+    const handleGoalComplete = (index) => {
+
+
+    }
+
+    const handleGoalsDelete = (index) => {
+
+        const newGoals = goals.filter((_, i) => i !== index);
+        setGoals(newGoals);
+
+    }
+
+
     return (
 
         <div className="Productivity">
 
-            <div className="Productivity-Item" id="Useful-Links"> <span>
-                <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                </PushPinIcon>Useful Links</span>
+            <div className="Productivity-Item" id="Useful-Links">
+
+                <div className="section-heading">
+
+                    <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+                    </PushPinIcon>
+
+                    <div className="section-title">
+                        Useful Links
+                    </div>
+                </div>
+
                 <span className="description"> For your convenience, here are some handy links. You can also create your own links if you wish,
                     and you can pin them to the pinned tab in the homepage. </span>
 
@@ -291,11 +325,17 @@ function Productivity() {
             <div className="Dashboard-Main">
 
                 <div className="Productivity-Item" id="Calender">
-                    <span>
-                        <CalendarMonthIcon
-                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                        </CalendarMonthIcon>  Calendar
-                    </span>
+
+                    <div className="section-heading">
+
+                        <SlCalender
+                            style={{ fontSize: '25px', justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+                        </SlCalender>
+
+                        <div className="section-title">
+                            Calendar
+                        </div>
+                    </div>
 
                     <span className="description"> This calendar allows you to schedule certain tasks.
                         You can select a date, time & add a note to each event.
@@ -334,10 +374,19 @@ function Productivity() {
                     <button className="calenderButton" type='button'> Add Event <AddIcon sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle', marginLeft: '5px' }} /> </button>
                 </div>
 
-                <div className="Productivity-Item" id="ToDo"> <span>
-                    <NotesIcon
-                        sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                    </NotesIcon> Goal Tracker </span>
+                <div className="Productivity-Item" id="ToDo">
+
+                    <div className="section-heading">
+
+                        <GoGoal
+                            style={{ fontSize: '25px', justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+                        </GoGoal>
+
+                        <div className="section-title">
+                            Goal Tracker
+                        </div>
+                    </div>
+
                     <span className="description">
                         Enter below a goal to track.
                         The global progress bar will fill up when you tick off items in the list.
@@ -402,7 +451,7 @@ function Productivity() {
 
                                                 <div className="goalCheck">
                                                     <IconButton>
-                                                        <Checkbox
+                                                        <Checkbox onClick={() => handleGoalComplete(index)}
                                                             sx={{
                                                                 size: 'medium',
                                                                 justifyContent: 'center',
@@ -417,7 +466,7 @@ function Productivity() {
                                                 </div>
 
                                                 <div className="delete-goal">
-                                                    <IconButton onClick={() => handleLinksDelete(index)}>
+                                                    <IconButton onClick={() => handleGoalsDelete(index)}>
                                                         <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
                                                     </IconButton>
                                                 </div>

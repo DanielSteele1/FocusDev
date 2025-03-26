@@ -9,53 +9,37 @@ import NotesIcon from '@mui/icons-material/Notes';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 
 import LogoutIcon from '@mui/icons-material/ExitToAppOutlined';
+import { HiLogout } from "react-icons/hi";
 
 import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import AddLinkIcon from '@mui/icons-material/AddLink';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import FilterDramaOutlinedIcon from '@mui/icons-material/FilterDramaOutlined';
-import GithubIcon from '@mui/icons-material/GitHub';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AddIcon from '@mui/icons-material/Add';
-import IconButton from '@mui/material/IconButton';
-import CallSplitIcon from '@mui/icons-material/CallSplit';
-import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
-import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
-import HomeRoundedIcon from '@mui/icons-material/HomeOutlined';
-import CodeIcon from '@mui/icons-material/Code';
-import DescriptionIcon from '@mui/icons-material/ArticleOutlined';
 import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
 
 import CloseIcon from '@mui/icons-material/Close';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
 
 import NightsStayIcon from '@mui/icons-material/NightsStay';
-import LightModeIcon from '@mui/icons-material/LightMode';
 
 import { MantineProvider, Button, Text } from '@mantine/core';
-import { Calendar } from '@mantine/dates';
-import { DatePicker } from '@mantine/dates';
-import { TimeInput } from '@mantine/dates';
-//import { DatesProvider } from '@mantine/dates';
 
 import { Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-import { RingProgress } from '@mantine/core';
-
-import EmojiPicker from 'emoji-picker-react';
-import { TextField } from '@mui/material';
-import PersonIcon from '@mui/icons-material/Person';
 
 import CalHeatmap from 'cal-heatmap';
 import 'cal-heatmap/cal-heatmap.css';
 
-import SampleData from './api/sampleData.json';
-import Legend from 'cal-heatmap/plugins/Legend';
-import { Notes } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
+
+import { FaCode } from "react-icons/fa6";
+import { IoHome } from "react-icons/io5";
+import { BsFillBarChartFill } from "react-icons/bs";
+import { LuNotebook } from "react-icons/lu";
+import { CgProfile } from "react-icons/cg";
 
 import Productivity from './productivity';
 import Developer from './developer';
@@ -65,10 +49,10 @@ import Profile from './profile';
 export const ThemeContext = createContext(null);
 
 function MainWrapper({ children }) {
+
   const [activeTab, setActiveTab] = useState('dashboard');
 
   return (
-
     <div className="MainWrapper">
       {children}
       <Sidebar onTabChange={setActiveTab} />
@@ -177,7 +161,7 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
               value={logoutButton}
               onClick={handleLogoutClick}>
 
-                <span> Log out </span>
+              <span> Log out </span>
             </button>
           </div>
         </div>
@@ -198,40 +182,60 @@ function Sidebar({ onTabChange }) {
 
   }
 
-  return (
-    <div className="sidebar">
 
-      <div className="sidebar-item" id="SidebarHide">
-        <ArrowBackIosRoundedIcon />
-        <span> Hide </span>
+    const [isCollapsed, setIsCollapsed] = useState(false);
+
+     const handleCollapse = () => { 
+
+      setIsCollapsed(!isCollapsed);
+
+     };
+
+
+  return (
+    
+
+      <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}> 
+
+      <div className="sidebar-item" id="SidebarHide" onClick={ handleCollapse }>
+        <HiLogout  style={{ 
+          fontSize: '20px', 
+          alignItems: 'center',
+          marginLeft: '5px',
+          transform: isCollapsed ? 'rotate(0deg)' : 'Rotate(-180deg)',
+          transition: 'transform 0.5s ease'
+
+         }} />
+        <span className="sidebarText"> Hide Sidebar </span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'dashboard' ? 'active' : ''}`} id="SidebarHome" onClick={() => handleClick("dashboard")}>
-        <HomeRoundedIcon sx={{ fontSize: '30px', marginright: '50px', alignItems: 'center' }} />
+        <IoHome style={{ fontSize: '28px', alignItems: 'center' }} />
         <span className="sidebarText">Home</span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'profile' ? 'active' : ''}`} id="SidebarProfile" onClick={() => handleClick("profile")}>
-        <PersonIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
+      <CgProfile  style={{ fontSize: '30px', alignItems: 'center' }} />
         <span className="sidebarText">Profile</span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'productivity' ? 'active' : ''}`} id="SidebarProductivity" onClick={() => handleClick("productivity")}>
-        <EqualizerOutlinedIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
+      <BsFillBarChartFill  style={{ fontSize: '28px', alignItems: 'center' }} />
         <span className="sidebarText">Productivity</span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'developer' ? 'active' : ''}`} id="SidebarDeveloper" onClick={() => handleClick("developer")}>
-        <CodeIcon sx={{ display: 'flex', fontSize: '30px', alignItems: 'center' }} />
+        <FaCode  style={{ display: 'flex', fontSize: '30px', alignItems: 'center' }} />
         <span className="sidebarText">Developer</span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'noteTaking' ? 'active' : ''}`} id="SidebarNote" onClick={() => handleClick("noteTaking")}>
-        <DescriptionIcon sx={{ fontSize: '30px', alignItems: 'center' }} />
+        <LuNotebook  style={{ fontSize: '30px', alignItems: 'center' }} />
         <span className="sidebarText">Note taking</span>
       </div>
 
-    </div>
+      </div>
+
   );
 
 }
@@ -261,7 +265,6 @@ function Dashboard() {
 
     fetchQOTD();
   }, []);
-
 
   // Weather API Frontend
 
@@ -297,6 +300,14 @@ function Dashboard() {
           <span>  {QOTDData ? `"${QOTDData.q}" - ${QOTDData.a}` : <Box sx={{ display: 'flex', padding: '10px' }}> <CircularProgress color="inherit" /> </Box>} </span>
         </div>
       </div>
+
+      <div className="github-commit">
+
+        <span> <span id="emoji">👨‍💻</span>  Github commit graph goes here. </span>
+
+
+      </div>
+
       <div className="Dashboard">
 
         <div className="Dashboard-Item" id="Pinboard">
@@ -341,7 +352,9 @@ function Dashboard() {
         </div>
       </div>
 
-      <div className="Dashboard-Bottom">
+      {/* FEATURES TO BE WORKED ON AFTER CORE DEVELOPMENT, AS UPDATES  */}
+
+      {/* <div className="Dashboard-Bottom">
         <div className="Dashboard-Item" id="Habit-Tracker"> <span>
           <CalendarMonthOutlinedIcon
             sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
@@ -352,7 +365,7 @@ function Dashboard() {
             sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
           </CalendarMonthOutlinedIcon> Calorie Tracker </span> </div>
 
-      </div>
+      </div> */}
 
     </div>
   );
