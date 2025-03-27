@@ -71,7 +71,7 @@ function Profile() {
                 <span>Your Profile  </span>
               </div>
               <div className="Profile-desc">
-                <span> This is your profile. Here you can add a photo,
+                <span className="description"> This is your profile. Here you can add a photo,
                   log out, change your password or delete your account. </span>
               </div>
             </div>
@@ -82,7 +82,6 @@ function Profile() {
                   alt="profile avatar" />
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -90,13 +89,13 @@ function Profile() {
       <div className="Profile-Item">
         <div className="Profile-operations">
 
-          <span> Log out of your account. </span>
+          <span className="description"> Log out of your account. </span>
 
           <button className="AccountsButton">
             <p1> Log out </p1>
           </button>
 
-          <span> Are you sure you want to delete your account? this action cannot be undone. </span>
+          <span className="description"> Are you sure you want to delete your account? this action cannot be undone. </span>
 
           <button className="delete-account">
             <p1> Delete Account </p1>

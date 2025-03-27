@@ -354,7 +354,7 @@ function Productivity() {
                             },
                         }} />
 
-                    <span className="section-title">Pick a date, time and note for your event: </span>
+                    <span className="description">Pick a date, time and note for your event: </span>
 
                     <div className="Controls">
                         <input id="Events-Input" type="text" placeholder="Add a note to event" /> <br></br>

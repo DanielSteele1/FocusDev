@@ -53,6 +53,8 @@ import Legend from 'cal-heatmap/plugins/Legend';
 import { Notes } from '@mui/icons-material';
 import Tooltip from '@mui/material/Tooltip';
 
+import { LuNotebook } from "react-icons/lu";
+
 function NoteTaking() {
 
     const [notes, setNotes] = useState(() => {
@@ -126,12 +128,20 @@ function NoteTaking() {
             <div className="NoteTaking">
                 <div className="NoteTaking-Item" id="NoteInput">
 
-                    <div className="Item-title">
-                        <div className="Item-Icon">
-                            <DescriptionIcon sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', verticalAlign: 'middle' }} /> </div> <span> Note Taking </span>
+
+                    <div className="section-heading">
+
+                        <LuNotebook
+                            style={{ fontSize: '25px', justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+                        </LuNotebook>
+
+                        <div className="section-title">
+                            Goal Tracker
+                        </div>
                     </div>
 
-                    <span> Enter in text below in order to add a note.  (Max 150 characters). </span>
+                    <span className="description"> Enter in text below in order to add a note.  (Max 150 characters). </span>
+                    
                     <div className="Controls">
                         <div className="Notes-input">
                             <textarea id="Input"
