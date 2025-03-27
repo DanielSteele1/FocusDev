@@ -40,9 +40,11 @@ import { IoHome } from "react-icons/io5";
 import { BsFillBarChartFill } from "react-icons/bs";
 import { LuNotebook } from "react-icons/lu";
 import { CgProfile } from "react-icons/cg";
-
+import { BiWorld } from "react-icons/bi";
 import { MdDarkMode } from "react-icons/md";
 import { MdLightMode } from "react-icons/md";
+import { FaLinkedin } from "react-icons/fa";
+import { PiGithubLogo } from "react-icons/pi";
 
 import Productivity from './productivity';
 import Developer from './developer';
@@ -152,19 +154,19 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
           <div className="darkMode">
             <button className="themeButton" onClick={toggleTheme} >
 
-             { theme === "dark" ? (
+              {theme === "dark" ? (
 
-              <MdLightMode
-                style={{ justifyContent: 'center', alignItems: 'center', margin: '0px', fontSize: '30px' }}>
-              </MdLightMode>
+                <MdLightMode
+                  style={{ justifyContent: 'center', alignItems: 'center', margin: '0px', fontSize: '30px' }}>
+                </MdLightMode>
 
-             ) : (
-              
-              <MdDarkMode
-                style={{ justifyContent: 'center', alignItems: 'center', margin: '0px', fontSize: '30px' }}>
-              </MdDarkMode>
+              ) : (
 
-             )}
+                <MdDarkMode
+                  style={{ justifyContent: 'center', alignItems: 'center', margin: '0px', fontSize: '30px' }}>
+                </MdDarkMode>
+
+              )}
 
             </button>
           </div>
@@ -198,19 +200,19 @@ function Sidebar({ onTabChange }) {
   }
 
 
-    const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
-     const handleCollapse = () => { 
+  const handleCollapse = () => {
 
-      setIsCollapsed(!isCollapsed);
+    setIsCollapsed(!isCollapsed);
 
-     };
+  };
 
 
   return (
-    
 
-      <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}> 
+
+    <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
 
       <div className={`sidebar-item ${activeItem === 'dashboard' ? 'active' : ''}`} id="SidebarHome" onClick={() => handleClick("dashboard")}>
         <IoHome style={{ fontSize: '27px', alignItems: 'center' }} />
@@ -218,39 +220,39 @@ function Sidebar({ onTabChange }) {
       </div>
 
       <div className={`sidebar-item ${activeItem === 'profile' ? 'active' : ''}`} id="SidebarProfile" onClick={() => handleClick("profile")}>
-      <CgProfile  style={{ fontSize: '27px', alignItems: 'center' }} />
+        <CgProfile style={{ fontSize: '27px', alignItems: 'center' }} />
         <span className="sidebarText">Profile</span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'productivity' ? 'active' : ''}`} id="SidebarProductivity" onClick={() => handleClick("productivity")}>
-      <BsFillBarChartFill  style={{ fontSize: '27px', alignItems: 'center' }} />
+        <BsFillBarChartFill style={{ fontSize: '27px', alignItems: 'center' }} />
         <span className="sidebarText">Productivity</span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'developer' ? 'active' : ''}`} id="SidebarDeveloper" onClick={() => handleClick("developer")}>
-        <FaCode  style={{ display: 'flex', fontSize: '27px', alignItems: 'center' }} />
+        <FaCode style={{ display: 'flex', fontSize: '27px', alignItems: 'center' }} />
         <span className="sidebarText">Developer</span>
       </div>
 
       <div className={`sidebar-item ${activeItem === 'noteTaking' ? 'active' : ''}`} id="SidebarNote" onClick={() => handleClick("noteTaking")}>
-        <LuNotebook  style={{ fontSize: '27px', alignItems: 'center' }} />
-        <span className="sidebarText">Note taking</span>
+        <LuNotebook style={{ fontSize: '27px', alignItems: 'center' }} />
+        <span className="sidebarText">Notepad</span>
       </div>
 
-      <div className="sidebar-item" id="SidebarHide" onClick={ handleCollapse }>
-        <HiLogout  style={{ 
-          fontSize: '20px', 
+      <div className="sidebar-item" id="SidebarHide" onClick={handleCollapse}>
+        <HiLogout style={{
+          fontSize: '20px',
           alignItems: 'center',
           marginLeft: '5px',
           transform: isCollapsed ? 'rotate(0deg)' : 'Rotate(-180deg)',
           transition: 'transform 0.5s ease'
 
-         }} />
+        }} />
         <span className="sidebarText"> Hide Sidebar </span>
       </div>
 
 
-      </div>
+    </div>
 
   );
 
@@ -359,7 +361,7 @@ function Dashboard() {
             <div className="Item-Icon">
 
               <FilterDramaOutlinedIcon sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', verticalAlign: 'middle' }}>
-              </FilterDramaOutlinedIcon> <span> Weather </span>  </div> 
+              </FilterDramaOutlinedIcon> <span> Weather </span>  </div>
 
           </div>
 
@@ -393,16 +395,59 @@ function Footer() {
   return (
     <div className="Footer">
 
-      <div className="Footer-1"> Website created by Daniel Steele </div>
+      <div className="Footer-1">
+        <div className="footer-content">
+          <span> Website created by Daniel Steele </span>
+          <span> Daniel Steele ©2025. All rights reserved. </span>
+        </div>
+      </div>
 
-      <div className="Footer-2"> Check out my other work here </div>
+      <div className="Footer-2">
 
-      <div className="Footer-3"> <a href="https://dashboard.simpleanalytics.com/?utm_source=danielsteele.dev&utm_content=badge&affiliate=catur" 
-      referrerpolicy="origin" 
-      target="_blank"> <picture><source srcset="https://simpleanalyticsbadges.com/danielsteele.dev?mode=dark" media="(prefers-color-scheme: dark)" /><img src="https://simpleanalyticsbadges.com/danielsteele.dev?mode=light" 
-      loading="lazy" 
-      referrerpolicy="no-referrer" 
-      crossorigin="anonymous" /></picture></a> </div>
+        <div className="icon">
+          <a href="https://danielsteele.dev">
+            <BiWorld
+              style={{
+                fontSize: '30px'
+
+              }}>
+              Click here to check out my other work! </BiWorld>
+          </a>
+        </div>
+
+        <div className="icon">
+          <a href="https://www.linkedin.com/in/daniel-steele1/">
+            <PiGithubLogo
+              style={{
+
+                fontSize: '30px'
+
+              }}>
+              Click here to check out my other work! </PiGithubLogo>
+          </a>
+        </div>
+        
+        <div className="icon">
+          <a href="https://github.com/DanielSteele1">
+            <FaLinkedin
+              style={{
+
+                fontSize: '30px'
+
+              }}>
+              Click here to check out my other work! </FaLinkedin>
+          </a>
+        </div>
+
+
+      </div>
+
+      <div className="Footer-3"> <a href="https://dashboard.simpleanalytics.com/?utm_source=danielsteele.dev&utm_content=badge&affiliate=catur"
+        referrerpolicy="origin"
+        target="_blank"> <picture><source srcset="https://simpleanalyticsbadges.com/danielsteele.dev?mode=dark" media="(prefers-color-scheme: dark)" /><img src="https://simpleanalyticsbadges.com/danielsteele.dev?mode=light"
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          crossorigin="anonymous" /></picture></a> </div>
 
     </div>
   );

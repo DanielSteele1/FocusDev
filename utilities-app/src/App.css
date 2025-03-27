@@ -113,8 +113,6 @@ a {
   background-color:#1DB954;
 }
 
-
-
 .App.light .Navigation-Item,
 .App.light .QOTD,
 .App.light .Welcome {
@@ -1358,6 +1356,11 @@ table {
   justify-content: space-between;
 }
 
+.footer-content {
+  display: flex;
+  flex-direction: column;
+
+}
 
 .Footer-1, .Footer-2, .Footer-3 {
   display: flex;
@@ -1369,4 +1372,10 @@ table {
   padding: 10px;
   justify-content: center;
   align-items: center;
+}
+
+.icon {
+
+  display: flex;
+  margin: 10px;
 }

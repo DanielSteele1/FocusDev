@@ -136,7 +136,7 @@ function NoteTaking() {
                         </LuNotebook>
 
                         <div className="section-title">
-                            Goal Tracker
+                            Notepad
                         </div>
                     </div>
 
