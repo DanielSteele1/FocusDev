@@ -3,46 +3,17 @@ import { useEffect, useRef, createContext } from "react";
 import { useState } from "react";
 import 'reactjs-popup/dist/index.css';
 
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import NotesIcon from '@mui/icons-material/Notes';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import LogoutIcon from '@mui/icons-material/Logout';
-import CloudQueueIcon from '@mui/icons-material/CloudQueue';
-import PushPinIcon from '@mui/icons-material/PushPin';
-import AddLinkIcon from '@mui/icons-material/AddLink';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import GithubIcon from '@mui/icons-material/GitHub';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AddIcon from '@mui/icons-material/Add';
-import IconButton from '@mui/material/IconButton';
 import CallSplitIcon from '@mui/icons-material/CallSplit';
 import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
-import CodeIcon from '@mui/icons-material/Code';
-import DescriptionIcon from '@mui/icons-material/Description';
-import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
-import CloseIcon from '@mui/icons-material/Close';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import NightsStayIcon from '@mui/icons-material/NightsStay';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import { MantineProvider, Button, Text } from '@mantine/core';
-import { Calendar } from '@mantine/dates';
-import { DatePicker } from '@mantine/dates';
-import { TimeInput } from '@mantine/dates';
-//import { DatesProvider } from '@mantine/dates';
-import CircularProgress from '@mui/material/CircularProgress';
-import { RingProgress } from '@mantine/core';
-import Tooltip from '@mui/material/Tooltip';
-import EmojiPicker from 'emoji-picker-react';
-import PersonIcon from '@mui/icons-material/Person';
-
 import CalHeatmap from 'cal-heatmap';
 import 'cal-heatmap/cal-heatmap.css';
-import SampleData from './api/sampleData.json';
 import Legend from 'cal-heatmap/plugins/Legend';
+import Dialog from '@mui/material/Dialog';
+
+import { FaCode } from "react-icons/fa6";
+import { GrCircleInformation } from "react-icons/gr";
 
 function Developer() {
 
@@ -80,7 +51,6 @@ function Developer() {
                 { "date": "2025-01-24", "value": 12 },
                 { "date": "2025-01-25", "value": 1 },
                 { "date": "2025-01-26", "value": 30 },
-
                 { "date": "2025-01-27", "value": 26 },
                 { "date": "2025-01-28", "value": 26 },
 
@@ -157,7 +127,7 @@ function Developer() {
                 {
                     label: 'Commit Frequency: 0 - 30+, grey squares indicate 0 commits, white squares indicate 0 commits or data thats yet to be recorded.',
                     width: '600',
-                    height: '60',
+                    height: '0',
 
                 },
 
@@ -169,6 +139,7 @@ function Developer() {
     const [githubData, setGithubData] = useState(null);
 
     //github API Frontend
+
 
     const fetchGithub = async () => {
         const api_url = '/api/githubApiConn';
@@ -222,15 +193,47 @@ function Developer() {
         }
     };
 
+    //dialog box for notes
+    const [open, setOpen] = useState(false);
+
+    const handleCloseDialog = () => {
+
+        setOpen(false);
+
+    };
+
+    const handleOpenDialog = () => {
+
+        setOpen(true);
+
+    };
+
     return (
         <div className="Developer-container">
             <div className="Developer">
 
-                <div className="Developer-Item" id="github-login">
+                <div className="Developer-Item">
 
-                    <div className="Github-Stats-Input">
-                        <form onSubmit={handleGithubSubmit}>
-                            <span> Please enter your github account name in order to track these stats. </span>
+                    <div className="Item-title">
+                        <div className="Item-Icon">
+                            <GithubIcon
+                                sx={{ justifyContent: 'center', alignItems: 'center' }}>
+                            </GithubIcon>
+                            <span> Your Github Stats </span>
+                        </div>
+                    </div>
+
+                    <div className="github-login">
+                        <span className="tip-highlight"> 
+                            <GrCircleInformation 
+                            style={{
+                            fontSize: '20px',
+                            marginRight: '10px',
+                            color: '#1DB954',
+                            verticalAlign: 'middle'
+
+                        }} /> Please enter your github account name in order to track these stats. </span>
+                        <form className="Github-Stats-Input" onSubmit={handleGithubSubmit}>
 
                             <input type="text"
                                 placeholder="Enter your account name"
@@ -238,21 +241,10 @@ function Developer() {
                                 onChange={handleUsername}
                                 required
                             />
-
                             <button className="SubmitGithubName"> <GithubIcon sx={{ display: 'flex', marginRight: '5px' }}> </GithubIcon> Connect with Github  </button>
                         </form>
+
                     </div>
-                </div>
-
-                <div className="Developer-Item">
-
-                    <span className="github-title">
-                        <GithubIcon
-                            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '10px' }}>
-                        </GithubIcon>
-                        <br></br>
-                        <span> Your Github Stats </span>
-                    </span>
 
                     <div className="github-stats">
                         <div id="stat">
@@ -288,15 +280,72 @@ function Developer() {
                 </div>
 
                 <div className="Developer-Item" id="developer-notepad">
-                    <div className="notepad-controls">
-                        <span> HELLO WOLRD </span>
 
+                    {/* This area is designated for the reusable code snippet feature. 
+                       A better name is needed but the idea is that users can save common bits of code here to use later. 
+                       Labels and a Title can be added to each entry in order to clearly see what each one is for, 
+                       and crucially, a one click copy button is needed. There should be a generous cap on how many a user can have saved at once, 
+                       but generally, around 10 is pretty good. All this should be a popout window, as there's not enough room on the dashboard itself. 
+                       
+                    */ }
+                    <div className="Item-title">
+                        <div className="Item-Icon">
+                            <FaCode style={{
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                fontSize: '30px',
+                                verticalAlign: 'middle'
+                            }} />
+                            <span> Reusable Code Snippets </span>
+                        </div>
 
                     </div>
 
+                    <div className="Dialog-button" onClick={handleOpenDialog}> <span> Add a code snippet </span> </div>
+
+                    <Dialog
+                        PaperProps={{
+                            style: {
+                                backgroundColor: "transparent",
+                                boxShadow: "none"
+                            },
+                        }}
+                        open={open}
+                        onClose={handleCloseDialog}
+                    >
+                        <div className="code-snippet-dialog">
+
+                            <div className="section-title"> Snippet Clipboard - Create a Code Snippet </div>
+                            <div className="description" id="dialog-text"> Add a title, tag & enter the code snippet, then click save. You can add up to 10 snippets at once. </div>
+
+                            <div className="section-title"> <span> Title: </span>  </div>
+                            <input className="dialog-input" id="snippet-title" />
+
+                            <div className="section-title"> <span> Tag: </span> </div>
+                            <input className="dialog-input" id="snippet-tag" />
+
+                            <div className="section-title"> <span> Code Snippet: </span> </div>
+                            <code className="dialog-input" id="snippet-code" />
+
+                            <button className="Dialog-button"> <span> Save Snippet </span> </button>
+
+                        </div>
+                    </Dialog>
+
+                    <span className="description"> Use the same boilerplate code snippets over and over?
+                        Here, you can save your snippets into one location for ease of access!
+                    </span>
+
+                    <span className="description">
+                        You can give each snippet a title and label, and there's a one click copy button, so you can just copy/paste in and out of this widget.
+                    </span>
+
+
+                    <span className="description">
+                        Currently this feature is WIP but the idea is to have one central area
+                    </span>
 
                 </div>
-
             </div>
         </div>
     );

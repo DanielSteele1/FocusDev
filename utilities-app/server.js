@@ -86,7 +86,7 @@ app.post('/api/githubUsername', async (req, res) => {
 // get user data from the github API
 // this will be used to display user data on the frontend
 app.get('/api/githubApiConn', async (req, res) => {
-  
+
   try {
     const username = req.session.githubUsername || 'defaultUsername';
     console.log("Fetching repos for username:", username);
@@ -194,7 +194,7 @@ app.post('/logout', async (req, res) => {
 
   req.session.destroy((err) => {
 
-    if(err) {
+    if (err) {
 
       console.log("Error logging out user", err);
       res.status(500).json({ message: "Error logging out user" });
@@ -205,10 +205,30 @@ app.post('/logout', async (req, res) => {
       console.log("User logged out");
       res.status(200).json({ message: "User logged out" });
     }
-
   });
+});
+
+app.post('/delete', async (req, res) => {
+
+  const {email, password} = req.body;
+  const usersCollection = db.collection('users');
+
+  if(req.session.user){
+
+  }
+  // Check if a user exists with the provided email
+
+  else
+  {
+    console.log("Failed to delete account. Please try again later.");
+    res.status(400).json({ message: "Failed to delete account. Please try again later." });
+  }
+  
+
 
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

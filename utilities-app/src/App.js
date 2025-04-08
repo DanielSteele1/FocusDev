@@ -5,34 +5,19 @@ import React, { useEffect, useState, useRef, createContext, OnSubmit } from "rea
 //import WeatherWidget from './Weather';
 import Accounts from './accounts';
 
-import NotesIcon from '@mui/icons-material/Notes';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-
-import LogoutIcon from '@mui/icons-material/ExitToAppOutlined';
 import { HiLogout } from "react-icons/hi";
 
-import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
-import AddLinkIcon from '@mui/icons-material/AddLink';
 import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
 import FilterDramaOutlinedIcon from '@mui/icons-material/FilterDramaOutlined';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
-
-import CloseIcon from '@mui/icons-material/Close';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-
-import NightsStayIcon from '@mui/icons-material/NightsStay';
-
 import { MantineProvider, Button, Text } from '@mantine/core';
 
 import { Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import CalHeatmap from 'cal-heatmap';
 import 'cal-heatmap/cal-heatmap.css';
-
 import Tooltip from '@mui/material/Tooltip';
 
 import { FaCode } from "react-icons/fa6";
@@ -45,6 +30,7 @@ import { MdDarkMode } from "react-icons/md";
 import { MdLightMode } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
 import { PiGithubLogo } from "react-icons/pi";
+import { HiTrendingUp } from "react-icons/hi";
 
 import Productivity from './productivity';
 import Developer from './developer';
@@ -121,15 +107,23 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
     <div className="Navigation">
 
       <div className="Navigation-Logo">
-        <TrendingUpIcon
-          sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '40px' }}>
-        </TrendingUpIcon> </div>
+
+        <HiTrendingUp style={{
+          display: 'flex',
+          color: '#1DB954',
+          fontSize: '40px',
+          margin: '10px'
+
+        }} />
+
+      </div>
+
       <div className="Navigation-Name"> <span> FocusDev </span> </div>
 
       <div className="Navigation-Item" id="location">
         <div className="location">
 
-          <input className="LocationInput" contenteditable="true" type="text" placeholder="Enter your location" />
+          <input className="LocationInput" contenteditable="true" type="text" placeholder=" Search your location" />
 
           <button className="LocationSearch">
             <LocationOnIcon
@@ -323,7 +317,24 @@ function Dashboard() {
 
         <span> <span id="emoji">👨‍💻</span>  Github commit graph goes here. </span>
 
+      </div>
 
+      <div className="Dashboard">
+
+
+        <div className="Weather">
+
+          <div className="Item-title">
+            <div className="Item-Icon">
+
+              <FilterDramaOutlinedIcon sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', verticalAlign: 'middle' }}>
+              </FilterDramaOutlinedIcon> <span> Weather </span>  </div>
+
+          </div>
+
+          <WeatherWidget />
+
+        </div>
       </div>
 
       <div className="Dashboard">
@@ -355,39 +366,73 @@ function Dashboard() {
           <Text className="Note"> Placeholder Text</Text>
         </div>
 
-        <div className="Dashboard-Item" id="Weather">
-
-          <div className="Item-title">
-            <div className="Item-Icon">
-
-              <FilterDramaOutlinedIcon sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', verticalAlign: 'middle' }}>
-              </FilterDramaOutlinedIcon> <span> Weather </span>  </div>
-
-          </div>
-
-          {/* <WeatherWidget /> */}
-
-        </div>
       </div>
-
-      {/* FEATURES TO BE WORKED ON AFTER CORE DEVELOPMENT, AS UPDATES  */}
-
-      {/* <div className="Dashboard-Bottom">
-        <div className="Dashboard-Item" id="Habit-Tracker"> <span>
-          <CalendarMonthOutlinedIcon
-            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-          </CalendarMonthOutlinedIcon> Habit Tracker </span> </div>
-
-        <div className="Dashboard-Item" id="Calorie-Tracker"> <span>
-          <CalendarMonthOutlinedIcon
-            sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-          </CalendarMonthOutlinedIcon> Calorie Tracker </span> </div>
-
-      </div> */}
-
     </div>
   );
 }
+
+
+function WeatherWidget() {
+
+  return (
+
+    <div className="Weather-Container">
+      <div className="today-summary">
+        <span className="weather-heading"> Current Forecast: </span>
+
+        <div className="Forecast">
+          <span> Rain </span>
+
+        </div>
+
+        <div className="Temp">
+
+          <span className="weather-title"> 11:00 AM </span>
+          <span className="weather-text" > 17°C </span>
+
+        </div>
+
+      </div>
+
+      <div className="Next-4-hours">
+        <div className="hour1">
+
+          <span className="weather-title"> 11:00 AM </span>
+          <span className="weather-text" > 17°C </span>
+
+        </div>
+
+        <div className="hour2">
+
+          <span className="weather-title"> 11:00 AM </span>
+          <span className="weather-text" > 17°C </span>
+
+        </div>
+
+        <div className="hour3">
+
+          <span className="weather-title"> 11:00 AM </span>
+          <span className="weather-text" > 17°C </span>
+
+        </div>
+        <div className="hour4">
+
+          <span className="weather-title"> 11:00 AM </span>
+          <span className="weather-text" > 17°C </span>
+
+        </div>
+      </div>
+    </div>
+
+  );
+
+
+}
+
+
+
+
+
 
 
 function Footer() {
@@ -404,41 +449,47 @@ function Footer() {
 
       <div className="Footer-2">
 
-        <div className="icon">
-          <a href="https://danielsteele.dev">
-            <BiWorld
-              style={{
-                fontSize: '30px'
+        <Tooltip title="My Website">
+          <div className="icon">
+            <a href="https://danielsteele.dev">
+              <BiWorld
+                style={{
+                  fontSize: '30px'
 
-              }}>
-              Click here to check out my other work! </BiWorld>
-          </a>
-        </div>
+                }}>
+                Click here to check out my other work! </BiWorld>
+            </a>
+          </div>
+        </Tooltip>
 
-        <div className="icon">
-          <a href="https://www.linkedin.com/in/daniel-steele1/">
-            <PiGithubLogo
-              style={{
+        <Tooltip title="LinkedIn">
+          <div className="icon">
+            <a href="https://www.linkedin.com/in/daniel-steele1/">
+              <PiGithubLogo
+                style={{
 
-                fontSize: '30px'
+                  fontSize: '30px'
 
-              }}>
-              Click here to check out my other work! </PiGithubLogo>
-          </a>
-        </div>
-        
-        <div className="icon">
-          <a href="https://github.com/DanielSteele1">
-            <FaLinkedin
-              style={{
+                }}>
+                Click here to check out my other work! </PiGithubLogo>
+            </a>
+          </div>
 
-                fontSize: '30px'
+        </Tooltip>
 
-              }}>
-              Click here to check out my other work! </FaLinkedin>
-          </a>
-        </div>
+        <Tooltip title="My Github">
+          <div className="icon">
+            <a href="https://github.com/DanielSteele1">
+              <FaLinkedin
+                style={{
 
+                  fontSize: '30px'
+
+                }}>
+                Click here to check out my other work! </FaLinkedin>
+            </a>
+          </div>
+        </Tooltip>
 
       </div>
 

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
 body {
   flex-direction: column;
   align-items: center;
@@ -12,6 +15,7 @@ a:hover {
 a {
   color: #1DB954;
 }
+
 .App.light a {
   color: black;
 }
@@ -51,13 +55,6 @@ a {
   }
 }
 
-form {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
 a {
 
@@ -80,6 +77,19 @@ a {
 
 }
 
+
+.tip-highlight{
+
+  color: #1DB954;
+  font-size: 15px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 .App.light .LocationSearch {
   background-color: #1DB954;
   color: #0f1011;
@@ -87,7 +97,7 @@ a {
 
 .App.dark .LocationSearch {
   color: #1DB954;
-  background-color: #292e2e;
+  background-color: #18181b;
 }
 
 .App.light .Navigation,
@@ -110,7 +120,7 @@ a {
 
 .App.light .Item-Icon {
 
-  background-color:#1DB954;
+  background-color: #1DB954;
 }
 
 .App.light .Navigation-Item,
@@ -119,7 +129,8 @@ a {
   color: #000000;
 }
 
-.App.light .Dashboard-Item{
+.App.light .Dashboard-Item,
+.App.light .Weather {
   background-color: #dddddd;
   border: none;
   color: black;
@@ -133,7 +144,7 @@ a {
 }
 
 .App.light .Links-Content:hover {
-  background:none;
+  background: none;
 }
 
 .App.light #stat,
@@ -154,16 +165,16 @@ a {
 .App.dark .Github-Stats-Input input,
 .App.dark .LocationInput {
 
-  background-color: #292e2e;
+  background-color: #18181b;
   color: #1DB954;
 }
 
 .App.light .Dashboard-Item,
+.App.light .Weather,
 .App.light .NoteTaking-Item,
 .App.light .Productivity-Item,
 .App.light .Profile-Item,
-.App.light #github-login
-{
+.App.light #github-login {
   background-color: #f1f1f1;
   border: 1px solid #2d2d2d;
   color: #1DB954;
@@ -176,11 +187,12 @@ a {
 
 
 .App.dark .Dashboard-Item,
+.App.dark .Weather,
 .App.dark .NoteTaking-Item,
 .App.dark .Productivity-Item,
 .App.dark .Profile-Item,
 .App.dark #github-login {
-  background-color: #1e1e20;
+  background-color: #18181b;
   border: 1px solid #2d2d2d;
   color: #1DB954;
 }
@@ -290,8 +302,6 @@ body {
 }
 
 .Navigation-Logo {
-  margin: 10px;
-  padding: 10px;
   color: #1DB954;
   width: fit-content;
   justify-content: center;
@@ -299,9 +309,8 @@ body {
 }
 
 .Navigation-Name {
-  padding: 10px;
-  font-size: 20px;
-  font-family: 'Lexend Deca', sans-serif;
+  font-size: 25px;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   color: #1DB954;
   width: 250px;
@@ -614,18 +623,22 @@ body {
 }
 
 .section-title {
+  display:flex;
   font-size: 13px;
-  margin: 5px;
-  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 500;
   color: #1DB954;
+  width: 100%;
+  align-items: flex-start;
 }
 
 .calenderButton {
 
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   width: fit-content;
   cursor: pointer;
   display: flex;
@@ -652,8 +665,8 @@ body {
   background-color: #148c3a;
 }
 
-#NoteInput span {
-  margin: 10px;
+.description{
+  margin-left: 10px;
 }
 
 .Productivity {
@@ -840,27 +853,96 @@ table {
   gap: 20px;
 }
 
+.code-snippet-dialog {
+
+  display: flex;
+  height: 500px;
+  width: 600px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #1DB954;
+  padding: 10px;
+  border: 2px solid #2d2d2d;
+  background-color: #18181b;
+  border-radius: 10px;
+
+}
+
+.dialog-input {
+
+  display: flex;
+  height: 40px;
+  width: 70%;
+  font-size: 15px;
+  padding: 10px 15px;
+  margin: 10px;
+  border: 2px solid #3d423d;
+  border-radius: 10px;
+  background-color: #292e2e;
+  color: #1DB954;
+  outline:none;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+.Dialog-button {
+
+  display: flex;
+  height: auto;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+  background-color: #1DB954;
+  color: #212520;
+  padding: 10px;
+  margin: 0 auto;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+
+}
+
+.Dialog-button:active {
+
+
+  transform: scale(0.97);
+  background-color: #148c3a;
+
+}
+
+.Dialog-button:hover {
+
+  cursor: pointer;
+}
+
+
+#dialog-text {
+  margin-left: 10px;
+}
+
 .Developer-Item {
   display: flex;
   flex-direction: column;
   margin: 10px;
+  padding: 10px;
 }
 
 #developer-notepad {
-
   display: flex;
   height: 80%;
   width: 100%;
-  background-color: #1e1e20;
+  border-radius: 10px;
+  background-color: #18181b;
   border: 1px solid #2d2d2d;
 }
-
 
 .Profile-Item {
   width: 70%;
   margin: 10px;
   border-radius: 15px;
-
 
 }
 
@@ -1086,6 +1168,8 @@ table {
   font-family: 'Poppins', sans-serif;
 }
 
+
+
 #Input,
 #URLInput,
 #LinkNameInput,
@@ -1094,8 +1178,7 @@ table {
 #GoalInput,
 #Events-Input,
 #DateInput,
-#TimeInput,
-.Github-Stats-Input input {
+#TimeInput {
 
   flex: 1;
   border: 0px solid;
@@ -1106,11 +1189,28 @@ table {
   border-radius: 10px;
   font-size: 15px;
   border: 2px solid #3d423d;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  outline: none;
 
 }
 
-.Github-Stats-Input input {
-  margin: 10px;
+#Input:focus,
+#URLInput:focus,
+#LinkNameInput:focus,
+#EventsInput:focus,
+#LocationInput:focus,
+#GoalInput:focus,
+#Events-Input:focus,
+#DateInput:focus,
+#TimeInput:focus,
+.Github-Stats-Input input:focus {
+
+border: 2px solid #1DB954;
+  background-color: #292e2e;
+  color: #1DB954;
+  transition: all 0.2s ease-in-out;
+
 }
 
 #Input {
@@ -1228,19 +1328,45 @@ table {
 
 }
 
-#github-login {
-
+.Github-Stats-Input{
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+
+
+}
+
+.Github-Stats-Input input {
+
+  flex: 1;
+  border: 0px solid;
+  padding: 10px;
+  height: 45px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 15px;
+  border: 2px solid #3d423d;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  outline: none;
+}
+
+
+.github-login {
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: 100%;
   height: fit-content;
   padding: 10px;
   border-radius: 15px;
 
 }
-
 
 .github-title {
 
@@ -1268,11 +1394,9 @@ table {
   justify-content: center;
   background-color: #1DB954;
   border: none;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-
+  height: 40px;
+  padding: 10px;
+  margin: 10px;
   border-radius: 10px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
@@ -1324,14 +1448,103 @@ table {
 
 }
 
-
-#Weather,
 #Upcoming-Events,
 #Pinboard {
   display: flex;
   flex-direction: column;
   height: fit-content;
 }
+
+.Weather {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  width: 100%;
+  font-size: 18px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: 400;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #2d2d2d;
+}
+
+.Weather-Container {
+
+
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 10px;
+  padding: 10px;
+  font-family: 'Lexend Deca', sans-serif;
+
+}
+
+.today-summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 30%;
+  background-color: #1e1e20;
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+
+
+}
+
+.Forecast,
+.Temp {
+
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 10px;
+
+}
+
+.weather-heading {
+  font-size: 25px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.weather-title {
+  font-size: 17px;
+
+}
+
+.weather-text {
+  font-size: 25px;
+}
+
+.Next-4-hours {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(80px, 1fr));
+  gap: 40px;
+  width: 50%;
+  margin-left: auto;
+  justify-content: flex-end;
+
+}
+
+.hour1,
+.hour2,
+.hour3,
+.hour4 {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e1e20;
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+
+}
+
+
 
 #Useful-Links {
 
@@ -1349,7 +1562,7 @@ table {
   display: flex;
   width: 100%;
   height: 100px;
-  flex-direction:row;
+  flex-direction: row;
   border-top: #3d423d 1px solid;
   color: #1DB954;
   align-items: flex-start;
@@ -1362,10 +1575,12 @@ table {
 
 }
 
-.Footer-1, .Footer-2, .Footer-3 {
+.Footer-1,
+.Footer-2,
+.Footer-3 {
   display: flex;
   flex: 1;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
   margin: 10px;

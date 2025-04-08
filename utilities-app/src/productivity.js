@@ -3,49 +3,21 @@ import { useEffect, useRef, createContext } from "react";
 import { useState } from "react";
 import 'reactjs-popup/dist/index.css';
 
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import ArrowRightAltRoundedIcon from '@mui/icons-material/ArrowRightAltRounded';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-
-import NotesIcon from '@mui/icons-material/Notes';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import LogoutIcon from '@mui/icons-material/Logout';
-import CloudQueueIcon from '@mui/icons-material/CloudQueue';
 import PushPinIcon from '@mui/icons-material/PushPin';
-import AddLinkIcon from '@mui/icons-material/AddLink';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import GithubIcon from '@mui/icons-material/GitHub';
 import YoutubeIcon from '@mui/icons-material/YouTube';
-
-import FigmaIcon from '@mui/icons-material/DesignServices';
 
 import { SiLeetcode } from "react-icons/si";
 import { IoLogoFigma } from "react-icons/io5";
 import { BiLogoGmail } from "react-icons/bi";
 
 import { GoGoal } from "react-icons/go";
-import { LuNotebook } from "react-icons/lu";
 import { SlCalender } from "react-icons/sl";
-
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
-import CallSplitIcon from '@mui/icons-material/CallSplit';
-import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
-import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
 
 import InsertLinkRoundedIcon from '@mui/icons-material/InsertLinkRounded';
-
-import CodeIcon from '@mui/icons-material/Code';
-import DescriptionIcon from '@mui/icons-material/Description';
-import ArrowBackIosRoundedIcon from '@mui/icons-material/ArrowBackIosRounded';
-
 import CloseIcon from '@mui/icons-material/Close';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-
-import NightsStayIcon from '@mui/icons-material/NightsStay';
-import LightModeIcon from '@mui/icons-material/LightMode';
 
 import { MantineProvider, Button, Text } from '@mantine/core';
 import { Calendar } from '@mantine/dates';
@@ -53,14 +25,10 @@ import { DatePicker } from '@mantine/dates';
 import { TimeInput } from '@mantine/dates';
 //import { DatesProvider } from '@mantine/dates';
 import { Checkbox } from '@mantine/core';
-
-import CircularProgress from '@mui/material/CircularProgress';
 import { RingProgress } from '@mantine/core';
 import Tooltip from '@mui/material/Tooltip';
 
-
-import EmojiPicker from 'emoji-picker-react';
-import PersonIcon from '@mui/icons-material/Person';
+import { IoSparkles } from "react-icons/io5";
 
 function Productivity() {
 
@@ -193,18 +161,30 @@ function Productivity() {
 
             <div className="Productivity-Item" id="Useful-Links">
 
-                <div className="section-heading">
+                <div className="Item-title">
+                    <div className="Item-Icon">
+                        <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }}>
+                        </PushPinIcon>
 
-                    <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                    </PushPinIcon>
+                        <span> Quick Links </span>
 
-                    <div className="section-title">
-                        Useful Links
                     </div>
                 </div>
 
                 <span className="description"> For your convenience, here are some handy links. You can also create your own links if you wish,
                     and you can pin them to the pinned tab in the homepage. </span>
+
+                <span className="description">  <div className="tip-highlight">
+                    <IoSparkles
+                        style={{
+                            fontSize: '20px',
+                            marginRight: '10px',
+                            color: '#1DB954',
+                            verticalAlign: 'middle'
+
+                        }} />
+
+                    Link doesn't work ? make sure you typed in the url correctly, and include ' https:// ' at the start. </div>  </span>
 
                 <div className="Links-Controls">
                     <div className="LinksName">
@@ -231,7 +211,7 @@ function Productivity() {
                     </div>
 
                     <div id="Notes-Buttons">
-                        <IconButton onClick={handleAddLink} > <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
+                        <IconButton onClick={handleAddLink} ><AddIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }}>  </AddIcon>  </IconButton>
                     </div>
                 </div>
 
@@ -326,14 +306,12 @@ function Productivity() {
 
                 <div className="Productivity-Item" id="Calender">
 
-                    <div className="section-heading">
-
-                        <SlCalender
-                            style={{ fontSize: '25px', justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                        </SlCalender>
-
-                        <div className="section-title">
-                            Calendar
+                    <div className="Item-title">
+                        <div className="Item-Icon">
+                            <SlCalender
+                                style={{ fontSize: '30px', justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }}>
+                            </SlCalender>
+                            <span> Calendar </span>
                         </div>
                     </div>
 
@@ -371,19 +349,17 @@ function Productivity() {
                         }} />
 
                     </div>
-                    <button className="calenderButton" type='button'> Add Event <AddIcon sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle', marginLeft: '5px' }} /> </button>
+                    <button className="calenderButton" type='button'> <AddIcon sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', verticalAlign: 'middle', marginRight: '5px' }} />Add Event  </button>
                 </div>
 
                 <div className="Productivity-Item" id="ToDo">
 
-                    <div className="section-heading">
-
-                        <GoGoal
-                            style={{ fontSize: '25px', justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
-                        </GoGoal>
-
-                        <div className="section-title">
-                            Goal Tracker
+                    <div className="Item-title">
+                        <div className="Item-Icon">
+                            <GoGoal
+                                style={{ fontSize: '25px', justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+                            </GoGoal>
+                            <span> Goal Tracker </span>
                         </div>
                     </div>
 
