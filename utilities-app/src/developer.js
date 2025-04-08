@@ -15,46 +15,50 @@ import Dialog from '@mui/material/Dialog';
 import { FaCode } from "react-icons/fa6";
 import { GrCircleInformation } from "react-icons/gr";
 
+import { LineChart } from '@mui/x-charts/LineChart';
+import CalendarHeatmap from 'react-calendar-heatmap';
+import 'react-calendar-heatmap/dist/styles.css';
+
 function Developer() {
+
+    var data = [
+
+        { "date": "2025-01-01", "value": 30 },
+        { "date": "2025-01-02", "value": 2 },
+        { "date": "2025-01-03", "value": 10 },
+        { "date": "2025-01-04", "value": 10 },
+        { "date": "2025-01-05", "value": 1 },
+        { "date": "2025-01-06", "value": 10 },
+        { "date": "2025-01-07", "value": 7 },
+        { "date": "2025-01-08", "value": 25 },
+        { "date": "2025-01-09", "value": 4 },
+        { "date": "2025-01-10", "value": 11 },
+        { "date": "2025-01-11", "value": 1 },
+        { "date": "2025-01-12", "value": 5 },
+        { "date": "2025-01-13", "value": 5 },
+        { "date": "2025-01-14", "value": 1 },
+        { "date": "2025-01-15", "value": 30 },
+        { "date": "2025-01-16", "value": 16 },
+        { "date": "2025-01-17", "value": 10 },
+        { "date": "2025-01-18", "value": 1 },
+        { "date": "2025-01-19", "value": 12 },
+        { "date": "2025-01-20", "value": 1 },
+        { "date": "2025-01-21", "value": 15 },
+        { "date": "2025-01-22", "value": 14 },
+        { "date": "2025-01-23", "value": 11 },
+        { "date": "2025-01-24", "value": 12 },
+        { "date": "2025-01-25", "value": 1 },
+        { "date": "2025-01-26", "value": 30 },
+        { "date": "2025-01-27", "value": 26 },
+        { "date": "2025-01-28", "value": 26 },
+
+    ];
 
     const calRef = useRef(null);
     useEffect(() => {
 
         if (!calRef.current) {
             const cal = new CalHeatmap();
-
-            var data = [
-
-                { "date": "2025-01-01", "value": 30 },
-                { "date": "2025-01-02", "value": 2 },
-                { "date": "2025-01-03", "value": 10 },
-                { "date": "2025-01-04", "value": 10 },
-                { "date": "2025-01-05", "value": 1 },
-                { "date": "2025-01-06", "value": 10 },
-                { "date": "2025-01-07", "value": 7 },
-                { "date": "2025-01-08", "value": 25 },
-                { "date": "2025-01-09", "value": 4 },
-                { "date": "2025-01-10", "value": 11 },
-                { "date": "2025-01-11", "value": 1 },
-                { "date": "2025-01-12", "value": 5 },
-                { "date": "2025-01-13", "value": 5 },
-                { "date": "2025-01-14", "value": 1 },
-                { "date": "2025-01-15", "value": 30 },
-                { "date": "2025-01-16", "value": 16 },
-                { "date": "2025-01-17", "value": 10 },
-                { "date": "2025-01-18", "value": 1 },
-                { "date": "2025-01-19", "value": 12 },
-                { "date": "2025-01-20", "value": 1 },
-                { "date": "2025-01-21", "value": 15 },
-                { "date": "2025-01-22", "value": 14 },
-                { "date": "2025-01-23", "value": 11 },
-                { "date": "2025-01-24", "value": 12 },
-                { "date": "2025-01-25", "value": 1 },
-                { "date": "2025-01-26", "value": 30 },
-                { "date": "2025-01-27", "value": 26 },
-                { "date": "2025-01-28", "value": 26 },
-
-            ];
 
             // graph updates
 
@@ -224,15 +228,15 @@ function Developer() {
                     </div>
 
                     <div className="github-login">
-                        <span className="tip-highlight"> 
-                            <GrCircleInformation 
-                            style={{
-                            fontSize: '20px',
-                            marginRight: '10px',
-                            color: '#1DB954',
-                            verticalAlign: 'middle'
+                        <span className="tip-highlight">
+                            <GrCircleInformation
+                                style={{
+                                    fontSize: '20px',
+                                    marginRight: '10px',
+                                    color: '#1DB954',
+                                    verticalAlign: 'middle'
 
-                        }} /> Please enter your github account name in order to track these stats. </span>
+                                }} /> Please enter your github account name in order to track these stats. </span>
                         <form className="Github-Stats-Input" onSubmit={handleGithubSubmit}>
 
                             <input type="text"
@@ -274,6 +278,45 @@ function Developer() {
                             </div>
                         </div>
                     </div>
+
+
+                    <LineChart
+                        xAxis={[{ data: [1, 10, 20, 30, 40, 50, 60, 60, 70, 80, 90, 100] }]}
+                        series={[
+                            {
+                                data: [2, 5.5, 2, 8.5, 1.5, 5, 2, 5.5, 2, 8.5, 1.5, 5],
+                                color: '#1DB954',
+                            },
+                        ]}
+                        width={900}
+                        height={300}
+                    />
+
+                    <CalendarHeatmap
+                        startDate={new Date('2025-01-01')}
+                        endDate={new Date('2025-12-31')}
+                        values={data}
+                        classForValue={(value) => {
+
+                            if(!value || value.count === 0) {
+                                return 'color-empty';
+                            }
+                            if (value.count <= 2) {
+                                return 'color-scale-1';
+                            }
+                            if (value.count <= 4) {
+                                return 'color-scale-2';
+                            }
+                            if (value.count <= 6) {
+                                return 'color-scale-3';
+                            }
+                            return 'color-scale-4';
+
+                        }}
+
+                        
+                    />
+
 
                     <div id="cal-heatmap"> </div>
 
