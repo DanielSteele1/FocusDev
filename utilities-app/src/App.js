@@ -111,9 +111,8 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
         <HiTrendingUp style={{
           display: 'flex',
           color: '#1DB954',
-          fontSize: '40px',
-          margin: '10px'
-
+          fontSize: '35px',
+          margin: '20px'
         }} />
 
       </div>
