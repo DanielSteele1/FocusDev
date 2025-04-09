@@ -1,15 +1,15 @@
 import './App.css';
+import './graphs.css';
 import { useEffect, useRef, createContext } from "react";
 import { useState } from "react";
 import 'reactjs-popup/dist/index.css';
+
 
 import GithubIcon from '@mui/icons-material/GitHub';
 import CallSplitIcon from '@mui/icons-material/CallSplit';
 import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
 import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
-import CalHeatmap from 'cal-heatmap';
-import 'cal-heatmap/cal-heatmap.css';
-import Legend from 'cal-heatmap/plugins/Legend';
+
 import Dialog from '@mui/material/Dialog';
 
 import { FaCode } from "react-icons/fa6";
@@ -21,129 +21,105 @@ import 'react-calendar-heatmap/dist/styles.css';
 
 function Developer() {
 
-    var data = [
+    const data = [
+        // feb 2025
+        { "date": "2025-02-01", "count": 5 },
+        { "date": "2025-02-02", "count": 12 },
+        { "date": "2025-02-03", "count": 8 },
+        { "date": "2025-02-04", "count": 14 },
+        { "date": "2025-02-05", "count": 3 },
+        { "date": "2025-02-06", "count": 9 },
+        { "date": "2025-02-07", "count": 2 },
+        { "date": "2025-02-08", "count": 16 },
+        { "date": "2025-02-09", "count": 7 },
+        { "date": "2025-02-10", "count": 11 },
+        { "date": "2025-02-11", "count": 4 },
+        { "date": "2025-02-12", "count": 18 },
+        { "date": "2025-02-13", "count": 1 },
+        { "date": "2025-02-14", "count": 20 },
+        { "date": "2025-02-15", "count": 6 },
+        { "date": "2025-02-16", "count": 9 },
+        { "date": "2025-02-17", "count": 3 },
+        { "date": "2025-02-18", "count": 13 },
+        { "date": "2025-02-19", "count": 15 },
+        { "date": "2025-02-20", "count": 2 },
+        { "date": "2025-02-21", "count": 17 },
+        { "date": "2025-02-22", "count": 10 },
+        { "date": "2025-02-23", "count": 8 },
+        { "date": "2025-02-24", "count": 14 },
+        { "date": "2025-02-25", "count": 5 },
+        { "date": "2025-02-26", "count": 11 },
+        { "date": "2025-02-27", "count": 7 },
+        { "date": "2025-02-28", "count": 19 },
+    
+        // March 2025
+        { "date": "2025-03-01", "count": 4 },
+        { "date": "2025-03-02", "count": 8 },
+        { "date": "2025-03-03", "count": 12 },
+        { "date": "2025-03-04", "count": 6 },
+        { "date": "2025-03-05", "count": 15 },
+        { "date": "2025-03-06", "count": 3 },
+        { "date": "2025-03-07", "count": 18 },
+        { "date": "2025-03-08", "count": 9 },
+        { "date": "2025-03-09", "count": 7 },
+        { "date": "2025-03-10", "count": 14 },
+        { "date": "2025-03-11", "count": 5 },
+        { "date": "2025-03-12", "count": 20 },
+        { "date": "2025-03-13", "count": 8 },
+        { "date": "2025-03-14", "count": 13 },
+        { "date": "2025-03-15", "count": 2 },
+        { "date": "2025-03-16", "count": 11 },
+        { "date": "2025-03-17", "count": 6 },
+        { "date": "2025-03-18", "count": 16 },
+        { "date": "2025-03-19", "count": 3 },
+        { "date": "2025-03-20", "count": 9 },
+        { "date": "2025-03-21", "count": 4 },
+        { "date": "2025-03-22", "count": 17 },
+        { "date": "2025-03-23", "count": 12 },
+        { "date": "2025-03-24", "count": 7 },
+        { "date": "2025-03-25", "count": 19 },
+        { "date": "2025-03-26", "count": 5 },
+        { "date": "2025-03-27", "count": 10 },
+        { "date": "2025-03-28", "count": 8 },
+        { "date": "2025-03-29", "count": 13 },
+        { "date": "2025-03-30", "count": 6 },
+        { "date": "2025-03-31", "count": 15 },
+        { "date": "2025-04-01", "count": 3 },
+        { "date": "2025-04-02", "count": 7 },
+        { "date": "2025-04-03", "count": 12 },
+        { "date": "2025-04-04", "count": 0 },
+        { "date": "2025-04-05", "count": 5 },
+        { "date": "2025-04-06", "count": 8 },
+        { "date": "2025-04-07", "count": 15 },
+        { "date": "2025-04-08", "count": 4 },
+        { "date": "2025-04-09", "count": 2 },
+        { "date": "2025-04-10", "count": 9 },
+        { "date": "2025-04-11", "count": 0 },
+        { "date": "2025-04-12", "count": 18 },
+        { "date": "2025-04-13", "count": 6 },
+        { "date": "2025-04-14", "count": 13 },
+        { "date": "2025-04-15", "count": 20 },
+        { "date": "2025-04-16", "count": 0 },
+        { "date": "2025-04-17", "count": 11 },
+        { "date": "2025-04-18", "count": 3 },
+        { "date": "2025-04-19", "count": 9 },
+        { "date": "2025-04-20", "count": 14 },
+        { "date": "2025-04-21", "count": 1 },
+        { "date": "2025-04-22", "count": 7 },
+        { "date": "2025-04-23", "count": 16 },
+        { "date": "2025-04-24", "count": 12 },
+        { "date": "2025-04-25", "count": 4 },
+        { "date": "2025-04-26", "count": 19 },
+        { "date": "2025-04-27", "count": 2 },
+        { "date": "2025-04-28", "count": 10 },
+        { "date": "2025-04-29", "count": 6 },
+        { "date": "2025-04-30", "count": 22 },
 
-        { "date": "2025-01-01", "value": 30 },
-        { "date": "2025-01-02", "value": 2 },
-        { "date": "2025-01-03", "value": 10 },
-        { "date": "2025-01-04", "value": 10 },
-        { "date": "2025-01-05", "value": 1 },
-        { "date": "2025-01-06", "value": 10 },
-        { "date": "2025-01-07", "value": 7 },
-        { "date": "2025-01-08", "value": 25 },
-        { "date": "2025-01-09", "value": 4 },
-        { "date": "2025-01-10", "value": 11 },
-        { "date": "2025-01-11", "value": 1 },
-        { "date": "2025-01-12", "value": 5 },
-        { "date": "2025-01-13", "value": 5 },
-        { "date": "2025-01-14", "value": 1 },
-        { "date": "2025-01-15", "value": 30 },
-        { "date": "2025-01-16", "value": 16 },
-        { "date": "2025-01-17", "value": 10 },
-        { "date": "2025-01-18", "value": 1 },
-        { "date": "2025-01-19", "value": 12 },
-        { "date": "2025-01-20", "value": 1 },
-        { "date": "2025-01-21", "value": 15 },
-        { "date": "2025-01-22", "value": 14 },
-        { "date": "2025-01-23", "value": 11 },
-        { "date": "2025-01-24", "value": 12 },
-        { "date": "2025-01-25", "value": 1 },
-        { "date": "2025-01-26", "value": 30 },
-        { "date": "2025-01-27", "value": 26 },
-        { "date": "2025-01-28", "value": 26 },
-
-    ];
-
-    const calRef = useRef(null);
-    useEffect(() => {
-
-        if (!calRef.current) {
-            const cal = new CalHeatmap();
-
-            // graph updates
-
-            const endDate = new Date();
-            const startDate = new Date(endDate.getFullYear(), 0, 1);
-
-            startDate.setFullYear(endDate.getFullYear());
-            startDate.setDate(startDate.getDate());
-
-            console.log(startDate);
-
-            cal.paint({
-                itemSelector: "#cal-heatmap",
-                domain: {
-                    type: 'year',
-                    padding: [0, 0, 0, 0],
-                    gutter: 0,
-                    label: {
-                        position: 'top',
-                    },
-                },
-                range: 1,
-
-                date: {
-                    start: startDate,
-                    min: startDate,
-                    max: endDate,
-                    //  start: startYear,
-                    //  min: startYear,
-                    //  max: endYear,
-
-                    timezone: 'GMT'
-                },
-
-                subDomain: {
-                    type: 'day',
-                    width: 13,
-                    height: 13,
-                    padding: [0, 0, 0, 0],
-                    margin: [3, 3, 3, 3],
-                    gutter: 3,
-                    radius: 3.5,
-
-                },
-
-                scale: {
-                    color: {
-                        range: ['#302f2f', '#0BDA51'],
-                        type: 'linear',
-                        domain: [0, 5, 10, 20, 30],
-
-                    },
-                },
-
-                data: {
-                    source: data,
-                    type: 'json',
-                    x: 'date',
-                    y: 'value'
-                },
-
-            });
-
-            calRef.current = cal;
-            console.log("Sample Data:", data);
-
-            cal.paint({}, [[
-
-                Legend,
-                {
-                    label: 'Commit Frequency: 0 - 30+, grey squares indicate 0 commits, white squares indicate 0 commits or data thats yet to be recorded.',
-                    width: '600',
-                    height: '0',
-
-                },
-
-            ]]);
-        }
-
-    }, []);
+      ];
 
     const [githubData, setGithubData] = useState(null);
 
     //github API Frontend
-
 
     const fetchGithub = async () => {
         const api_url = '/api/githubApiConn';
@@ -201,23 +177,17 @@ function Developer() {
     const [open, setOpen] = useState(false);
 
     const handleCloseDialog = () => {
-
         setOpen(false);
-
     };
 
     const handleOpenDialog = () => {
-
         setOpen(true);
-
     };
 
     return (
         <div className="Developer-container">
             <div className="Developer">
-
                 <div className="Developer-Item">
-
                     <div className="Item-title">
                         <div className="Item-Icon">
                             <GithubIcon
@@ -236,7 +206,7 @@ function Developer() {
                                     color: '#1DB954',
                                     verticalAlign: 'middle'
 
-                                }} /> Please enter your github account name in order to track these stats. </span>
+                                }} /> Please enter your github account name below in order to track these stats. </span>
                         <form className="Github-Stats-Input" onSubmit={handleGithubSubmit}>
 
                             <input type="text"
@@ -247,13 +217,11 @@ function Developer() {
                             />
                             <button className="SubmitGithubName"> <GithubIcon sx={{ display: 'flex', marginRight: '5px' }}> </GithubIcon> Connect with Github  </button>
                         </form>
-
                     </div>
 
                     <div className="github-stats">
                         <div id="stat">
                             <div id="commitNumber">
-
                                 <span id="statTitle"> <TimelineOutlinedIcon sx={{ display: 'flex', marginRight: '5px' }} /> Contributions in the last Year </span>
                                 {<span id="statNumber"> {githubData ? JSON.stringify(githubData.contributions) : "000"} Commits </span>}
 
@@ -279,8 +247,8 @@ function Developer() {
                         </div>
                     </div>
 
-
                     <LineChart
+                   
                         xAxis={[{ data: [1, 10, 20, 30, 40, 50, 60, 60, 70, 80, 90, 100] }]}
                         series={[
                             {
@@ -312,13 +280,12 @@ function Developer() {
                             }
                             return 'color-scale-4';
 
+
                         }}
-
+                        gutterSize={0}
                         
+
                     />
-
-
-                    <div id="cal-heatmap"> </div>
 
                 </div>
 
