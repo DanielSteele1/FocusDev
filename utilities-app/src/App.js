@@ -3,7 +3,7 @@ import './App.css';
 import React, { useEffect, useState, useRef, createContext, OnSubmit } from "react";
 
 //import WeatherWidget from './Weather';
-import Accounts from './accounts';
+import Accounts from './accounts.js';
 
 import { HiLogout } from "react-icons/hi";
 
@@ -32,10 +32,10 @@ import { FaLinkedin } from "react-icons/fa";
 import { PiGithubLogo } from "react-icons/pi";
 import { HiTrendingUp } from "react-icons/hi";
 
-import Productivity from './productivity';
-import Developer from './developer';
-import NoteTaking from './noteTaking';
-import Profile from './profile';
+import Productivity from './productivity.js';
+import Developer from './developer.js';
+import NoteTaking from './noteTaking.js';
+import Profile from './profile.js';
 
 export const ThemeContext = createContext(null);
 
@@ -243,10 +243,7 @@ function Sidebar({ onTabChange }) {
         }} />
         <span className="sidebarText"> Hide Sidebar </span>
       </div>
-
-
     </div>
-
   );
 
 }

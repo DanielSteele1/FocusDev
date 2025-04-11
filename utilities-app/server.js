@@ -189,6 +189,71 @@ app.post('/login', async (req, res) => {
   }
 });
 
+//github contributions API Request 
+
+app.post('/api/githubContributions', async (req, res) => { 
+
+  const { username } = req.body;
+ 
+  if (!username) {
+ 
+   return res.status(400).json({ error: 'Username is required'});
+  }
+ 
+  const query = `
+     query($userName: String!) {
+       user(login: $userName) {
+         contributionsCollection {
+           contributionCalendar {
+             totalContributions
+             weeks {
+               contributionDays {
+                 contributionCount
+                 date
+               }
+             }
+           }
+         }
+       }
+     }
+   `;
+ 
+   const variables = { userName: username };
+ 
+   try{
+ 
+     // make the graphQL request to the github API
+     const response = await fetch('https://api.github.com/graphql', {
+ 
+       method: 'POST',
+       headers: {
+         'Authorization': `Bearer ${process.env.githubAccessToken}`,  // use the github access token from the env file
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify({ query, variables }),
+ 
+     });
+ 
+     // await response
+     const contributionData = await response.json();
+ 
+     if( contributionData.errors) {
+ 
+       return res.status(500).json({error: contributionData.errors});
+     }
+ 
+     res.json(contributionData.data.user.contributionsCollection.contributionCalendar);
+     console.log("Fetched contributions successfully!");
+     
+   }
+   catch(error){
+ 
+     console.error("Error fetching contributions:", error);
+     return res.status(500).json({ error: 'Failed to fetch contributions' });
+   }
+ 
+ });
+
 // logout route
 app.post('/logout', async (req, res) => {
 
@@ -224,10 +289,7 @@ app.post('/delete', async (req, res) => {
     res.status(400).json({ message: "Failed to delete account. Please try again later." });
   }
   
-
-
 });
-
 
 
 app.listen(PORT, () => {
