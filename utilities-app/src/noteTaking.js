@@ -89,7 +89,7 @@ function NoteTaking() {
                         <div className="Item-Icon">
                           
                         <LuNotebook
-                            style={{ fontSize: '25px', justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }}>
+                            style={{ fontSize: '30px', justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', marginRight: '10px' }}>
                         </LuNotebook>
                             <span> Notepad </span>
                         </div>

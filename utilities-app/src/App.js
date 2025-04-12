@@ -4,7 +4,6 @@ import React, { useEffect, useState, useRef, createContext, OnSubmit } from "rea
 
 //import WeatherWidget from './Weather';
 import Accounts from './accounts.js';
-
 import { HiLogout } from "react-icons/hi";
 
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
@@ -13,10 +12,10 @@ import FilterDramaOutlinedIcon from '@mui/icons-material/FilterDramaOutlined';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { MantineProvider, Button, Text } from '@mantine/core';
-
+import { CiLink } from "react-icons/ci";
 import { Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import { BsCalendar2RangeFill } from "react-icons/bs";
 import 'cal-heatmap/cal-heatmap.css';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -323,7 +322,7 @@ function Dashboard() {
           <div className="Item-title">
             <div className="Item-Icon">
 
-              <FilterDramaOutlinedIcon sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', verticalAlign: 'middle' }}>
+              <FilterDramaOutlinedIcon sx={{ justifyContent: 'center', color: '#4ade80', alignItems: 'center', fontSize: '30px', marginRight: '10px', verticalAlign: 'middle' }}>
               </FilterDramaOutlinedIcon> <span> Weather </span>  </div>
 
           </div>
@@ -340,7 +339,7 @@ function Dashboard() {
           <div className="Item-title">
             <div className="Item-Icon">
 
-              <PushPinOutlinedIcon sx={{ justifyContent: 'center', alignItems: 'center', marginTop: '3px', verticalAlign: 'middle', fontSize: '20px' }}>
+              <PushPinOutlinedIcon sx={{ justifyContent: 'center', color: '#4ade80', alignItems: 'center', verticalAlign: 'middle', fontSize: '30px', marginRight: '10px' }}>
               </PushPinOutlinedIcon>  <span> Pinboard </span> </div>
 
           </div>
@@ -355,8 +354,8 @@ function Dashboard() {
             <div className="Item-Icon">
 
 
-              <CalendarMonthOutlinedIcon sx={{ justifyContent: 'center', alignItems: 'center', margin: '0px', verticalAlign: 'middle' }}>
-              </CalendarMonthOutlinedIcon> <span> Upcoming Events </span> </div>
+              <BsCalendar2RangeFill  style={{ justifyContent: 'center', color: '#4ade80', alignItems: 'center', verticalAlign: 'middle', fontSize: '30px', marginRight: '10px' }}>
+              </BsCalendar2RangeFill> <span> Upcoming Events </span> </div>
           </div>
 
           <Text className="Note"> Placeholder Text</Text>

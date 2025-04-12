@@ -20,7 +20,7 @@
 
    .react-calendar-heatmap {
      display: flex;
-     padding: 10px;
+     margin: 10px !important;
      justify-content: center;
      align-items: center;
      margin: 0 auto;
@@ -48,3 +48,18 @@
      rx: 10 !important;
      ry: 10 !important;
    }
+
+  .LineChart{
+
+    display:flex;
+    justify-content: center;  
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    
+  }
+
+  .LineChart text {
+
+    fill: #1DB954 !important;
+  }

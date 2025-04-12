@@ -15,12 +15,16 @@ import { GoGoal } from "react-icons/go";
 import { SlCalender } from "react-icons/sl";
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
+import { CiLink } from "react-icons/ci";
+
 
 import InsertLinkRoundedIcon from '@mui/icons-material/InsertLinkRounded';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { MantineProvider, Button, Text } from '@mantine/core';
 import { Calendar } from '@mantine/dates';
+import { BsCalendar2RangeFill } from "react-icons/bs";
+
 import { DatePicker } from '@mantine/dates';
 import { TimeInput } from '@mantine/dates';
 //import { DatesProvider } from '@mantine/dates';
@@ -163,8 +167,8 @@ function Productivity() {
 
                 <div className="Item-title">
                     <div className="Item-Icon">
-                        <PushPinIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }}>
-                        </PushPinIcon>
+                        <CiLink style={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', fontSize: '30px', marginRight: '10px' }}>
+                        </CiLink>
 
                         <span> Quick Links </span>
 
@@ -174,7 +178,7 @@ function Productivity() {
                 <span className="description"> For your convenience, here are some handy links. You can also create your own links if you wish,
                     and you can pin them to the pinned tab in the homepage. </span>
 
-                <span className="description">  <div className="tip-highlight">
+                  <span className="tip-highlight">
                     <IoSparkles
                         style={{
                             fontSize: '20px',
@@ -184,7 +188,7 @@ function Productivity() {
 
                         }} />
 
-                    Link doesn't work ? make sure you typed in the url correctly, and include ' https:// ' at the start. </div>  </span>
+                    Link doesn't work ? make sure you typed in the url correctly, and include ' https:// ' at the start. </span>
 
                 <div className="Links-Controls">
                     <div className="LinksName">
@@ -308,9 +312,9 @@ function Productivity() {
 
                     <div className="Item-title">
                         <div className="Item-Icon">
-                            <SlCalender
-                                style={{ fontSize: '30px', justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }}>
-                            </SlCalender>
+                            <BsCalendar2RangeFill
+                                style={{ fontSize: '30px', justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', marginRight: '10px' }}>
+                            </BsCalendar2RangeFill>
                             <span> Calendar </span>
                         </div>
                     </div>
@@ -357,7 +361,7 @@ function Productivity() {
                     <div className="Item-title">
                         <div className="Item-Icon">
                             <GoGoal
-                                style={{ fontSize: '25px', justifyContent: 'center', alignItems: 'center', marginRight: '5px', verticalAlign: 'middle' }}>
+                                style={{ fontSize: '30px', justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', marginRight: '10px' }}>
                             </GoGoal>
                             <span> Goal Tracker </span>
                         </div>

@@ -11,12 +11,14 @@ import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
 
 import Dialog from '@mui/material/Dialog';
 
-import { FaCode } from "react-icons/fa6";
+import { HiOutlineCode } from "react-icons/hi";
 import { GrCircleInformation } from "react-icons/gr";
 
 import { LineChart } from '@mui/x-charts/LineChart';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
+import { PiGithubLogo } from "react-icons/pi";
+
 
 function Developer() {
 
@@ -70,14 +72,14 @@ function Developer() {
     const transformContributionData = (weeks) => {
         if (!weeks) return [];
 
-        return weeks.flatMap((week) => 
-          week.contributionDays.map((day) => ({
+        return weeks.flatMap((week) =>
+            week.contributionDays.map((day) => ({
 
-            date: day.date,  // we want every date
-            count: day.contributionCount, // and we want a single number for each day
-            
-          }))
-        ); 
+                date: day.date,  // we want every date
+                count: day.contributionCount, // and we want a single number for each day
+
+            }))
+        );
     };
 
     const fetchGithub = async () => {
@@ -157,9 +159,9 @@ function Developer() {
                 <div className="Developer-Item">
                     <div className="Item-title">
                         <div className="Item-Icon">
-                            <GithubIcon
-                                sx={{ justifyContent: 'center', alignItems: 'center' }}>
-                            </GithubIcon>
+                            <PiGithubLogo
+                                style={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', fontSize: '30px', marginRight: '10px', color: '#4ade80' }}>
+                            </PiGithubLogo>
                             <span> Your Github Stats </span>
                         </div>
                     </div>
@@ -182,7 +184,9 @@ function Developer() {
                                 onChange={handleUsername}
                                 required
                             />
-                            <button className="SubmitGithubName"> <GithubIcon sx={{ display: 'flex', marginRight: '5px' }}> </GithubIcon> Connect with Github  </button>
+                            <button className="SubmitGithubName"> <GithubIcon sx={{
+                                display: 'flex', marginRight: '5px', color: '#4ade80'
+                            }}> </GithubIcon> Retrieve Github Data  </button>
                         </form>
                     </div>
 
@@ -208,28 +212,11 @@ function Developer() {
                             <div id="LastEditedProject">
 
                                 <span id="statTitle"> <EqualizerOutlinedIcon sx={{ display: 'flex', marginRight: '5px' }} /> Latest edited project </span>
-                                <span id="statNumber">{githubData?.latestProject?.name || "Log in to see Data"} </span>
+                                <span id="statNumber">{githubData?.latestProject?.name || "Enter account to see data"} </span>
 
                             </div>
                         </div>
                     </div>
-
-                    <LineChart
-
-                        xAxis={[{ data: [1, 10, 20, 30, 40, 50, 60, 60, 70, 80, 90, 100] }]}
-                        series={[
-                            {
-                                data: [1, 10, 20, 30, 40, 50, 60, 60, 70, 80, 90, 100],
-                                color: '#1DB954',
-                            },
-                        ]}
-
-                        width={900}
-                        height={300}
-                    />
-
-                    
-
 
                     <CalendarHeatmap
                         startDate={oneYearAgo}
@@ -255,6 +242,7 @@ function Developer() {
                         gutterSize={0}
 
                     />
+
                 </div>
 
                 <div className="Developer-Item" id="developer-notepad">
@@ -268,11 +256,14 @@ function Developer() {
                     */ }
                     <div className="Item-title">
                         <div className="Item-Icon">
-                            <FaCode style={{
+                            <HiOutlineCode style={{
                                 justifyContent: 'center',
-                                alignItems: 'center',
                                 fontSize: '30px',
-                                verticalAlign: 'middle'
+                                alignItems: 'center',
+                                verticalAlign: 'middle',
+                                marginRight: '10px',
+                                color: '#4ade80'
+
                             }} />
                             <span> Reusable Code Snippets </span>
                         </div>

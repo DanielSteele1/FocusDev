@@ -77,8 +77,11 @@ a {
 
 .tip-highlight{
 
+  display:flex;
+  width: fit-content;
+  margin: 10px;
   color: #1DB954;
-  font-size: 15px;
+  font-size: 13px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
   display:flex;
@@ -87,7 +90,6 @@ a {
   background: #2a3f30;
   padding: 10px;
   border-radius: 10px;
-  border: 2px solid #1DB954;
 }
 
 
@@ -104,7 +106,6 @@ a {
 .App.light .Navigation,
 .App.light .sidebar,
 .App.light .Footer,
-.App.light .Item-Icon,
 .App.light .AccountsButton {
   background-color: #e8f5e8;
   color: #0f1011;
@@ -121,8 +122,14 @@ a {
 
 .App.light .Item-Icon {
 
-  background-color: #1DB954;
+  color: black;
 }
+
+.App.light .Item-title span{
+
+  color: #000000;
+}
+
 
 .App.light .Navigation-Item,
 .App.light .QOTD,
@@ -201,6 +208,7 @@ a {
 .App.dark .Developer-Item {
   color: #1DB954;
 }
+
 
 
 .App.dark .Navigation,
@@ -433,7 +441,7 @@ body {
   align-items: flex-start;
   justify-content: center;
   text-align: center;
-  width: 180px;
+  width: 160px;
   min-height:100vh;
   background-color: #18181b;
   position: fixed;
@@ -471,14 +479,14 @@ body {
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 500;
   font-style: bold;
-  font-size: 15px;
+  font-size: 14px;
   transition: all 0.5s ease;
   cursor: pointer;
 
 }
 
 .sidebarText {
-  margin-left: 15px;
+  margin-left: 10px;
   opacity: 1;
   visibility: visible;
   transition: opacity 0.5s ease-in-out, visibility 0.2s ease-in-out;
@@ -500,13 +508,13 @@ body {
 
 #SidebarHome {
 
-  margin-top: 50px;
+  margin-top: 120px;
 
 }
 
 #SidebarHide {
 
-  margin-top: 350px;
+  margin-top: 320px;
   margin-bottom: 70px;
 
 }
@@ -960,15 +968,6 @@ table {
   border-radius: 10px;
 }
 
-#Calender span {
-
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  font-family: 'Lexend Deca', sans-serif;
-  font-weight: 400;
-}
-
 .Dashboard {
   width: 100%;
   display: grid;
@@ -1060,10 +1059,8 @@ table {
 .Item-Icon {
   display: flex;
   width: fit-content;
-  padding: 10px;
-  border: 2px solid #1DB954;
-  background-color: #212520;
-  border-radius: 20px;
+  padding: 8px;
+  border-radius: 15px;
 }
 
 .Item-title {
@@ -1071,21 +1068,21 @@ table {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin: 10px;
   height: fit-content;
+  font-size: 17px;
 
 }
 
-.Item-title span {
+.Item-Icon span {
 
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-left: 10px;
-  font-size: 16px;
   font-family: 'Lexend Deca', sans-serif;
-  font-weight: 400;
+  font-weight: 700;
   align-items: center;
+  color: #4ade80;
+  font-size: 1.3rem;
 }
 
 #ToDo {
@@ -1182,7 +1179,6 @@ table {
 #LinkNameInput,
 #EventsInput,
 #LocationInput,
-#GoalInput,
 #Events-Input,
 #DateInput,
 #TimeInput {
@@ -1331,7 +1327,7 @@ border: 2px solid #1DB954;
 
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 70%;
 
 }
 
@@ -1341,7 +1337,7 @@ border: 2px solid #1DB954;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  margin-top: 10px;
+  margin: 10px
 
 }
 
@@ -1424,7 +1420,6 @@ border: 2px solid #1DB954;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
   color: #1DB954;
@@ -1435,7 +1430,6 @@ border: 2px solid #1DB954;
 
   display: flex;
   margin: 10px;
-  margin-top: 10px;
   font-size: 15px;
   font-family: 'Space Mono', monospace;
   font-weight: 400;
@@ -1446,7 +1440,7 @@ border: 2px solid #1DB954;
   margin: 10px;
   justify-content: flex-start;
   align-items: center;
-  font-size: 23px;
+  font-size: 25px;
   font-family: 'Space Mono', monospace;
   font-weight: 600;
   letter-spacing: 2px;
@@ -1571,7 +1565,7 @@ border: 2px solid #1DB954;
   left: 0;
   z-index: 999;
   width: 100%;
-  height: 85px;
+  height: fit-content;
   flex-direction: row;
   border-top: #3d423d 1px solid;
   color: #1DB954;
@@ -1593,8 +1587,7 @@ border: 2px solid #1DB954;
   font-size: 14px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
-  margin: 10px;
-  padding: 10px;
+  padding-top: 5px;
   justify-content: center;
   align-items: center;
 }
