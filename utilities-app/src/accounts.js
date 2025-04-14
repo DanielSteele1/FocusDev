@@ -87,8 +87,8 @@ function Accounts({ setLoggedIn }) {
                         fontSize: '50px',
                         margin: '10px'
 
-                    }} /> Welcome Back  </span>
-                <span id="accountsSubTitle"> Please enter your details to continue. </span>
+                    }} /> FocusDev </span>
+                <span id="accountsSubTitle"> Please enter your details to sign in. </span>
                 <span id="accountsheading">Log In</span>
                 <form id="login" onSubmit={handleLogIn}>
                     <div className="Log-in">

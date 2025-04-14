@@ -185,7 +185,7 @@ function Developer() {
                                 required
                             />
                             <button className="SubmitGithubName"> <GithubIcon sx={{
-                                display: 'flex', marginRight: '5px', color: '#4ade80'
+                                display: 'flex', marginRight: '5px'
                             }}> </GithubIcon> Retrieve Github Data  </button>
                         </form>
                     </div>

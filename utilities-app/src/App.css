@@ -196,12 +196,11 @@ a {
 
 .App.dark .Dashboard-Item,
 .App.dark .Weather,
-.App.dark .NoteTaking-Item,
 .App.dark .Productivity-Item,
 .App.dark .Profile-Item,
 .App.dark #github-login {
   background-color: #18181b;
-  border: 1px solid #2d2d2d;
+  border: 1px solid #292e2e;
   color: #1DB954;
 }
 
@@ -604,20 +603,23 @@ body {
 
 .AccountsButton {
   display: flex;
-  height: 40px;
+  height: 45px;
   width: fit-content;
   justify-content: center;
   align-items: center;
   border-color: #1DB954;
-  color: #1DB954;
+  color: #0f1011;
+  background-color: #1DB954;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 500;
-  background-color: transparent;
   border: 2px solid;
-  border-radius: 10px;
+  border-radius: 20px;
   cursor: pointer;
   padding: 10px;
-
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
   transition: all 0.5s ease-in-out;
 }
 
@@ -994,44 +996,25 @@ table {
 .NoteTaking-Item {
   display: flex;
   width: 100%;
-  max-width: 800px;
-  min-height: 100px;
-  height: auto;
   flex-direction: column;
-  margin: 20px auto;
   font-size: 16px;
+  margin: 10px;
+  padding: 10px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
-  padding: 20px;
   border-radius: 10px;
-  border: 1px solid #2d2d2d;
+  color: #1DB954;
 
 }
 
 #NoteContainer {
-  display: flex;
-  width: 100%;
-  max-width: 800px;
-  min-height: 200px;
-  height: auto;
-  flex-direction: column;
-  margin: 20px auto;
-  font-size: 16px;
-  font-family: 'Lexend Deca', sans-serif;
-  font-weight: 400;
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid #2d2d2d;
-}
-
-#Notes {
-  display: flex;
-  overflow: hidden;
-  flex-direction: column;
-  white-space: wrap;
-  word-wrap: break-word;
-  font-family: 'Lexend Deca', sans-serif;
-  font-weight: 400;
+  display: grid;
+  min-width:fit-content;
+  grid-template-columns: repeat(auto-fill, 200px);
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 25px;
+  gap: 40px;
 
 }
 
@@ -1229,29 +1212,39 @@ border: 2px solid #1DB954;
 .NoteTaking {
   display: flex;
   width: 100%;
+  margin: 0 auto;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
 }
 
 .NoteTaking-container {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  align-items: flex-start;
-  justify-content: flex-start;
 
 }
 
 .Notes-Content {
 
   display: flex;
+  flex-direction:column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   border-radius: 10px;
+  height: 200px;
+  width: 200px;
+  background-color: #25bb59;
+  color: black;
   padding: 5px;
   font-size: 15px;
   font-style: bold;
   font-family: 'Lexend Deca', sans-serif;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .Links-Content:hover {
@@ -1279,11 +1272,11 @@ border: 2px solid #1DB954;
 .Notes-input {
 
   display: flex;
-  width: 100%;
+  align-items: flex-start;
+  width: 50%;
 }
 
 .Note {
-
   display: flex;
   padding: 10px;
   margin: 10px;
@@ -1294,7 +1287,6 @@ border: 2px solid #1DB954;
   word-wrap: break-word;
   word-break: break-all;
 }
-
 
 .Link {
 
@@ -1308,10 +1300,6 @@ border: 2px solid #1DB954;
   word-wrap: break-word;
   word-break: break-all;
 
-}
-
-.Note {
-  width: 100%;
 }
 
 .Developer-container {

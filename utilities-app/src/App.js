@@ -116,21 +116,7 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
 
       </div>
 
-      <div className="Navigation-Name"> <span> FocusDev </span> </div>
-
-      <div className="Navigation-Item" id="location">
-        <div className="location">
-
-          <input className="LocationInput" contenteditable="true" type="text" placeholder=" Search your location" />
-
-          <button className="LocationSearch">
-            <LocationOnIcon
-              sx={{ justifyContent: 'center', alignItems: 'center' }}>
-            </LocationOnIcon>
-          </button>
-        </div>
-
-      </div>
+      <div className="Navigation-Name"> <span>FocusDev</span> </div>
 
       <div className="Nav-Menu">
 
@@ -169,7 +155,6 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
             <button className="AccountsButton"
               value={logoutButton}
               onClick={handleLogoutClick}>
-
               <span> Log out </span>
             </button>
           </div>
@@ -228,7 +213,7 @@ function Sidebar({ onTabChange }) {
 
       <div className={`sidebar-item ${activeItem === 'noteTaking' ? 'active' : ''}`} id="SidebarNote" onClick={() => handleClick("noteTaking")}>
         <LuNotebook style={{ fontSize: '27px', alignItems: 'center' }} />
-        <span className="sidebarText">Notepad</span>
+        <span className="sidebarText"> Sticky Notes </span>
       </div>
 
       <div className="sidebar-item" id="SidebarHide" onClick={handleCollapse}>
@@ -250,7 +235,6 @@ function Sidebar({ onTabChange }) {
 function Dashboard() {
 
   // fetch QOTD data from the server, sort data, set it as QOTDData and display data
-
   const [QOTDData, setQOTDData] = useState(null);
 
   useEffect(() => {
@@ -273,28 +257,6 @@ function Dashboard() {
     fetchQOTD();
   }, []);
 
-  // Weather API Frontend
-
-  //   const fetchLocalWeather = async () => {
-  //     //const api_url = '/api/';
-
-  //     try {
-  //       const response = await fetch(api_url);
-  //       const data = await response.json();
-  //       console.log(data);
-
-  //       if (data) {
-  //         setWeatherData(data);
-  //       }
-  //     } catch (error) {
-  //       console.error('Error fetching WeatherAPI:', error);
-  //     }
-  //   };
-
-  //   fetchLocalWeather();
-  // }, []);
-
-
   return (
     <div className="Dashboard-container">
       <div className="Welcome">
@@ -310,26 +272,9 @@ function Dashboard() {
 
       <div className="github-commit">
 
-        <span> <span id="emoji">👨‍💻</span>  Github commit graph goes here. </span>
+        <span className="description"> Todays Main Goal:  no goal set ~ add one? </span>
+        <div className="button"> <Button> Add a main goal for today </Button> </div>
 
-      </div>
-
-      <div className="Dashboard">
-
-
-        <div className="Weather">
-
-          <div className="Item-title">
-            <div className="Item-Icon">
-
-              <FilterDramaOutlinedIcon sx={{ justifyContent: 'center', color: '#4ade80', alignItems: 'center', fontSize: '30px', marginRight: '10px', verticalAlign: 'middle' }}>
-              </FilterDramaOutlinedIcon> <span> Weather </span>  </div>
-
-          </div>
-
-          <WeatherWidget />
-
-        </div>
       </div>
 
       <div className="Dashboard">
@@ -353,7 +298,6 @@ function Dashboard() {
           <div className="Item-title">
             <div className="Item-Icon">
 
-
               <BsCalendar2RangeFill  style={{ justifyContent: 'center', color: '#4ade80', alignItems: 'center', verticalAlign: 'middle', fontSize: '30px', marginRight: '10px' }}>
               </BsCalendar2RangeFill> <span> Upcoming Events </span> </div>
           </div>
@@ -365,68 +309,6 @@ function Dashboard() {
     </div>
   );
 }
-
-
-function WeatherWidget() {
-
-  return (
-
-    <div className="Weather-Container">
-      <div className="today-summary">
-        <span className="weather-heading"> Current Forecast: </span>
-
-        <div className="Forecast">
-          <span> Rain </span>
-
-        </div>
-
-        <div className="Temp">
-
-          <span className="weather-title"> 11:00 AM </span>
-          <span className="weather-text" > 17°C </span>
-
-        </div>
-
-      </div>
-
-      <div className="Next-4-hours">
-        <div className="hour1">
-
-          <span className="weather-title"> 11:00 AM </span>
-          <span className="weather-text" > 17°C </span>
-
-        </div>
-
-        <div className="hour2">
-
-          <span className="weather-title"> 11:00 AM </span>
-          <span className="weather-text" > 17°C </span>
-
-        </div>
-
-        <div className="hour3">
-
-          <span className="weather-title"> 11:00 AM </span>
-          <span className="weather-text" > 17°C </span>
-
-        </div>
-        <div className="hour4">
-
-          <span className="weather-title"> 11:00 AM </span>
-          <span className="weather-text" > 17°C </span>
-
-        </div>
-      </div>
-    </div>
-
-  );
-
-
-}
-
-
-
-
 
 
 

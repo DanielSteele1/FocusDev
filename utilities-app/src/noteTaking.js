@@ -76,37 +76,35 @@ function NoteTaking() {
 
         const newNotes = notes.filter((_, i) => i !== index);
         setNotes(newNotes);
-
     };
+
 
     return (
         <div className="NoteTaking-container">
             <div className="NoteTaking">
                 <div className="NoteTaking-Item" id="NoteInput">
-
-
                     <div className="Item-title">
                         <div className="Item-Icon">
-                          
-                        <LuNotebook
-                            style={{ fontSize: '30px', justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', marginRight: '10px' }}>
-                        </LuNotebook>
-                            <span> Notepad </span>
+
+                            <LuNotebook
+                                style={{ fontSize: '30px', justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', marginRight: '10px' }}>
+                            </LuNotebook>
+                            <span> Sticky Notes </span>
                         </div>
                     </div>
 
-                    <span className="description"> Enter in text below in order to add a note.  (Max 150 characters). </span>
+                    <span className="description"> Enter in some text in the textbox below to add a note. You can also drag and drop each note for organisation. <br></br>
+                        Notes will be saved to your account, and if you choose to pin a note, it will also appear on the homepage. </span>
 
                     <div className="Controls">
                         <div className="Notes-input">
-                            <textarea id="Input"
+                            <input id="Input"
                                 contenteditable="true"
-                                maxLength="500"
                                 type="text"
                                 placeholder="Add a note"
                                 onChange={handleInputChange}
                                 value={inputValue}>
-                            </textarea>
+                            </input>
                         </div>
 
                         <div id="Notes-Buttons">
@@ -122,8 +120,7 @@ function NoteTaking() {
 
                     {notes
                         .map((note, index) => (
-                            <div key={index} className="Notes-Content">
-                                <div className="Note">{note.text}</div>
+                            <div className="NotesControls">
 
                                 <IconButton onClick={() => handlePinnedNote(index)}>
                                     <PushPinIcon sx={{
@@ -142,12 +139,20 @@ function NoteTaking() {
                                     </CloseIcon>
                                 </IconButton>
 
+                                <div className="Notes-Content">
+
+                                    <div className="Note">{note.text}</div>
+
+                                </div>
+
                             </div>
+
                         ))}
 
                 </div>
             </div>
         </div>
+
     );
 
 }
