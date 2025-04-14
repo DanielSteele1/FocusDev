@@ -22,7 +22,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { FaCode } from "react-icons/fa6";
 import { IoHome } from "react-icons/io5";
 import { BsFillBarChartFill } from "react-icons/bs";
-import { LuNotebook } from "react-icons/lu";
+import { BsSticky } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { BiWorld } from "react-icons/bi";
 import { MdDarkMode } from "react-icons/md";
@@ -212,7 +212,7 @@ function Sidebar({ onTabChange }) {
       </div>
 
       <div className={`sidebar-item ${activeItem === 'noteTaking' ? 'active' : ''}`} id="SidebarNote" onClick={() => handleClick("noteTaking")}>
-        <LuNotebook style={{ fontSize: '27px', alignItems: 'center' }} />
+        <BsSticky style={{ fontSize: '27px', alignItems: 'center' }} />
         <span className="sidebarText"> Sticky Notes </span>
       </div>
 

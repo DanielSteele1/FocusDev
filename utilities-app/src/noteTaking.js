@@ -10,6 +10,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import 'cal-heatmap/cal-heatmap.css';
 
 import { LuNotebook } from "react-icons/lu";
+import { BsSticky } from "react-icons/bs";
 
 function NoteTaking() {
 
@@ -86,9 +87,9 @@ function NoteTaking() {
                     <div className="Item-title">
                         <div className="Item-Icon">
 
-                            <LuNotebook
+                            <BsSticky
                                 style={{ fontSize: '30px', justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', marginRight: '10px' }}>
-                            </LuNotebook>
+                            </BsSticky>
                             <span> Sticky Notes </span>
                         </div>
                     </div>
