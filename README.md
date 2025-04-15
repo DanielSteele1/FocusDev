@@ -1,16 +1,47 @@
-# FocusDev
--- This is a work in progress project. After the core features are developed, a 1.0 version will be put online, where new features can then be added. --
+# 📈 FocusDev - Developer Productivity Dashboard
 
-FocusDev is designed for developers to increase and organise thier workload. It's a dashboard that includes all sorts of useful features for daily work. for example, if a developer has to handle a ticket or has an important work call, they can add it here and keep on top of things. Accounts will be fully implemented and all user data will be stored on MongoDB. 
+FocusDev is designed to help developers increase and organize their workload through a range of useful productivity tools. The goal is to bring together a set of features that developers commonly use into one centralized application.
+---
 
-Features include:
+## 🔧 Features (In Progress)
 
-- Quick links
-- Pinboard
-- Calander (with upcoming events widget to accompany it)
-- Local Weather forecast
-- Notes and ToDo functionality
-- Reusable code snippet saver tool - so you can just copy and paste reusable code into your work 
-- Personal Github commit graph widget
+- **Notes Panel** – A responsive notes section to keep track of daily tasks and thoughts.
+- **Quick Links** - A way for users to save links to the app, so they can go to all the places online they need to from one place.
+- **Calendar** – A calendar feature to help organize and plan events or milestones.
+- **Upcoming Events** – Track and view your upcoming events to stay on schedule.
+- **GitHub Commit Graph** – Connect your GitHub account and display your commit activity.
+- **Reusable Code Snippet Tool** – Save useful code snippets to copy and paste when needed with a one-click-copy. You're able to give each one a colour & a label.
 
-- More ideas to come
+---
+
+## 🛠 Technologies Used (so far)
+
+- **Frontend**: React, JavaScript, Figma
+- **Backend**: Node.js, Express, MongoDB
+- **APIs**: GitHub API, Open-Meteo API, QOTD API
+- **Authentication**: MongoDB with secure user accounts
+
+---
+
+## 🚧 Other Planned Features (for future releases)
+
+- Export notes/snippets.
+- Pomodoro timer integration.
+- Github Analytics for developer productivity.
+- Spotify widget for suggested playlists to play while focusing working.
+
+---
+
+## 📌 Status
+
+This project is in active development and will be deployed to the web once the core features are complete.
+
+---
+
+## 📫 Contact
+
+If you're interested in the project, feel free to connect or follow the development:
+
+- GitHub: [DanielSteele1](https://github.com/DanielSteele1)
+- Portfolio: [danielsteele.dev](https://danielsteele.dev)
+- LinkedIn: [Daniel Steele](https://www.linkedin.com/in/daniel-steele1)
