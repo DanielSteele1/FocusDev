@@ -9,8 +9,16 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import 'cal-heatmap/cal-heatmap.css';
 
+import { MdContentCopy } from "react-icons/md";
 import { LuNotebook } from "react-icons/lu";
 import { BsSticky } from "react-icons/bs";
+
+import { DndContext } from '@dnd-kit/core';
+import Draggable from './Draggable.jsx';
+import Droppable from './Droppable.jsx';
+import Tooltip from '@mui/material/Tooltip';
+
+import { CSS } from '@dnd-kit/utilities';
 
 function NoteTaking() {
 
@@ -79,79 +87,117 @@ function NoteTaking() {
         setNotes(newNotes);
     };
 
+    const [items, setItems] = useState([1, 2, 3]);
+
+    const handleDragEnd = (event) => {
+        const { active, over } = event;
+
+        if (over && active.id !== over.id) {
+            const oldIndex = notes.findIndex((note) => note.id === active.id);
+            const newIndex = notes.findIndex((note) => note.id === over.id);
+
+            //setNotes((prevNotes) => arrayMove(prevNotes, oldIndex, newIndex));
+        }
+    };
+
+    const handleOneClickCopy = (note) => {
+
+       navigator.clipboard.writeText(note.text).then(() => {
+
+        alert('Copied to Clipoard!');
+
+       }).catch((err) => {
+        console.log('Failed to copy', err);
+       });
+    };
 
     return (
         <div className="NoteTaking-container">
-            <div className="NoteTaking">
-                <div className="NoteTaking-Item" id="NoteInput">
-                    <div className="Item-title">
-                        <div className="Item-Icon">
+            <DndContext>
+                <div className="NoteTaking">
+                    <div className="NoteTaking-Item" id="NoteInput">
+                        <div className="Item-title">
+                            <div className="Item-Icon">
 
-                            <BsSticky
-                                style={{ fontSize: '30px', justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', marginRight: '10px' }}>
-                            </BsSticky>
-                            <span> Sticky Notes </span>
-                        </div>
-                    </div>
-
-                    <span className="description"> Enter in some text in the textbox below to add a note. You can also drag and drop each note for organisation. <br></br>
-                        Notes will be saved to your account, and if you choose to pin a note, it will also appear on the homepage. </span>
-
-                    <div className="Controls">
-                        <div className="Notes-input">
-                            <input id="Input"
-                                contenteditable="true"
-                                type="text"
-                                placeholder="Add a note"
-                                onChange={handleInputChange}
-                                value={inputValue}>
-                            </input>
+                                <BsSticky
+                                    style={{ fontSize: '30px', justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', marginRight: '10px' }}>
+                                </BsSticky>
+                                <span> Sticky Notes </span>
+                            </div>
                         </div>
 
-                        <div id="Notes-Buttons">
-                            <IconButton onClick={handleAddNote}> <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
-                        </div>
-                    </div>
+                        <span className="description"> Enter in some text in the textbox below to add a note. You can also drag and drop each note for organisation. <br></br>
+                            Notes will be saved to your account, and if you choose to pin a note, it will also appear on the homepage. </span>
 
-                </div>
-
-                <div className="NoteTaking-Item" id="NoteContainer">
-
-                    {/* Notes container */}
-
-                    {notes
-                        .map((note, index) => (
-                            <div className="NotesControls">
-
-                                <IconButton onClick={() => handlePinnedNote(index)}>
-                                    <PushPinIcon sx={{
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        marginRight: '0px',
-                                        verticalAlign: 'middle',
-                                        transform: note.isPinned ? 'rotate(45deg)' : 'rotate(0deg)',
-                                        color: note.isPinned ? '#1DB954' : ' #858d85'
-                                    }}>
-                                    </PushPinIcon>
-                                </IconButton>
-
-                                <IconButton onClick={() => handleNoteDelete(index)} sx={{ Size: '14px' }}>
-                                    <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', fontSize: '14px', verticalAlign: 'middle' }}>
-                                    </CloseIcon>
-                                </IconButton>
-
-                                <div className="Notes-Content">
-
-                                    <div className="Note">{note.text}</div>
-
-                                </div>
-
+                        <div className="Controls">
+                            <div className="Notes-input">
+                                <input id="Input"
+                                    contenteditable="true"
+                                    type="text"
+                                    placeholder="Add a note"
+                                    onChange={handleInputChange}
+                                    value={inputValue}>
+                                </input>
                             </div>
 
-                        ))}
+                            <div id="Notes-Buttons">
+                                <IconButton onClick={handleAddNote}> <AddIcon sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px' }}>  </AddIcon>  </IconButton>
+                            </div>
+                        </div>
 
+                    </div>
+
+                    <Droppable className="Droppable" onChange={() => handleDragEnd()}>
+                        {notes.map((note, index) => (
+                            <div className="NoteTaking-Item" id="NoteContainer">
+
+                                {/* Notes container */}
+
+                                <div className="NotesControls">
+
+                                    <IconButton onClick={() => handlePinnedNote(index)}>
+                                        <PushPinIcon sx={{
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            marginRight: '0px',
+                                            verticalAlign: 'middle',
+                                            transform: note.isPinned ? 'rotate(45deg)' : 'rotate(0deg)',
+                                            color: note.isPinned ? '#1DB954' : ' #858d85'
+                                        }}>
+                                        </PushPinIcon>
+                                    </IconButton>
+
+                                    
+                                    <IconButton onClick={() => handleOneClickCopy(note)}>
+                                        <MdContentCopy
+                                            style={{
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                fontSize: '20px',
+                                                verticalAlign: 'middle',
+                                                color: '#1DB954'
+                                            }} />
+                                    </IconButton>
+
+                                    <IconButton onClick={() => handleNoteDelete(index)} sx={{ Size: '14px' }}>
+                                        <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', marginRight: '0px', fontSize: '14px', verticalAlign: 'middle' }}>
+                                        </CloseIcon>
+                                    </IconButton>
+
+                                </div>
+                                <Draggable className="Draggable" id={note.id} key={note.id}>
+
+                                    <div className="Notes-Content">
+
+                                        <div className="Note">{note.text} </div>
+
+                                    </div>
+                                </Draggable>
+                            </div>
+                        ))}
+                    </Droppable>
                 </div>
-            </div>
+            </DndContext>
         </div>
 
     );

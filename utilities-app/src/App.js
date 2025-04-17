@@ -187,8 +187,7 @@ function Sidebar({ onTabChange }) {
 
 
   return (
-
-
+    
     <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
 
       <div className={`sidebar-item ${activeItem === 'dashboard' ? 'active' : ''}`} id="SidebarHome" onClick={() => handleClick("dashboard")}>

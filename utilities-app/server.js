@@ -14,10 +14,9 @@ const bodyParser = require('body-parser');
 
 app.use(cors());
 app.use(express.json());
-// connect to MongoDB
 
 app.use(cors({
-  origin: 'http://localhost:3000', // Allow requests from React frontend
+  origin: 'http://localhost:3000',
   credentials: true
 }));
 
