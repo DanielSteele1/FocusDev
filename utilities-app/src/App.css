@@ -64,7 +64,6 @@ a {
 .description {
 
   color: #c4cad3;
-  padding: 5px;
   display: flex;
   width: fit-content;
   font-size: 15px;
@@ -72,6 +71,7 @@ a {
   justify-content: center;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
+  margin: 10px;
 
 }
 
@@ -682,9 +682,6 @@ body {
   background-color: #148c3a;
 }
 
-.description{
-  margin-left: 10px;
-}
 
 .Productivity {
 
@@ -1009,11 +1006,7 @@ table {
 
 #NoteContainer {
   display: grid;
-  min-width:fit-content;
-  grid-template-columns: repeat(auto-fill, 200px);
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap:15px;
+  grid-template-columns: 200px;
 }
 
 .ringProgress {
@@ -1051,6 +1044,7 @@ table {
   justify-content: flex-start;
   height: fit-content;
   font-size: 17px;
+  margin-right: 10px;
 
 }
 
@@ -1602,4 +1596,13 @@ border: 2px solid #1DB954;
 
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.DndContext {
+  display:flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
 }

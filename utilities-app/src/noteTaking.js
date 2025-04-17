@@ -87,7 +87,7 @@ function NoteTaking() {
         setNotes(newNotes);
     };
 
-    const [items, setItems] = useState([1, 2, 3]);
+    const arrayMove = useState();
 
     const handleDragEnd = (event) => {
         const { active, over } = event;
@@ -96,7 +96,7 @@ function NoteTaking() {
             const oldIndex = notes.findIndex((note) => note.id === active.id);
             const newIndex = notes.findIndex((note) => note.id === over.id);
 
-            //setNotes((prevNotes) => arrayMove(prevNotes, oldIndex, newIndex));
+            setNotes((prevNotes) => arrayMove(prevNotes, oldIndex, newIndex));
         }
     };
 
@@ -113,7 +113,7 @@ function NoteTaking() {
 
     return (
         <div className="NoteTaking-container">
-            <DndContext>
+            <DndContext className="DndContext" onDragEnd={handleDragEnd}>
                 <div className="NoteTaking">
                     <div className="NoteTaking-Item" id="NoteInput">
                         <div className="Item-title">
@@ -147,12 +147,9 @@ function NoteTaking() {
 
                     </div>
 
-                    <Droppable className="Droppable" onChange={() => handleDragEnd()}>
+                    <Droppable className="Droppable" id="droppable">
                         {notes.map((note, index) => (
                             <div className="NoteTaking-Item" id="NoteContainer">
-
-                                {/* Notes container */}
-
                                 <div className="NotesControls">
 
                                     <IconButton onClick={() => handlePinnedNote(index)}>
@@ -167,7 +164,6 @@ function NoteTaking() {
                                         </PushPinIcon>
                                     </IconButton>
 
-                                    
                                     <IconButton onClick={() => handleOneClickCopy(note)}>
                                         <MdContentCopy
                                             style={{
