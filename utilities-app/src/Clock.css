@@ -1,0 +1,22 @@
+.clock-container {
+
+    display:flex;
+    flex-direction: column;
+    color: #1DB954;
+    text-align: center;
+    height: 200px;
+}
+
+.Clock{
+    font-size: 3vw;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+
+.Date{
+
+    font-size: 1.6vw;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    padding: 0px;
+}

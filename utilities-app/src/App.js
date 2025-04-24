@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef, createContext, OnSubmit } from "rea
 
 //import WeatherWidget from './Weather';
 import Accounts from './accounts.js';
+import MainClock from './ClockComponent.jsx';
 import { HiLogout } from "react-icons/hi";
 
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
@@ -76,7 +77,6 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
 
     getTime();
     const interval = setInterval(getTime, 1000);
-
     return () => clearInterval(interval);
 
   }, []);
@@ -176,7 +176,6 @@ function Sidebar({ onTabChange }) {
 
   }
 
-
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const handleCollapse = () => {
@@ -185,9 +184,8 @@ function Sidebar({ onTabChange }) {
 
   };
 
-
   return (
-    
+
     <div className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
 
       <div className={`sidebar-item ${activeItem === 'dashboard' ? 'active' : ''}`} id="SidebarHome" onClick={() => handleClick("dashboard")}>
@@ -260,13 +258,16 @@ function Dashboard() {
     <div className="Dashboard-container">
       <div className="Welcome">
 
-        <span> <span id="emoji">👋</span>  Welcome back! </span>
+        <span> <span id="emoji">👋</span>  Welcome! </span>
 
-        <div id="QOTD"> ~ Quote of the Day ~ </div>
+        {/* <div id="QOTD"> ~ Quote of the Day ~ </div>
 
         <div className="QOTD">
           <span>  {QOTDData ? `"${QOTDData.q}" - ${QOTDData.a}` : <Box sx={{ display: 'flex', padding: '10px' }}> <CircularProgress color="inherit" /> </Box>} </span>
-        </div>
+        </div> */}
+
+         <MainClock />
+
       </div>
 
       <div className="github-commit">
@@ -297,7 +298,7 @@ function Dashboard() {
           <div className="Item-title">
             <div className="Item-Icon">
 
-              <BsCalendar2RangeFill  style={{ justifyContent: 'center', color: '#4ade80', alignItems: 'center', verticalAlign: 'middle', fontSize: '30px', marginRight: '10px' }}>
+              <BsCalendar2RangeFill style={{ justifyContent: 'center', color: '#4ade80', alignItems: 'center', verticalAlign: 'middle', fontSize: '30px', marginRight: '10px' }}>
               </BsCalendar2RangeFill> <span> Upcoming Events </span> </div>
           </div>
 
@@ -308,8 +309,6 @@ function Dashboard() {
     </div>
   );
 }
-
-
 
 function Footer() {
 
@@ -338,9 +337,9 @@ function Footer() {
           </div>
         </Tooltip>
 
-        <Tooltip title="LinkedIn">
+        <Tooltip title="My Github">
           <div className="icon">
-            <a href="https://www.linkedin.com/in/daniel-steele1/">
+            <a href="https://github.com/DanielSteele1">
               <PiGithubLogo
                 style={{
 
@@ -353,9 +352,9 @@ function Footer() {
 
         </Tooltip>
 
-        <Tooltip title="My Github">
+        <Tooltip title="LinkedIn">
           <div className="icon">
-            <a href="https://github.com/DanielSteele1">
+            <a href="https://www.linkedin.com/in/daniel-steele1">
               <FaLinkedin
                 style={{
 

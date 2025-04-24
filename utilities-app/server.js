@@ -7,12 +7,12 @@ const bcrypt = require('bcrypt');
 
 const { MongoClient } = require('mongodb');
 const { ObjectId } = require('mongodb');
+let db;
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 
-app.use(cors());
 app.use(express.json());
 
 app.use(cors({
@@ -277,19 +277,29 @@ app.post('/delete', async (req, res) => {
   const {email, password} = req.body;
   const usersCollection = db.collection('users');
 
-  if(req.session.user){
+  try {
+  // find user
+  const user = await usersCollection.findOne({ email });
 
+  if(!user){
+    return res.status(400).json({ message: "User not found" });
   }
-  // Check if a user exists with the provided email
 
-  else
-  {
-    console.log("Failed to delete account. Please try again later.");
-    res.status(400).json({ message: "Failed to delete account. Please try again later." });
+  // do a password check
+  const isValid = await bcrypt.compare(password, user.password);
+
+  if(!isValid){
+    return res.status(400).json({message: "incorrect Password" });
+  }
+
+  // delete the user
+  await usersCollection.deleteOne({ email });
+
+  } catch(err){
+    return res.status(500).json({ message: "Error deleting user" });
   }
   
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

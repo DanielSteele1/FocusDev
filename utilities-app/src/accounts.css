@@ -109,7 +109,7 @@
     padding: 10px 15px;
     border: 2px solid #3d423d;
     border-radius: 10px;
-    background-color: #292e2e;
+    background-color: transparent;
     color: #1DB954;
     outline: none;
   
@@ -118,7 +118,15 @@
 .Sign-up input:focus, .Log-in input:focus {
 
     border: 2px solid #1DB954;
-    background-color: #292e2e;
+    background-color: transparent !important;
+  
+}
+
+.Sign-up input:-webkit-autofill,
+.Log-in  input:-webkit-autofill {
+
+    border: 2px solid #1DB954;
+    background-color: transparent;
   
 }
 

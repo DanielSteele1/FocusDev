@@ -7,6 +7,21 @@ import 'cal-heatmap/cal-heatmap.css';
 import { CgProfile } from "react-icons/cg";
 
 
+function DeleteAccount() {
+
+
+
+  return (
+    <div>
+      <button className="delete-account">
+        <p1> Delete Account </p1>
+      </button>
+    </div>
+  );
+
+}
+
+
 function Profile() {
 
   return (
@@ -18,7 +33,7 @@ function Profile() {
 
             <div className="header-left">
               <div className="Profile-title">
-              <CgProfile style={{ fontSize: '40px', display: 'flex', margin: '10px' }} />
+                <CgProfile style={{ fontSize: '40px', display: 'flex', margin: '10px' }} />
                 <span>Your Profile  </span>
               </div>
               <div className="Profile-desc">
@@ -48,9 +63,8 @@ function Profile() {
 
           <span className="description"> Are you sure you want to delete your account? this action cannot be undone. </span>
 
-          <button className="delete-account">
-            <p1> Delete Account </p1>
-          </button>
+          <DeleteAccount />
+
         </div>
 
       </div>

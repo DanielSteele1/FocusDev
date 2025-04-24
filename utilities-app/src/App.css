@@ -183,7 +183,6 @@ a {
 .App.light .Productivity-Item,
 .App.light .Profile-Item,
 .App.light #github-login {
-  background-color: #f1f1f1;
   border: 1px solid #2d2d2d;
   color: #1DB954;
 
@@ -199,7 +198,6 @@ a {
 .App.dark .Productivity-Item,
 .App.dark .Profile-Item,
 .App.dark #github-login {
-  background-color: #18181b;
   border: 1px solid #292e2e;
   color: #1DB954;
 }
@@ -208,12 +206,10 @@ a {
   color: #1DB954;
 }
 
-
-
 .App.dark .Navigation,
 .App.dark .Footer {
 
-  background-color: #18181b;
+  background-color: #0d0e0d90;
   color: #1DB954;
 
 }
@@ -288,7 +284,6 @@ body {
   top: 0;
   left: 0;
   z-index:1000;
-  border-bottom: 1px solid #2d2d2d;
 
 }
 
@@ -442,12 +437,10 @@ body {
   text-align: center;
   width: 165px;
   min-height:100vh;
-  background-color: #18181b;
   position: fixed;
   top: 0;
   left: 0;
   z-index:999;
-  border-right: 1px solid #2d2d2d;
   transition: width 0.3s ease-in-out;
   overflow: hidden;
 }
@@ -669,7 +662,6 @@ body {
   background-color: #1DB954;
   transition: transform 0.3s ease, background-color 0.3s ease;
 
-
 }
 
 .calenderButton:hover {
@@ -681,7 +673,6 @@ body {
   transform: scale(0.95);
   background-color: #148c3a;
 }
-
 
 .Productivity {
 
@@ -946,10 +937,9 @@ table {
 
 #developer-notepad {
   display: flex;
-  height: 80%;
+  height: 90%;
   width: 100%;
   border-radius: 10px;
-  background-color: #18181b;
   border: 1px solid #2d2d2d;
 }
 
@@ -1121,7 +1111,6 @@ table {
   font-size: 30px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
-
 }
 
 .QOTD {
@@ -1132,12 +1121,11 @@ table {
   justify-content: center;
   color: #c4cad3;
   padding: 10px;
-  margin: 10px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-style: italic;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 #QOTD {
@@ -1561,9 +1549,9 @@ border: 2px solid #1DB954;
   width: 100%;
   height: fit-content;
   flex-direction: row;
-  border-top: #3d423d 1px solid;
   color: #1DB954;
   align-items: flex-start;
+  background-color: #0d0e0d;
   justify-content: space-between;
 }
 
@@ -1578,7 +1566,7 @@ border: 2px solid #1DB954;
 .Footer-3 {
   display: flex;
   flex: 1;
-  font-size: 14px;
+  font-size: 13px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
   padding-top: 5px;

@@ -17,7 +17,6 @@ import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
 import { CiLink } from "react-icons/ci";
 
-
 import InsertLinkRoundedIcon from '@mui/icons-material/InsertLinkRounded';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -157,7 +156,6 @@ function Productivity() {
         setGoals(newGoals);
 
     }
-
 
     return (
 

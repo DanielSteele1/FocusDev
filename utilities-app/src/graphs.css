@@ -43,10 +43,8 @@
    .react-calendar-heatmap rect {
      width: 10px;
      height: 10px;
-     stroke-width: 2;
+     stroke-width: 3;
      stroke: #0d1117;
-     rx: 10 !important;
-     ry: 10 !important;
    }
 
   .LineChart{
