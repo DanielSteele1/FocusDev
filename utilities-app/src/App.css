@@ -137,8 +137,7 @@ a {
   color: #000000;
 }
 
-.App.light .Dashboard-Item,
-.App.light .Weather {
+.App.light .Dashboard-Item {
   background-color: #dddddd;
   border: none;
   color: black;
@@ -178,7 +177,6 @@ a {
 }
 
 .App.light .Dashboard-Item,
-.App.light .Weather,
 .App.light .NoteTaking-Item,
 .App.light .Productivity-Item,
 .App.light .Profile-Item,
@@ -194,7 +192,6 @@ a {
 
 
 .App.dark .Dashboard-Item,
-.App.dark .Weather,
 .App.dark .Productivity-Item,
 .App.dark .Profile-Item,
 .App.dark #github-login {
@@ -209,8 +206,8 @@ a {
 .App.dark .Navigation,
 .App.dark .Footer {
 
-  background-color: #0d0e0d90;
   color: #1DB954;
+  background-color: rgba(17, 17, 17, 0.5);
 
 }
 
@@ -1424,97 +1421,6 @@ table {
   flex-direction: column;
   height: fit-content;
 }
-
-.Weather {
-  display: flex;
-  flex-direction: row;
-  height: fit-content;
-  width: 100%;
-  font-size: 18px;
-  font-family: 'Lexend Deca', sans-serif;
-  font-weight: 400;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid #2d2d2d;
-}
-
-.Weather-Container {
-
-
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin: 10px;
-  padding: 10px;
-  font-family: 'Lexend Deca', sans-serif;
-
-}
-
-.today-summary {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  width: 30%;
-  background-color: #1e1e20;
-  border: 1px solid #2d2d2d;
-  border-radius: 10px;
-
-
-}
-
-.Forecast,
-.Temp {
-
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  margin: 10px;
-
-}
-
-.weather-heading {
-  font-size: 25px;
-  margin: 10px;
-  padding: 10px;
-}
-
-.weather-title {
-  font-size: 17px;
-
-}
-
-.weather-text {
-  font-size: 25px;
-}
-
-.Next-4-hours {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(80px, 1fr));
-  gap: 40px;
-  width: 50%;
-  margin-left: auto;
-  justify-content: flex-end;
-
-}
-
-.hour1,
-.hour2,
-.hour3,
-.hour4 {
-  display: flex;
-  flex-direction: column;
-  aspect-ratio: 1;
-  justify-content: center;
-  align-items: center;
-  background-color: #1e1e20;
-  border: 1px solid #2d2d2d;
-  border-radius: 10px;
-  transition: transform 0.2s ease;
-
-}
-
-
 
 #Useful-Links {
 
