@@ -37,7 +37,7 @@ function Productivity() {
 
     const [links, setLinks] = useState(() => {
 
-        // save links into users localstorage 
+        // get links from localstorage 
         const savedLinks = localStorage.getItem('links');
         return savedLinks ? JSON.parse(savedLinks) : [];
 
@@ -47,6 +47,7 @@ function Productivity() {
     const [linkNameValue, setLinkNameValue] = useState('');
 
     useEffect(() => {
+        // save links into localstorage
         localStorage.setItem('links', JSON.stringify(links));
     }, [links]);
 
@@ -176,7 +177,7 @@ function Productivity() {
                 <span className="description"> For your convenience, here are some handy links. You can also create your own links if you wish,
                     and you can pin them to the pinned tab in the homepage. </span>
 
-                  <span className="tip-highlight">
+                <span className="tip-highlight">
                     <IoSparkles
                         style={{
                             fontSize: '20px',
@@ -219,62 +220,61 @@ function Productivity() {
 
                 {/* Hardcoded links - Will always remain for the users convienence */}
 
-                <table className="hardcoded-links">
-                    <tr>
-                        <td>
-                            <div className="Links-Content" id="youtube">
-                                <YoutubeIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
-                                <Tooltip title="Click here to go to this website!" placement="bottom" >
-                                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="Link"> Youtube </a>
-                                </Tooltip>
-                            </div>
-                        </td>
+                <div className="hardcoded-links">
 
-                        <td>
-                            <div className="Links-Content" id="github">
-                                <GithubIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
-                                <Tooltip title="Click here to go to this website!" placement="bottom" >
-                                    <a href="https://Github.com" target="_blank" rel="noopener noreferrer" className="Link"> Github </a>
-                                </Tooltip>
-                            </div>
-                        </td>
+                    <div>
+                        <div className="Links-Content" id="youtube">
+                            <YoutubeIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
+                            <Tooltip title="Click here to go to this website!" placement="bottom" >
+                                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="Link"> Youtube </a>
+                            </Tooltip>
+                        </div>
+                    </div>
 
-                        <td>
-                            <div className="Links-Content" id="gmail">
-                                <BiLogoGmail style={{ justifyContent: 'center', fontSize: '25px', alignItems: 'center', verticalAlign: 'middle' }} />
-                                <Tooltip title="Click here to go to this website!" placement="bottom" >
-                                    <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="Link"> Gmail </a>
-                                </Tooltip>
-                            </div>
-                        </td>
+                    <div>
+                        <div className="Links-Content" id="github">
+                            <GithubIcon sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
+                            <Tooltip title="Click here to go to this website!" placement="bottom" >
+                                <a href="https://Github.com" target="_blank" rel="noopener noreferrer" className="Link"> Github </a>
+                            </Tooltip>
+                        </div>
+                    </div>
 
-                        <td>
-                            <div className="Links-Content" id="figma">
-                                <IoLogoFigma style={{ justifyContent: 'center', fontSize: '20px', alignItems: 'center', verticalAlign: 'middle' }} />
-                                <Tooltip title="Click here to go to this website!" placement="bottom" >
-                                    <a href="https://figma.com" target="_blank" rel="noopener noreferrer" className="Link"> Figma </a>
-                                </Tooltip>
-                            </div>
-                        </td>
+                    <div>
+                        <div className="Links-Content" id="gmail">
+                            <BiLogoGmail style={{ justifyContent: 'center', fontSize: '25px', alignItems: 'center', verticalAlign: 'middle' }} />
+                            <Tooltip title="Click here to go to this website!" placement="bottom" >
+                                <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer" className="Link"> Gmail </a>
+                            </Tooltip>
+                        </div>
+                    </div>
 
-                        <td>
-                            <div className="Links-Content" id="leetcode">
-                                <SiLeetcode style={{ justifyContent: 'center', fontSize: '20px', alignItems: 'center', verticalAlign: 'middle' }} />
-                                <Tooltip title="Click here to go to this website!" placement="bottom" >
-                                    <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" className="Link"> Leetcode </a>
-                                </Tooltip>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                    <div>
+                        <div className="Links-Content" id="figma">
+                            <IoLogoFigma style={{ justifyContent: 'center', fontSize: '20px', alignItems: 'center', verticalAlign: 'middle' }} />
+                            <Tooltip title="Click here to go to this website!" placement="bottom" >
+                                <a href="https://figma.com" target="_blank" rel="noopener noreferrer" className="Link"> Figma </a>
+                            </Tooltip>
+                        </div>
+                    </div>
 
-                <table className="dynamic-links">
-                    <tr>
+                    <div>
+                        <div className="Links-Content" id="leetcode">
+                            <SiLeetcode style={{ justifyContent: 'center', fontSize: '20px', alignItems: 'center', verticalAlign: 'middle' }} />
+                            <Tooltip title="Click here to go to this website!" placement="bottom" >
+                                <a href="https://leetcode.com" target="_blank" rel="noopener noreferrer" className="Link"> Leetcode </a>
+                            </Tooltip>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="dynamic-links">
+                    
                         {/* Links container */}
 
                         {links
                             .map((link, index) => (
-                                <td key={index} className="Links-Content">
+                                <div key={index} className="Links-Content">
                                     <InsertLinkRoundedIcon />
 
                                     <Tooltip title="Click here to go to this website!" placement="bottom">
@@ -298,10 +298,9 @@ function Productivity() {
                                     <IconButton onClick={() => handleLinksDelete(index)}>
                                         <CloseIcon id="Delete-links-button" sx={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle' }} />
                                     </IconButton>
-                                </td>
+                                </div>
                             ))}
-                    </tr>
-                </table>
+                </div>
             </div>
 
             <div className="Dashboard-Main">

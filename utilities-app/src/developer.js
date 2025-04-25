@@ -29,8 +29,29 @@ function Developer() {
 
     //github API Frontend
 
-    const [githubData, setGithubData] = useState(null);
-    const [contributionData, setContributionData] = useState(null);
+    // retrieve github data from localStorage
+    const [githubData, setGithubData] = useState(() => {
+
+        const savedGithubData = localStorage.getItem('githubData');
+        return savedGithubData ? JSON.parse(savedGithubData) : null;
+
+    });
+
+    const [contributionData, setContributionData] = useState(() => {
+
+        const savedContributionData = localStorage.getItem('contributionData');
+        return savedContributionData ? JSON.parse(savedContributionData) : null;
+
+    });
+
+    useEffect(() => {
+
+        //save github data into localStorage
+        localStorage.setItem('githubData', JSON.stringify(githubData));
+        localStorage.setItem('contributionData', JSON.stringify(contributionData));
+
+    }, [githubData, contributionData]);
+
 
     // this will fetch the users yearly contribution data
 

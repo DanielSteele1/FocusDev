@@ -10,14 +10,14 @@ import CloseIcon from '@mui/icons-material/Close';
 import 'cal-heatmap/cal-heatmap.css';
 
 import { MdContentCopy } from "react-icons/md";
-import { LuNotebook } from "react-icons/lu";
 import { BsSticky } from "react-icons/bs";
 
 import { DndContext } from '@dnd-kit/core';
 import Draggable from './Draggable.jsx';
 import Droppable from './Droppable.jsx';
-import Tooltip from '@mui/material/Tooltip';
+import { arrayMove } from '@dnd-kit/sortable';
 
+import Tooltip from '@mui/material/Tooltip';
 import { CSS } from '@dnd-kit/utilities';
 
 function NoteTaking() {
@@ -87,7 +87,6 @@ function NoteTaking() {
         setNotes(newNotes);
     };
 
-    const arrayMove = useState();
 
     const handleDragEnd = (event) => {
         const { active, over } = event;
@@ -99,6 +98,8 @@ function NoteTaking() {
             setNotes((prevNotes) => arrayMove(prevNotes, oldIndex, newIndex));
         }
     };
+
+
 
     const handleOneClickCopy = (note) => {
 
@@ -147,7 +148,7 @@ function NoteTaking() {
 
                     </div>
 
-                    <Droppable className="Droppable" id="droppable">
+                    <Droppable  className="Droppable" id="droppable">
                         {notes.map((note, index) => (
                             <div className="NoteTaking-Item" id="NoteContainer">
                                 <div className="NotesControls">

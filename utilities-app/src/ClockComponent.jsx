@@ -17,7 +17,7 @@ function MainClock() {
   function getTime() {
 
     const now = new Date();
-    const minutes = now.getMinutes();
+    const minutes = String(now.getMinutes()).padStart(2,"0");
     const hours = now.getHours();
 
     const meridium = hours >= 12 ? 'PM' : 'AM';

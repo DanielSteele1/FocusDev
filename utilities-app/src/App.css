@@ -75,16 +75,16 @@ a {
 
 }
 
-.tip-highlight{
+.tip-highlight {
 
-  display:flex;
+  display: flex;
   width: fit-content;
   margin: 10px;
   color: #1DB954;
   font-size: 13px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 400;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   background: #2a3f30;
@@ -125,7 +125,7 @@ a {
   color: black;
 }
 
-.App.light .Item-title span{
+.App.light .Item-title span {
 
   color: #000000;
 }
@@ -283,7 +283,7 @@ body {
   top: 0; */
   top: 0;
   left: 0;
-  z-index:1000;
+  z-index: 1000;
 
 }
 
@@ -436,11 +436,11 @@ body {
   justify-content: center;
   text-align: center;
   width: 165px;
-  min-height:100vh;
+  min-height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  z-index:999;
+  z-index: 999;
   transition: width 0.3s ease-in-out;
   overflow: hidden;
 }
@@ -633,7 +633,7 @@ body {
 }
 
 .section-title {
-  display:flex;
+  display: flex;
   font-size: 13px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -648,14 +648,14 @@ body {
 .calenderButton {
 
   border: none;
-  border-radius: 20px;
+  border-radius: 15px;
   width: fit-content;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
-  font-style: 'Lexend Deca', sans-serif;
+  font-style: 'Inter', sans-serif;
   font-size: 15px;
   font-weight: 500;
   margin: 10px;
@@ -667,11 +667,6 @@ body {
 .calenderButton:hover {
   background-color: #17a34a;
 
-}
-
-.calenderButton:active {
-  transform: scale(0.95);
-  background-color: #148c3a;
 }
 
 .Productivity {
@@ -823,29 +818,23 @@ table {
 
 }
 
-
 .hardcoded-links {
-  border-bottom: 2px solid #2d2d2d;
-  margin-bottom: 5px;
-
-}
-
-.hardcoded-links tr {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 10px;
-
+  border-bottom: 1px solid #292e2e;
+  width: 100%;
+  gap: 15px;
+  margin: 5px;
 }
-
 
 .dynamic-links {
-  width: 100%;
-}
-
-.dynamic-links tr {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
+  height: fit-content;
+  grid-template-columns: repeat(4, 1fr);
+  width: 50px;
+  margin-left: 10px;
+  margin-top: 10px;
+  gap: 15px;
 
 }
 
@@ -886,7 +875,7 @@ table {
   border-radius: 10px;
   background-color: #292e2e;
   color: #1DB954;
-  outline:none;
+  outline: none;
   font-family: 'Lexend Deca', sans-serif;
 }
 
@@ -953,7 +942,7 @@ table {
 .Productivity #Calender {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 45%;
   border-radius: 10px;
 }
 
@@ -1053,7 +1042,7 @@ table {
 #ToDo {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 100%;
   height: fit-content;
   border-radius: 10px;
 }
@@ -1089,8 +1078,8 @@ table {
 #Delete-links-button {
 
   display: flex;
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   justify-content: center;
   border-radius: 5px;
   align-items: center;
@@ -1108,7 +1097,7 @@ table {
   padding: 10px;
   justify-content: center;
   color: #1DB954;
-  font-size: 30px;
+  font-size: 20px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
 }
@@ -1154,7 +1143,7 @@ table {
   width: 80%;
   border-radius: 10px;
   font-size: 15px;
-  border: 2px solid #3d423d;
+  border: 1px solid #2d2d2d;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   outline: none;
@@ -1172,7 +1161,7 @@ table {
 #TimeInput:focus,
 .Github-Stats-Input input:focus {
 
-border: 2px solid #1DB954;
+  border: 1px solid #1DB954;
   background-color: #292e2e;
   color: #1DB954;
   transition: all 0.2s ease-in-out;
@@ -1212,8 +1201,8 @@ border: 2px solid #1DB954;
 .Notes-Content {
 
   position: relative;
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   border-radius: 10px;
@@ -1226,7 +1215,7 @@ border: 2px solid #1DB954;
   font-style: bold;
   font-family: 'Lexend Deca', sans-serif;
   box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .Notes-Content::after {
@@ -1313,14 +1302,13 @@ border: 2px solid #1DB954;
 
 }
 
-.Github-Stats-Input{
+.Github-Stats-Input {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
   margin: 10px
-
 }
 
 .Github-Stats-Input input {
@@ -1550,7 +1538,7 @@ border: 2px solid #1DB954;
   height: fit-content;
   flex-direction: row;
   color: #1DB954;
-  align-items: flex-start;
+  align-items: center;
   background-color: #0d0e0d;
   justify-content: space-between;
 }
@@ -1589,7 +1577,7 @@ border: 2px solid #1DB954;
 }
 
 .DndContext {
-  display:flex;
+  display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 

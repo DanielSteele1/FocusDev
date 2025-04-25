@@ -258,15 +258,13 @@ function Dashboard() {
     <div className="Dashboard-container">
       <div className="Welcome">
 
-        <span> <span id="emoji">👋</span>  Welcome! </span>
+        <MainClock />
 
-        {/* <div id="QOTD"> ~ Quote of the Day ~ </div>
+        <div id="QOTD"> ~ Quote of the Day ~ </div>
 
         <div className="QOTD">
           <span>  {QOTDData ? `"${QOTDData.q}" - ${QOTDData.a}` : <Box sx={{ display: 'flex', padding: '10px' }}> <CircularProgress color="inherit" /> </Box>} </span>
-        </div> */}
-
-         <MainClock />
+        </div>
 
       </div>
 
@@ -370,14 +368,12 @@ function Footer() {
 
       <div className="Footer-3"> <a href="https://dashboard.simpleanalytics.com/?utm_source=danielsteele.dev&utm_content=badge&affiliate=catur"
         referrerpolicy="origin"
-        target="_blank"> <picture><source srcset="https://simpleanalyticsbadges.com/danielsteele.dev?mode=dark" media="(prefers-color-scheme: dark)" /><img src="https://simpleanalyticsbadges.com/danielsteele.dev?mode=light"
+        target="_blank"> <picture><source srcset="https://simpleanalyticsbadges.com/danielsteele.dev?logo=1DB954&text=1DB954&background=none" media="(prefers-color-scheme: dark)" /><img src="https://simpleanalyticsbadges.com/danielsteele.dev?mode=dark"
           loading="lazy"
           referrerpolicy="no-referrer"
           crossorigin="anonymous" /></picture></a> </div>
-
     </div>
   );
-
 }
 
 function App() {

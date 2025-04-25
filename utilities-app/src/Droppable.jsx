@@ -3,7 +3,7 @@ import { useDroppable } from '@dnd-kit/core';
 
 function Droppable({ id, children, isOver }) {
     const { setNodeRef } = useDroppable({
-        id,
+        id: 'unique-id',
         isOver,
     });
 
