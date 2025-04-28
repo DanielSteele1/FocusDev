@@ -8,12 +8,8 @@ import MainClock from './ClockComponent.jsx';
 import { HiLogout } from "react-icons/hi";
 
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
-import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
-import FilterDramaOutlinedIcon from '@mui/icons-material/FilterDramaOutlined';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { MantineProvider, Button, Text } from '@mantine/core';
-import { CiLink } from "react-icons/ci";
 import { Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
 import { BsCalendar2RangeFill } from "react-icons/bs";
@@ -36,6 +32,8 @@ import Productivity from './productivity.js';
 import Developer from './developer.js';
 import NoteTaking from './noteTaking.js';
 import Profile from './profile.js';
+
+import { Analytics } from "@vercel/analytics/react";
 
 export const ThemeContext = createContext(null);
 
@@ -347,7 +345,7 @@ function Footer() {
 
       <div className="Footer-3"> <a href="https://dashboard.simpleanalytics.com/?utm_source=danielsteele.dev&utm_content=badge&affiliate=catur"
         referrerpolicy="origin"
-        target="_blank"> <picture><source srcset="https://simpleanalyticsbadges.com/danielsteele.dev?logo=1DB954&text=1DB954&background=none" media="(prefers-color-scheme: dark)" /><img src="https://simpleanalyticsbadges.com/danielsteele.dev?mode=dark"
+        target="_blank" rel="noreferrer noopener"> <picture><source srcset="https://simpleanalyticsbadges.com/danielsteele.dev?logo=1DB954&text=1DB954&background=none" media="(prefers-color-scheme: dark)" /><img  alt="Simple Analytics Link"src="https://simpleanalyticsbadges.com/danielsteele.dev?mode=dark"
           loading="lazy"
           referrerpolicy="no-referrer"
           crossorigin="anonymous" /></picture></a> </div>
@@ -359,7 +357,7 @@ function App() {
 
   const [theme, setTheme] = useState("dark");
   const [loggedIn, setLoggedIn] = useState(false);
-    const[logoutButton, setLogoutButton] = useState();
+    const[logoutButton] = useState();
 
   const toggleTheme = () => {
 
@@ -378,7 +376,6 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ logout: logoutButton }),
       });
-      const result = await response.json();
       setLoggedIn(false);
 
     } catch (error) {
@@ -397,6 +394,7 @@ function App() {
 
               <Navigation theme={theme} toggleTheme={toggleTheme} setLoggedIn={setLoggedIn} handleLogoutClick={handleLogoutClick} />
               <MainWrapper handleLogoutClick={handleLogoutClick}>
+                <Analytics />
               </MainWrapper>
               <Footer />
 

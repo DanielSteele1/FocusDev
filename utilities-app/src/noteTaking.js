@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useRef, createContext, OnSubmit } from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 //import WeatherWidget from './Weather';
@@ -16,9 +16,6 @@ import { DndContext } from '@dnd-kit/core';
 import Draggable from './Draggable.jsx';
 import Droppable from './Droppable.jsx';
 import { arrayMove } from '@dnd-kit/sortable';
-
-import Tooltip from '@mui/material/Tooltip';
-import { CSS } from '@dnd-kit/utilities';
 
 function NoteTaking() {
 

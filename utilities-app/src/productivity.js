@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useRef, createContext } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import 'reactjs-popup/dist/index.css';
 
@@ -12,7 +12,6 @@ import { IoLogoFigma } from "react-icons/io5";
 import { BiLogoGmail } from "react-icons/bi";
 
 import { GoGoal } from "react-icons/go";
-import { SlCalender } from "react-icons/sl";
 import AddIcon from '@mui/icons-material/Add';
 import IconButton from '@mui/material/IconButton';
 import { CiLink } from "react-icons/ci";

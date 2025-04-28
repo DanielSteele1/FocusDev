@@ -1,6 +1,6 @@
 import './App.css';
 import './graphs.css';
-import { useEffect, useRef, createContext } from "react";
+import { useEffect} from "react";
 import { useState } from "react";
 import 'reactjs-popup/dist/index.css';
 
@@ -14,7 +14,6 @@ import Dialog from '@mui/material/Dialog';
 import { HiOutlineCode } from "react-icons/hi";
 import { GrCircleInformation } from "react-icons/gr";
 
-import { LineChart } from '@mui/x-charts/LineChart';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import { PiGithubLogo } from "react-icons/pi";
