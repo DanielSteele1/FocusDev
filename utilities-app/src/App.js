@@ -1,6 +1,6 @@
 
 import './App.css';
-import React, { useEffect, useState, useRef, createContext, OnSubmit } from "react";
+import React, { useEffect, useState, createContext } from "react";
 
 //import WeatherWidget from './Weather';
 import Accounts from './accounts.js';
