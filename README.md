@@ -5,14 +5,14 @@ FocusDev is designed to help developers increase and organize their workload thr
 
 ## 🔧 Features (Ticked features are completed, Crossed features are currently being worked on.)
 
-✅ **Notes Panel** – A responsive notes section to keep track of daily tasks and thoughts.
-✅ **Quick Links** - A way for users to save links to the app, so they can go to all the places online they need to from one place.
-✅  **GitHub Commit Graph** – Connect your GitHub account and display your commit activity. In later versions, this will be expanded upon.
-✅ General UI/UX , Accounts Sytstem and User profile.
+- ✅ **Notes Panel** – A responsive notes section to keep track of daily tasks and thoughts.
+- ✅ **Quick Links** - A way for users to save links to the app, so they can go to all the places online they need to from one place.
+- ✅  **GitHub Commit Graph** – Connect your GitHub account and display your commit activity. In later versions, this will be expanded upon.
+- ✅ General UI/UX , Accounts Sytstem and User profile.
 
-❌ **Calendar & ToDo** – A calendar feature to help organize and plan events or milestones.
-❌ **Upcoming Events** – Track and view your upcoming events to stay on schedule.
-❌ **Reusable Code Snippet Tool** – Save useful code snippets to copy and paste when needed with a one-click-copy. You're able to give each one a colour & a label.
+- ❌ **Calendar & ToDo** – A calendar feature to help organize and plan events or milestones.
+- ❌ **Upcoming Events** – Track and view your upcoming events to stay on schedule.
+- ❌ **Reusable Code Snippet Tool** – Save useful code snippets to copy and paste when needed with a one-click-copy. You're able to give each one a colour & a label.
 
 ---
 
