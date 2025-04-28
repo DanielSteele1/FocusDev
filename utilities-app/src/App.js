@@ -39,7 +39,7 @@ import Profile from './profile.js';
 
 export const ThemeContext = createContext(null);
 
-function MainWrapper({ children }) {
+function MainWrapper({ children, handleLogoutClick }) {
 
   const [activeTab, setActiveTab] = useState('dashboard');
 
@@ -52,7 +52,7 @@ function MainWrapper({ children }) {
         {activeTab === 'productivity' && <Productivity />}
         {activeTab === 'developer' && <Developer />}
         {activeTab === 'noteTaking' && <NoteTaking />}
-        {activeTab === 'profile' && <Profile />}
+        {activeTab === 'profile' && <Profile handleLogoutClick={handleLogoutClick}/>}
 
       </div>
     </div>
@@ -60,7 +60,7 @@ function MainWrapper({ children }) {
   );
 }
 
-function Navigation({ toggleTheme, theme, setLoggedIn }) {
+function Navigation({ toggleTheme, theme, handleLogoutClick, logoutButton }) {
 
   const [timeText, setTimeText] = useState("");
 
@@ -80,27 +80,6 @@ function Navigation({ toggleTheme, theme, setLoggedIn }) {
     return () => clearInterval(interval);
 
   }, []);
-
-  const [logoutButton, setLogoutButton] = useState();
-
-  const handleLogoutClick = async (e) => {
-
-    e.preventDefault();
-
-    try {
-      const response = await fetch('/logout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ logout: logoutButton }),
-      });
-      const result = await response.json();
-      setLoggedIn(false);
-
-    } catch (error) {
-      console.error('Error Logging user out:', error);
-    }
-
-  };
 
   return (
     <div className="Navigation">
@@ -380,12 +359,31 @@ function App() {
 
   const [theme, setTheme] = useState("dark");
   const [loggedIn, setLoggedIn] = useState(false);
-
+    const[logoutButton, setLogoutButton] = useState();
 
   const toggleTheme = () => {
 
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
     console.log("Theme:", theme);
+
+  };
+
+  const handleLogoutClick = async (e) => {
+
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/logout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ logout: logoutButton }),
+      });
+      const result = await response.json();
+      setLoggedIn(false);
+
+    } catch (error) {
+      console.error('Error Logging user out:', error);
+    }
 
   };
 
@@ -397,9 +395,8 @@ function App() {
 
             <>
 
-              <Navigation theme={theme} toggleTheme={toggleTheme} setLoggedIn={setLoggedIn} />
-              <MainWrapper>
-
+              <Navigation theme={theme} toggleTheme={toggleTheme} setLoggedIn={setLoggedIn} handleLogoutClick={handleLogoutClick} />
+              <MainWrapper handleLogoutClick={handleLogoutClick}>
               </MainWrapper>
               <Footer />
 

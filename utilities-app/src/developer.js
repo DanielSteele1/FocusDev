@@ -19,7 +19,6 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import { PiGithubLogo } from "react-icons/pi";
 
-
 function Developer() {
 
     const data = [

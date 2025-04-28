@@ -105,8 +105,7 @@ a {
 
 .App.light .Navigation,
 .App.light .sidebar,
-.App.light .Footer,
-.App.light .AccountsButton {
+.App.light .Footer {
   background-color: #e8f5e8;
   color: #0f1011;
 }
@@ -394,30 +393,40 @@ body {
 .Profile-operations span {
   margin: 10px;
   font-size: 15px;
-  color: #c4cad3;
   font-family: 'Lexend Deca', sans-serif;
 }
 
-.delete-account {
+.delete-account, .delete-account-real {
   display: flex;
+  height: 45px;
   width: fit-content;
   margin: 10px;
   padding: 10px;
   background-color: transparent;
-  color: #c20404;
+  color: #fd0000;
   border: none;
-  border-radius: 10px;
+  border-radius: 20px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 600;
   font-size: 15px;
   cursor: pointer;
   justify-content: center;
   align-items: center;
-  border: 2px solid #c20404;
+  border: 2px solid #fd0000;
 }
 
-.Profile-operations button:hover {
-  background-color: #c20404;
+.delete-account-real {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  
+}
+
+.Profile-operations button:hover, .delete-account-real:hover {
+  transition: 0.5s ease-in;
+  background-color: #fd0000;
   color: #000000;
 }
 
@@ -597,19 +606,16 @@ body {
   width: fit-content;
   justify-content: center;
   align-items: center;
-  border-color: #1DB954;
-  color: #0f1011;
+  color:black;
   background-color: #1DB954;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 500;
-  border: 2px solid;
+  border: none;
   border-radius: 20px;
   cursor: pointer;
-  padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
   margin-right: 20px;
-  margin-left: 20px;
   transition: all 0.5s ease-in-out;
 }
 
@@ -844,10 +850,10 @@ table {
   gap: 20px;
 }
 
-.code-snippet-dialog {
+.code-snippet-dialog, .delete-account-dialog {
 
   display: flex;
-  height: 500px;
+  height: fit-content;
   width: 600px;
   flex-direction: column;
   justify-content: flex-start;
@@ -859,6 +865,19 @@ table {
   border-radius: 10px;
 
 }
+
+ .delete-account-dialog  {
+
+  display: flex;
+  align-items: flex-start;
+  margin: 0 auto;
+
+ }
+
+ .delete-account-real{
+  margin: 10px;
+ }
+
 
 .dialog-input {
 
