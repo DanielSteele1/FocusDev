@@ -2,7 +2,6 @@
 import './App.css';
 import React, { useEffect, useState, createContext } from "react";
 
-//import WeatherWidget from './Weather';
 import Accounts from './accounts.js';
 import MainClock from './ClockComponent.jsx';
 import { HiLogout } from "react-icons/hi";
@@ -371,7 +370,7 @@ function App() {
     e.preventDefault();
 
     try {
-      const response = await fetch('/logout', {
+        await fetch('/logout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ logout: logoutButton }),
