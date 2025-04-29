@@ -59,24 +59,6 @@ function MainWrapper({ children, handleLogoutClick }) {
 
 function Navigation({ toggleTheme, theme, handleLogoutClick, logoutButton }) {
 
-  const [timeText, setTimeText] = useState("");
-
-  useEffect(() => {
-
-    function getTime() {
-
-      const currentTime = new Date();
-      const formattedTime = currentTime.toLocaleTimeString();
-      const formattedDate = currentTime.toLocaleDateString();
-
-      setTimeText(`${formattedDate} ${formattedTime}`);
-    }
-
-    getTime();
-    const interval = setInterval(getTime, 1000);
-    return () => clearInterval(interval);
-
-  }, []);
 
   return (
     <div className="Navigation">
@@ -95,14 +77,6 @@ function Navigation({ toggleTheme, theme, handleLogoutClick, logoutButton }) {
       <div className="Navigation-Name"> <span>FocusDev</span> </div>
 
       <div className="Nav-Menu">
-
-        <div className="Navigation-Item" id="time">
-          <span className="time">
-            <AccessTimeIcon
-              sx={{ justifyContent: 'center', alignItems: 'center', margin: '10px' }} />
-            <span className="timetext">{timeText} </span>
-          </span>
-        </div>
 
         <div className="Navigation-Item">
           <div className="darkMode">
@@ -344,7 +318,7 @@ function Footer() {
 
       <div className="Footer-3"> <a href="https://dashboard.simpleanalytics.com/?utm_source=danielsteele.dev&utm_content=badge&affiliate=catur"
         referrerpolicy="origin"
-        target="_blank" rel="noreferrer noopener"> <picture><source srcset="https://simpleanalyticsbadges.com/danielsteele.dev?logo=1DB954&text=1DB954&background=none" media="(prefers-color-scheme: dark)" /><img  alt="Simple Analytics Link"src="https://simpleanalyticsbadges.com/danielsteele.dev?mode=dark"
+        target="_blank" rel="noreferrer noopener"> <picture><source srcset="https://simpleanalyticsbadges.com/danielsteele.dev?logo=c4cad3&text=c4cad3&background=none" media="(prefers-color-scheme: dark)" /><img  alt="Simple Analytics Link"src="https://simpleanalyticsbadges.com/danielsteele.dev?mode=dark"
           loading="lazy"
           referrerpolicy="no-referrer"
           crossorigin="anonymous" /></picture></a> </div>

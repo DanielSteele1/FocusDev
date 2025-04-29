@@ -76,22 +76,16 @@ a {
 }
 
 .tip-highlight {
-
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: fit-content;
-  margin: 10px;
-  color: #1DB954;
+  color: #c4cad3;
   font-size: 13px;
   font-family: 'Lexend Deca', sans-serif;
-  font-weight: 400;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #2a3f30;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 10px 10px 12px;
+  border-radius: 8px;
 }
-
 
 .App.light .LocationSearch {
   background-color: #1DB954;
@@ -172,7 +166,7 @@ a {
 .App.dark .LocationInput {
 
   background-color: #18181b;
-  color: #1DB954;
+  color: #c4cad3;
 }
 
 .App.light .Dashboard-Item,
@@ -181,7 +175,6 @@ a {
 .App.light .Profile-Item,
 .App.light #github-login {
   border: 1px solid #2d2d2d;
-  color: #1DB954;
 
 }
 
@@ -195,17 +188,13 @@ a {
 .App.dark .Profile-Item,
 .App.dark #github-login {
   border: 1px solid #292e2e;
-  color: #1DB954;
 }
 
-.App.dark .Developer-Item {
-  color: #1DB954;
-}
 
 .App.dark .Navigation,
 .App.dark .Footer {
 
-  color: #1DB954;
+  color: #c4cad3;
   background-color: rgba(17, 17, 17, 0.5);
 
 }
@@ -344,9 +333,11 @@ body {
 
   font-size: 25px;
   display: flex;
+  margin: 10px;
+  margin-bottom: 0px;
   justify-content: flex-start;
   align-items: center;
-  color: #1DB954;
+  color: #c4cad3;
   font-family: 'Lexend Deca', sans-serif;
 }
 
@@ -405,7 +396,7 @@ body {
   background-color: transparent;
   color: #fd0000;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 600;
   font-size: 15px;
@@ -525,7 +516,7 @@ body {
   align-items: flex-start;
   margin: 0 auto;
   padding: 20px;
-  margin-top: 80px;
+  margin-top: 50px;
   padding-bottom: 100px;
   transition: width 0.3s ease;
   box-sizing: border-box;
@@ -602,7 +593,7 @@ body {
 
 .AccountsButton {
   display: flex;
-  height: 45px;
+  height: 40px;
   width: fit-content;
   justify-content: center;
   align-items: center;
@@ -611,10 +602,10 @@ body {
   font-family: 'Lexend Deca', sans-serif;
   font-weight: 500;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
   margin-right: 20px;
   transition: all 0.5s ease-in-out;
 }
@@ -899,7 +890,7 @@ table {
 
   display: flex;
   height: auto;
-  width: 40%;
+  width: 30%;
   justify-content: center;
   align-items: center;
   background-color: #1DB954;
@@ -1030,6 +1021,7 @@ table {
   width: fit-content;
   padding: 8px;
   border-radius: 15px;
+  color: rgb(74, 222, 128);
 }
 
 .Item-title {
@@ -1048,13 +1040,12 @@ table {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  font-family: 'Lexend Deca', sans-serif;
-  font-weight: 700;
+  font-family: 'Figtree', sans-serif;
+  font-weight: 600;
   align-items: center;
-  color: #4ade80;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  color: #c4cad3;
 }
-
 #ToDo {
   display: flex;
   flex-direction: column;
@@ -1298,6 +1289,7 @@ table {
   white-space: nowrap;
   word-wrap: break-word;
   word-break: break-all;
+  color: #c4cad3;
 
 }
 
@@ -1324,7 +1316,6 @@ table {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  margin: 10px
 }
 
 .Github-Stats-Input input {
@@ -1372,10 +1363,10 @@ table {
 .github-stats {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
-.SubmitGithubName {
+.SubmitGithubName{
 
   display: flex;
   align-items: center;
@@ -1401,36 +1392,32 @@ table {
 #stat {
 
   display: flex;
-  width: fit-content;
   height: 100px;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 10px;
   border-radius: 10px;
   color: #1DB954;
-  font-weight: 400;
 }
 
 #statTitle {
 
   display: flex;
-  margin: 10px;
+  align-items: center;
   font-size: 15px;
-  font-family: 'Space Mono', monospace;
-  font-weight: 400;
+  font-family: 'Figtree', sans-serif;
+  font-weight: 500;
 }
 
 #statNumber {
   display: flex;
-  margin: 10px;
   justify-content: flex-start;
   align-items: center;
-  font-size: 25px;
-  font-family: 'Space Mono', monospace;
+  font-size: 28px;
+  font-family: 'Figtree', sans-serif;
   font-weight: 600;
-  letter-spacing: 2px;
-  color: #1DB954;
+  color: #c4cad3;
 
 }
 
@@ -1462,7 +1449,6 @@ table {
   width: 100%;
   height: fit-content;
   flex-direction: row;
-  color: #1DB954;
   align-items: center;
   background-color: #0d0e0d;
   justify-content: space-between;

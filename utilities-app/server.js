@@ -24,7 +24,7 @@ app.use(session({
   secret: process.env.secretsession,
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: true }
+  cookie: { secure: false }
 }));
 
 // get URI from the env file.
