@@ -19,13 +19,12 @@ import { CiLink } from "react-icons/ci";
 import InsertLinkRoundedIcon from '@mui/icons-material/InsertLinkRounded';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { MantineProvider, Button, Text } from '@mantine/core';
+import { Button, Text } from '@mantine/core';
 import { Calendar } from '@mantine/dates';
 import { BsCalendar2RangeFill } from "react-icons/bs";
 
 import { DatePicker } from '@mantine/dates';
 import { TimeInput } from '@mantine/dates';
-//import { DatesProvider } from '@mantine/dates';
 import { Checkbox } from '@mantine/core';
 import { RingProgress } from '@mantine/core';
 import Tooltip from '@mui/material/Tooltip';
@@ -147,6 +146,7 @@ function Productivity() {
 
     const handleGoalComplete = (index) => {
 
+        
 
     }
 

@@ -12,6 +12,7 @@ let db;
 const app = express();
 const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
+const { Email } = require('@mui/icons-material');
 
 app.use(express.json());
 
@@ -150,6 +151,13 @@ app.post('/signup', async (req, res) => {
   }
 });
 
+
+app.get('/debug/session', (req, res) => {
+
+  res.json(req.session);
+});
+
+
 //login
 
 app.post('/login', async (req, res) => {
@@ -164,7 +172,7 @@ app.post('/login', async (req, res) => {
 
     if (!user) {
       // If the user doesn't exist
-      console.log("User not found");
+      console.log("User not found. This could be because of an incorrect email or password. Please try again.");
       return res.status(400).json({ message: "User not found. This could be because of an incorrect email or password. Please try again." });
     }
 
@@ -190,15 +198,15 @@ app.post('/login', async (req, res) => {
 
 //github contributions API Request 
 
-app.post('/api/githubContributions', async (req, res) => { 
+app.post('/api/githubContributions', async (req, res) => {
 
   const { username } = req.body;
- 
+
   if (!username) {
- 
-   return res.status(400).json({ error: 'Username is required'});
+
+    return res.status(400).json({ error: 'Username is required' });
   }
- 
+
   const query = `
      query($userName: String!) {
        user(login: $userName) {
@@ -216,42 +224,42 @@ app.post('/api/githubContributions', async (req, res) => {
        }
      }
    `;
- 
-   const variables = { userName: username };
- 
-   try{
- 
-     // make the graphQL request to the github API
-     const response = await fetch('https://api.github.com/graphql', {
- 
-       method: 'POST',
-       headers: {
-         'Authorization': `Bearer ${process.env.githubAccessToken}`,  // use the github access token from the env file
-         'Content-Type': 'application/json',
-       },
-       body: JSON.stringify({ query, variables }),
- 
-     });
- 
-     // await response
-     const contributionData = await response.json();
- 
-     if( contributionData.errors) {
- 
-       return res.status(500).json({error: contributionData.errors});
-     }
- 
-     res.json(contributionData.data.user.contributionsCollection.contributionCalendar);
-     console.log("Fetched contributions successfully!");
-     
-   }
-   catch(error){
- 
-     console.error("Error fetching contributions:", error);
-     return res.status(500).json({ error: 'Failed to fetch contributions' });
-   }
- 
- });
+
+  const variables = { userName: username };
+
+  try {
+
+    // make the graphQL request to the github API
+    const response = await fetch('https://api.github.com/graphql', {
+
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.githubAccessToken}`,  // use the github access token from the env file
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ query, variables }),
+
+    });
+
+    // await response
+    const contributionData = await response.json();
+
+    if (contributionData.errors) {
+
+      return res.status(500).json({ error: contributionData.errors });
+    }
+
+    res.json(contributionData.data.user.contributionsCollection.contributionCalendar);
+    console.log("Fetched contributions successfully!");
+
+  }
+  catch (error) {
+
+    console.error("Error fetching contributions:", error);
+    return res.status(500).json({ error: 'Failed to fetch contributions' });
+  }
+
+});
 
 // logout route
 app.post('/logout', async (req, res) => {
@@ -274,31 +282,39 @@ app.post('/logout', async (req, res) => {
 
 app.post('/delete', async (req, res) => {
 
-  const {email, password} = req.body;
+  const user = req.session.user;
+
+  if (!user) {
+    return res.status(400).json({ message: "User not logged in" });
+  }
   const usersCollection = db.collection('users');
+  const email = user.email;
 
   try {
-  // find user
-  const user = await usersCollection.findOne({ email });
+    // find user
+    const user = await usersCollection.findOne({ email });
 
-  if(!user){
-    return res.status(400).json({ message: "User not found" });
-  }
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
+    }
 
-  // do a password check
-  const isValid = await bcrypt.compare(password, user.password);
+    // delete the user
+    await usersCollection.deleteOne({ email });
+    // destroy session
+    req.session.destroy((err) => {
+      if (err) {
+        console.log("Error deleting user", err);
+        return res.status(500).json({ message: "Error deleting user" });
+      }
+      res.status(200).json({ message: "user deleted successfully" });
+      console.log("User deleted successfully");
+    });
 
-  if(!isValid){
-    return res.status(400).json({message: "incorrect Password" });
-  }
-
-  // delete the user
-  await usersCollection.deleteOne({ email });
-
-  } catch(err){
+  } catch (err) {
+    console.log("Error deleting user", err);
     return res.status(500).json({ message: "Error deleting user" });
   }
-  
+
 });
 
 app.listen(PORT, () => {

@@ -8,8 +8,33 @@ import { CgProfile } from "react-icons/cg";
 
 import Dialog from '@mui/material/Dialog';
 
+function DeleteAccount({setLoggedIn}) {
 
-function DeleteAccount() {
+  const handleDeleteAccount = async () => {
+
+      const response = await fetch('/delete', {
+
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body:
+          JSON.stringify({}),
+
+      });
+
+      if(response.ok){
+      setLoggedIn(false);
+      alert("Account deleted successfully. You will be redirected to the welcome screen.");
+      console.log("Account deleted successfully.");
+
+      }
+      else {
+        const data = await response.json();
+        alert(data.message || "Error deleting account. Please try again later.");
+      }
+  }
 
   const [open, setOpen] = useState(false);
 
@@ -21,7 +46,6 @@ function DeleteAccount() {
   const handleCloseDialog = () => {
     setOpen(false);
   };
-
 
   return (
     <div>
@@ -44,12 +68,17 @@ function DeleteAccount() {
 
           <div className="dialog">
             <span className="section-title"> Are you sure you want to delete your account? </span>
-            <span className="description"> This action cannot be undone. </span>
+            <span className="description"> This action cannot be undone. All data will be lost. </span>
 
-            <button className="delete-account-real">
-              <p1> Yes, Delete my account </p1>
-            </button>
+            <div className="delete-account-dialog-buttons" >
+              <button className="delete-account-real" onClick={handleDeleteAccount}>
+                <p1> Yes, Delete my account </p1>
+              </button>
 
+              <button className="Keep-account" onClick={handleCloseDialog}>
+                <p1> No, Keep my account </p1>
+              </button>
+            </div>
           </div>
         </div>
       </Dialog>
@@ -57,8 +86,7 @@ function DeleteAccount() {
   );
 }
 
-
-function Profile({ handleLogoutClick }) {
+function Profile({ handleLogoutClick, setLoggedIn }) {
 
   return (
     <div className="Dashboard-container">
@@ -68,9 +96,16 @@ function Profile({ handleLogoutClick }) {
           <div className="Profile-header">
 
             <div className="header-left">
-              <div className="Profile-title">
-                <CgProfile style={{ fontSize: '40px', display: 'flex', margin: '10px' }} />
-                <span>Your Profile  </span>
+              <div className="Item-title">
+                <div className="Item-icon">
+                </div>
+              </div>
+
+              <div className="Item-title">
+                <div className="Item-Icon">
+                  <CgProfile style={{ fontSize: '40px', display: 'flex', margin: '10px' }} />
+                  <span>Your Profile  </span>
+                </div>
               </div>
               <div className="Profile-desc">
                 <span className="description"> This is your account profile. Here you can add a photo,
@@ -100,7 +135,7 @@ function Profile({ handleLogoutClick }) {
 
           <span className="description"> The button below will delete your account and any data tied to it. Make sure you're certain about deleting it before pressing the button. </span>
 
-          <DeleteAccount />
+          <DeleteAccount setLoggedIn={setLoggedIn}/>
 
         </div>
 

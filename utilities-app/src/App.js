@@ -7,7 +7,6 @@ import MainClock from './ClockComponent.jsx';
 import { HiLogout } from "react-icons/hi";
 
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { MantineProvider, Button, Text } from '@mantine/core';
 import { Box } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -36,7 +35,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 export const ThemeContext = createContext(null);
 
-function MainWrapper({ children, handleLogoutClick }) {
+function MainWrapper({ children, handleLogoutClick, setLoggedIn }) {
 
   const [activeTab, setActiveTab] = useState('dashboard');
 
@@ -49,7 +48,7 @@ function MainWrapper({ children, handleLogoutClick }) {
         {activeTab === 'productivity' && <Productivity />}
         {activeTab === 'developer' && <Developer />}
         {activeTab === 'noteTaking' && <NoteTaking />}
-        {activeTab === 'profile' && <Profile handleLogoutClick={handleLogoutClick}/>}
+        {activeTab === 'profile' && <Profile setLoggedIn={setLoggedIn} handleLogoutClick={handleLogoutClick}/>}
 
       </div>
     </div>
@@ -265,8 +264,7 @@ function Footer() {
 
       <div className="Footer-1">
         <div className="footer-content">
-          <span> Website created by Daniel Steele </span>
-          <span> Daniel Steele ©2025. All rights reserved. </span>
+          <span> FocusDev ©2025. All rights reserved. </span>
         </div>
       </div>
 
@@ -280,7 +278,7 @@ function Footer() {
                   fontSize: '30px'
 
                 }}>
-                Click here to check out my other work! </BiWorld>
+                 </BiWorld>
             </a>
           </div>
         </Tooltip>
@@ -294,7 +292,7 @@ function Footer() {
                   fontSize: '30px'
 
                 }}>
-                Click here to check out my other work! </PiGithubLogo>
+                 </PiGithubLogo>
             </a>
           </div>
 
@@ -309,7 +307,7 @@ function Footer() {
                   fontSize: '30px'
 
                 }}>
-                Click here to check out my other work! </FaLinkedin>
+                 </FaLinkedin>
             </a>
           </div>
         </Tooltip>
@@ -330,7 +328,7 @@ function App() {
 
   const [theme, setTheme] = useState("dark");
   const [loggedIn, setLoggedIn] = useState(false);
-    const[logoutButton] = useState();
+  const[logoutButton] = useState();
 
   const toggleTheme = () => {
 
@@ -366,7 +364,7 @@ function App() {
             <>
 
               <Navigation theme={theme} toggleTheme={toggleTheme} setLoggedIn={setLoggedIn} handleLogoutClick={handleLogoutClick} />
-              <MainWrapper handleLogoutClick={handleLogoutClick}>
+              <MainWrapper handleLogoutClick={handleLogoutClick} setLoggedIn={setLoggedIn}>
                 <Analytics />
               </MainWrapper>
               <Footer />

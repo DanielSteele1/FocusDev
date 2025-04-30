@@ -389,7 +389,7 @@ body {
 
 .delete-account, .delete-account-real {
   display: flex;
-  height: 45px;
+  height: 40px;
   width: fit-content;
   margin: 10px;
   padding: 10px;
@@ -406,9 +406,20 @@ body {
   border: 2px solid #fd0000;
 }
 
+.delete-account-dialog-buttons {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+
 .delete-account-real {
 
   display: flex;
+  height: 40px;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
@@ -591,7 +602,7 @@ body {
   width: 100%;
 }
 
-.AccountsButton {
+.AccountsButton, .Keep-account {
   display: flex;
   height: 40px;
   width: fit-content;
@@ -1268,16 +1279,16 @@ table {
 
 .Note {
   display: flex;
+  width: 100%;
   padding: 10px;
-  margin: 10px;
+  margin: 5px;
   font-size: 15px;
   font-family: 'Lexend Deca', sans-serif;
-  overflow-wrap: break-word;
   white-space: normal;
-  word-break: break-all;
-
+  line-height: 1.30;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
-
 .Link {
 
   max-width: 150px;
