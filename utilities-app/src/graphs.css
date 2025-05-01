@@ -32,7 +32,6 @@
      font-weight: 600 !important;
       font-family: 'Figtree', sans-serif !important;
       font-size: 10px !important;
-      border-left: 1px solid #1DB954 !important;
      
    }
 
@@ -64,4 +63,11 @@
   .LineChart text {
 
     fill: #1DB954 !important;
+  }
+
+  #heatmap-tooltip {
+    color:#1DB954;
+    font-family: 'Figtree', sans-serif !important;
+    font-weight: 500 !important;
+    background-color: #161b22 !important;
   }

@@ -2,7 +2,6 @@ import './App.css';
 import './graphs.css';
 import { useEffect} from "react";
 import { useState } from "react";
-import 'reactjs-popup/dist/index.css';
 
 import GithubIcon from '@mui/icons-material/GitHub';
 import CallSplitIcon from '@mui/icons-material/CallSplit';
@@ -18,10 +17,14 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import { PiGithubLogo } from "react-icons/pi";
 
+import 'reactjs-popup/dist/index.css';
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
 function Developer() {
 
+
     const data = [
-        // feb 2025
+        // placeholder data for the heatmap - is shown before user puts thier name in.
         { "date": "2025-02-01", "count": 0 },
     ];
 
@@ -241,6 +244,29 @@ function Developer() {
                         startDate={oneYearAgo}
                         endDate={today}
                         values={contributionData ? transformContributionData(contributionData.weeks) : data}
+                        data-tooltip-id="heatmap-tooltip"
+                        tooltipDataAttrs={value => {
+
+                            if( !value || !value.date) {
+                                return {
+                                    'data-tooltip-id' : 'heatmap-tooltip',
+                                    'data-tooltip-content' : 'No data available' }
+                                
+                            }
+
+                            let dateStr = value.date;
+
+                            if(typeof dateStr !== 'string') {
+                                dateStr = new Date(dateStr).toISOString().slice(0,10);
+                            }
+                                return {
+                                    'data-tooltip-id': 'heatmap-tooltip',
+                                    'data-tooltip-content' : `${value.date} - ${value.count} commits`
+                                }
+
+                        }}
+                        showWeekdayLabels={false}
+
                         classForValue={(value) => {
 
                             if (!value || value.count === 0) {
@@ -258,9 +284,10 @@ function Developer() {
                             return 'color-scale-4';
 
                         }}
-                        gutterSize={0}
+                        gutterSize={1}
 
                     />
+                    <Tooltip id="heatmap-tooltip"/>
 
                 </div>
 
