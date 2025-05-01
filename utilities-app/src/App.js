@@ -20,8 +20,6 @@ import { BsFillBarChartFill } from "react-icons/bs";
 import { BsSticky } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { BiWorld } from "react-icons/bi";
-import { MdDarkMode } from "react-icons/md";
-import { MdLightMode } from "react-icons/md";
 import { FaLinkedin } from "react-icons/fa";
 import { PiGithubLogo } from "react-icons/pi";
 import { HiTrendingUp } from "react-icons/hi";
@@ -56,8 +54,7 @@ function MainWrapper({ children, handleLogoutClick, setLoggedIn }) {
   );
 }
 
-function Navigation({ toggleTheme, theme, handleLogoutClick, logoutButton }) {
-
+function Navigation({ handleLogoutClick, logoutButton }) {
 
   return (
     <div className="Navigation">
@@ -76,28 +73,6 @@ function Navigation({ toggleTheme, theme, handleLogoutClick, logoutButton }) {
       <div className="Navigation-Name"> <span>FocusDev</span> </div>
 
       <div className="Nav-Menu">
-
-        <div className="Navigation-Item">
-          <div className="darkMode">
-            <button className="themeButton" onClick={toggleTheme} >
-
-              {theme === "dark" ? (
-
-                <MdLightMode
-                  style={{ justifyContent: 'center', alignItems: 'center', margin: '0px', fontSize: '30px' }}>
-                </MdLightMode>
-
-              ) : (
-
-                <MdDarkMode
-                  style={{ justifyContent: 'center', alignItems: 'center', margin: '0px', fontSize: '30px' }}>
-                </MdDarkMode>
-
-              )}
-
-            </button>
-          </div>
-        </div>
 
         <div className="Navigation-Item">
           <div className="Accounts">
@@ -330,12 +305,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const[logoutButton] = useState();
 
-  const toggleTheme = () => {
-
-    setTheme((curr) => (curr === "light" ? "dark" : "light"));
-    console.log("Theme:", theme);
-
-  };
 
   const handleLogoutClick = async (e) => {
 
@@ -356,14 +325,14 @@ function App() {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider>
       <MantineProvider withGlobalStyles withNormalizeCSS theme={{ colorScheme: theme }}>
         <div className={`App ${theme}`}>
           {loggedIn ? (
 
             <>
 
-              <Navigation theme={theme} toggleTheme={toggleTheme} setLoggedIn={setLoggedIn} handleLogoutClick={handleLogoutClick} />
+              <Navigation theme={theme} setLoggedIn={setLoggedIn} handleLogoutClick={handleLogoutClick} />
               <MainWrapper handleLogoutClick={handleLogoutClick} setLoggedIn={setLoggedIn}>
                 <Analytics />
               </MainWrapper>

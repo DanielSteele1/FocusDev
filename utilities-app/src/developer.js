@@ -188,30 +188,7 @@ function Developer() {
                         </div>
                     </div>
 
-                    <div className="github-login">
-                        <span className="tip-highlight">
-                            <GrCircleInformation
-                                style={{
-                                    fontSize: '20px',
-                                    marginRight: '10px',
-                                    color: '#1DB954',
-                                    verticalAlign: 'middle'
-
-                                }} /> Please enter your github account name below in order to track these stats. </span>
-                        <form className="Github-Stats-Input" onSubmit={handleGithubSubmit}>
-
-                            <input type="text"
-                                placeholder="Enter your account name"
-                                value={usernameInput}
-                                onChange={handleUsername}
-                                required
-                            />
-                            <button className="SubmitGithubName"> <GithubIcon sx={{
-                                display: 'flex', marginRight: '5px'
-                            }}> </GithubIcon> Retrieve Github Data  </button>
-                        </form>
-                    </div>
-
+            
                     <div className="github-stats">
                         <div id="stat">
                             <div id="commitNumber">
@@ -288,6 +265,30 @@ function Developer() {
 
                     />
                     <Tooltip id="heatmap-tooltip"/>
+
+                     <div className="github-login">
+                        <span className="tip-highlight">
+                            <GrCircleInformation
+                                style={{
+                                    fontSize: '20px',
+                                    marginRight: '10px',
+                                    color: '#1DB954',
+                                    verticalAlign: 'middle'
+
+                                }} /> Please enter your github account name below in order to track these stats. </span>
+                        <form className="Github-Stats-Input" onSubmit={handleGithubSubmit}>
+
+                            <input type="text"
+                                placeholder="Enter your account name"
+                                value={usernameInput}
+                                onChange={handleUsername}
+                                required
+                            />
+                            <button className="SubmitGithubName"> <GithubIcon sx={{
+                                display: 'flex', marginRight: '5px'
+                            }}> </GithubIcon> Retrieve Github Data  </button>
+                        </form>
+                    </div>
 
                 </div>
 

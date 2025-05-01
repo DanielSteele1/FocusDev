@@ -15,15 +15,6 @@ a {
   color: #1DB954;
 }
 
-.App.light a {
-  color: black;
-}
-
-.App.light {
-  background-color: #ffffff;
-  color: black;
-}
-
 .App.dark {
   background-color: #111111;
   color: white;
@@ -87,112 +78,30 @@ a {
   border-radius: 8px;
 }
 
-.App.light .LocationSearch {
-  background-color: #1DB954;
-  color: #0f1011;
-}
-
-.App.dark .LocationSearch {
-  color: #1DB954;
-  background-color: #18181b;
-}
-
-.App.light .Navigation,
-.App.light .sidebar,
-.App.light .Footer {
-  background-color: #e8f5e8;
-  color: #0f1011;
-}
-
-
-.App.light .AccountsButton:hover,
-.App.light .Sidebar-Item,
-.App.light .SidebarText {
-
-  background-color: #1DB954;
-  color: black;
-}
-
-.App.light .Item-Icon {
-
-  color: black;
-}
-
-.App.light .Item-title span {
-
-  color: #000000;
-}
-
-
-.App.light .Navigation-Item,
-.App.light .QOTD,
-.App.light .Welcome {
-  color: #000000;
-}
-
-.App.light .Dashboard-Item {
-  background-color: #dddddd;
-  border: none;
-  color: black;
-  box-shadow: #000000 2px 2px 0px 0px;
-}
-
-.App.light .Note,
-.App.light .description,
-.App.light .Links-Content {
-  color: black;
-}
-
-.App.light .Links-Content:hover {
-  background: none;
-}
-
-.App.light #stat,
-.App.light #statTitle {
-
-  color: #ffffff;
-}
-
-.App.light #statNumber {
-
-  color: #1DB954;
-}
-
-.App.dark #Input,
-.App.dark #Events-Input,
-.App.dark #LinkNameInput,
-.App.dark #URLInput,
-.App.dark .Github-Stats-Input input,
-.App.dark .LocationInput {
+ #Input,
+ #Events-Input,
+ #LinkNameInput,
+ #URLInput,
+ .Github-Stats-Input input,
+ .LocationInput {
 
   background-color: #18181b;
   color: #c4cad3;
 }
 
-.App.light .Dashboard-Item,
-.App.light .NoteTaking-Item,
-.App.light .Productivity-Item,
-.App.light .Profile-Item,
-.App.light #github-login {
-  border: 1px solid #2d2d2d;
-
-}
-
-.App.dark .sidebar {
+.sidebar {
   color: #c4cad3;
 }
 
-
-.App.dark .Dashboard-Item,
-.App.dark .Productivity-Item,
-.App.dark .Profile-Item,
-.App.dark #github-login {
+ .Dashboard-Item,
+ .Productivity-Item,
+ .Profile-Item,
+ #github-login {
   border: 1px solid #292e2e;
 }
 
-
-.App.dark .Navigation,
-.App.dark .Footer {
+.Navigation,
+.Footer {
 
   color: #c4cad3;
   background-color: rgba(17, 17, 17, 0.5);
@@ -264,8 +173,6 @@ body {
   color: #1DB954;
   justify-content: flex-start;
   align-items: center;
-  /* position: sticky;
-  top: 0; */
   top: 0;
   left: 0;
   z-index: 1000;
@@ -550,58 +457,6 @@ body {
 
 }
 
-.LocationInput {
-
-  border: none;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  height: 100%;
-  max-width: 100%;
-  padding: 10px;
-  border-bottom: 2px solid #3d423d;
-  border-top: 2px solid #3d423d;
-  border-left: 2px solid #3d423d;
-
-}
-
-.LocationInput:focus {
-  outline: none;
-  background-color: transparent;
-}
-
-.LocationSearch {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #09f55b;
-  height: 100%;
-  width: 50px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border: none;
-  cursor: pointer;
-  border-bottom: 2px solid #3d423d;
-  border-top: 2px solid #3d423d;
-  border-right: 2px solid #3d423d;
-
-}
-
-.LocationSearch:hover {
-  background-color: #1DB954;
-  color: #0f1011;
-}
-
-.location {
-  display: flex;
-  flex-direction: row;
-  border: none;
-  color: #09f55b;
-  border-radius: 10px;
-  height: 40px;
-  font-size: 15px;
-  width: 100%;
-}
-
 .AccountsButton, .Keep-account {
   display: flex;
   height: 40px;
@@ -746,17 +601,12 @@ body {
   color: #FFA116;
 }
 
-.App.dark #github .Link,
-.App.dark #github svg {
+ #github .Link,
+ #github svg {
 
   color: #ffffff;
 }
 
-.App.light #github,
-.App.light #github svg {
-
-  color: black;
-}
 
 .Links-Content:hover .Link,
 .Links-Content:hover svg {
@@ -869,17 +719,14 @@ table {
 }
 
  .delete-account-dialog  {
-
   display: flex;
   align-items: flex-start;
   margin: 0 auto;
-
  }
 
  .delete-account-real{
   margin: 10px;
  }
-
 
 .dialog-input {
 
@@ -889,12 +736,11 @@ table {
   font-size: 15px;
   padding: 10px 15px;
   margin: 10px;
-  border: 2px solid #3d423d;
   border-radius: 10px;
   background-color: #292e2e;
   color: #1DB954;
   outline: none;
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: 'Figtree', sans-serif;
 }
 
 .Dialog-button {
@@ -1139,9 +985,8 @@ table {
 
   font-style: italic;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'figtree', sans-serif;
 }
-
 
 
 #Input,
@@ -1162,7 +1007,7 @@ table {
   border-radius: 10px;
   font-size: 15px;
   border: 1px solid #2d2d2d;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Figtree', sans-serif;
   font-weight: 500;
   outline: none;
 
@@ -1338,12 +1183,10 @@ table {
   width: 100%;
   border-radius: 10px;
   font-size: 15px;
-  border: 2px solid #3d423d;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Figtree', sans-serif;
   font-weight: 500;
   outline: none;
 }
-
 
 .github-login {
 
@@ -1461,7 +1304,6 @@ table {
   height: fit-content;
   flex-direction: row;
   align-items: center;
-  background-color: #0d0e0d;
   justify-content: space-between;
 }
 
