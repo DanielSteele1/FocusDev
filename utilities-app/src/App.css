@@ -82,8 +82,7 @@ a {
  #Events-Input,
  #LinkNameInput,
  #URLInput,
- .Github-Stats-Input input,
- .LocationInput {
+ .Github-Stats-Input input {
 
   background-color: #18181b;
   color: #c4cad3;
@@ -429,7 +428,7 @@ body {
 .MainContent {
 
   display: flex;
-  width: calc(100% - 380px);
+  width: calc(100% - 320px);
   justify-content: center;
   align-items: flex-start;
   margin: 0 auto;
@@ -621,11 +620,6 @@ table {
 
 }
 
-.Goals tr {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
-}
 
 .Goal-Content {
   display: flex;
@@ -633,13 +627,9 @@ table {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin: 5px;
-  padding-left: 10px;
   font-size: 15px;
-  font-family: 'Lexend Deca', sans-serif;
+  font-family: 'Figtree', sans-serif;
   font-weight: 400;
-  border-radius: 10px;
-  border: 1px solid #2d2d2d;
 }
 
 .Goal-Text {
@@ -1024,12 +1014,13 @@ table {
 #TimeInput:focus,
 .Github-Stats-Input input:focus {
 
-  border: 1px solid #1DB954;
-  background-color: #292e2e;
+  box-shadow: inset 0 0 0 2px #1DB954;
+  background-color: #18181b;
   color: #1DB954;
   transition: all 0.2s ease-in-out;
 
 }
+
 
 #Input {
 
@@ -1345,4 +1336,9 @@ table {
   justify-content: flex-start;
   align-items: flex-start;
 
+}
+
+.Goal-completed {
+
+    text-decoration: line-through;
 }

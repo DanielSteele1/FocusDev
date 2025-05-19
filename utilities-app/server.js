@@ -157,7 +157,6 @@ app.get('/debug/session', (req, res) => {
   res.json(req.session);
 });
 
-
 //login
 
 app.post('/login', async (req, res) => {

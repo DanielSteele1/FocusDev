@@ -20,8 +20,8 @@ import { PiGithubLogo } from "react-icons/pi";
 import 'reactjs-popup/dist/index.css';
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
-function Developer() {
 
+function Developer() {
 
     const data = [
         // placeholder data for the heatmap - is shown before user puts thier name in.
@@ -44,6 +44,8 @@ function Developer() {
         return savedContributionData ? JSON.parse(savedContributionData) : null;
 
     });
+
+    const [usernameDisplayed, setUsernameDisplayed] = useState('');
 
     useEffect(() => {
 
@@ -133,6 +135,7 @@ function Developer() {
         await fetchUsername();
         await fetchGithub();
         await fetchContributionData();
+        await setUsernameDisplayed(usernameInput);
     }
 
     const handleUsername = async (e) => {
@@ -184,7 +187,7 @@ function Developer() {
                             <PiGithubLogo
                                 style={{ justifyContent: 'center', alignItems: 'center', verticalAlign: 'middle', fontSize: '30px', marginRight: '10px', color: '#4ade80' }}>
                             </PiGithubLogo>
-                            <span> Your Github Stats </span>
+                            <span> {usernameDisplayed ? `${usernameDisplayed}'s Github stats` : "Your Github Stats"} </span>
                         </div>
                     </div>
 

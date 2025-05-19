@@ -146,7 +146,11 @@ function Productivity() {
 
     const handleGoalComplete = (index) => {
 
-        
+        const updatedGoals = goals.map((goal, i) => 
+            i === index ? { ...goal, isCompleted: !goal.isCompleted} : goal
+
+        );
+        setGoals(updatedGoals);
 
     }
 
@@ -154,7 +158,6 @@ function Productivity() {
 
         const newGoals = goals.filter((_, i) => i !== index);
         setGoals(newGoals);
-
     }
 
     return (
@@ -420,7 +423,7 @@ function Productivity() {
                                         <td key={index} className="Goal-Content">
 
                                             <div className="goalText">
-                                                <span>{goal.text}</span>
+                                                <span className={goal.isCompleted ? "Goal-completed" : ""}>{goal.text}</span>
                                             </div>
 
                                             <div className="goalControls">
