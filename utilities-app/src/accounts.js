@@ -40,9 +40,9 @@ function Accounts({ setLoggedIn }) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                credentials: 'include',
-
             },
+            credentials: 'include',
+
             body: JSON.stringify({ email: logInEmail, password: logInPassword }),
         });
 
