@@ -160,11 +160,12 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchQOTD = async () => {
-      const api_url = '/api/qotd';
+      const api_url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/qotd`;
 
       try {
         const response = await fetch(api_url);
         const data = await response.json();
+
         console.log(data);
 
         if (data && data[0] && data[0].q && data[0].a) {
@@ -311,7 +312,7 @@ function App() {
     e.preventDefault();
 
     try {
-      await fetch('${process.env.NEXT_PUBLIC_BACKEND_URL}/logout', {
+      await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/logout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

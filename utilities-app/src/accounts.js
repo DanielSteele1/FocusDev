@@ -1,5 +1,5 @@
 import './accounts.css';
-import { useEffect} from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import 'reactjs-popup/dist/index.css';
 
@@ -16,12 +16,14 @@ function Accounts({ setLoggedIn }) {
 
         e.preventDefault();
 
-        const response = await fetch('/signup', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/signup`, {
 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            credentials: 'include',
+
             body: JSON.stringify({ email: signUpEmail, password: signUpPassword }),
         });
 
@@ -33,11 +35,13 @@ function Accounts({ setLoggedIn }) {
 
         e.preventDefault();
 
-        const response = await fetch('/login', {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                credentials: 'include',
+
             },
             body: JSON.stringify({ email: logInEmail, password: logInPassword }),
         });
@@ -51,7 +55,7 @@ function Accounts({ setLoggedIn }) {
 
     async function checkLoginStatus() {
 
-        const response = await fetch('auth/status', { credentials: 'include' });
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/status`, { credentials: 'include' });
         const data = await response.json();
 
         try {
@@ -81,7 +85,7 @@ function Accounts({ setLoggedIn }) {
             <div className="AccountsPortal">
                 <span id="accountsTitle">
 
-                    <HiTrendingUp  style={{
+                    <HiTrendingUp style={{
                         display: 'flex',
                         color: '#1DB954',
                         fontSize: '50px',
