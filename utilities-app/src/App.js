@@ -46,7 +46,7 @@ function MainWrapper({ children, handleLogoutClick, setLoggedIn }) {
         {activeTab === 'productivity' && <Productivity />}
         {activeTab === 'developer' && <Developer />}
         {activeTab === 'noteTaking' && <NoteTaking />}
-        {activeTab === 'profile' && <Profile setLoggedIn={setLoggedIn} handleLogoutClick={handleLogoutClick}/>}
+        {activeTab === 'profile' && <Profile setLoggedIn={setLoggedIn} handleLogoutClick={handleLogoutClick} />}
 
       </div>
     </div>
@@ -253,7 +253,7 @@ function Footer() {
                   fontSize: '30px'
 
                 }}>
-                 </BiWorld>
+              </BiWorld>
             </a>
           </div>
         </Tooltip>
@@ -267,7 +267,7 @@ function Footer() {
                   fontSize: '30px'
 
                 }}>
-                 </PiGithubLogo>
+              </PiGithubLogo>
             </a>
           </div>
 
@@ -282,7 +282,7 @@ function Footer() {
                   fontSize: '30px'
 
                 }}>
-                 </FaLinkedin>
+              </FaLinkedin>
             </a>
           </div>
         </Tooltip>
@@ -291,7 +291,7 @@ function Footer() {
 
       <div className="Footer-3"> <a href="https://dashboard.simpleanalytics.com/?utm_source=danielsteele.dev&utm_content=badge&affiliate=catur"
         referrerpolicy="origin"
-        target="_blank" rel="noreferrer noopener"> <picture><source srcset="https://simpleanalyticsbadges.com/danielsteele.dev?logo=c4cad3&text=c4cad3&background=none" media="(prefers-color-scheme: dark)" /><img  alt="Simple Analytics Link"src="https://simpleanalyticsbadges.com/danielsteele.dev?mode=dark"
+        target="_blank" rel="noreferrer noopener"> <picture><source srcset="https://simpleanalyticsbadges.com/danielsteele.dev?logo=c4cad3&text=c4cad3&background=none" media="(prefers-color-scheme: dark)" /><img alt="Simple Analytics Link" src="https://simpleanalyticsbadges.com/danielsteele.dev?mode=dark"
           loading="lazy"
           referrerpolicy="no-referrer"
           crossorigin="anonymous" /></picture></a> </div>
@@ -303,7 +303,7 @@ function App() {
 
   const [theme, setTheme] = useState("dark");
   const [loggedIn, setLoggedIn] = useState(false);
-  const[logoutButton] = useState();
+  const [logoutButton] = useState();
 
 
   const handleLogoutClick = async (e) => {
@@ -311,9 +311,10 @@ function App() {
     e.preventDefault();
 
     try {
-        await fetch('/logout', {
+      await fetch('${process.env.NEXT_PUBLIC_BACKEND_URL}/logout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ logout: logoutButton }),
       });
       setLoggedIn(false);
