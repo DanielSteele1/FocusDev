@@ -59,7 +59,7 @@ function Developer() {
     // this will fetch the users yearly contribution data
 
     const fetchContributionData = async () => {
-        const api_url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/githubContributions?username=${usernameInput}`;
+        const api_url = `${process.env.REACT_APP_BACKEND_URL}/api/githubContributions?username=${usernameInput}`;
 
         try {
             const response = await fetch(api_url, {
@@ -108,7 +108,7 @@ function Developer() {
     };
 
     const fetchGithub = async () => {
-        const api_url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/githubApiConn`;
+        const api_url = `${process.env.REACT_APP_BACKEND_URL}/api/githubApiConn`;
 
         try {
             const response = await fetch(api_url);
@@ -149,7 +149,7 @@ function Developer() {
     const fetchUsername = async () => {
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/githubUsername`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/githubUsername`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

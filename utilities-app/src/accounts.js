@@ -16,7 +16,7 @@ function Accounts({ setLoggedIn }) {
 
         e.preventDefault();
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/signup`, {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/signup`, {
 
             method: 'POST',
             headers: {
@@ -35,7 +35,7 @@ function Accounts({ setLoggedIn }) {
 
         e.preventDefault();
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login`, {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
 
             method: 'POST',
             headers: {
@@ -55,7 +55,8 @@ function Accounts({ setLoggedIn }) {
 
     async function checkLoginStatus() {
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/status`, { credentials: 'include' });
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/auth/status`, 
+            { credentials: 'include' });
         const data = await response.json();
 
         try {

@@ -160,7 +160,7 @@ function Dashboard() {
 
   useEffect(() => {
     const fetchQOTD = async () => {
-      const api_url = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/qotd`;
+      const api_url = `${process.env.REACT_APP_BACKEND_URL}/api/qotd`;
 
       try {
         const response = await fetch(api_url);
@@ -312,7 +312,7 @@ function App() {
     e.preventDefault();
 
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/logout`, {
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/logout`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
