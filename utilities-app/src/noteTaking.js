@@ -96,8 +96,6 @@ function NoteTaking() {
         }
     };
 
-
-
     const handleOneClickCopy = (note) => {
 
        navigator.clipboard.writeText(note.text).then(() => {

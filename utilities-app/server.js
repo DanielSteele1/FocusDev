@@ -12,7 +12,6 @@ let db;
 const app = express();
 const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
-const { Email } = require('@mui/icons-material');
 
 app.use(express.json());
 
@@ -25,7 +24,10 @@ app.use(session({
   secret: process.env.secretsession,
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+  }
 }));
 
 // get URI from the env file.
@@ -106,7 +108,6 @@ app.get('/api/githubApiConn', async (req, res) => {
 // this can then be sent to the frontend, enabling me to effect elements there.
 app.get('/auth/status', async (req, res) => {
   if (req.session.user) {
-    console.log("Session:", req.session);  // Debugging session
     res.json({ loggedIn: true, user: req.session.user });
   } else {
     res.json({ loggedIn: false });
